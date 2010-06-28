@@ -1,0 +1,18 @@
+= render :partial => 'filter' if params[:action] == "index"
+
+- if @problems.empty?
+  %p No problems have been reported yet
+- else
+  %table
+    %thead
+      %tr
+        %th Subject
+        %th Description
+    %tbody
+      - @problems.each do |problem|
+        %tr
+          %th= problem.subject
+          %th= problem.description
+
+Total: 
+= pluralize @problems.total_entries, "problem"

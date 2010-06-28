@@ -1,0 +1,17 @@
+- if @categories.empty?
+  %p No categories have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %td Manage
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %th= category.name
+          %td 
+            = link_to "Edit", edit_admin_category_path(category)
+            = link_to "Delete", admin_category_path(category), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New Category", new_admin_category_path

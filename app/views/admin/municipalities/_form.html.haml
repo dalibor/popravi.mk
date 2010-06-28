@@ -1,0 +1,7 @@
+- semantic_form_for [:admin, @municipality] do |f|
+  - f.inputs do
+    = f.input :name, :label => 'Name'
+    = f.input :region, :as => :select, :collection => Region.find(:all, :order => "name ASC")
+  - f.buttons do
+    = f.commit_button
+

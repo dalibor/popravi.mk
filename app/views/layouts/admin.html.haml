@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title Administration
+    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'compiled/grid.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/text.css', :media => 'screen, projection'
+  %body
+    %div#admin_nav
+      = link_to "Home", root_path
+      = link_to "Countries", admin_countries_path
+      = link_to "Regions", admin_regions_path
+      = link_to "Municipalities", admin_municipalities_path
+      = link_to "Categories", admin_categories_path
+      = link_to "Users", admin_users_path
+      = link_to "Problems", admin_problems_path
+    %div#user_nav
+      - if user_signed_in?
+        Signed in as #{current_user.email}. Not you?
+        = link_to "Sign out", destroy_user_session_path
+      - else
+        #{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}
+
+    - flash.each do |key, msg|
+      = content_tag :div, msg, :id => key
+
+    = yield
+    
+    = javascript_include_tag 'jquery/jquery-1.4.2.min'
+    = javascript_include_tag :all, :cache => true
+

@@ -1,0 +1,17 @@
+- if @countries.empty?
+  %p No countries have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %td Manage
+    %tbody
+      - @countries.each do |country|
+        %tr
+          %th= country.name
+          %td 
+            = link_to "Edit", edit_admin_country_path(country)
+            = link_to "Delete", admin_country_path(country), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New Country", new_admin_country_path

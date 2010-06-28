@@ -1,0 +1,19 @@
+- if @municipalities.empty?
+  %p No municipalities have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Region
+        %td Manage
+    %tbody
+      - @municipalities.each do |municipality|
+        %tr
+          %th= municipality.name
+          %th= municipality.region.name
+          %td 
+            = link_to "Edit", edit_admin_municipality_path(municipality)
+            = link_to "Delete", admin_municipality_path(municipality), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New Municipality", new_admin_municipality_path

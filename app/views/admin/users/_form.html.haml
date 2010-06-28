@@ -1,0 +1,11 @@
+- semantic_form_for [:admin, @user] do |f|
+  - f.inputs do
+    = f.input :name, :label => 'Name'
+    = f.input :role, :label => 'Role'
+    = f.input :email, :label => 'Email'
+    - if controller.action_name == "new"
+      = f.input :password, :label => 'Password'
+      = f.input :password_confirmation, :label => 'Password Confirmation'
+  - f.buttons do
+    = f.commit_button
+

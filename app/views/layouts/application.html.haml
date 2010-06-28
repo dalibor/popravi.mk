@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title popravi.mk
+    = stylesheet_link_tag :all
+    = stylesheet_link_tag 'compiled/grid.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/text.css', :media => 'screen, projection'
+  %body{:id => controller.controller_name + "_" + controller.action_name}
+    %div#app_nav
+      = link_to "Report a problem", new_problem_path
+      = link_to "Problems", problems_path
+    %div#user_nav
+      - if user_signed_in?
+        = link_to "Admin", admin_root_path if current_user.is_admin?
+        Signed in as #{current_user.email}. Not you?
+        = link_to "Sign out", destroy_user_session_path
+      - else
+        #{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}
+
+    - flash.each do |key, msg|
+      = content_tag :div, msg, :id => key
+
+    = yield
+    
+    = javascript_include_tag 'jquery/jquery-1.4.2.min'
+    = yield :script
+    = javascript_include_tag :all, :cache => true
+
+

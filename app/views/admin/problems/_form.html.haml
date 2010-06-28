@@ -1,0 +1,13 @@
+- semantic_form_for [:admin, @problem] do |f|
+  - f.inputs do
+    = f.input :subject, :label => 'Subject'
+    = f.input :description, :label => 'Description'
+    = f.input :latitude, :label => 'Latitude'
+    = f.input :longitude, :label => 'Longitude'
+    = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
+    = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
+    = f.input :name, :label => 'Name'
+    = f.input :email, :label => 'Email'
+  - f.buttons do
+    = f.commit_button
+

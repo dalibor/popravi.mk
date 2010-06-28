@@ -1,0 +1,25 @@
+- if @users.empty?
+  %p No users have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Email
+        %th Role
+        %th Confirmed at
+        %th Last sign in at
+        %td Manage
+    %tbody
+      - @users.each do |user|
+        %tr
+          %th= user.name
+          %th= user.email
+          %th= user.role
+          %th= user.confirmed_at
+          %th= user.last_sign_in_at
+          %td 
+            = link_to "Edit", edit_admin_user_path(user)
+            = link_to "Delete", admin_user_path(user), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New User", new_admin_user_path

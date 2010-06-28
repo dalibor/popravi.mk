@@ -1,0 +1,19 @@
+- if @regions.empty?
+  %p No regions have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Country
+        %td Manage
+    %tbody
+      - @regions.each do |region|
+        %tr
+          %th= region.name
+          %th= region.country.name
+          %td 
+            = link_to "Edit", edit_admin_region_path(region)
+            = link_to "Delete", admin_region_path(region), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New Region", new_admin_region_path

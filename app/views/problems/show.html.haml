@@ -1,0 +1,23 @@
+= @problem.subject
+= @problem.description
+= @problem.name
+= @problem.longitude
+= @problem.latitude
+
+- if user_signed_in? && current_user == @problem.user
+  = link_to "Edit problem report", edit_problem_path(@problem)
+- else
+  If this problem was reported by you, please 
+  = link_to "sign up", new_registration_path(:user)
+  or
+  = link_to "sign in", new_session_path(:user)
+  to edit it.
+
+%div#map_canvas
+
+:javascript
+  var _lat = "#{@problem.latitude}";
+  var _lng = "#{@problem.longitude}";
+
+- content_for :script do
+  %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}

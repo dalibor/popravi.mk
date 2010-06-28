@@ -1,0 +1,26 @@
+%div#map_buttons
+  = link_to "Delete marker", "#", :id => "delete_marker"
+  = text_field_tag :address
+  = link_to "Search address", "#", :id => "search_address"
+
+%div#geocode_results
+
+%div#map_canvas
+
+- semantic_form_for @problem do |f|
+  = error_messages_for :problem
+  - f.inputs do
+    = f.input :subject, :label => 'Subject'
+    = f.input :description, :label => 'Description'
+    = f.input :latitude, :label => 'Latitude', :as => :hidden
+    = f.input :longitude, :label => 'Longitude', :as => :hidden
+    = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
+    = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
+    - unless current_user
+      = f.input :name, :label => 'Name'
+      = f.input :email, :label => 'Email'
+  - f.buttons do
+    = f.commit_button @problem.new_record? ? "Report problem" : "Update problem report"
+
+- content_for :script do
+  %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
