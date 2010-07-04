@@ -18,10 +18,10 @@ end
 
 # countries, regions, municipalities
 ['Македонија'].each do |country_name|
-  Country.find_or_create_by_name(country_name)
+  country = Country.find_or_create_by_name(country_name)
   Dir.entries("db/data/#{country_name}/").each do |region_name|
     unless region_name[0].chr == "."
-      region = Region.find_or_create_by_name(region_name.gsub(/_/, ' '))
+      region = country.regions.find_or_create_by_name(region_name.gsub(/_/, ' '))
       Dir.entries("db/data/#{country_name}/#{region_name}").each do |municipality_name|
         unless municipality_name[0].chr == "."
           region.municipalities.find_or_create_by_name(municipality_name.gsub(/\..*/, '').gsub(/_/, ' '))
