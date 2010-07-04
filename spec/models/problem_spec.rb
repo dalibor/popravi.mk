@@ -5,17 +5,19 @@ describe Problem do
     it { should belong_to(:user) }
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
+    it { should have_attached_file(:photo) }
+    it { should validate_attachment_presence(:photo) }
   end
 
   describe "validations" do
     it "is valid given valid attributes for unregistered user" do
-      category = Factory.build(:anonymous_problem)
-      category.should be_valid
+      problem = Factory.build(:anonymous_problem)
+      problem.should be_valid
     end
 
     it "is valid given valid attributes for registered user" do
-      category = Factory.build(:problem)
-      category.should be_valid
+      problem = Factory.build(:problem)
+      problem.should be_valid
     end
 
     it "validates subject is present" do
@@ -28,6 +30,12 @@ describe Problem do
       problem = Factory.build(:problem, :description => nil)
       problem.should_not be_valid
       problem.errors.on(:description).should_not be_nil
+    end
+
+    it "validates photo is present" do
+      problem = Factory.build(:problem, :photo => nil)
+      problem.should_not be_valid
+      problem.errors.on(:photo_file_name).should_not be_nil
     end
 
     it "validates longitude is present" do

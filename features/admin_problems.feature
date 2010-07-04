@@ -14,6 +14,7 @@ Feature: Manage problems
         When I follow "New Problem"
             And I fill in "Subject" with "Problem subject"
             And I fill in "Description" with "Problem description"
+            And I attach the file "public/images/rails.png" to "Photo"
             And I fill in "Latitude" with "42"
             And I fill in "Longitude" with "21"
             And I fill in "Name" with "Test User"

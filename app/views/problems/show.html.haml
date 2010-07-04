@@ -3,6 +3,7 @@
 = @problem.name
 = @problem.longitude
 = @problem.latitude
+= image_tag @problem.photo.url(:m)
 
 - if user_signed_in? && current_user == @problem.user
   = link_to "Edit problem report", edit_problem_path(@problem)

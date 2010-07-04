@@ -15,3 +15,4 @@ db/schema.rb
 mkmf.log
 .rvmrc
 public/stylesheets/compiled
+public/assets

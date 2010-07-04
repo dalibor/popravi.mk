@@ -2,7 +2,7 @@
   = label_tag :q
   = text_field_tag :q
   = label_tag :category, "Category"
-  = select_tag :category, options_for_select(Category.find(:all).map{|c| [c.name, c.id]})
+  = select_tag :category, options_for_select(Category.find(:all, :order => "name ASC").map{|c| [c.name, c.id]})
   = label_tag :municipality, "Municipality"
-  = select_tag :municipality, options_for_select(Municipality.find(:all).map{|c| [c.name, c.id]})
+  = select_tag :municipality, options_for_select(Municipality.find(:all, :order => "name ASC").map{|c| [c.name, c.id]})
   = submit_tag "Search"
