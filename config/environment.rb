@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'warden', :version => '>=0.10.3', :source => 'http://gemcutter.org'
   config.gem 'devise', :version => '>=1.0.6', :source => 'http://gemcutter.org'
-  config.gem 'compass'
+  config.gem "compass", :version => ">= 0.10.2"
   config.gem 'compass-960-plugin', :lib => false
   config.gem 'haml'
   config.gem 'formtastic'
