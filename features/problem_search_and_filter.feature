@@ -3,16 +3,6 @@ Feature: Search and filter problems
   As a user
   I want to be able to search and filter problems
 
-    Scenario: Search problems by subject
-        Given there are reported problems
-        And I am on the home page
-        When I follow "Problems"
-        Then I should see "Total: 3 problems"
-        When I fill in "q" with "Subject 1"
-        And I press "Search"
-        Then I should see "Total: 1 problem"
-        And I should see "Subject 1"
-
     Scenario: Search problems by description
         Given there are reported problems
         And I am on the home page

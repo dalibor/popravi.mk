@@ -10,7 +10,6 @@
 - semantic_form_for @problem, :html => {:multipart => true} do |f|
   = error_messages_for :problem
   - f.inputs do
-    = f.input :subject, :label => 'Subject'
     = f.input :description, :label => 'Description'
     = f.input :photo, :as => :file
     = f.input :latitude, :label => 'Latitude', :as => :hidden

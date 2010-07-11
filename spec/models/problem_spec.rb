@@ -20,12 +20,6 @@ describe Problem do
       problem.should be_valid
     end
 
-    it "validates subject is present" do
-      problem = Factory.build(:problem, :subject => nil)
-      problem.should_not be_valid
-      problem.errors.on(:subject).should_not be_nil
-    end
-
     it "validates description is present" do
       problem = Factory.build(:problem, :description => nil)
       problem.should_not be_valid

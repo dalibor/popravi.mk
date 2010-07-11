@@ -8,7 +8,7 @@ class ProblemsController < ApplicationController
     joins = []
 
     if params[:q].present?
-      conditions << "problems.subject LIKE :q OR problems.description LIKE :q"
+      conditions << "problems.description LIKE :q"
       parameters[:q] = "%#{params[:q]}%"
     end
 

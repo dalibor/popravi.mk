@@ -4,14 +4,12 @@ class CreateProblems < ActiveRecord::Migration
       t.references :user
       t.references :category
       t.references :municipality
-      t.string :subject
       t.text :description
       t.integer :status, :default => 0
       t.string :longitude
       t.string :latitude
       t.string :name
       t.string :email
-      t.string :phone
 
       t.timestamps
     end

@@ -14,7 +14,6 @@ class Problem < ActiveRecord::Base
   # Validations
   validates_presence_of :name, :if => Proc.new { |problem| problem.user_id.blank? }
   validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? }
-  validates_presence_of :subject
   validates_presence_of :description
   validates_presence_of :longitude
   validates_presence_of :latitude

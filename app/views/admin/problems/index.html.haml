@@ -4,7 +4,6 @@
   %table
     %thead
       %tr
-        %th Subject
         %th Description
         %th Latitude
         %th Longitude
@@ -15,7 +14,6 @@
     %tbody
       - @problems.each do |problem|
         %tr
-          %th= problem.subject
           %th= problem.description
           %th= problem.latitude
           %th= problem.longitude

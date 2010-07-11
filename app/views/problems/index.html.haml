@@ -6,12 +6,10 @@
   %table
     %thead
       %tr
-        %th Subject
         %th Description
     %tbody
       - @problems.each do |problem|
         %tr
-          %th= problem.subject
           %th= problem.description
 
 Total: 
