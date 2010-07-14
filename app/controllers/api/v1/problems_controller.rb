@@ -6,13 +6,13 @@ class Api::V1::ProblemsController < ApplicationController
 
     # TODO: implemented filters
     if params[:type] == "latest"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 1)
-    elsif params[:type] == "nearest"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 2)
-    elsif params[:type] == "my"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 3)
-    else
       problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 4)
+    elsif params[:type] == "nearest"
+      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 5)
+    elsif params[:type] == "my"
+      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 6)
+    else
+      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 7)
     end
 
     @problems = []
