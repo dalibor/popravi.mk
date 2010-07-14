@@ -2,9 +2,6 @@ class Api::V1::ProblemsController < ApplicationController
 
   layout false
 
-  #HOSTNAME = "http://popravi.mk"
-  HOSTNAME = "http://192.168.1.109:3000"
-
   def index
 
     # TODO: implemented filters
@@ -27,8 +24,8 @@ class Api::V1::ProblemsController < ApplicationController
         :latitude => problem.latitude,
         :category => problem.category.try(:name),
         :municipality => problem.municipality.try(:name),
-        :user_name => problem.user.try(:login) || problem.name,
-        :photo => HOSTNAME + problem.photo.url(:s)
+        :user_name => problem.user.try(:name) || problem.name,
+        :photo => problem.photo.url(:s)
       }
     end
 
