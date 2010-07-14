@@ -19,7 +19,7 @@ class Problem < ActiveRecord::Base
   validates_presence_of :latitude
   validates_presence_of :category_id
   validates_presence_of :municipality_id
-  validates_attachment_presence :photo
+  validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }
 
   attr_accessor :address
 

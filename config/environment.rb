@@ -51,3 +51,13 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
+
+ActionMailer::Base.smtp_settings = {
+  :address => "smtp.gmail.com",
+  :port => 587,
+  :domain => "popravi.mk",
+  :authentication => :plain,
+  :user_name => "notifier@popravi.mk",
+  :password => "popr@vi",
+  :enable_starttls_auto => true
+}

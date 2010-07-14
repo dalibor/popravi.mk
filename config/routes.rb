@@ -17,4 +17,11 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :problems
   end
+
+  # api routes
+  map.namespace :api do |api|
+    api.namespace :v1 do |v1|
+      v1.resources :problems, :collection => {:photo => :post}
+    end
+  end
 end

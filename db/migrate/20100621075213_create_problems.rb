@@ -10,6 +10,7 @@ class CreateProblems < ActiveRecord::Migration
       t.string :latitude
       t.string :name
       t.string :email
+      t.string :device_id
 
       t.timestamps
     end

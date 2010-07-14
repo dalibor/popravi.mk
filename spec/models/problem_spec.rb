@@ -26,10 +26,15 @@ describe Problem do
       problem.errors.on(:description).should_not be_nil
     end
 
-    it "validates photo is present" do
+    it "validates photo is present when device_id is not present" do
       problem = Factory.build(:problem, :photo => nil)
       problem.should_not be_valid
       problem.errors.on(:photo_file_name).should_not be_nil
+    end
+
+    it "does not validates photo is present when device_id is present" do
+      problem = Factory.build(:problem, :photo => nil, :device_id => "123")
+      problem.should be_valid
     end
 
     it "validates longitude is present" do

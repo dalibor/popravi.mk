@@ -10,7 +10,7 @@
     %tbody
       - @problems.each do |problem|
         %tr
-          %th= problem.description
+          %th= link_to problem.description, problem
 
 Total: 
 = pluralize @problems.total_entries, "problem"
