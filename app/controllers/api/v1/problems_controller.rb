@@ -25,7 +25,8 @@ class Api::V1::ProblemsController < ApplicationController
         :category => problem.category.try(:name),
         :municipality => problem.municipality.try(:name),
         :user_name => problem.user.try(:name) || problem.name,
-        :photo => problem.photo.url(:s)
+        :photo => problem.photo.url(:s),
+        :created_at => problem.created_at.to_s(:rfc822) #problem.created_at.strftime("%b %d, %Y %H:%M:%S")
       }
     end
 

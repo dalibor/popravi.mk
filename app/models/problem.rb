@@ -1,10 +1,10 @@
 class Problem < ActiveRecord::Base
 
   # Paperclip
-  has_attached_file :photo, :styles => {:s => '120x120#', :m => '300x300#'},
+  has_attached_file :photo, :styles => {:s => '60x60#', :m => '300x300#'},
                   :url  => "/assets/problems/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/problems/:id/:style/:basename.:extension",
-                  :default_url => "/images/problems/default_:style_avatar.png"
+                  :default_url => "/images/problems/default_:style.png"
 
   # Associations
   belongs_to :user, :counter_cache => true
