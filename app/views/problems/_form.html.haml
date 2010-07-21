@@ -17,7 +17,6 @@
     = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
     = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
     - unless current_user
-      = f.input :name, :label => 'Name'
       = f.input :email, :label => 'Email'
   - f.buttons do
     = f.commit_button @problem.new_record? ? "Report problem" : "Update problem report"

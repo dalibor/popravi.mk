@@ -9,7 +9,7 @@
         %th Longitude
         %th Category
         %th Municipality
-        %th User
+        %th Email
         %td Manage
     %tbody
       - @problems.each do |problem|
@@ -19,7 +19,7 @@
           %th= problem.longitude
           %th= problem.category.name
           %th= problem.municipality.name
-          %th= problem.user ? problem.user.name : problem.name + " (#{problem.email})"
+          %th= problem.email
           %td 
             = link_to "Edit", edit_admin_problem_path(problem)
             = link_to "Delete", admin_problem_path(problem), :method => "delete", :confirm => "Are you sure?"

@@ -17,7 +17,6 @@ Factory.define :anonymous_problem, :class => Problem do |problem|
   problem.photo photo
   problem.longitude "21"
   problem.latitude "41"
-  problem.name "Test User"
   problem.email "test_user@popravi.mk"
 end
 
@@ -28,7 +27,6 @@ Factory.define :problem1, :class => Problem do |problem|
   problem.photo photo
   problem.longitude "21"
   problem.latitude "41"
-  problem.name "Test User"
   problem.email "test_user@popravi.mk"
 end
 
@@ -49,6 +47,5 @@ Factory.define :problem3, :class => Problem do |problem|
   problem.photo photo
   problem.longitude "23"
   problem.latitude "43"
-  problem.name "Test User"
   problem.email "test_user@popravi.mk"
 end

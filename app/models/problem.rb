@@ -12,7 +12,6 @@ class Problem < ActiveRecord::Base
   belongs_to :municipality
 
   # Validations
-  validates_presence_of :name, :if => Proc.new { |problem| problem.user_id.blank? }
   validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? }
   validates_presence_of :description
   validates_presence_of :longitude
@@ -20,6 +19,7 @@ class Problem < ActiveRecord::Base
   validates_presence_of :category_id
   validates_presence_of :municipality_id
   validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }
+  validates_inclusion_of :weight, :in => 0..10 # TODO: test
 
   attr_accessor :address
 

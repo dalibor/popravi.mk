@@ -12,7 +12,6 @@ Feature: Report a problem
         And I attach the file "public/images/rails.png" to "Photo"
         And I change the value of the hidden field "problem[latitude]" to "42"
         And I change the value of the hidden field "problem[longitude]" to "21"
-        And I fill in "Name" with "Test User"
         And I fill in "Email" with "test_user@popravi.mk"
         And I select "Abandoned vehicles" from "Category"
         And I select "Butel" from "Municipality"
@@ -26,7 +25,6 @@ Feature: Report a problem
         And category exists
         And municipality exists
         When I follow "Report a problem"
-        Then I should not see "Name"
         Then I should not see "Email"
         And I fill in "Description" with "Problem description"
         And I attach the file "public/images/rails.png" to "Photo"

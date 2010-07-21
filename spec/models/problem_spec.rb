@@ -61,18 +61,6 @@ describe Problem do
       problem.errors.on(:latitude).should_not be_nil
     end
 
-    it "validates name is present for unregistered user" do
-      problem = Factory.build(:anonymous_problem, :name => nil)
-      problem.should_not be_valid
-      problem.errors.on(:name).should_not be_nil
-    end
-
-    it "doesn't validates name is present for registered user" do
-      problem = Factory.build(:problem, :name => nil)
-      problem.should be_valid
-      problem.errors.on(:name).should be_nil
-    end
-
     it "validates email is present for unregistered user" do
       problem = Factory.build(:anonymous_problem, :email => nil)
       problem.should_not be_valid

@@ -28,8 +28,6 @@ class User < ActiveRecord::Base
 
   def take_ownership_of_problems(problems)
     problems.each do |problem|
-      problem.email = nil
-      problem.name = nil
       problem.user = self
       problem.save!
     end

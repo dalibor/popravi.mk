@@ -16,7 +16,6 @@ Feature: Manage problems
             And I attach the file "public/images/rails.png" to "Photo"
             And I fill in "Latitude" with "42"
             And I fill in "Longitude" with "21"
-            And I fill in "Name" with "Test User"
             And I fill in "Email" with "test_user@popravi.mk"
             And I select "Abandoned vehicles" from "Category"
             And I select "Butel" from "Municipality"
