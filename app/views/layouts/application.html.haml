@@ -11,6 +11,7 @@
       = link_to "Problems", problems_path
     %div#user_nav
       - if user_signed_in?
+        = link_to "My problems", my_problems_path
         = link_to "Admin", admin_root_path if current_user.is_admin?
         Signed in as #{current_user.email}. Not you?
         = link_to "Sign out", destroy_user_session_path

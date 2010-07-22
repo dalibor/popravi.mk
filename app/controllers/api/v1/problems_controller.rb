@@ -4,15 +4,22 @@ class Api::V1::ProblemsController < ApplicationController
 
   def index
 
-    # TODO: implemented filters
-    if params[:type] == "latest"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 4)
-    elsif params[:type] == "nearest"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 5)
+    if params[:type] == "nearest"
+      problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - 42.038033) , 2 ) + POW( 69.1 * ( 21.46385 - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance",
+                              :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
+                              :order => "distance ASC",
+                              :limit => 10
     elsif params[:type] == "my"
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 6)
-    else
-      problems = Problem.find(:all, :order => "problems.id DESC", :include => [:user, :category, :municipality], :limit => 7)
+      problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name", 
+                              :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
+                              :conditions => ['device_id = ?', params[:device_id]],
+                              :order => "problems.id DESC",
+                              :limit => 10
+    else # params[:type] == "latest"
+      problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name", 
+                              :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
+                              :order => "problems.id DESC",
+                              :limit => 10
     end
 
     @problems = []
@@ -22,8 +29,8 @@ class Api::V1::ProblemsController < ApplicationController
         :description => problem.description,
         :longitude => problem.longitude,
         :latitude => problem.latitude,
-        :category => problem.category.try(:name),
-        :municipality => problem.municipality.try(:name),
+        :category => problem.category_name,
+        :municipality => problem.municipality_name,
         :photo => problem.photo.url(:s),
         :created_at => problem.created_at.to_s(:rfc822) #problem.created_at.strftime("%b %d, %Y %H:%M:%S")
       }
