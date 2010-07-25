@@ -46,13 +46,13 @@ describe Problem do
     it "validates category is present" do
       problem = Factory.build(:problem, :category => nil)
       problem.should_not be_valid
-      problem.errors.on(:category_id).should_not be_nil
+      problem.errors.on(:category).should_not be_nil
     end
 
     it "validates municipality is present" do
       problem = Factory.build(:problem, :municipality => nil)
       problem.should_not be_valid
-      problem.errors.on(:municipality_id).should_not be_nil
+      problem.errors.on(:municipality).should_not be_nil
     end
 
     it "validates latitude is present" do
@@ -67,7 +67,13 @@ describe Problem do
       problem.errors.on(:email).should_not be_nil
     end
 
-    it "doesn't validates email is present for registered user" do
+    it "doesn't validate email is present for users reporting from mobile device" do
+      problem = Factory.build(:anonymous_problem, :email => nil, :device_id => "123456789")
+      problem.should be_valid
+      problem.errors.on(:email).should be_nil
+    end
+
+    it "doesn't validate email is present for registered user" do
       problem = Factory.build(:problem, :email => nil)
       problem.should be_valid
       problem.errors.on(:email).should be_nil

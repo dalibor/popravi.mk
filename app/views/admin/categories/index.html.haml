@@ -5,11 +5,14 @@
     %thead
       %tr
         %th Name
+        %th Position
         %td Manage
     %tbody
       - @categories.each do |category|
         %tr
           %th= category.name
+          %th 
+            = [(link_to("Move Up", move_up_admin_category_path(category)) unless category.first?), (link_to("Move Down", move_down_admin_category_path(category)) unless category.last?)].compact.join(" | ") 
           %td 
             = link_to "Edit", edit_admin_category_path(category)
             = link_to "Delete", admin_category_path(category), :method => "delete", :confirm => "Are you sure?"

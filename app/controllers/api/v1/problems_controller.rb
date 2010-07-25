@@ -3,7 +3,6 @@ class Api::V1::ProblemsController < ApplicationController
   layout false
 
   def index
-
     if params[:type] == "nearest"
       problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - 42.038033) , 2 ) + POW( 69.1 * ( 21.46385 - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance",
                               :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
@@ -26,12 +25,14 @@ class Api::V1::ProblemsController < ApplicationController
     problems.each do |problem|
       @problems << {
         :id => problem.id,
+        :url => problem_url(problem),
         :description => problem.description,
         :longitude => problem.longitude,
         :latitude => problem.latitude,
         :category => problem.category_name,
         :municipality => problem.municipality_name,
-        :photo => problem.photo.url(:s),
+        :photo_small => problem.photo.url(:s),
+        :photo_medium => problem.photo.url(:m),
         :created_at => problem.created_at.to_s(:rfc822) #problem.created_at.strftime("%b %d, %Y %H:%M:%S")
       }
     end
@@ -49,8 +50,19 @@ class Api::V1::ProblemsController < ApplicationController
         format.json { render :json => {:status => "ok", :id => @problem.id}.to_json }
       end
     else
+
+      actions = {}
+
+      if @problem.errors.on(:category)
+        actions[:category] = "sync"
+      end
+
+      if @problem.errors.on(:municipality)
+        actions[:municipality] = "sync"
+      end
+
       respond_to do |format|
-        format.json { render :json => {:status => "error"}.to_json }
+        format.json { render :json => {:status => "error", :message => @problem.errors.full_messages. join(", "), :actions => actions}.to_json }
       end
     end
   end

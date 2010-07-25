@@ -4,7 +4,7 @@
     = f.input :photo, :as => :file
     = f.input :latitude, :label => 'Latitude'
     = f.input :longitude, :label => 'Longitude'
-    = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
+    = f.input :category, :as => :select, :collection => Category.find(:all, :order => "position ASC")
     = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
     = f.input :email, :label => 'Email'
   - f.buttons do

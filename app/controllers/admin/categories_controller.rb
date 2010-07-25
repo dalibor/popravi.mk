@@ -12,6 +12,9 @@ class Admin::CategoriesController < ApplicationController
   # Layout
   layout "admin"
 
+  def index
+    @categories = Category.find(:all, :order => "position ASC")
+  end
 
   def create
     create! do |success, failure|
@@ -29,5 +32,19 @@ class Admin::CategoriesController < ApplicationController
     destroy! do |format|
       format.html { redirect_to admin_categories_url }
     end
+  end
+
+  def move_down
+    @category = Category.find(params[:id])
+    @category.move_lower
+    flash[:notice] = 'Category was successfully moved lower.'
+    redirect_to admin_categories_url
+  end
+  
+  def move_up
+    @category = Category.find(params[:id])
+    @category.move_higher
+    flash[:notice] = 'Category was successfully moved higher.'
+    redirect_to admin_categories_url
   end
 end

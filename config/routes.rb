@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   # admin routes
   map.namespace :admin do |admin|
     admin.root :controller => "welcome"
-    admin.resources :categories
+    admin.resources :categories, :member => {:move_up => :get, :move_down => :get}
     admin.resources :countries
     admin.resources :regions
     admin.resources :municipalities
@@ -22,6 +22,8 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace :api do |api|
     api.namespace :v1 do |v1|
       v1.resources :problems, :collection => {:photo => :post}
+      v1.resources :categories, :only => [:index]
+      v1.resources :municipalities, :only => [:index]
     end
   end
 end

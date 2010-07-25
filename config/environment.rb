@@ -31,6 +31,7 @@ Rails::Initializer.run do |config|
   config.gem 'paperclip'
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.gem 'web-app-theme', :lib => 'web_app_theme'
+  config.gem 'acts_as_list'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
