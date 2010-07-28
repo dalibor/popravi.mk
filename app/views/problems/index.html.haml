@@ -12,5 +12,7 @@
         %tr
           %th= link_to problem.description, problem
 
+  = will_paginate @problems
+
 Total: 
 = pluralize @problems.total_entries, "problem"

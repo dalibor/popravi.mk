@@ -18,7 +18,7 @@ class ProblemsController < ApplicationController
       joins << :category
     end
 
-    @problems = Problem.paginate :per_page => 10, :page => params[:page], :conditions => [conditions.join(" AND "), parameters], :joins => joins
+    @problems = Problem.paginate :per_page => 10, :page => params[:page], :conditions => [conditions.join(" AND "), parameters], :joins => joins, :order => "id DESC"
   end
 
   def ownership
