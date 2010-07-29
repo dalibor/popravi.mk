@@ -31,8 +31,8 @@ class Api::V1::ProblemsController < ApplicationController
         :latitude => problem.latitude,
         :category => problem.category_name,
         :municipality => problem.municipality_name,
-        :photo_small => problem.photo.url(:s),
-        :photo_medium => problem.photo.url(:m),
+        :photo_small => problem.photo.url(:s).gsub(" ", "%20"),
+        :photo_medium => problem.photo.url(:m).gsub(" ", "%20"),
         :created_at => problem.created_at.to_s(:rfc822) #problem.created_at.strftime("%b %d, %Y %H:%M:%S")
       }
     end
