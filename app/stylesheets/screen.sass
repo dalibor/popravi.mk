@@ -1,0 +1,121 @@
+@import "compass/reset"
+@import "compass/utilities"
+@import "compass/css3"
+
+body
+  background: #efefef
+  
+  .wrapper
+    width: 960px
+    margin: 0 auto  
+    
+  .left
+    float: left
+  .right
+    float: right
+
+  #top, #bottom
+    a
+      color: #e9c41a
+      text-decoration: none
+      text-transform: uppercase
+      &:hover
+        color: orange
+
+  #top
+    background: image_url("background.jpg") #000 center top no-repeat
+    height: 450px
+    overflow: hidden
+  
+    a
+      font-size: 0.8em
+        
+    #header
+      margin-bottom: 100px
+      overflow: hidden
+      width: 100%
+      #logo
+        a
+          background: image_url("dashed.jpg") #e9c41a bottom left repeat-x
+          color: #222
+          float: left
+          font-family: Impact
+          font-size: 2.5em
+          letter-spacing: 0.1em
+          line-height: 0.7em
+          padding: 35px 30px 20px
+          &:hover
+            color: inherit
+          
+          span
+            font-size: 0.36em
+  
+      #app_nav, #user_nav
+        font-size: 0.8em
+        padding: 15px
+        float: right
+    
+      #app_nav
+        background: #222
+        letter-spacing: 0.15em
+        a
+          padding: 0 10px
+  
+      #user_nav
+        background: #191919
+        color: #444
+        a
+          padding: 0 5px
+  
+    #action
+      clear: both
+      color: #efefef
+      padding-right: 600px
+      #slogan
+        h2
+          font-size: 1.5em
+          font-weight: bold
+          padding-bottom: 10px
+        p
+          color: #aaa
+          font-size: 0.8em
+          line-height: 1.2em
+          padding-bottom: 20px
+      #download, #report
+        float: left
+        height: 50px
+        padding: 12px 0 0 50px
+        a
+          font-size: 1em
+          font-weight: bold
+          letter-spacing: 0.1em
+          span
+            font-size: 0.6em
+            font-weight: normal
+      #download
+        background: image_url("arrow_download.png") no-repeat left top
+        padding-right: 30px
+      #report
+        background: image_url("arrow_report.png") no-repeat left top
+        
+        
+  #middle
+    margin: 40px 0
+    overflow: hidden
+    .section
+      background: white
+      float: left
+      margin-right: 30px
+      overflow: hidden
+      padding: 20px
+      width: 260px
+      &.last
+        margin: 0
+  #bottom
+    background: #333
+    color: #ccc
+    font-size: 0.65em
+    overflow: hidden
+    text-transform: uppercase
+    .left, .right
+      padding: 20px 0
