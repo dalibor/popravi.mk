@@ -12,7 +12,7 @@
       .wrapper
         #header
           #logo
-            %a 
+            %a{:href => "/"}
               Popravi
               %br
               %span smeni go gradot
@@ -27,7 +27,7 @@
 
           #app_nav
             = link_to "Report a problem", new_problem_path
-            = link_to "Problems", problems_path
+            = link_to "Reports", problems_path
         
         #action
           #slogan

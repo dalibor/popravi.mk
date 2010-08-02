@@ -1,25 +1,34 @@
-%div#map_buttons
-  = link_to "Delete marker", "#", :id => "delete_marker"
-  = text_field_tag :address
-  = link_to "Search address", "#", :id => "search_address"
+.wrapper
+  - content_for :script do
+    %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
+  .step1
+    
+    #map_buttons
+      %h2 Oznachi ja lokacijata
+      
+      = text_field_tag :address
+      = link_to "Search address", "#", :id => "search_address"
+      = link_to "Delete marker", "#", :id => "delete_marker"
 
-%div#geocode_results
+    #geocode_results
+    #map
+      #map_canvas
 
-%div#map_canvas
+  .step2
+    - semantic_form_for @problem, :html => {:multipart => true} do |f|
+      = error_messages_for :problem
+      - f.inputs do
+        
+        = f.input :photo, :as => :file
+        = f.input :latitude, :label => 'Latitude', :as => :hidden
+        = f.input :longitude, :label => 'Longitude', :as => :hidden
+        = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
+        = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
+        - unless current_user
+          = f.input :email, :label => 'Email'
+      - f.inputs do
+        = f.input :description, :label => 'Description'
+      - f.buttons do
+        = f.commit_button @problem.new_record? ? "Report problem" : "Update problem report"
 
-- semantic_form_for @problem, :html => {:multipart => true} do |f|
-  = error_messages_for :problem
-  - f.inputs do
-    = f.input :description, :label => 'Description'
-    = f.input :photo, :as => :file
-    = f.input :latitude, :label => 'Latitude', :as => :hidden
-    = f.input :longitude, :label => 'Longitude', :as => :hidden
-    = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
-    = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
-    - unless current_user
-      = f.input :email, :label => 'Email'
-  - f.buttons do
-    = f.commit_button @problem.new_record? ? "Report problem" : "Update problem report"
 
-- content_for :script do
-  %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
