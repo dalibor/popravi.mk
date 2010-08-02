@@ -1,9 +1,14 @@
 .wrapper
   .section
-    %h2 Posledni zapisi
-    %p Zapis 1
-    %p Zapis 1
-    %p Zapis 1  
+    %h2 Последни пријави
+    - @problems.each do |problem|
+      .problem
+        = image_tag problem.photo.url(:s)
+        = link_to problem.description, problem
+        = problem.municipality.name
+        = problem.category.name
+        пред
+        = time_ago_in_words problem.created_at
   
   .section
     %h2 Posledni zapisi
@@ -12,7 +17,4 @@
     %p Zapis 1
     
   .section.last
-    %h2 Posledni zapisi
-    %p Zapis 1
-    %p Zapis 1
-    %p Zapis 1
+    #tweets

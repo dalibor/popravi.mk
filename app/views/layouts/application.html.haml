@@ -1,5 +1,5 @@
 !!!
-%html
+%html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en")
   %head
     %title popravi.mk
     = stylesheet_link_tag :all
@@ -13,36 +13,36 @@
         #header
           #logo
             %a{:href => "/"}
-              Popravi
+              Поправи
               %br
-              %span smeni go gradot
+              %span смени го градот
           #user_nav
             - if user_signed_in?
               = link_to "My problems", my_problems_path
               = link_to "Admin", admin_root_path if current_user.is_admin?
               Signed in as #{current_user.email}. Not you?
-              = link_to "Sign out", destroy_user_session_path
+              = link_to "одјави се", destroy_user_session_path
             - else
-              #{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}
+              #{link_to "регистрирај се", new_user_registration_path} или #{link_to "најави се", new_user_session_path}
 
           #app_nav
-            = link_to "Report a problem", new_problem_path
-            = link_to "Reports", problems_path
+            = link_to "Пријави проблем", new_problem_path
+            = link_to "Преглед", problems_path
         
         #action
           #slogan
-            %h2 Lorem ipsum, dolor est
-            %p Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            %h2 Поправи го својот град
+            %p Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
           #download
-            %a
-              Download
+            - link_to "http://www.appbrain.com/app/mk.popravi.mobile", :target => '_blank' do
+              Превземи
               %br
-              %span for Android
+              %span за Android
           #report
-            %a 
-              Report
+            - link_to new_problem_path do
+              Пријави
               %br
-              %span a problem
+              %span проблем
           
 
 
@@ -57,19 +57,20 @@
           %p 
             Created by 
             %span
-              = link_to "Dalibor Nasevic"
+              = link_to "Dalibor Nasevic", "http://dalibornasevic.com", :target => "_blank"
             &
             %span
-              = link_to "Dime Pashoski"
+              = link_to "Dime Pashoski", "http://detrimental.com.mk", :target => "_blank"
             , Copyright 2010
         
         .right
-          %a Contact
+          = mail_to "info@popravi.mk", "Контакт"
         
       
       
     = javascript_include_tag 'jquery/jquery-1.4.2.min'
     = yield :script
     = javascript_include_tag :all, :cache => true
+
 
 
