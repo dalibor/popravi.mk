@@ -4,7 +4,7 @@
 
 body
   background: #efefef
-  
+  font-family: Ariel, Helvetica, sans-serif
   .wrapper
     width: 960px
     margin: 0 auto  
@@ -39,22 +39,25 @@ body
           background: image_url("dashed.jpg") #e9c41a bottom left repeat-x
           color: #222
           float: left
-          font-family: Impact
-          font-size: 2.5em
+
+          font-size: 1.8em
+          font-weight: bold
           letter-spacing: 0.1em
           line-height: 0.7em
-          padding: 35px 30px 20px
+          padding: 40px 30px 30px
           &:hover
             background: image_url("dashed.jpg") orange bottom left repeat-x
             color: #111
           
           span
             font-size: 0.36em
+            letter-spacing: 0.2em
   
       #app_nav, #user_nav
-        font-size: 0.8em
-        padding: 15px
         float: right
+        font-size: 0.8em
+        margin-top: 30px
+        padding: 15px
     
       #app_nav
         background: #222
@@ -124,16 +127,18 @@ body
     .left, .right
       padding: 25px 0 20px 0
       
-  &#problems_new
+  &#problems_new, &#problems_index, &#registrations_new, &#sessions_new
     #top
       height: 100px
-    .step1, .step2
+    .step1, .step2, form
       background: white
       overflow: hidden
       padding: 20px
     
     .step1
       margin-bottom: 30px
+      .left
+        width: 320px
       
     .step2
       clear: all
@@ -164,14 +169,7 @@ body
         .required
           label
             width: 100%
-          select, input
-            +border-radius
-            background: #eee
-            border: 1px solid white
-            height: 30px
-            width: 100%
-            &:hover
-              border: 1px #dcdcdc solid
+
       .buttons
         margin-top: 20px
         padding-left: 0
@@ -187,17 +185,25 @@ body
           &:hover
             background: green
             color: white
-            
+    select, input
+      +border-radius
+      background: #eee
+      border: 1px solid white
+      height: 30px
+      width: 100%
+      &:hover
+        border: 1px #dcdcdc solid     
     h2
       color: #999
       font-size: 1.2em
       font-weight: bold
       padding: 30px 0 20px 0
       text-transform: uppercase
+
     #map_buttons, #geocode_results
       float: left
       width: 320px
-    #map_buttons
+
       a
         color: #333
         font-size: 0.7em
@@ -228,6 +234,12 @@ body
         float: right
         margin-right: 45px
         padding: 10px 10px 7px 10px
+    #geocode_results
+      margin-top: 30px
+      a
+        background: #eee
+        color: green
+        padding: 10px
     #map
       float: right
       #map_canvas

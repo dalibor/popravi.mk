@@ -2,15 +2,15 @@
   - content_for :script do
     %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
   .step1
-    
-    #map_buttons
-      %h2 Oznachi ja lokacijata
+    .left
+      #map_buttons
+        %h2 Oznachi ja lokacijata
       
-      = text_field_tag :address
-      = link_to "Search address", "#", :id => "search_address"
-      = link_to "Delete marker", "#", :id => "delete_marker"
+        = text_field_tag :address
+        = link_to "Search address", "#", :id => "search_address"
+        = link_to "Delete marker", "#", :id => "delete_marker"
 
-    #geocode_results
+      #geocode_results
     #map
       #map_canvas
 
