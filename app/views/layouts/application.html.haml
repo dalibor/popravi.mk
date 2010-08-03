@@ -18,9 +18,10 @@
               %span смени го градот
           #user_nav
             - if user_signed_in?
-              = link_to "My problems", my_problems_path
-              = link_to "Admin", admin_root_path if current_user.is_admin?
-              Signed in as #{current_user.email}. Not you?
+              = link_to "мои пријави", my_problems_path
+              = link_to "администрација", admin_root_path if current_user.is_admin?
+              Најавени сте како #{current_user.email}
+              = link_to "поставки", edit_user_registration_path
               = link_to "одјави се", destroy_user_session_path
             - else
               #{link_to "регистрирај се", new_user_registration_path} или #{link_to "најави се", new_user_session_path}
@@ -43,13 +44,11 @@
               Пријави
               %br
               %span проблем
-          
 
-
-      - flash.each do |key, msg|
-        = content_tag :div, msg, :id => key
     #middle
       .wrapper
+        - flash.each do |key, msg|
+          = content_tag :div, msg, :id => key
         = yield
     
     #bottom
@@ -67,11 +66,6 @@
         .right
           = mail_to "info@popravi.mk", "Контакт"
         
-      
-      
     = javascript_include_tag 'jquery/jquery-1.4.2.min'
     = yield :script
     = javascript_include_tag :all, :cache => true
-
-
-

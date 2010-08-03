@@ -109,5 +109,6 @@ mk:
         less_than_or_equal_to: "мора да биде помало или еднакво на {{count}}"
         odd: "мора да биде непарно"
         even: "мора да биде парно"
-
-
+        not_found: "не е пронајден"  
+        already_confirmed: "е веќе потврден"  
+        not_locked: "не е блокиран"

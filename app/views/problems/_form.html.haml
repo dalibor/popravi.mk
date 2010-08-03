@@ -4,11 +4,11 @@
   .step1
     .left
       #map_buttons
-        %h2 Oznachi ja lokacijata
+        %h2 Означи ја локацијата
       
         = text_field_tag :address
-        = link_to "Search address", "#", :id => "search_address"
-        = link_to "Delete marker", "#", :id => "delete_marker"
+        = link_to "Барај адреса", "#", :id => "search_address"
+        = link_to "Избриши маркер", "#", :id => "delete_marker"
 
       #geocode_results
     #map
@@ -18,17 +18,16 @@
     - semantic_form_for @problem, :html => {:multipart => true} do |f|
       = error_messages_for :problem
       - f.inputs do
-        
-        = f.input :photo, :as => :file
+        = f.input :photo, :as => :file, :label => 'Слика од проблемот'
         = f.input :latitude, :label => 'Latitude', :as => :hidden
         = f.input :longitude, :label => 'Longitude', :as => :hidden
-        = f.input :category, :as => :select, :collection => Category.find(:all, :order => "name ASC")
-        = f.input :municipality, :as => :select, :collection => Municipality.find(:all, :order => "name ASC")
+        = f.input :category, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "name ASC")
+        = f.input :municipality, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
         - unless current_user
-          = f.input :email, :label => 'Email'
+          = f.input :email, :label => 'E-mail'
       - f.inputs do
-        = f.input :description, :label => 'Description'
+        = f.input :description, :label => 'Опис'
       - f.buttons do
-        = f.commit_button @problem.new_record? ? "Report problem" : "Update problem report"
+        = f.commit_button @problem.new_record? ? "Пријави проблем" : "Измени проблем"
 
 

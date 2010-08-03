@@ -1,4 +1,9 @@
 mk:
+  errors:  
+    messages:  
+      not_found: "not found 1"  
+      already_confirmed: "was already confirmed 1"  
+      not_locked: "was not locked 1"
   devise:
     sessions:
       link: 'Најави се'
@@ -21,7 +26,7 @@ mk:
       confirmed: 'Вашата сметка е успешно потврдена. Најавени сте во системот.'
     registrations:
       link: 'Регистрирај се'
-      signed_up: 'Успешно сте регистрирани. Порака за потврда на вашата сметка е испратена на вашата e-mail адреса.'
+      signed_up: 'Успешно сте регистрирани. Порака за потврда е испратена на вашата e-mail адреса.'
       updated: 'Успешно ја изменивте вашата сметка.'
       destroyed: 'Догледање! Вашата сметка успешно е откажана. Се надеваме дека ќе се видиме повторно.'
     unlocks:
@@ -32,4 +37,3 @@ mk:
       confirmation_instructions: 'Упатство за потврда'
       reset_password_instructions: 'Упатство за обновување на лозинка'
       unlock_instructions: 'Упатство за одблокирање на сметка'
-
