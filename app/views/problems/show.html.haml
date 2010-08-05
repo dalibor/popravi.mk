@@ -1,22 +1,23 @@
-= @problem.description
-= @problem.longitude
-= @problem.latitude
-= image_tag @problem.photo.url(:m)
+.step2
+  = @problem.description
+  = @problem.longitude
+  = @problem.latitude
+  = image_tag @problem.photo.url(:m)
 
-- if user_signed_in?
-  = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
-- else
-  Ако овој е пријавен од вас, ве молиме 
-  = link_to "регистрирајте се", new_registration_path(:user)
-  или
-  = link_to "најавете се", new_session_path(:user)
-  доколку сакате да го измените.
+  - if user_signed_in?
+    = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
+  - else
+    Ако овој е пријавен од вас, ве молиме 
+    = link_to "регистрирајте се", new_registration_path(:user)
+    или
+    = link_to "најавете се", new_session_path(:user)
+    доколку сакате да го измените.
 
-%div#map_canvas
+  #map_canvas
 
-:javascript
-  var _lat = "#{@problem.latitude}";
-  var _lng = "#{@problem.longitude}";
+  :javascript
+    var _lat = "#{@problem.latitude}";
+    var _lng = "#{@problem.longitude}";
 
-- content_for :script do
-  %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
+  - content_for :script do
+    %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}

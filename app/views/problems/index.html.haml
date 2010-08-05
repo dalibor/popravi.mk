@@ -1,18 +1,19 @@
-= render :partial => 'filter' if params[:action] == "index"
+.step2
+  = render :partial => 'filter' if params[:action] == "index"
 
-- if @problems.empty?
-  %p No problems have been reported yet
-- else
-  %table
-    %thead
-      %tr
-        %th Description
-    %tbody
-      - @problems.each do |problem|
+  - if @problems.empty?
+    %p No problems have been reported yet
+  - else
+    %table
+      %thead
         %tr
-          %th= link_to problem.description, problem
+          %th Description
+      %tbody
+        - @problems.each do |problem|
+          %tr
+            %th= link_to problem.description, problem
 
-  = will_paginate @problems
+    = will_paginate @problems
 
-Total: 
-= pluralize @problems.total_entries, "problem"
+  Total: 
+  = pluralize @problems.total_entries, "problem"

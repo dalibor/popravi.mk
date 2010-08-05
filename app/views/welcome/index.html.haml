@@ -4,17 +4,17 @@
   - @problems.each do |problem|
     .problem
       = image_tag problem.photo.url(:s)
-      = link_to problem.description, problem
-      = problem.municipality.name
-      = problem.category.name
-      пред
-      = time_ago_in_words problem.created_at
+      .desc
+      
+        %h4
+          = problem.municipality.name
+          >
+          = problem.category.name
+        = link_to problem.description, problem
+        %h6
+          пред
+          = time_ago_in_words problem.created_at
 
-.section
-  %h2 Posledni zapisi
-  %p Zapis 1
-  %p Zapis 1
-  %p Zapis 1
-  
 .section.last
+  %h2 Twitter
   #tweets
