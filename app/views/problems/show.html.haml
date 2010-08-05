@@ -1,7 +1,10 @@
+- title("Проблем со #{@problem.category.name} во општина #{@problem.municipality.name}")
+- description(@problem.description)
+
 .step2
   = @problem.description
-  = @problem.longitude
-  = @problem.latitude
+  = @problem.municipality.name
+  = @problem.category.name
   = image_tag @problem.photo.url(:m)
 
   - if user_signed_in?
@@ -12,6 +15,10 @@
     или
     = link_to "најавете се", new_session_path(:user)
     доколку сакате да го измените.
+
+  .share
+    = link_to image_tag("twitter.png"), "http://twitter.com/home?status=#{yield(:title)}: #{request.url}", :target => "_blank"
+    = link_to image_tag("facebook.png"), "http://www.facebook.com/share.php?u=#{request.url}&t=#{yield(:title)}", :target => "_blank"
 
   #map_canvas
 
