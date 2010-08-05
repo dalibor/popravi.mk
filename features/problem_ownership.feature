@@ -8,10 +8,10 @@ Feature: Take problem ownership
     And I am an authenticated user
     And I should see "Please select which problems have been reported by you to take ownership of them"
     When I press "Take ownership"
-    Then I should see "Total: 2 problems"
+    Then I should see "Вкупно: 2 проблеми"
   
   Scenario: List problems reported by me
     Given I am an authenticated user
     And There are problems reported
     When I go to the my problems page
-    Then I should see "Total: 1 problem"
+    Then I should see "Вкупно: 1 проблем"

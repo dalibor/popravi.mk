@@ -5,7 +5,7 @@ Feature: Sign in
 
   Scenario: Sign in successfully
     Given I am an authenticated user
-    Then I should see "Signed in successfully"
+    Then I should see "Успешно сте најавени"
     And I should be on the home page
 
   Scenario: Invalid login credentials
@@ -14,8 +14,8 @@ Feature: Sign in
     When I go to the sign in page
     And I fill in "user_email" with "test_user@popravi.mk"
     And I fill in "user_password" with "wrongpass"
-    And I press "Sign in"
-    Then I should see "Invalid email or password"
+    And I press "Најави ме"
+    Then I should see "Невалиден e-mail или лозинка"
     And I should be on the redisplayed sign in page
   
   Scenario: User has not confirmed email address
@@ -23,8 +23,8 @@ Feature: Sign in
     When I go to the sign in page
     And I fill in "user_email" with "test_user@popravi.mk"
     And I fill in "user_password" with "secretpass"
-    And I press "Sign in"
-    Then I should see "You have to confirm your account before continuing"
+    And I press "Најави ме"
+    Then I should see "Потребно е да ја потврдите вашата сметка пред да продолжите понатаму"
     And I should be on the redisplayed sign in page
   
   #Scenario: User account is locked

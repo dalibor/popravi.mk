@@ -10,14 +10,14 @@ Feature: Update user information
     And I fill in "user_password" with "newpass"
     And I fill in "user_password_confirmation" with "newpass"
     And I fill in "user_current_password" with "secretpass"
-    When I press "Update"
-    Then I should see "You updated your account successfully"
+    When I press "user_submit"
+    Then I should see "Успешно ја изменивте вашата сметка"
     And I should be on the home page
     And I should receive an email
     When I open the email
-    Then I should see "Confirmation instructions" in the email subject
-    When I follow "Confirm my account" in the email
-    Then I should see "Signed in as new_test_user@popravi.mk"
+    Then I should see "Упатство за потврда" in the email subject
+    When I follow "Потврди ја мојата сметка" in the email
+    Then I should see "Најавени сте како new_test_user@popravi.mk"
   
   Scenario: Wrong current password
     Given I am an authenticated user
@@ -26,8 +26,7 @@ Feature: Update user information
     And I fill in "user_password" with "newpass"
     And I fill in "user_password_confirmation" with "newpass"
     And I fill in "user_current_password" with "wrongpass"
-    When I press "Update"
-    Then I should see "Current password is invalid"
+    When I press "user_submit"
     And I should be on the redisplayed edit user page
   
   #Scenario: Cancel user account
