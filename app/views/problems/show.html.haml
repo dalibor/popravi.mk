@@ -3,14 +3,14 @@
 = @problem.latitude
 = image_tag @problem.photo.url(:m)
 
-- if user_signed_in? && current_user == @problem.user
-  = link_to "Edit problem report", edit_problem_path(@problem)
+- if user_signed_in?
+  = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
 - else
-  If this problem was reported by you, please 
-  = link_to "sign up", new_registration_path(:user)
-  or
-  = link_to "sign in", new_session_path(:user)
-  to edit it.
+  Ако овој е пријавен од вас, ве молиме 
+  = link_to "регистрирајте се", new_registration_path(:user)
+  или
+  = link_to "најавете се", new_session_path(:user)
+  доколку сакате да го измените.
 
 %div#map_canvas
 

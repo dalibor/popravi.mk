@@ -23,7 +23,7 @@ Given /^I am an authenticated user$/ do
   And %{I go to the sign in page}
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
+  And %{I press "user_submit"}
 end
 
 Then /^my account should not be found$/ do
@@ -42,5 +42,5 @@ Given /^I am authenticated as admin$/ do
   And %{I go to the sign in page}
   And %{I fill in "user_email" with "#{admin_email}"}
   And %{I fill in "user_password" with "#{admin_password}"}
-  And %{I press "Sign in"}
+  And %{I press "user_submit"}
 end

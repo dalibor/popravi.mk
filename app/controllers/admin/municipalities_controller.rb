@@ -18,12 +18,14 @@ class Admin::MunicipalitiesController < ApplicationController
 
   def create
     create! do |success, failure|
+      flash[:notice] = "Municipality was successfully created"
       success.html { redirect_to admin_municipalities_url }
     end
   end
 
   def update
     update! do |success, failure|
+      flash[:notice] = "Municipality was successfully updated"
       success.html { redirect_to admin_municipalities_url }
     end
   end

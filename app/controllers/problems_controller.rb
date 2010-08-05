@@ -54,7 +54,7 @@ class ProblemsController < ApplicationController
     @problem.user = current_user if user_signed_in? # assign current_user if user is logged in
 
     if @problem.save
-      flash[:notice] = 'Problem was successfully reported.'
+      flash[:notice] = 'Проблемот е успешно пријавен.'
       redirect_to @problem
     else
       render :action => :new
@@ -68,7 +68,7 @@ class ProblemsController < ApplicationController
     @problem.user = current_user
 
     if @problem.save
-      flash[:notice] = 'Problem report was successfully updated.'
+      flash[:notice] = 'Проблемот е успешно изменет.'
       redirect_to @problem
     else
       render :action => :new

@@ -35,5 +35,5 @@ mk:
       unlocked: 'Вашата сметка успешно е одблокирана. Најавени сте во системо.'
     mailer:
       confirmation_instructions: 'Упатство за потврда'
-      reset_password_instructions: 'Упатство за обновување на лозинка'
+      reset_password_instructions: 'Упатство за ресетирање на лозинка'
       unlock_instructions: 'Упатство за одблокирање на сметка'

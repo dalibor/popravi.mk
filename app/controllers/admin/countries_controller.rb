@@ -14,12 +14,14 @@ class Admin::CountriesController < ApplicationController
 
   def create
     create! do |success, failure|
+      flash[:notice] = "Country was successfully created"
       success.html { redirect_to admin_countries_url }
     end
   end
 
   def update
     update! do |success, failure|
+      flash[:notice] = "Country was successfully updated"
       success.html { redirect_to admin_countries_url }
     end
   end

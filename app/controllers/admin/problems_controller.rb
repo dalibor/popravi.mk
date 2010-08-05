@@ -18,12 +18,14 @@ class Admin::ProblemsController < ApplicationController
 
   def create
     create! do |success, failure|
+      flash[:notice] = "Problem was successfully created"
       success.html { redirect_to admin_problems_url }
     end
   end
 
   def update
     update! do |success, failure|
+      flash[:notice] = "Problem was successfully updated"
       success.html { redirect_to admin_problems_url }
     end
   end

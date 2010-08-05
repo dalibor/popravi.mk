@@ -18,12 +18,14 @@ class Admin::CategoriesController < ApplicationController
 
   def create
     create! do |success, failure|
+      flash[:notice] = "Category was successfully created"
       success.html { redirect_to admin_categories_url }
     end
   end
 
   def update
     update! do |success, failure|
+      flash[:notice] = "Category was successfully updated"
       success.html { redirect_to admin_categories_url }
     end
   end

@@ -11,9 +11,9 @@
     - f.buttons do
       = f.commit_button 'Измени'
 
-%h3 Откажи сметка
+%h3 Откажи ја сметкава
 
 %p
-  Не сте среќни? #{link_to "Избришете ја мојата сметка", registration_path(resource_name), :confirm => "Дали сакате вашата сметка да биде избришана?", :method => :delete}.
+  Не сте среќни? #{link_to "Избриши ја мојата сметка", registration_path(resource_name), :confirm => "Дали сакаш твојата сметка да биде избришана?", :method => :delete}.
 
 = render :partial => "shared/devise_links"
