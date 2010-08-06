@@ -1,19 +1,9 @@
+- title("Дома")
 
 .section
   %h2 Последни пријави
   - @problems.each do |problem|
-    .problem
-      = image_tag problem.photo.url(:s)
-      .desc
-      
-        %h4
-          = problem.municipality.name
-          >
-          = problem.category.name
-        = link_to problem.description, problem
-        %h6
-          пред
-          = time_ago_in_words problem.created_at
+    = render :partial => 'problems/problem', :object => problem
 
 .section.last
   %h2 Twitter

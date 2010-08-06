@@ -21,7 +21,7 @@
         = f.input :photo, :as => :file, :label => 'Слика од проблемот'
         = f.input :latitude, :label => 'Latitude', :as => :hidden
         = f.input :longitude, :label => 'Longitude', :as => :hidden
-        = f.input :category, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "name ASC")
+        = f.input :category, :as => :select, :label => 'Категорија', :collection => reorder_categories(Category.find(:all, :order => "name ASC"))
         = f.input :municipality, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
         - unless current_user
           = f.input :email, :label => 'E-mail'

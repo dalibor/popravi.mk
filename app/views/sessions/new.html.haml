@@ -1,5 +1,7 @@
+- title("Најави се")
+
 .step
-  %h2 Најавете се
+  %h2 Најави се
   - semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     - f.inputs do
       = f.input :email, :label => 'E-mail'

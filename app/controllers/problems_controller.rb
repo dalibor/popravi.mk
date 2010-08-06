@@ -3,22 +3,9 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:ownership, :take_ownership, :update]
 
   def index
-    conditions = []
-    parameters = {}
-    joins = []
-
-    if params[:q].present?
-      conditions << "problems.description LIKE :q"
-      parameters[:q] = "%#{params[:q]}%"
-    end
-
-    if params[:category].present?
-      conditions << "categories.id = :category"
-      parameters[:category] = params[:category]
-      joins << :category
-    end
-
-    @problems = Problem.paginate :per_page => 10, :page => params[:page], :conditions => [conditions.join(" AND "), parameters], :joins => joins, :order => "id DESC"
+    @search = Search.new(params[:search])
+    @problems = @search.results(:per_page => 10, :page => params[:page])
+    @municipalities = Municipality.find :all, :select => "municipalities.id, municipalities.name, COUNT(*) as problems_count", :joins => :problems, :group => "municipalities.id", :limit => 10, :order => "problems_count DESC"
   end
 
   def ownership
@@ -33,7 +20,6 @@ class ProblemsController < ApplicationController
 
   def my
     @problems = current_user.problems.paginate :per_page => 10, :page => params[:page]
-    render :action => :index
   end
 
   def new

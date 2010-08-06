@@ -1,19 +1,30 @@
-.step2
-  = render :partial => 'filter' if params[:action] == "index"
+- title("Листа на проблеми во општините во Македонија")
 
+
+.section
+  %h2 Проблеми
   - if @problems.empty?
     %p No problems have been reported yet
   - else
-    %table
-      %thead
-        %tr
-          %th Description
-      %tbody
-        - @problems.each do |problem|
-          %tr
-            %th= link_to problem.description, problem
+    - @problems.each do |problem|
+      = render :partial => 'problems/problem', :object => problem
 
     = will_paginate @problems
 
   Вкупно: 
   = pluralize @problems.total_entries, "проблем"
+
+.section.last
+  %h2 Барај
+  - semantic_form_for :search, @search, :url => {:action => :index}, :html => { :method => :get } do |f|
+    - f.inputs do
+      = f.input :q, :label => 'Барај'
+      = f.input :category_id, :as => :select, :label => 'Категорија', :collection => reorder_categories(Category.find(:all, :order => "name ASC"))
+      = f.input :municipality_id, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
+    - f.buttons do
+      = f.commit_button "Барај"
+
+  %h2 Општини со највеќе проблеми
+  - @municipalities.each do |municipality|
+    = municipality.name 
+    = municipality.problems_count

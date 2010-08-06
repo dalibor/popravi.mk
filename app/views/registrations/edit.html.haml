@@ -1,3 +1,5 @@
+- title("Поставки")
+
 .step2
   %h2 Поставки
 
@@ -12,7 +14,7 @@
       - f.buttons do
         = f.commit_button 'Измени'
 
-  %h3 Откажи ја сметкава
+  %h3 Откажи ја твојата сметка
 
   %p
     Не сте среќни? #{link_to "Избриши ја мојата сметка", registration_path(resource_name), :confirm => "Дали сакаш твојата сметка да биде избришана?", :method => :delete}.

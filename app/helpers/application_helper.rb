@@ -19,4 +19,11 @@ module ApplicationHelper
   def description(page_description)
     content_for(:description) { page_description }
   end
+
+  def reorder_categories(categories)
+    other = categories.detect{|c| c.name == "Друго"}
+    categories.delete(other)
+    categories.push(other)
+    categories
+  end
 end

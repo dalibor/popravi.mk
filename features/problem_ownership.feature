@@ -6,8 +6,8 @@ Feature: Take problem ownership
   Scenario: Take ownership of problems reported by my email address
     Given There are anonymouse problems
     And I am an authenticated user
-    And I should see "Please select which problems have been reported by you to take ownership of them"
-    When I press "Take ownership"
+    And I should see "Ве молиме избере ги оние кои сте ги пријавиле вие за да можете да ги изменувате"
+    When I press "Превземи"
     Then I should see "Вкупно: 2 проблеми"
   
   Scenario: List problems reported by me
