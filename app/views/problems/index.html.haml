@@ -19,7 +19,7 @@
   - semantic_form_for :search, @search, :url => {:action => :index}, :html => { :method => :get } do |f|
     - f.inputs do
       = f.input :q, :label => 'Барај'
-      = f.input :category_id, :as => :select, :label => 'Категорија', :collection => reorder_categories(Category.find(:all, :order => "name ASC"))
+      = f.input :category_id, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC")
       = f.input :municipality_id, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
     - f.buttons do
       = f.commit_button "Барај"

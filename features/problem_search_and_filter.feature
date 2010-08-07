@@ -8,8 +8,8 @@ Feature: Search and filter problems
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"
-        When I fill in "q" with "Description 1"
-        And I press "Search"
+        When I fill in "search_q" with "Description 1"
+        And I press "Барај"
         Then I should see "Вкупно: 1 проблем"
         And I should see "Description 1"
 
@@ -18,8 +18,8 @@ Feature: Search and filter problems
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"
-        When I select "Category 1" from "Category"
-        And I press "Search"
+        When I select "Category 1" from "search_category_id"
+        And I press "Барај"
         Then I should see "Вкупно: 1 проблем"
         And I should see "Category 1"
 
@@ -28,7 +28,7 @@ Feature: Search and filter problems
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"
-        When I select "Municipality 1" from "Municipality"
-        And I press "Search"
+        When I select "Municipality 1" from "search_municipality_id"
+        And I press "Барај"
         Then I should see "Вкупно: 1 проблем"
         And I should see "Municipality 1"
