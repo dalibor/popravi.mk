@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
   end
 
   def my
-    @problems = current_user.problems.paginate :per_page => 10, :page => params[:page]
+    @problems = current_user.problems.paginate :per_page => 10, :page => params[:page], :order => "id DESC"
   end
 
   def new
