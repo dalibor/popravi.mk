@@ -18,10 +18,25 @@ class Problem < ActiveRecord::Base
   validates_presence_of :latitude
   validates_presence_of :category
   validates_presence_of :municipality
-  validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }
+  validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
   validates_inclusion_of :weight, :in => 0..10 # TODO: test
 
   attr_accessor :address
+
+  # Callbacks
+  after_validation :add_error_on_photo, :validates_longitude_and_latitude
+
+
+  private
+  # formtastic errors fix for paperclip
+  def add_error_on_photo
+    errors.add(:photo, errors.on(:photo_file_name)) if errors.on(:photo_file_name)
+  end
+
+  # formtastic errors fix for longitude and latitude
+  def validates_longitude_and_latitude
+    errors.add(:base, "Не е означена локацијата на мапа") if errors.on(:latitude) || errors.on(:longitude)
+  end
 
   # Status
   #  0 New

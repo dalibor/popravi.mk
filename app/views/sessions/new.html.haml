@@ -3,6 +3,7 @@
 .step
   %h2 Најави се
   - semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = f.semantic_errors :state
     - f.inputs do
       = f.input :email, :label => 'E-mail'
       = f.input :password, :as => :password, :label => 'Лозинка'

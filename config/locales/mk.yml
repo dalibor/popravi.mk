@@ -79,7 +79,9 @@ mk:
  
   support:
     array:
-      sentence_connector: "и"
+      sentence_connector: " и "
+      two_words_connector: " и "
+      last_word_connector: " и "
  
   activerecord:
     errors:
@@ -92,16 +94,16 @@ mk:
       messages:
         inclusion: "не е во листата"
         exclusion: "не е достапно"
-        invalid: "не е исправен"
+        invalid: "не е исправно"
         confirmation: "не се совпаѓа со својата потврда"
-        accepted: "мора да биде прифатен"
-        empty: "мора да биде зададен"
-        blank: "мора да биде зададен"
+        accepted: "мора да биде прифатено"
+        empty: "мора да биде зададено"
+        blank: "мора да биде зададено"
         too_long: "е предолг (не повеќе од {{count}} карактери)"
         too_short: "е прекраток (не помалку од {{count}} карактери)"
         wrong_length: "несоодветна должина (мора да имате {{count}} карактери)"
         taken: "е зафатено"
-        not_a_number: "не е број "
+        not_a_number: "не е број"
         greater_than: "мора да биде поголемо од {{count}}"
         greater_than_or_equal_to: "мора да биде поголемо или еднакво на {{count}}"
         equal_to: "мора да биде еднакво на {{count}}"
@@ -109,6 +111,14 @@ mk:
         less_than_or_equal_to: "мора да биде помало или еднакво на {{count}}"
         odd: "мора да биде непарно"
         even: "мора да биде парно"
-        not_found: "не е пронајден"  
-        already_confirmed: "е веќе потврден"  
-        not_locked: "не е блокиран"
+        not_found: "не е пронајдено"
+        already_confirmed: "е веќе потврдено"
+        not_locked: "не е блокирано"
+    attributes:
+      problem:
+        description: "Опис"
+        longitude: "Лонгитуда"
+        latitude: "Ширина"
+        category: "Категорија"
+        municipality: "Општина"
+        photo_file_name: "Слика"
