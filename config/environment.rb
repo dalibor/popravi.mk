@@ -32,6 +32,7 @@ Rails::Initializer.run do |config|
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.gem 'web-app-theme', :lib => 'web_app_theme'
   config.gem 'acts_as_list'
+  config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -62,3 +63,7 @@ ActionMailer::Base.smtp_settings = {
   :password => "popr@vi",
   :enable_starttls_auto => true
 }
+
+ENV['RECAPTCHA_PUBLIC_KEY']  = '6LfvIrwSAAAAAKV0Ovrn14kwKWDgA3bnck3Ob9SI'
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6LfvIrwSAAAAACtEBL-VhUT5fWTr_MRLGU9eV-k5'
+

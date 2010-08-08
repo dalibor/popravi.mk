@@ -1,8 +1,8 @@
-The following problems have been reported with your email address.
-Please select which problems have been reported by you to take ownership of them.
+%p Следниве проблеми се пријавени со ваша e-mail адреса.
+%p Ве молиме избере ги оние кои сте ги пријавиле вие за да можете да ги изменувате.
 
 - form_tag take_ownership_problems_path do
   - @problems.each do |problem|
     = label_tag "problem_ids[#{problem.id}]", problem.description
     = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
-  = submit_tag "Take ownership"
+  = submit_tag "Превземи"

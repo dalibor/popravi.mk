@@ -1,3 +1,6 @@
+/*
+ * Time ago in words
+ */
 var DateHelper = {
   // Takes the format of "Jan 15, 2007 15:45:00 GMT" and converts it to a relative time
   // Ruby strftime: %b %d, %Y %H:%M:%S GMT
@@ -30,10 +33,13 @@ var DateHelper = {
   }
 };
 
+/*
+ * Make link from urls in tweet
+ */
 jQuery.fn.autolink = function () {
   return this.each( function(){
     var r = /((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g;
-    $(this).html( $(this).html().replace(r, '<a href="$1">$1</a> ') );
+    $(this).html( $(this).html().replace(r, '<a href="$1" target="_blank">$1</a> ') );
   });
 }
 
@@ -86,6 +92,9 @@ var problems_edit = problems_create = problems_update = problems_new = {
 
       google.maps.event.addListener(map, 'click', function(event) {
         if (!markerAdded) {
+          addMarker(event.latLng);
+        } else {
+          deleteMarker();
           addMarker(event.latLng);
         }
       });
@@ -195,19 +204,41 @@ var problems_show = {
 
 var welcome_index = {
   run: function () {
-    var user_timeline = function(username, count, callback){
-      requestURL = "http://twitter.com/statuses/user_timeline/" + username + ".json?callback=?&count=" + count;
+    //var user_timeline = function(username, count, callback){
+      //requestURL = "http://twitter.com/statuses/user_timeline/" + username + ".json?callback=?&count=" + count;
+      //$.getJSON(requestURL, callback);
+    //};
+
+    //user_timeline("PopraviMK", 5, function (json, status) {
+      //var tweets = $("#tweets");
+      //$.each(json, function(i) {
+        //tweets.append(
+          //$("<p/>").append(
+            //$('<a/>').attr({href: "http://twitter.com/" + this.user.screen_name}).append(
+              //$('<img/>').attr({"src": this.user.profile_image_url})
+            //),
+            //$('<div/>').attr({"class": "t_user"}).text(this.user.screen_name),
+            //$('<div/>').attr({"class": "t_text"}).text(this.text),
+            //$('<div/>').attr({"class": "t_date"}).text(DateHelper.time_ago_in_words_with_parsing(this.created_at))
+          //).autolink()
+        //)
+      //});
+    //});
+
+    var search_results = function(query, count, callback){
+      requestURL = "http://search.twitter.com/search.json?callback=?&q=" + query + "&rpp=" + count;
       $.getJSON(requestURL, callback);
     };
-    user_timeline("PopraviMK", 5, function (json, status) {
+
+    search_results("popravimk", 5, function (json, status) {
       var tweets = $("#tweets");
-      $.each(json, function(i) {
+      $.each(json.results, function(i) {
         tweets.append(
           $("<p/>").append(
-            $('<a/>').attr({href: "http://twitter.com/" + this.user.screen_name}).append(
-              $('<img/>').attr({"src": this.user.profile_image_url})
+            $('<a/>').attr({href: "http://twitter.com/" + this.from_user}).append(
+              $('<img/>').attr({"src": this.profile_image_url})
             ),
-            $('<div/>').attr({"class": "t_user"}).text(this.user.screen_name),
+            $('<div/>').attr({"class": "t_user"}).text(this.from_user),
             $('<div/>').attr({"class": "t_text"}).text(this.text),
             $('<div/>').attr({"class": "t_date"}).text(DateHelper.time_ago_in_words_with_parsing(this.created_at))
           ).autolink()
