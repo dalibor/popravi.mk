@@ -1,7 +1,7 @@
 - title("Листа на проблеми во општините во Македонија")
 
 
-.section
+.main
   %h2 Проблеми
   - if @problems.empty?
     %p No problems have been reported yet
@@ -14,5 +14,6 @@
   Вкупно: 
   = pluralize @problems.total_entries, "проблем"
 
-.section.last
-  %h2 Нешто
+#sidebar
+  .sidebar
+    %h2 Нешто

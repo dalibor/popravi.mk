@@ -12,31 +12,34 @@
     = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
     
   %body{:id => controller.controller_name + "_" + controller.action_name}
+    #dashed
     #top
       .wrapper
         #header
           #logo
             %a{:href => "/"}
-              Поправи
-              %br
-              %span смени го градот
-          #user_nav
+              =image_tag("logo.png")
+              //Поправи
+              //%br
+              //%span смени го градот
+          %ul#user_nav
             - if user_signed_in?
-              = link_to "мои пријави", my_problems_path
-              = link_to "администрација", admin_root_path if current_user.is_admin?
-              Најавени сте како #{current_user.email}
-              = link_to "поставки", edit_user_registration_path
-              = link_to "одјави се", destroy_user_session_path
+              %li= link_to "мои пријави", my_problems_path
+              %li= link_to "администрација", admin_root_path if current_user.is_admin?
+              %li Најавени сте како #{current_user.email}
+              %li= link_to "поставки", edit_user_registration_path
+              %li= link_to "одјави се", destroy_user_session_path
             - else
-              #{link_to "регистрирај се", new_user_registration_path} или #{link_to "најави се", new_user_session_path}
+              %li #{link_to "регистрација", new_user_registration_path} 
+              %li #{link_to "најава", new_user_session_path}
 
-          #app_nav
-            = link_to "Пријави проблем", new_problem_path
-            = link_to "Преглед", problems_path
+          %ul#app_nav
+            %li= link_to "Пријави проблем", new_problem_path
+            %li= link_to "Преглед", problems_path
         
         #action
           #slogan
-            %h2 Поправи го својот град
+            %h2 Подобри го својот град
             %p Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
           #download
             - link_to "http://www.appbrain.com/app/mk.popravi.mobile", :target => '_blank' do

@@ -1,10 +1,11 @@
 - title("Дома")
 
-.section
+.main
   %h2 Последни пријави
   - @problems.each do |problem|
     = render :partial => 'problems/problem', :object => problem
 
-.section.last
-  %h2 Twitter
-  #tweets
+#sidebar
+  .sidebar
+    %h2 Twitter
+    #tweets

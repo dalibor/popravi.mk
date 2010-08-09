@@ -1,0 +1,214 @@
+body
+
+  &#problems_new, &#problems_create, &#problems_edit, &#problems_update, &#problems_show, &#problems_index, &#registrations_new, &#registrations_create, &#registrations_edit, &#registrations_update, &#sessions_new, &#sessions_create, &#passwords_new, &#passwords_create, &#confirmations_new, &#confirmations_create
+  
+    #top
+      height: 140px
+      ul#user_nav, ul#app_nav
+        margin-top: 60px
+        
+      #logo
+        a
+          padding-top: 18px
+    
+    .step1, .step2, .step
+      background: white
+      border-top: 10px #999 solid
+      overflow: hidden
+      padding: 20px
+
+    .step1
+      margin-bottom: 30px
+      .left
+        width: 320px
+    .step2
+      padding: 30px 20px 0
+    .step2, .step
+      clear: all
+      form
+        overflow: hidden
+      ol
+        width: 440px
+        li
+
+      .inputs
+        color: #999
+        float: left
+        font-size: 0.8em
+        padding-right: 20px
+        text-transform: uppercase
+        ol li
+          margin-bottom: 5px
+        textarea
+          +border-radius
+          background: #eee
+          border: 1px #dcdcdc solid
+          height: 235px
+          width: 100%
+
+        label
+          margin-bottom: 5px
+        #problem_photo
+          border: 1px #dcdcdc solid
+          height: 25px
+        .required
+          label
+            width: 100%
+
+      .buttons
+        margin-top: 20px
+        padding-left: 0
+        width: 100%
+        input
+          +border-radius
+          background: #333
+          border: none
+          color: orange
+          cursor: pointer
+          padding: 12px 10px 10px
+          text-transform: uppercase
+          &:hover
+            background: green
+            color: white
+    .step
+      width: 600px
+      margin-left: 180px
+      li
+        margin-bottom: 10px
+      .inputs
+        margin-bottom: 20px
+        ol
+          width: 100%
+          li
+            margin-bottom: 20px
+        #user_email, #user_password
+          width: 500px
+      .required
+        #user_remember_me
+          width: auto
+          font-size: 0.6em
+        label
+          margin: 0
+          padding: 0 0 5px 0
+          width: auto
+      a
+        color: #aaa
+        float: left
+        font-size: 0.8em
+        padding-bottom: 5px
+        width: 100%
+        &:hover
+          color: #333
+          
+    select, input
+      +border-radius
+      background: #eee
+      border: 1px solid #dcdcdc
+      height: 30px
+      width: 300px
+      
+    .commit
+      input
+        +border-radius
+        background: #eee
+        border: 1px solid white
+        height: auto
+        width: 100%
+         
+    h2
+      color: #999
+      font-size: 1.2em
+      font-weight: bold
+      padding: 20px 0 20px 0
+      text-transform: uppercase
+
+    #map_buttons, #geocode_results
+      float: left
+      width: 320px
+
+      a
+        color: #333
+        font-size: 0.7em
+        text-decoration: none
+        text-transform: uppercase
+        &:hover
+          color: orange
+        
+      input
+        +border-radius
+        background: #eee
+        border: 1px solid #dcdcdc
+        font-size: 1em
+        margin-bottom: 10px
+        padding: 7px
+        width: 260px
+        &:hover
+          background: #dcdcdc
+        
+      #search_address
+        +border-radius
+        background: #dcdcdc
+        float: left
+        padding: 10px 10px 7px 10px
+        &:hover
+          background: #666
+        
+      #delete_marker
+        +border-radius
+        background: #dcdcdc
+        float: right
+        margin-right: 45px
+        padding: 10px 10px 7px 10px
+        &:hover
+          background: #666
+      
+    #geocode_results
+      margin-top: 30px
+      div
+        float: left
+        margin: 1px 0
+        overflow: hidden
+        padding: 5px 0
+      a
+        background: #eee
+        color: green
+        padding: 10px
+      
+    #map
+      background: #777
+      color: white
+      float: right
+      width: 600px
+      p
+        float: left
+        font-size: 0.8em
+        padding: 10px
+        width: 400px
+      a
+        +border-radius
+        background: #333
+        color: orange
+        float: right
+        font-size: 0.8em
+        margin: 12px
+        padding: 10px
+        text-decoration: none
+        &:hover
+          background: white
+          color: #333
+      #map_canvas
+        width: 600px
+
+  &#problems_show
+    .step2
+      padding-bottom: 30px
+//Formtastic overrides
+
+body
+  form.formtastic ul.errors
+    background: white
+    font-size: 0.85em
+    padding: 20px 35px
+    margin: 0
+    li
+      padding: 3px 0

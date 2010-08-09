@@ -1,7 +1,7 @@
 - title("Листа на проблеми во општините во Македонија")
 
 
-.section
+.main
   %h2 Проблеми
   - if @problems.empty?
     %p No problems have been reported yet
@@ -10,21 +10,25 @@
       = render :partial => 'problems/problem', :object => problem
 
     = will_paginate @problems
+  .total
+    Вкупно: 
+    = pluralize @problems.total_entries, "проблем"
 
-  Вкупно: 
-  = pluralize @problems.total_entries, "проблем"
+#sidebar
 
-.section.last
-  %h2 Барај
-  - semantic_form_for :search, @search, :url => {:action => :index}, :html => { :method => :get } do |f|
-    - f.inputs do
-      = f.input :q, :label => 'Барај'
-      = f.input :category_id, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC")
-      = f.input :municipality_id, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
-    - f.buttons do
-      = f.commit_button "Барај"
-
-  %h2 Општини со највеќе проблеми
-  - @municipalities.each do |municipality|
-    = municipality.name 
-    = municipality.problems_count
+  .sidebar
+    %h2 Барај
+    - semantic_form_for :search, @search, :url => {:action => :index}, :html => { :method => :get } do |f|
+      - f.inputs do
+        = f.input :q, :label => 'Барај'
+        = f.input :category_id, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC")
+        = f.input :municipality_id, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
+        - f.buttons do
+          = f.commit_button "Барај"
+  .sidebar
+  
+    %h2 Општини со највеќе проблеми
+    .total
+      - @municipalities.each do |municipality|
+        = municipality.name 
+        = municipality.problems_count

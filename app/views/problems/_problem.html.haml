@@ -1,7 +1,13 @@
 .problem
   = image_tag problem.photo.url(:s)
   .desc
-  
+    %ul.social
+      %li
+        =image_tag("iconTwitter.png")
+        %span Retweet
+      %li
+        =image_tag("iconFacebook.png")
+        %span Share
     %h4
       = problem.municipality.name
       >

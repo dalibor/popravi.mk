@@ -1,0 +1,299 @@
+body
+  background: #efefef
+  font-family: Ariel, Helvetica, sans-serif
+  
+  .wrapper
+    width: 960px
+    margin: 0 auto  
+    
+  .left
+    float: left
+  .right
+    float: right
+
+  #dashed
+    background: image_url("dashed.jpg")
+    height: 10px
+
+  #top
+    background: image_url("background.jpg") #000 center top no-repeat
+    height: 450px
+    overflow: hidden
+  
+    a
+      font-size: 0.8em
+        
+    #header
+      float: left
+      margin-bottom: 50px
+      width: 100%
+      
+      #logo
+        margin-left: -115px
+        a
+          color: #bbb
+          float: left
+          font-size: 1.8em
+          font-weight: bold
+          letter-spacing: 0.1em
+          line-height: 0.7em
+          padding: 40px 0 20px
+          
+          span
+            font-size: 0.36em
+            letter-spacing: 0.2em
+  
+      ul#app_nav, ul#user_nav
+        float: right
+        font-size: 0.8em
+        margin-top: 60px
+        li
+          display: inline
+          float: left
+          
+      ul#app_nav
+        a
+          background: #222
+          letter-spacing: 0.15em
+          padding: 15px
+          &:hover
+            background: #333
+  
+      ul#user_nav
+        a
+          background: #191919
+          color: #999
+          padding: 15px
+          &:hover
+            background: #333
+            color: orange
+  
+    #action
+      clear: both
+      color: #efefef
+      padding-right: 600px
+      
+      #slogan
+        h2
+          font-size: 1.5em
+          font-weight: bold
+          padding-bottom: 10px
+        p
+          color: #aaa
+          font-size: 0.8em
+          line-height: 1.2em
+          padding-bottom: 20px
+          
+      #download, #report
+        float: left
+        height: 50px
+        padding: 15px 0 0 70px
+        a
+          font-size: 1em
+          font-weight: bold
+          letter-spacing: 0.1em
+          span
+            font-size: 0.6em
+            font-weight: normal
+            
+      #download
+        background: image_url("arrow_download.png") no-repeat left top
+        padding-right: 20px
+        
+      #report
+        background: image_url("arrow_report.png") no-repeat left top
+        a:hover
+          color: green
+        
+  #middle
+    margin: 40px 0
+    overflow: hidden
+    
+    #notice
+      background: white
+      border-bottom: 1px solid #eee
+      color: green
+      font-size: 0.9em
+      padding: 10px
+      
+    .main
+      float: left
+      margin-right: 30px
+      overflow: hidden
+      width: 610px
+    
+    .sidebar
+      float: left
+      overflow: hidden
+      width: 320px
+      
+    .section
+      float: left
+      margin-right: 30px
+      overflow: hidden
+      width: 465px
+      &.last
+        margin: 0
+        
+    .section, .main, .sidebar
+      h2
+        background: #222
+        color: white
+        font-size: 1em
+        font-weight: bold
+        padding: 15px 20px 12px
+        text-transform: none
+        
+      h2, p, .problem
+        margin-bottom: 1px
+        
+      p, .problem, .inputs, .total
+        background: white
+        border-left: 5px #fff solid
+        color: #444
+        font-size: 0.8em
+        padding: 15px 20px 10px 15px
+        &:hover
+          border-left: 5px #333 solid 
+        &.total
+          font-size: 0.9em
+          font-weight: bold
+          text-transform: uppercase
+        &.problem
+          padding-right: 0
+          
+      img
+        float: left
+        margin-bottom: 7px
+        padding-right: 10px
+        
+      .t_user
+        color: orange
+        font-size: 0.9em
+        font-weight: bold
+        padding-bottom: 5px
+        text-transform: uppercase
+        
+      .t_text
+        padding-bottom: 7px
+        a
+          color: #333
+          &:hover
+            color: orange
+      
+      .t_date
+        color: #999
+        font-size: 0.8em
+        padding-left: 58px
+        text-transform: uppercase
+      
+      .problem
+        overflow: hidden
+        padding-right: 0
+        
+        img
+          float: left
+          
+        .desc
+          float: left
+          
+          .social
+            float: right
+        a
+          color: #666
+          display: block
+          line-height: 1.2em
+          margin-bottom: 10px
+          text-decoration: none
+          &:hover
+            color: #333
+            
+        h4
+          font-size: 1.2em
+          font-weight: bold
+          padding: 5px 0 15px 0
+          
+        h6
+          color: #999
+          font-size: 0.8em
+          text-transform: uppercase
+        
+        .desc
+          width: 520px
+          ul.social li
+            display: none
+          &:hover ul.social li
+            display: inline
+            float: left
+            font-size: 0.85em
+            margin: 5px 10px 0 0
+
+            img
+              margin-top: -5px
+              padding-right: 3px
+        
+  #bottom
+    background: #e9e9e9
+    color: #aaa
+    font-size: 0.65em
+    overflow: hidden
+    text-transform: uppercase
+
+      
+    .left, .right
+      padding: 25px 0 20px 0
+      
+  form.formtastic fieldset > ol > li p.inline-errors
+    font-size: 0.8em
+    margin: 5px 0 15px 0
+    
+  &#problems_index, &#problems_show
+
+    #sidebar
+      margin-bottom: -30px
+      overflow: hidden
+      .sidebar
+        margin-bottom: 30px
+        .inputs:hover, .total:hover
+          border-left: 5px white solid
+        label
+          padding-bottom: 5px
+          width: 100%
+        select, input
+          width: 280px
+          &#search_q
+            width: 370px
+        .buttons
+          padding-left: 0
+          input
+            background: #333
+            color: orange
+            cursor: pointer
+            padding: 10px 25px
+            text-transform: uppercase
+            width: 120px
+            &:hover
+              background: green
+              color: #fff
+              
+  &#problems_show
+    .step2
+      padding-bottom: 30px
+    p
+      padding-bottom: 20px
+      color: #444
+      font-size: 0.9em
+    .if
+      background: #eee
+      margin: 20px 0
+      padding: 20px
+    ul.social 
+      float: right
+      li
+        display: inline
+        float: left
+        font-size: 0.85em
+        margin: 5px 15px 0 0
+        img
+          margin-bottom: -4px
+          padding-right: 0
