@@ -34,23 +34,24 @@
               %li #{link_to "најава", new_user_session_path}
 
           %ul#app_nav
-            %li= link_to "Пријави проблем", new_problem_path
-            %li= link_to "Преглед", problems_path
+            %li.report= link_to "Пријави проблем", new_problem_path
+            %li.list= link_to "Преглед", problems_path
         
         #action
           #slogan
             %h2 Подобри го својот град
             %p Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
-          #download
-            - link_to "http://www.appbrain.com/app/mk.popravi.mobile", :target => '_blank' do
-              Превземи
-              %br
-              %span за Android
           #report
             - link_to new_problem_path do
               Пријави
               %br
               %span проблем
+          #download
+            - link_to "http://www.appbrain.com/app/mk.popravi.mobile", :target => '_blank' do
+              Превземи
+              %br
+              %span за Android
+          
 
     #middle
       .wrapper
