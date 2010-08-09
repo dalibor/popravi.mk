@@ -26,6 +26,10 @@ class Problem < ActiveRecord::Base
   # Callbacks
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
 
+  def title
+    "Проблем со #{category.name} во општина #{municipality.name}"
+  end
+
 
   private
   # formtastic errors fix for paperclip

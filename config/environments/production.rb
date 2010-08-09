@@ -30,3 +30,5 @@ config.action_view.cache_template_loading            = true
 config.action_mailer.default_url_options = {
   :host => 'popravi.mk'
 }
+
+config.gem 'smurf'

@@ -16,3 +16,6 @@ mkmf.log
 .rvmrc
 public/stylesheets/compiled
 public/assets
+public/javascripts/all.js
+public/stylesheets/all.css
+
