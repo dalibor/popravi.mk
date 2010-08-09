@@ -5,4 +5,4 @@ Feature: Manage app should boots
   
   Scenario: Visiting the site for the first time
     Given I am on the home page
-    Then I should see "Поправи"
+    Then I should see "Подобри го својот град"

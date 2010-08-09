@@ -18,16 +18,16 @@ var DateHelper = {
     var distance_in_seconds = ((to - from) / 1000);
     var distance_in_minutes = Math.floor(distance_in_seconds / 60);
  
-    if (distance_in_minutes == 0) { return 'пред помалку од минута'; }
-    if (distance_in_minutes == 1) { return 'пред минута'; }
-    if (distance_in_minutes < 45) { return 'пред ' + distance_in_minutes + ' минути'; }
-    if (distance_in_minutes < 90) { return 'пред 1 час'; }
-    if (distance_in_minutes < 1440) { return 'пред ' + Math.floor(distance_in_minutes / 60) + ' часа'; }
-    if (distance_in_minutes < 2880) { return 'пред 1 ден'; }
-    if (distance_in_minutes < 43200) { return 'пред ' + Math.floor(distance_in_minutes / 1440) + ' дена'; }
-    if (distance_in_minutes < 86400) { return 'пред 1 месец'; }
-    if (distance_in_minutes < 525960) { return 'пред ' + Math.floor(distance_in_minutes / 43200) + ' месеци'; }
-    if (distance_in_minutes < 1051199) { return 'пред 1 година'; }
+    if (distance_in_minutes == 0) { return 'пред помалку од минута'; };
+    if (distance_in_minutes == 1) { return 'пред минута'; };
+    if (distance_in_minutes < 45) { return 'пред ' + distance_in_minutes + ' минути'; };
+    if (distance_in_minutes < 90) { return 'пред 1 час'; };
+    if (distance_in_minutes < 1440) { return 'пред ' + Math.floor(distance_in_minutes / 60) + ' часа'; };
+    if (distance_in_minutes < 2880) { return 'пред 1 ден'; };
+    if (distance_in_minutes < 43200) { return 'пред ' + Math.floor(distance_in_minutes / 1440) + ' дена'; };
+    if (distance_in_minutes < 86400) { return 'пред 1 месец'; };
+    if (distance_in_minutes < 525960) { return 'пред ' + Math.floor(distance_in_minutes / 43200) + ' месеци'; };
+    if (distance_in_minutes < 1051199) { return 'пред 1 година'; };
 
     return 'пред ' + (distance_in_minutes / 525960).floor() + ' години';
   }
@@ -41,7 +41,7 @@ jQuery.fn.autolink = function () {
     var r = /((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g;
     $(this).html( $(this).html().replace(r, '<a href="$1" target="_blank">$1</a> ') );
   });
-}
+};
 
 var problems_edit = problems_create = problems_update = problems_new = {
   run: function () {
@@ -60,22 +60,22 @@ var problems_edit = problems_create = problems_update = problems_new = {
       $("#problem_longitude").val(location.lng());
 
       markerAdded = true; // mark that marker is added
-    }
+    };
 
     function deleteMarker () {
       if (markersArray) {
         for (i in markersArray) {
           markersArray[i].setMap(null);
-        }
+        };
         markersArray.length = 0;
-      }
+      };
 
       // delete lat and lng from hidden fields
       $("#problem_latitude").val('');
       $("#problem_longitude").val('');
 
       markerAdded = false; // mark that marker is not added
-    }
+    };
 
     var initialize = function (lat, lng) {
       geocoder = new google.maps.Geocoder();
@@ -84,7 +84,7 @@ var problems_edit = problems_create = problems_update = problems_new = {
         var latlng = new google.maps.LatLng(lat, lng);
       } else {
         var latlng = new google.maps.LatLng(42, 21.4333333);
-      }
+      };
 
       var myOptions = {zoom: 15, center: latlng, mapTypeId: google.maps.MapTypeId.SATELLITE};
 
@@ -98,7 +98,7 @@ var problems_edit = problems_create = problems_update = problems_new = {
           addMarker(event.latLng);
         }
       });
-    }
+    };
 
     var displayResults = function () {
       $("#geocode_results").html('');
@@ -108,14 +108,14 @@ var problems_edit = problems_create = problems_update = problems_new = {
           $('<div/>').append(
             $('<a/>').attr({id: "address_" + i, "class": "dym_address", href: "#"}).text(result.formatted_address)
           )
-        )
-      }
-    }
+        );
+      };
+    };
 
     var searchAddress = function (address) {
       if (!address) {
         return;
-      }
+      };
 
       if (geocoder) {
         geocoder.geocode( { 'address': address}, function(results, status) {
@@ -128,15 +128,15 @@ var problems_edit = problems_create = problems_update = problems_new = {
               $("#address").val(result.formatted_address);
             } else {
               lastResults = [];
-            }
+            };
 
             displayResults();
           } else {
             console.log("Geocode was not successful for the following reason: " + status);
-          }
+          };
         });
       }
-    }
+    };
 
     $("#delete_marker").click(function (e) {
       e.preventDefault();
@@ -155,19 +155,23 @@ var problems_edit = problems_create = problems_update = problems_new = {
       searchAddress($("#address").val());
     });
 
-    $(".dym_address").live("click", function () {
+    $(".dym_address").live("click", function (e) {
+      e.preventDefault();
       var resultId = Number($(this).attr("id").match(/\d+/), 10);
       var result = lastResults[resultId];
       map.setCenter(result.geometry.location);
       $("#address").val(result.formatted_address);
-    })
+    });
 
-    //$("#problem_submit").click(function () {
-      //$("form").attr({"action": $("form").attr("action") + "?location=" + $("#address").val()});
-    //})
+    // prevent submitting form by hitting Enter
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        return false;
+      }
+    });
 
     // initialize marker if lat & lng and not empty
-
     var lat = $("#problem_latitude").val();
     var lng = $("#problem_longitude").val();
 
@@ -176,15 +180,9 @@ var problems_edit = problems_create = problems_update = problems_new = {
     if (lat && lng) {
       var problemLatLng = new google.maps.LatLng(lat, lng);
       addMarker(problemLatLng);
-    }
-
-    // initialize map to searched address
-    //var address = window.location.search.match(/\?location=(.*)/);
-    //if (address && address.length) {
-      //searchAddress(decodeURIComponent(address[1]));
-    //}
+    };
   }
-}
+};
 
 var problems_show = {
   run: function () {
@@ -196,11 +194,11 @@ var problems_show = {
       var map = new google.maps.Map($("#map_canvas")[0], myOptions);
       var problemLatLng = new google.maps.LatLng(_lat, _lng);
       new google.maps.Marker({position: problemLatLng, map: map});
-    }
+    };
 
     initialize();
   }
-}
+};
 
 var welcome_index = {
   run: function () {
@@ -246,7 +244,7 @@ var welcome_index = {
       });
     });
   }
-}
+};
 
 $(function () {
   var body_id = $('body').attr("id");

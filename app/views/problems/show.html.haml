@@ -1,14 +1,16 @@
-- title("#{@problem.category.name} во општина #{@problem.municipality.name}")
+- title(@problem.title)
 - description(@problem.description)
 
 .step2
   %ul.social
     %li
-      =image_tag("iconTwitter.png")
-      %span Retweet
+      - link_to "http://twitter.com/home?status=#{@problem.title}: #{problem_url(@problem)}", :target => "_blank" do
+        =image_tag("iconTwitter.png")
+        %span Tweet
     %li
-      =image_tag("iconFacebook.png")
-      %span Share
+      - link_to "http://www.facebook.com/share.php?u=#{problem_url(@problem)}&t=#{@problem.title}", :target => "_blank" do
+        =image_tag("iconFacebook.png")
+        %span Share
   
   .name
     %h2
@@ -19,11 +21,11 @@
 
   = image_tag @problem.photo.url(:m)
 
-  - if user_signed_in?
-    = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
-  - else
-    %p.if
-      Ако овој е пријавен од вас, ве молиме 
+  %p.if
+    - if user_signed_in?
+      = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
+    - else
+      Ако овој проблем е пријавен од вас, ве молиме 
       = link_to "регистрирајте се", new_registration_path(:user)
       или
       = link_to "најавете се", new_session_path(:user)
