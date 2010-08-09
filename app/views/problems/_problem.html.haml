@@ -11,9 +11,8 @@
           =image_tag("iconFacebook.png")
           %span Share
     %h4
-      = problem.municipality.name
-      >
-      = problem.category.name
+      %span= link_to problem.municipality.name, problem
+      %span= link_to problem.category.name, problem
     = link_to problem.description, problem
     %h6
       пред
