@@ -231,7 +231,6 @@ var welcome_index = {
     search_results("popravimk", 5, function (json, status) {
       var tweets = $("#tweets");
       $.each(json.results, function(i) {
-        console.log(this)
         tweets.append(
           $("<p/>").append(
             $('<a/>').attr({href: "http://twitter.com/" + this.from_user, target: "_blank"}).append(
