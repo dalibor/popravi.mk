@@ -3,7 +3,7 @@
   .desc
     %ul.social
       %li
-        - link_to "http://twitter.com/home?status=#{CGI.escape(problem.title + ':' + problem_url(problem) + ' #popravimk')}", :target => "_blank" do
+        - link_to "http://twitter.com/home?status=#{CGI.escape(problem.title + ': ' + problem_url(problem) + ' #popravimk')}", :target => "_blank" do
           =image_tag("iconTwitter.png")
           %span Tweet
       %li
