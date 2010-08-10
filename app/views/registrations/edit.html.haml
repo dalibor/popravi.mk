@@ -1,6 +1,6 @@
 - title("Поставки")
 
-.step2
+.step
   %h2 Поставки
 
   - semantic_form_for resource_name, resource, :url => registration_path(resource_name), :html => { :method => :put } do |f|
@@ -15,9 +15,10 @@
       - f.buttons do
         = f.commit_button 'Измени'
 
-  %h3 Откажи ја твојата сметка
 
-  %p
-    Не сте среќни? #{link_to "Избриши ја мојата сметка", registration_path(resource_name), :confirm => "Дали сакаш твојата сметка да биде избришана?", :method => :delete}.
 
   = render :partial => "shared/devise_links"
+  #delete
+    %h3 Откажи ја твојата сметка
+    %p
+      #{link_to "Избриши ја мојата сметка", registration_path(resource_name), :confirm => "Дали сакаш твојата сметка да биде избришана?", :method => :delete}

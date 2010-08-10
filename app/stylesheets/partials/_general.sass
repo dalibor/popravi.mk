@@ -173,6 +173,15 @@ body
         &.problem
           padding-right: 0
           
+      .total
+        li
+          padding-bottom: 10px
+          a
+            color: #555
+            &:hover
+              color: black
+              text-decoration: underline
+              
       img
         float: left
         margin-bottom: 7px
@@ -184,6 +193,8 @@ body
         font-weight: bold
         padding-bottom: 5px
         text-transform: uppercase
+        &:hover
+          color: black
         
       .t_text
         padding-bottom: 7px
@@ -198,10 +209,15 @@ body
         font-size: 0.8em
         padding-left: 58px
         text-transform: uppercase
-      
+        &:hover
+          color: black
+          
       .problem
         overflow: hidden
         padding-right: 0
+        &:hover h4 a
+          color: #333
+          text-decoration: underline
         
         img
           float: left

@@ -28,7 +28,9 @@
   .sidebar
   
     %h2 Општини со највеќе проблеми
-    .total
+    %ul.total
       - @municipalities.each do |municipality|
-        = municipality.name 
-        = municipality.problems_count
+        %li
+          %a
+            = municipality.name 
+            = municipality.problems_count
