@@ -222,6 +222,11 @@ var welcome_index = {
         //)
       //});
     //});
+    
+    $("#notice").fadeOut(3000, function () {
+      $("#middle").css({marginTop: "60px"});
+      $("#middle").animate({marginTop: "40px"}, 1000);
+    });
 
     var search_results = function(query, count, callback){
       requestURL = "http://search.twitter.com/search.json?callback=?&q=" + query + "&rpp=" + count;
