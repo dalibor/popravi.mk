@@ -4,7 +4,7 @@
 .main
   %h2 Проблеми
   - if @problems.empty?
-    %p No problems have been reported yet
+    %p Сеуште немате пријавено проблеми.
   - else
     - @problems.each do |problem|
       = render :partial => 'problems/problem', :object => problem
