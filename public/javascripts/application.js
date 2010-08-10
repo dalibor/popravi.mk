@@ -239,7 +239,7 @@ var welcome_index = {
         tweets.append(
           $("<p/>").append(
             $('<a/>').attr({href: "http://twitter.com/" + this.from_user, target: "_blank"}).append(
-              $('<img/>').attr({"src": this.profile_image_url})
+              $('<img/>').attr({"src": this.profile_image_url, "width": "48px", "height": "48px"})
             ),
             $('<a/>').attr({href: "http://twitter.com/" + this.from_user, target: "_blank"}).append(
               $('<div/>').attr({"class": "t_user"}).text(this.from_user)
