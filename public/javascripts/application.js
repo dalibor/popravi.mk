@@ -233,12 +233,16 @@ var welcome_index = {
       $.each(json.results, function(i) {
         tweets.append(
           $("<p/>").append(
-            $('<a/>').attr({href: "http://twitter.com/" + this.from_user}).append(
+            $('<a/>').attr({href: "http://twitter.com/" + this.from_user, target: "_blank"}).append(
               $('<img/>').attr({"src": this.profile_image_url})
             ),
-            $('<div/>').attr({"class": "t_user"}).text(this.from_user),
+            $('<a/>').attr({href: "http://twitter.com/" + this.from_user, target: "_blank"}).append(
+              $('<div/>').attr({"class": "t_user"}).text(this.from_user)
+            ),
             $('<div/>').attr({"class": "t_text"}).text(this.text),
-            $('<div/>').attr({"class": "t_date"}).text(DateHelper.time_ago_in_words_with_parsing(this.created_at))
+            $('<a/>').attr({href: "http://twitter.com/" + this.from_user + "/status/" + this.id, target: "_blank"}).append(
+              $('<div/>').attr({"class": "t_date"}).text(DateHelper.time_ago_in_words_with_parsing(this.created_at))
+            )
           ).autolink()
         )
       });
