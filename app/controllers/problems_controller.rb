@@ -1,6 +1,6 @@
 class ProblemsController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:ownership, :take_ownership, :update]
+  before_filter :authenticate_user!, :only => [:my, :ownership, :take_ownership, :update]
 
   def index
     @search = Search.new(params[:search])

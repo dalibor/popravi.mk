@@ -15,7 +15,6 @@
     = pluralize @problems.total_entries, "проблем"
 
 #sidebar
-
   .sidebar
     %h2 Барај
     - semantic_form_for :search, @search, :url => {:action => :index}, :html => { :method => :get } do |f|
@@ -26,11 +25,10 @@
         - f.buttons do
           = f.commit_button "Барај"
   .sidebar
-  
     %h2 Општини со највеќе проблеми
     %ul.total
       - @municipalities.each do |municipality|
         %li
-          %a
+          - link_to problems_path + "?search[municipality_id]=#{municipality.id}" do
             = municipality.name 
             = municipality.problems_count
