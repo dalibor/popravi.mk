@@ -10,6 +10,7 @@
       = render :partial => 'problems/problem', :object => problem
 
     = will_paginate @problems
+      
   .total
     Вкупно: 
     = pluralize @problems.total_entries, "проблем"
