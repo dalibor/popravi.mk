@@ -1,6 +1,6 @@
 body
 
-  &#problems_new, &#problems_create, &#problems_edit, &#problems_update, &#problems_show, &#problems_index, &#registrations_new, &#registrations_create, &#registrations_edit, &#registrations_update, &#sessions_new, &#sessions_create, &#passwords_new, &#passwords_create, &#passwords_edit, &#passwords_update, &#confirmations_new, &#confirmations_create, &#confirmations_show, &#problems_my
+  &#problems_new, &#problems_create, &#problems_edit, &#problems_update, &#problems_show, &#problems_index, &#registrations_new, &#registrations_create, &#registrations_edit, &#registrations_update, &#sessions_new, &#sessions_create, &#passwords_new, &#passwords_create, &#passwords_edit, &#passwords_update, &#confirmations_new, &#confirmations_create, &#confirmations_show, &#problems_my, &#problems_ownership
   
     #top
       height: 140px
@@ -253,7 +253,25 @@ body
       margin-left: 180px
       padding: 20px
       width: 600px
-    
+      
+  &#problems_ownership
+    p
+      color: #555
+      font-size: 0.9em
+      padding-bottom: 10px
+    input
+      background: #333
+      color: orange
+      cursor: pointer
+      font-size: 0.9em
+      height: auto
+      padding: 10px 10px 7px 10px
+      text-transform: uppercase
+      width: 120px
+      &:hover
+        background: green
+        color: white
+        
 //Formtastic overrides
 
 body
