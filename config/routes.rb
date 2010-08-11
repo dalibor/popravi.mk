@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
   # devise routes
   map.devise_for :users
 
-  map.resources :problems, :collection => {:ownership => :get, :take_ownership => :post, :my => :get}
+  map.resources :problems, :collection => {:take_ownership => :post, :my => :get}
 
   # root route
   map.root :controller => "welcome"

@@ -19,3 +19,13 @@
     %h2 За вас
     %ul.problem
       %li Најавени сте како #{current_user.email}
+
+  - if current_user.has_potentially_reported_problems?
+    .sidebar
+      %h2 Дали сте ги пријавиле?
+      %ul.total
+      - form_tag take_ownership_problems_path do
+        - @potentially_reported_problems.each do |problem|
+          = label_tag "problem_ids[#{problem.id}]", problem.description
+          = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
+        = submit_tag "Преземи"

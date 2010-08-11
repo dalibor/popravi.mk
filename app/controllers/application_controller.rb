@@ -17,11 +17,12 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
-      if current_user.problems_count == 0 && current_user.has_potentially_reported_problems?
-        ownership_problems_path
-      else
-        new_user_session_path
-      end
+      my_problems_path
+      #if current_user.problems_count == 0 && current_user.has_potentially_reported_problems?
+        #ownership_problems_path
+      #else
+        #new_user_session_path
+      #end
     else
       super
     end

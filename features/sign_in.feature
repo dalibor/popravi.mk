@@ -6,7 +6,7 @@ Feature: Sign in
   Scenario: Sign in successfully
     Given I am an authenticated user
     Then I should see "Успешно сте најавени"
-    And I should be on the home page
+    And I should be on the my_problems page
 
   Scenario: Invalid login credentials
     Given I signed up as "test_user@popravi.mk" with password "secretpass"

@@ -1,9 +1,0 @@
-.step
-  %p Следниве проблеми се пријавени со ваша e-mail адреса.
-  %p Ве молиме изберете ги оние кои сте ги пријавиле Вие за да можете да ги менувате.
-
-  - form_tag take_ownership_problems_path do
-    - @problems.each do |problem|
-      = label_tag "problem_ids[#{problem.id}]", problem.description
-      = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
-    = submit_tag "Преземи"

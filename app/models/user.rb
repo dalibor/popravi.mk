@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def has_potentially_reported_problems?
-    if Problem.count(:conditions => {:email => self.email}) > 0
+    if Problem.count(:conditions => {:email => self.email, :user_id => nil}) > 0
       true
     else
       false
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def potentially_reported_problems
-    Problem.find(:all, :conditions => {:email => self.email})
+    Problem.find(:all, :conditions => {:email => self.email, :user_id => nil})
   end
 
   def take_ownership_of_problems(problems)

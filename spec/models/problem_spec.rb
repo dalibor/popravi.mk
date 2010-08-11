@@ -6,7 +6,7 @@ describe Problem do
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
     it { should have_attached_file(:photo) }
-    it { should validate_attachment_presence(:photo) }
+    #it { should validate_attachment_presence(:photo) }
   end
 
   describe "validations" do
@@ -26,11 +26,11 @@ describe Problem do
       problem.errors.on(:description).should_not be_nil
     end
 
-    it "validates photo is present when device_id is not present" do
-      problem = Factory.build(:problem, :photo => nil)
-      problem.should_not be_valid
-      problem.errors.on(:photo_file_name).should_not be_nil
-    end
+    #it "validates photo is present when device_id is not present" do
+      #problem = Factory.build(:problem, :photo => nil)
+      #problem.should_not be_valid
+      #problem.errors.on(:photo_file_name).should_not be_nil
+    #end
 
     it "does not validates photo is present when device_id is present" do
       problem = Factory.build(:problem, :photo => nil, :device_id => "123")
@@ -61,11 +61,11 @@ describe Problem do
       problem.errors.on(:latitude).should_not be_nil
     end
 
-    it "validates email is present for unregistered user" do
-      problem = Factory.build(:anonymous_problem, :email => nil)
-      problem.should_not be_valid
-      problem.errors.on(:email).should_not be_nil
-    end
+    #it "validates email is present for unregistered user" do
+      #problem = Factory.build(:anonymous_problem, :email => nil)
+      #problem.should_not be_valid
+      #problem.errors.on(:email).should_not be_nil
+    #end
 
     it "doesn't validate email is present for users reporting from mobile device" do
       problem = Factory.build(:anonymous_problem, :email => nil, :device_id => "123456789")

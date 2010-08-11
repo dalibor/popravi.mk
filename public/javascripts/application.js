@@ -33,6 +33,13 @@ var DateHelper = {
   }
 };
 
+var hideNotice = function () {
+  $("#notice").fadeOut(3000, function () {
+    $("#middle").css({marginTop: "60px"});
+    $("#middle").animate({marginTop: "40px"}, 1000);
+  });
+};
+
 /*
  * Make link from urls in tweet
  */
@@ -223,10 +230,7 @@ var welcome_index = {
       //});
     //});
     
-    $("#notice").fadeOut(3000, function () {
-      $("#middle").css({marginTop: "60px"});
-      $("#middle").animate({marginTop: "40px"}, 1000);
-    });
+    hideNotice();
 
     var search_results = function(query, count, callback){
       requestURL = "http://search.twitter.com/search.json?callback=?&q=" + query + "&rpp=" + count;
@@ -252,6 +256,12 @@ var welcome_index = {
         )
       });
     });
+  }
+};
+
+var problems_my = {
+  run: function () {
+    hideNotice();
   }
 };
 

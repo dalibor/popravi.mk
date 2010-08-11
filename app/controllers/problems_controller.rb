@@ -8,10 +8,6 @@ class ProblemsController < ApplicationController
     @municipalities = Municipality.find :all, :select => "municipalities.id, municipalities.name, COUNT(*) as problems_count", :joins => :problems, :group => "municipalities.id", :limit => 10, :order => "problems_count DESC"
   end
 
-  def ownership
-    @problems = current_user.potentially_reported_problems
-  end
-
   def take_ownership
     problems = Problem.find(params[:problem_ids].keys)
     current_user.take_ownership_of_problems(problems)
@@ -20,6 +16,7 @@ class ProblemsController < ApplicationController
 
   def my
     @problems = current_user.problems.paginate :per_page => 10, :page => params[:page], :order => "id DESC"
+    @potentially_reported_problems = current_user.potentially_reported_problems
   end
 
   def new
