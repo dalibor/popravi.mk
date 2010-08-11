@@ -20,13 +20,13 @@
 
     .step2
       - f.inputs do
-        = f.input :photo, :as => :file, :label => 'Слика од проблемот'
+        = f.input :photo, :as => :file, :label => 'Слика од проблемот', :required => false
         = f.input :latitude, :label => 'Latitude', :as => :hidden
         = f.input :longitude, :label => 'Longitude', :as => :hidden
         = f.input :category, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC")
         = f.input :municipality, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
         - unless current_user
-          = f.input :email, :label => 'E-mail'
+          = f.input :email, :label => 'E-mail', :required => false
       - f.inputs do
         = f.input :description, :label => 'Опис'
       - unless user_signed_in?
