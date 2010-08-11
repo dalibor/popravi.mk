@@ -11,6 +11,7 @@
           %th Category
           %th Municipality
           %th Email
+          %th Device ID
           %td Manage
       %tbody
         - @problems.each do |problem|
@@ -21,6 +22,7 @@
             %th= problem.category.name
             %th= problem.municipality.name
             %th= problem.email
+            %th= problem.device_id
             %td 
               = link_to "Edit", edit_admin_problem_path(problem)
               = link_to "Delete", admin_problem_path(problem), :method => "delete", :confirm => "Are you sure?"
