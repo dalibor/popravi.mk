@@ -7,12 +7,13 @@ Feature: Update user information
     Given I am an authenticated user
     And I am on the edit user page
     When I fill in "user_email" with "new_test_user@popravi.mk"
+    When I fill in "user_name" with "My Name"
     And I fill in "user_password" with "newpass"
     And I fill in "user_password_confirmation" with "newpass"
     And I fill in "user_current_password" with "secretpass"
     When I press "user_submit"
     Then I should see "Успешно ја изменивте вашата сметка"
-    And I should be on the my_problems page
+    And I should be on the edit user page
     #And I should receive an email
     #When I open the email
     #Then I should see "Упатство за потврда" in the email subject

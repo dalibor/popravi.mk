@@ -32,7 +32,7 @@ Feature: Email instructions
     When I fill in "user_password" with "newsecretpass"
     And I fill in "user_password_confirmation" with "newsecretpass"
     When I press "user_submit"
-    Then I should see "Најавени сте како test_user@popravi.mk"
+    Then I should see "Вашата лозинка успешно е променета. Најавени сте во системот."
 
   #Scenario: Resend unlock account instructions
     #Given I am not authenticated
