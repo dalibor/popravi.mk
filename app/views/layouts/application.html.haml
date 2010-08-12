@@ -53,7 +53,6 @@
     #middle
       .wrapper
         - flash.each do |key, msg|
-          = msg
           = content_tag :div, msg, :id => key
         = yield
     
