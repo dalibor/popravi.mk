@@ -24,8 +24,10 @@
     .sidebar
       %h2 Дали сте ги пријавиле?
       %ul.total
-      - form_tag take_ownership_problems_path do
-        - @potentially_reported_problems.each do |problem|
-          = label_tag "problem_ids[#{problem.id}]", problem.description
-          = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
-        = submit_tag "Преземи"
+        - form_tag take_ownership_problems_path do
+          - @potentially_reported_problems.each do |problem|
+            %li
+              = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
+              = label_tag "problem_ids[#{problem.id}]", problem.description
+              
+          %li.button= submit_tag "Преземи"
