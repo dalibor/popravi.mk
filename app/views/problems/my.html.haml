@@ -28,6 +28,6 @@
           - @potentially_reported_problems.each do |problem|
             %li
               = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
-              = label_tag "problem_ids[#{problem.id}]", "#{problem.municipality.name} #{problem.category.name}"
+              = label_tag "problem_ids[#{problem.id}]", "#{problem.municipality.name} #{problem.category.name} - #{truncate(problem.description, :length => 60)}"
               
           %li.button= submit_tag "Преземи"
