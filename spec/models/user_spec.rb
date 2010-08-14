@@ -3,6 +3,11 @@ require 'spec_helper'
 describe User do
   describe "associations" do
     it { should have_many(:problems) }
+    it { should have_many(:comments) }
+  end
+
+  describe "attributes" do
+    it {should only_mass_assign_accessible_attributes(:name, :email, :password, :password_confirmation, :avatar)}
   end
 
   describe "instance methods" do

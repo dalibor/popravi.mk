@@ -5,6 +5,7 @@ describe Problem do
     it { should belong_to(:user) }
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
+    it { should have_many(:comments) }
     it { should have_attached_file(:photo) }
     #it { should validate_attachment_presence(:photo) }
   end

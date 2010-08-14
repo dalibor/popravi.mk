@@ -3,7 +3,7 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I signed up as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
-  @user = User.create!(:email => email, :password => password, :password_confirmation => password)
+  @user = User.create!(:email => email, :password => password, :password_confirmation => password, :name => "Authenticated User", :avatar => File.open(File.join(Rails.root, 'public', 'images', 'rails.png')))
 end
 
 Given /^I confirmed my email address$/ do

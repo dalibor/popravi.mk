@@ -10,6 +10,7 @@ class Problem < ActiveRecord::Base
   belongs_to :user, :counter_cache => true
   belongs_to :category
   belongs_to :municipality
+  has_many :comments
 
   # Validations
   #validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? && problem.device_id.blank?}

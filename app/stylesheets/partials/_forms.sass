@@ -1,6 +1,6 @@
 body
 
-  &#problems_new, &#problems_create, &#problems_edit, &#problems_update, &#problems_show, &#problems_index, &#registrations_new, &#registrations_create, &#registrations_edit, &#registrations_update, &#sessions_new, &#sessions_create, &#passwords_new, &#passwords_create, &#passwords_edit, &#passwords_update, &#confirmations_new, &#confirmations_create, &#confirmations_show, &#problems_my, &#problems_ownership
+  &#problems_new, &#problems_create, &#problems_edit, &#problems_update, &#problems_show, &#problems_index, &#registrations_new, &#registrations_create, &#registrations_edit, &#registrations_update, &#sessions_new, &#sessions_create, &#passwords_new, &#passwords_create, &#passwords_edit, &#passwords_update, &#confirmations_new, &#confirmations_create, &#confirmations_show, &#problems_my, &#problems_ownership, &#comments_create
   
     #top
       height: 140px
@@ -84,7 +84,8 @@ body
         ol
           width: 100%
           li
-            margin-bottom: 20px
+            margin-top: 10px
+            margin-bottom: 10px
         #user_email, #user_password
           width: 500px
       .required, .optional
@@ -230,17 +231,10 @@ body
         &:hover
           background: white
           color: #333
-      #map_canvas
-        width: 600px
-        height: 400px
-
 
   &#problems_show
     .step2
       padding-bottom: 30px
-    #map_canvas
-      width: 600px
-      height: 400px
       
   #alert
     background: white

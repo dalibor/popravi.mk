@@ -191,7 +191,7 @@ var problems_edit = problems_create = problems_update = problems_new = {
   }
 };
 
-var problems_show = {
+var problems_show = comments_create = {
   run: function () {
     var initialize = function () {
       var latlng = new google.maps.LatLng(_lat, _lng);
@@ -204,6 +204,7 @@ var problems_show = {
     };
 
     initialize();
+    hideNotice();
   }
 };
 

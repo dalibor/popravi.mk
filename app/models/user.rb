@@ -4,11 +4,23 @@ class User < ActiveRecord::Base
   devise :registerable, :database_authenticatable, :recoverable, :confirmable,
          :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation
+  # Attr accessible
+  attr_accessible :name, :email, :password, :password_confirmation, :avatar
 
   # Associations
   has_many :problems
+  has_many :comments, :dependent => :destroy
+
+  # Paperclip
+  has_attached_file :avatar, :styles => {:s => '60x60#'},
+                  :url  => "/assets/avatars/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/avatars/:id/:style/:basename.:extension",
+                  :default_url => "/images/avatars/default_:style.png"
+
+  #Validations
+  #validates_attachment_presence :avatar
+  #validates_attachment_size :avatar, :less_than => 5.megabytes
+  #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/pjpeg', 'image/pjpg', 'image/x-png', 'image/png', 'image/jpg']
 
   def is_admin?
     self.role == "admin"

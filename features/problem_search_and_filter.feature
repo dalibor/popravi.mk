@@ -4,7 +4,7 @@ Feature: Search and filter problems
   I want to be able to search and filter problems
 
     Scenario: Search problems by description
-        Given there are reported problems
+        Given there are reported problems for searching
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"
@@ -14,7 +14,7 @@ Feature: Search and filter problems
         And I should see "Description 1"
 
     Scenario: Filter problems by category
-        Given there are reported problems
+        Given there are reported problems for searching
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"
@@ -24,7 +24,7 @@ Feature: Search and filter problems
         And I should see "Category 1"
 
     Scenario: Filter problems by municipality
-        Given there are reported problems
+        Given there are reported problems for searching
         And I am on the home page
         When I follow "Преглед"
         Then I should see "Вкупно: 3 проблеми"

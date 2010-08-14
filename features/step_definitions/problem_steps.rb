@@ -23,7 +23,7 @@ Given /^There are anonymouse problems$/ do
   Factory.create(:problem3)
 end
 
-Given /^there are reported problems$/ do
+Given /^there are reported problems for searching$/ do
   Factory.create(:problem1)
   Factory.create(:problem2)
   Factory.create(:problem3)

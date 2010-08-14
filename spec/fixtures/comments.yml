@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  problem_id: 1
+  name: MyString
+  email: MyString
+  content: MyText
+  approved: false
+
+two:
+  user_id: 1
+  problem_id: 1
+  name: MyString
+  email: MyString
+  content: MyText
+  approved: false

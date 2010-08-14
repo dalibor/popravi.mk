@@ -1,5 +1,5 @@
 - title(@problem.title)
-- description(@problem.description)
+- description(truncate(@problem.description, :length => 100))
 
 .step2
   %ul.social
@@ -34,6 +34,25 @@
 
 
   #map_canvas
+
+  %a{:name => "comments"}
+  #comments_block
+    .form
+      - semantic_form_for [@problem, @comment] do |f|
+        = f.semantic_errors :state
+        - f.inputs do
+          - unless user_signed_in?
+            = f.input :name, :label => 'Име', :required => false
+            = f.input :email, :label => 'E-mail', :required => false
+          = f.input :content, :label => 'Коментар'
+        - f.buttons do
+          = f.commit_button "Испрати"
+    .comments
+      - @comments.each do |comment|
+        = image_tag comment.commenter_avatar
+        = comment.commenter_name
+        = comment.content
+
 
   :javascript
     var _lat = "#{@problem.latitude}";

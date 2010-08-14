@@ -25,6 +25,8 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
+    @comments = @problem.comments.find :all, :order => "created_at ASC"
+    @comment = Comment.new
   end
 
   def edit
