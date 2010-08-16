@@ -45,6 +45,9 @@
             = f.input :name, :label => 'Име', :required => false
             = f.input :email, :label => 'E-mail', :required => false
           = f.input :content, :label => 'Коментар'
+          - unless user_signed_in?
+            %div{:style => "clear:both"}
+              = recaptcha_tags
         - f.buttons do
           = f.commit_button "Испрати"
     .comments

@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @problem.comments.new(params[:comment])
     @comment.user = current_user if user_signed_in?
 
-    if @comment.save
+    if (user_signed_in? || verify_recaptcha(:model => @comment, :message => "Грешка со reCAPTCHA")) && @comment.save
       flash[:notice] = 'Успешно коментиравте.'
       redirect_to problem_url(@problem)
     else
