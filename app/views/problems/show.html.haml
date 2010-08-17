@@ -16,6 +16,8 @@
     %h2
       = @problem.municipality.name
       = @problem.category.name
+      пред
+      = time_ago_in_words(@problem.created_at)
   
     %p= @problem.description
 
@@ -57,6 +59,9 @@
           %ul
             %li.name= comment.commenter_name
             %li.content= comment.content
+            %li.date
+              пред
+              = time_ago_in_words(comment.created_at)
 
 
   :javascript
