@@ -31,6 +31,21 @@ body
       ol
         width: 440px
         li
+        
+      ul.social a
+        text-decoration: none
+        color: #999
+        &:hover
+          color: #333
+      .name h4
+        color: #999
+        font-size: 0.8em
+        margin: -15px 0 20px 0
+        text-transform: uppercase
+        
+      .name p
+        color: #444
+        line-height: 1.2em
 
       .inputs
         color: #999
@@ -302,7 +317,7 @@ body
       padding-top: 20px
       width: 400px
       .comment
-        border-bottom: 1px #fff solid
+        border-bottom: 1px #eee solid
         padding-bottom: 20px
         margin-bottom: 20px
         +clearfix
@@ -312,12 +327,16 @@ body
       ul
         float: left
         width: 320px
-        .name
+        .name, .date
           color: #666
-          font-size: 0.7em
           margin-bottom: 5px
           padding-top: 5px
           text-transform: uppercase
+        .name
+          font-size: 0.7em
+        .date
+          font-size: 0.6em
+          margin-top: 5px
         .content
           color: #333
           font-size: 0.8em
