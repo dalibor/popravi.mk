@@ -32,6 +32,12 @@ describe Comment do
       comment.should_not be_valid
       comment.errors.on(:problem_id).should_not be_nil
     end
+
+    it "validates email is valid" do
+      comment = Factory.build(:comment, :email => "invalid_email")
+      comment.should_not be_valid
+      comment.errors.on(:email).should_not be_nil
+    end
   end
 
   describe "commenter_name" do

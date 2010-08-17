@@ -32,6 +32,6 @@ class Search
       @parameters[:municipality_id] = @municipality_id
     end
 
-    Problem.paginate :per_page => options[:per_page], :page => options[:page], :conditions => [@conditions.join(" AND "), @parameters], :order => "id DESC"
+    Problem.paginate :per_page => options[:per_page], :page => options[:page], :conditions => [@conditions.join(" AND "), @parameters], :order => "id DESC", :include => [:municipality, :category]
   end
 end

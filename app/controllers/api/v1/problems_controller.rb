@@ -4,7 +4,11 @@ class Api::V1::ProblemsController < ApplicationController
 
   def index
     if params[:type] == "nearest"
-      problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - 42.038033) , 2 ) + POW( 69.1 * ( 21.46385 - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance",
+      #problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - #{params[:latitude]}) , 2 ) + POW( 69.1 * ( #{params[:longitude]} - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance",
+                              #:joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
+                              #:order => "distance ASC",
+                              #:limit => 10
+      problems = Problem.find :all, :select => ActiveRecord::Base.send(:sanitize_sql_array, ["problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - ? ) , 2 ) + POW( 69.1 * ( ? - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance", params[:latitude], params[:longitude]]),
                               :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
                               :order => "distance ASC",
                               :limit => 10

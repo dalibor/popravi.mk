@@ -13,6 +13,7 @@ class Comment < ActiveRecord::Base
   # Validations
   validates_presence_of :content
   validates_presence_of :problem_id
+  validates_format_of :email, :with => EMAIL_REG_EXP, :allow_blank => true
 
   def commenter_name
     if user

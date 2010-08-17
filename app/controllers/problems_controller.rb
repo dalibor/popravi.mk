@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
   end
 
   def my
-    @problems = current_user.problems.paginate :per_page => 10, :page => params[:page], :order => "id DESC"
+    @problems = current_user.problems.paginate :per_page => 10, :page => params[:page], :order => "id DESC", :include => [:municipality, :category]
     @potentially_reported_problems = current_user.potentially_reported_problems
   end
 
@@ -25,7 +25,7 @@ class ProblemsController < ApplicationController
 
   def show
     @problem = Problem.find(params[:id])
-    @comments = @problem.comments.find :all, :order => "created_at ASC"
+    @comments = @problem.comments.find :all, :order => "created_at ASC", :include => :user
     @comment = Comment.new
   end
 
