@@ -18,7 +18,8 @@
       = @problem.category.name
   
     %p= @problem.description
-
+    
+  #map_canvas
   = image_tag @problem.photo.url(:m)
 
   %p.if
@@ -33,7 +34,7 @@
 
 
 
-  #map_canvas
+  
 
   %a{:name => "comments"}
   #comments_block
