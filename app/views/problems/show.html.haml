@@ -52,9 +52,11 @@
           = f.commit_button "Испрати"
     .comments
       - @comments.each do |comment|
-        = image_tag comment.commenter_avatar
-        = comment.commenter_name
-        = comment.content
+        .comment
+          = image_tag comment.commenter_avatar
+          %ul
+            %li.name= comment.commenter_name
+            %li.content= comment.content
 
 
   :javascript

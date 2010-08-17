@@ -23,6 +23,7 @@ body
         width: 320px
     .step2
       padding: 30px 20px 0
+        
     .step2, .step
       clear: all
       form
@@ -287,7 +288,44 @@ body
           color: orange
           cursor: pointer
           text-transform: uppercase
-        
+          
+  #comments_block
+    background: #f9f9f9
+    margin-top: 20px
+    padding: 20px
+    +clearfix
+    
+    .form
+      float: left
+    .comments
+      float: right
+      padding-top: 20px
+      width: 400px
+      .comment
+        border-bottom: 1px #fff solid
+        padding-bottom: 20px
+        margin-bottom: 20px
+        +clearfix
+      img
+        float: left
+        margin-right: 10px
+      ul
+        float: left
+        width: 320px
+        .name
+          color: #666
+          font-size: 0.7em
+          margin-bottom: 5px
+          padding-top: 5px
+          text-transform: uppercase
+        .content
+          color: #333
+          font-size: 0.8em
+          line-height: 1.2em
+    
+    #comment_submit
+    li.commit
+      margin: 20px 0 0 0
         
 //Formtastic overrides
 
