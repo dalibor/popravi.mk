@@ -20,7 +20,8 @@
       = time_ago_in_words(@problem.created_at)
   
     %p= @problem.description
-
+    
+  #map_canvas
   = image_tag @problem.photo.url(:m)
 
   %p.if
@@ -35,7 +36,7 @@
 
 
 
-  #map_canvas
+  
 
   %a{:name => "comments"}
   #comments_block
