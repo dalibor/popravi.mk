@@ -89,7 +89,7 @@ describe Comment do
       it "displays gratar of user" do
         problem = Factory.create(:anonymous_problem)
         comment = problem.comments.new(:content => "My comment")
-        comment.commenter_avatar.should match /gravatar/
+        comment.commenter_avatar.should match /anonymous/
       end
     end
   end
