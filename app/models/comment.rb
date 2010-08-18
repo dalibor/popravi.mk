@@ -26,6 +26,8 @@ class Comment < ActiveRecord::Base
   def commenter_avatar
     if user
       user.avatar(:s)
+    elsif email.blank?
+      "avatars/default_s.png"
     else
       gravatar_url
     end
