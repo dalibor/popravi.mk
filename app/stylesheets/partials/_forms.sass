@@ -14,8 +14,8 @@ body
     .step1, .step2, .step
       background: white
       border-top: 10px #999 solid
-      overflow: hidden
       padding: 20px
+      +clearfix
 
     .step1
       margin-bottom: 30px
@@ -248,10 +248,12 @@ body
           background: white
           color: #333
 
-  &#problems_show
+  &#problems_show, &#comments_create
     .step2
-      padding-bottom: 30px
-      
+      padding-bottom: 20px
+    #bottom
+      p
+        padding: 0
   #alert
     background: white
     color: red
@@ -310,6 +312,14 @@ body
     padding: 20px
     +clearfix
     
+    ul.errors
+      margin: 20px 0
+      padding: 10px 0 10px 20px
+      
+    .inline-errors
+      color: #cc0000
+      padding: 0
+      
     .form
       float: left
     .comments
