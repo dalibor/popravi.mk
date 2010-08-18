@@ -15,6 +15,7 @@
       = link_to "Categories", admin_categories_path
       = link_to "Users", admin_users_path
       = link_to "Problems", admin_problems_path
+      = link_to "Comments", admin_comments_path
     %div#user_nav
       - if user_signed_in?
         Signed in as #{current_user.email}. Not you?

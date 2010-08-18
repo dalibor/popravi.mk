@@ -18,6 +18,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :municipalities
     admin.resources :users
     admin.resources :problems
+    admin.resources :comments
   end
 
   # api routes

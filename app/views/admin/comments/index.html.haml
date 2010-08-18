@@ -1,0 +1,27 @@
+- if @comments.empty?
+  %p No comments have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Name
+        %th User
+        %th Problem
+        %th Email
+        %th Content
+        %th Approved
+        %td Manage
+    %tbody
+      - @comments.each do |comment|
+        %tr
+          %th= comment.name
+          %th= comment.commenter_name
+          %th= comment.problem.try(:title)
+          %th= comment.email
+          %th= comment.content
+          %th= comment.approved
+          %td 
+            = link_to "Edit", edit_admin_comment_path(comment)
+            = link_to "Delete", admin_comment_path(comment), :method => "delete", :confirm => "Are you sure?"
+
+= link_to "New Comment", new_admin_comment_path
