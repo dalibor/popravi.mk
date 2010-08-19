@@ -7,22 +7,22 @@ class Api::V1::ProblemsController < ApplicationController
       #problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - #{params[:latitude]}) , 2 ) + POW( 69.1 * ( #{params[:longitude]} - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance",
                               #:joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
                               #:order => "distance ASC",
-                              #:limit => 10
+                              #:limit => 20
       problems = Problem.find :all, :select => ActiveRecord::Base.send(:sanitize_sql_array, ["problems.*, categories.name AS category_name, municipalities.name AS municipality_name, SQRT( POW( 69.1 * ( latitude - ? ) , 2 ) + POW( 69.1 * ( ? - longitude ) * COS( latitude / 57.3 ) , 2 ) ) AS distance", params[:latitude], params[:longitude]]),
                               :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
                               :order => "distance ASC",
-                              :limit => 10
+                              :limit => 20
     elsif params[:type] == "my"
       problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name", 
                               :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
                               :conditions => ['device_id = ?', params[:device_id]],
                               :order => "problems.id DESC",
-                              :limit => 10
+                              :limit => 20
     else # params[:type] == "latest"
       problems = Problem.find :all, :select => "problems.*, categories.name AS category_name, municipalities.name AS municipality_name", 
                               :joins => "JOIN categories ON categories.id = problems.category_id JOIN municipalities ON municipalities.id = problems.municipality_id",
                               :order => "problems.id DESC",
-                              :limit => 10
+                              :limit => 20
     end
 
     @problems = []
