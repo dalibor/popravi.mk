@@ -33,3 +33,6 @@
           - link_to problems_path + "?search[municipality_id]=#{municipality.id}" do
             = municipality.name 
             = municipality.problems_count
+    .total
+      Вкупно: 
+      = pluralize @problems.total_entries, "проблем"
