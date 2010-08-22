@@ -80,4 +80,18 @@ describe Problem do
       problem.errors.on(:email).should be_nil
     end
   end
+
+  describe "named scopes" do
+    describe "with_photo" do
+      it "includes problmes with photo" do
+        problem = Factory.create(:problem)
+        Problem.with_photo.should include(problem)
+      end
+
+      it "excludes problmes without photo" do
+        problem = Factory.create(:problem, :photo => nil)
+        Problem.with_photo.should_not include(problem)
+      end
+    end
+  end
 end

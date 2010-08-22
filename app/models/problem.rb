@@ -22,6 +22,9 @@ class Problem < ActiveRecord::Base
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
   validates_inclusion_of :weight, :in => 0..10 # TODO: test
 
+  # Named scopes
+  named_scope :with_photo, :conditions => 'problems.photo_file_name IS NOT NULL', :include => [:category, :municipality], :order => "id DESC", :limit => 5
+
   attr_accessor :address
 
   # Callbacks
