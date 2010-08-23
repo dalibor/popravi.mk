@@ -15,6 +15,11 @@
         - f.buttons do
           = f.commit_button "Барај", :button_html => {:name => nil}
 
+  .sidebar
+    %h2 Вкупно
+    .total
+      = pluralize @total_problems, "проблем"
+
   = render 'municipalities', :municipalities => @municipalities
 
   = render 'categories', :categories => @categories
