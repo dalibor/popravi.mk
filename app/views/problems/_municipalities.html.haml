@@ -1,0 +1,9 @@
+.sidebar
+  %h2 Општини со највеќе проблеми
+  %ul.total
+    - municipalities.each do |municipality|
+      %li
+        = link_to "#{municipality.name} #{municipality.problems_count}", municipality_problems_path(municipality)
+  .total
+    Вкупно: 
+    = pluralize @total_problems, "проблем"

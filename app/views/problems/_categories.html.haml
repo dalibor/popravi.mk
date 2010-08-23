@@ -1,0 +1,9 @@
+.sidebar
+  %h2 Категории со највеќе проблеми
+  %ul.total
+    - categories.each do |category|
+      %li
+        = link_to "#{category.name} #{category.problems_count}", "?c=#{category.id}"
+  .total
+    Вкупно: 
+    = pluralize @total_problems, "проблем"

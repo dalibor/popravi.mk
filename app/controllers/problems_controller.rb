@@ -3,9 +3,19 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:my, :ownership, :take_ownership, :update]
 
   def index
-    @search = Search.new(params[:search])
-    @problems = @search.results(:per_page => 10, :page => params[:page])
-    @municipalities = Municipality.find :all, :select => "municipalities.id, municipalities.name, COUNT(*) as problems_count", :joins => :problems, :group => "municipalities.id", :limit => 10, :order => "problems_count DESC"
+    @problems = Problem.matching(:description, params[:q]).with_category(params[:c]).with_municipality(params[:m] || params[:municipality_id]).paginate :per_page => 10, :page => params[:page], :order => "id DESC", :include => [:category, :municipality]
+
+    if params[:municipality_id].present?
+      @municipality = Municipality.find(params[:municipality_id])
+      @categories = Category.find :all, :select => "categories.id, categories.name, COUNT(*) as problems_count", :joins => :problems, :group => "categories.id", :limit => 10, :conditions => ["problems.municipality_id = ?", @municipality.id], :order => "problems_count DESC"
+      @total_problems = @municipality.problems.count
+      render :action => 'index_municipality'
+    else
+      @municipalities = Municipality.find :all, :select => "municipalities.id, municipalities.name, COUNT(*) as problems_count", :joins => :problems, :group => "municipalities.id", :limit => 10, :order => "problems_count DESC"
+      @categories = Category.find :all, :select => "categories.id, categories.name, COUNT(*) as problems_count", :joins => :problems, :group => "categories.id", :limit => 10, :order => "problems_count DESC"
+      @total_problems = Problem.count
+      render :action => 'index'
+    end
   end
 
   def take_ownership

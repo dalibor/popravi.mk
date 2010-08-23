@@ -1,0 +1,10 @@
+- if problems.empty?
+  %p Сеуште нема пријавени проблеми.
+- else
+  = render :partial => 'problems/problem', :collection => problems
+
+  = will_paginate problems
+    
+.total
+  Вкупно пронајдени: 
+  = pluralize problems.total_entries, "проблем"

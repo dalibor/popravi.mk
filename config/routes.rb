@@ -5,6 +5,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :problems, :collection => {:take_ownership => :post, :my => :get} do |problem|
     problem.resources :comments, :only => [:create]
   end
+  map.resources :municipalities, :only => [:index, :show] do |municipality|
+    municipality.resources :problems, :only => [:index]
+  end
 
   # root route
   map.root :controller => "welcome"

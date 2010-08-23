@@ -24,6 +24,9 @@ class Problem < ActiveRecord::Base
 
   # Named scopes
   named_scope :with_photo, :conditions => 'problems.photo_file_name IS NOT NULL', :include => [:category, :municipality], :order => "id DESC", :limit => 5
+  named_scope :matching, lambda {|column, value| value.blank? ? {} : {:conditions => ["#{column} LIKE ?", "%#{value}%"]} }
+  named_scope :with_category, lambda {|category_id| category_id.blank? ? {} : {:conditions => ["problems.category_id = ?", category_id]} }
+  named_scope :with_municipality, lambda {|municipality_id| municipality_id.blank? ? {} : {:conditions => ["problems.municipality_id = ?", municipality_id]} }
 
   attr_accessor :address
 

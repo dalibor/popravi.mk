@@ -24,9 +24,10 @@ Given /^There are anonymouse problems$/ do
 end
 
 Given /^there are reported problems for searching$/ do
-  Factory.create(:problem1)
+  problem1 = Factory.create(:problem1)
   Factory.create(:problem2)
   Factory.create(:problem3)
+  Factory.create(:problem3, :category => problem1.category, :municipality => problem1.municipality, :description => "Description 4")
 end
 
 Given /^there are no problems/ do
