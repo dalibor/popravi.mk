@@ -150,8 +150,8 @@ var problems_edit = problems_create = problems_update = problems_new = {
       deleteMarker();
     });
 
-    $('#address').keyup(function (e) {
-      if(e.which == 13){
+    $('#address').keypress(function (e) {
+      if (e.which === 13) {
         e.preventDefault();
         searchAddress($(this).val());
       }
@@ -168,14 +168,6 @@ var problems_edit = problems_create = problems_update = problems_new = {
       var result = lastResults[resultId];
       map.setCenter(result.geometry.location);
       $("#address").val(result.formatted_address);
-    });
-
-    // prevent submitting form by hitting Enter
-    $(window).keydown(function(event){
-      if(event.keyCode == 13) {
-        event.preventDefault();
-        return false;
-      }
     });
 
     // initialize marker if lat & lng and not empty

@@ -20,7 +20,7 @@
       пријавен пред
       = time_ago_in_words(@problem.created_at)
   
-    %p= @problem.description
+    %p= simple_format @problem.description
     
   #map_canvas
   = image_tag @problem.photo.url(:m)
@@ -60,7 +60,7 @@
           = image_tag comment.commenter_avatar
           %ul
             %li.name= comment.commenter_name
-            %li.content= comment.content
+            %li.content= simple_format comment.content
             %li.date
               пред
               = time_ago_in_words(comment.created_at)
