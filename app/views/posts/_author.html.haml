@@ -1,5 +1,5 @@
 објавено пред
 = time_ago_in_words(post.published_at)
-- if post.user.name
+- unless post.user.name.blank?
   од
   = post.user.name
