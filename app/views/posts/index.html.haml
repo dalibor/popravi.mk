@@ -10,10 +10,9 @@
         .desc
           %h4
             = link_to post.title, post_path(post.slug)
-          = post.content
+          = truncate post.content, :length => 300
           %h6
-            пред
-            = time_ago_in_words post.published_at
+            = render 'author', :post => post
 
     = will_paginate @posts
       

@@ -41,9 +41,9 @@ class Post < ActiveRecord::Base
 
   def set_slug
     if custom_slug == "1"
-      self.slug = slug.to_s.parameterize.to_s
+      self.slug = slug.to_s.to_lat.parameterize.to_s
     else
-      self.slug = title.to_s.parameterize.to_s
+      self.slug = title.to_s.to_lat.parameterize.to_s
     end
   end
 
