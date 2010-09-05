@@ -8,6 +8,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :municipalities, :only => [:index, :show] do |municipality|
     municipality.resources :problems, :only => [:index]
   end
+  map.resources :posts, :only => [:index, :show] do |post|
+    post.resources :comments, :only => [:create]
+  end
+
 
   # root route
   map.root :controller => "welcome"
@@ -22,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users
     admin.resources :problems
     admin.resources :comments
+    admin.resources :posts
   end
 
   # api routes

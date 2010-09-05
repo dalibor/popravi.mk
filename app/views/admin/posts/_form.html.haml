@@ -1,0 +1,11 @@
+- semantic_form_for [:admin, @post] do |f|
+  - f.inputs do
+    = f.input :custom_slug, :as => :boolean, :required => false
+    = f.input :slug, :required => false
+    = f.input :title
+    = f.input :content
+    = f.input :publish, :as => :boolean, :required => false
+    = f.input :comments_closed, :as => :boolean, :required => false
+  - f.buttons do
+    = f.commit_button
+

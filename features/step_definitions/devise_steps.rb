@@ -31,16 +31,14 @@ Then /^my account should not be found$/ do
 end
 
 Given /^I am authenticated as admin$/ do
-  admin_email = "admin@popravi.mk"
-  admin_password = "admin@popravi.mk"
-
-  user = User.new(:email => admin_email, :password => admin_password, :password_confirmation => admin_password)
-  user.role = "admin"
-  user.save!
-  user.confirm!
+  @user = Factory.build(:user)
+  @user.password_confirmation = @user.password
+  @user.role = "admin"
+  @user.save!
+  @user.confirm!
 
   And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{admin_email}"}
-  And %{I fill in "user_password" with "#{admin_password}"}
+  And %{I fill in "user_email" with "#{@user.email}"}
+  And %{I fill in "user_password" with "#{@user.password}"}
   And %{I press "user_submit"}
 end

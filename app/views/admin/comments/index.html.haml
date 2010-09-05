@@ -6,7 +6,8 @@
       %tr
         %th Name
         %th User
-        %th Problem
+        %th Commentable id
+        %th Commentable type
         %th Email
         %th Content
         %th Approved
@@ -16,7 +17,8 @@
         %tr
           %th= comment.name
           %th= comment.commenter_name
-          %th= comment.problem.try(:title)
+          %th= comment.commentable_id
+          %th= comment.commentable_type
           %th= comment.email
           %th= comment.content
           %th= comment.approved

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Comment do
   describe "associations" do
     it { should belong_to(:user) }
-    it { should belong_to(:problem) }
+    it { should belong_to(:commentable) }
   end
 
   describe "attributes" do
@@ -27,10 +27,16 @@ describe Comment do
       comment.errors.on(:content).should_not be_nil
     end
 
-    it "validates problem_id is present" do
-      comment = Factory.build(:comment, :problem_id => nil)
+    it "validates commentable_id is present" do
+      comment = Factory.build(:comment, :commentable => nil)
       comment.should_not be_valid
-      comment.errors.on(:problem_id).should_not be_nil
+      comment.errors.on(:commentable_id).should_not be_nil
+    end
+
+    it "validates commentable_type is present" do
+      comment = Factory.build(:comment, :commentable => nil)
+      comment.should_not be_valid
+      comment.errors.on(:commentable_type).should_not be_nil
     end
 
     it "validates email is valid" do

@@ -6,7 +6,7 @@ Feature: Search and filter problems
     Scenario: Search problems by description
         Given there are reported problems for searching
         And I am on the home page
-        When I follow "Преглед"
+        And I follow "Преглед"
         When I fill in "s_q" with "Description 1"
         And I press "Барај"
         Then I should see "Вкупно пронајдени: 1 проблем"
@@ -15,7 +15,7 @@ Feature: Search and filter problems
     Scenario: Filter problems by category
         Given there are reported problems for searching
         And I am on the home page
-        When I follow "Преглед"
+        And I follow "Преглед"
         When I select "Category 1" from "s_c"
         And I press "Барај"
         Then I should see "Вкупно пронајдени: 2 проблеми"
@@ -24,7 +24,7 @@ Feature: Search and filter problems
     Scenario: Filter problems by municipality
         Given there are reported problems for searching
         And I am on the home page
-        When I follow "Преглед"
+        And I follow "Преглед"
         When I select "Municipality 1" from "s_m"
         And I press "Барај"
         Then I should see "Вкупно пронајдени: 2 проблеми"
@@ -33,6 +33,6 @@ Feature: Search and filter problems
     Scenario: Search problems in municipality
         Given there are reported problems for searching
         And I am on the home page
-        When I follow "Преглед"
-        And I follow "Municipality 1 2"
+        And I follow "Преглед"
+        When I follow "Municipality 1 2"
         Then I should see "Вкупно пронајдени: 2 проблеми"

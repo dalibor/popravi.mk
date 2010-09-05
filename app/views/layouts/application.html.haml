@@ -31,12 +31,13 @@
               %li= link_to "поставки", edit_user_registration_path
               %li= link_to "одјави се", destroy_user_session_path
             - else
-              %li #{link_to "регистрација", new_user_registration_path} 
-              %li #{link_to "најава", new_user_session_path}
+              %li= link_to "регистрација", new_user_registration_path
+              %li= link_to "најава", new_user_session_path
 
           %ul#app_nav
             %li.report= link_to "Пријави проблем", new_problem_path
             %li.list= link_to "Преглед", problems_path
+            %li= link_to "Блог", posts_path
         
         #action
           #slogan

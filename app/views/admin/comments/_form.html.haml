@@ -1,7 +1,8 @@
 - semantic_form_for [:admin, @comment] do |f|
   - f.inputs do
     = f.input :user, :as => :select, :collection => User.find(:all, :select => "id, email as name", :order => "name ASC")
-    = f.input :problem, :as => :select, :collection => Problem.find(:all, :order => "id DESC")
+    = f.input :commentable_id, :label => 'Commentable id', :as => :string
+    = f.input :commentable_type, :label => 'Commentable type', :as => :string
     = f.input :name, :label => 'Name'
     = f.input :email, :label => 'Email'
     = f.input :content, :label => 'Content'

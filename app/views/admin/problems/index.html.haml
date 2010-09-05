@@ -1,30 +1,31 @@
-.step2
-  - if @problems.empty?
-    %p No problems have been added yet
-  - else
-    %table
-      %thead
+- if @problems.empty?
+%p No problems have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th Description
+        %th Latitude
+        %th Longitude
+        %th Category
+        %th Municipality
+        %th Email
+        %th Device ID
+        %td Manage
+    %tbody
+      - @problems.each do |problem|
         %tr
-          %th Description
-          %th Latitude
-          %th Longitude
-          %th Category
-          %th Municipality
-          %th Email
-          %th Device ID
-          %td Manage
-      %tbody
-        - @problems.each do |problem|
-          %tr
-            %th= problem.description
-            %th= problem.latitude
-            %th= problem.longitude
-            %th= problem.category.name
-            %th= problem.municipality.name
-            %th= problem.email
-            %th= problem.device_id
-            %td 
-              = link_to "Edit", edit_admin_problem_path(problem)
-              = link_to "Delete", admin_problem_path(problem), :method => "delete", :confirm => "Are you sure?"
+          %th= problem.description
+          %th= problem.latitude
+          %th= problem.longitude
+          %th= problem.category.name
+          %th= problem.municipality.name
+          %th= problem.email
+          %th= problem.device_id
+          %td 
+            = link_to "Edit", edit_admin_problem_path(problem)
+            = link_to "Delete", admin_problem_path(problem), :method => "delete", :confirm => "Are you sure?"
 
-  = link_to "New Problem", new_admin_problem_path
+= will_paginate @problems
+
+= link_to "New Problem", new_admin_problem_path

@@ -3,4 +3,4 @@
   %ul.total
     - municipalities.each do |municipality|
       %li
-        = link_to "#{municipality.name} #{municipality.problems_count}", "?m=#{municipality.id}"
+        = link_to "#{municipality.name} #{municipality.problems_count}", problems_path(:m => municipality.id)

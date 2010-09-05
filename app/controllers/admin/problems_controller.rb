@@ -13,7 +13,7 @@ class Admin::ProblemsController < ApplicationController
   layout "admin"
 
   def index
-    @problems = Problem.find(:all, :include => [:category, :municipality, :user])
+    @problems = Problem.paginate :per_page => 10, :page => params[:page], :include => [:category, :municipality, :user], :order => "id DESC"
   end
 
   def create

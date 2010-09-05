@@ -13,7 +13,7 @@ class Admin::CommentsController < ApplicationController
   layout "admin"
 
   def index
-    @comments = Comment.find(:all, :order => "id DESC", :include => [:user, :problem])
+    @comments = Comment.find(:all, :order => "id DESC", :include => :user)
   end
 
   def create

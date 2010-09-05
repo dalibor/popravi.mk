@@ -1,0 +1,28 @@
+- if @posts.empty?
+  %p No posts have been added yet
+- else
+  %table
+    %thead
+      %tr
+        %th User
+        %th Slug
+        %th Title
+        %th Content
+        %th Published at
+        %th Comments closed
+    %tbody
+      - @posts.each do |post|
+        %tr
+          %th= post.user.name
+          %th= post.slug
+          %th= post.title
+          %th= post.content
+          %th= post.published_at
+          %th= post.comments_closed
+          %td 
+            = link_to "Edit", edit_admin_post_path(post)
+            = link_to "Delete", admin_post_path(post), :method => "delete", :confirm => "Are you sure?"
+
+= will_paginate @posts
+
+= link_to "New Post", new_admin_post_path

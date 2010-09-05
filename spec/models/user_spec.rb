@@ -4,6 +4,7 @@ describe User do
   describe "associations" do
     it { should have_many(:problems) }
     it { should have_many(:comments) }
+    it { should have_many(:posts) }
   end
 
   describe "attributes" do

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # Associations
   has_many :problems
   has_many :comments, :dependent => :destroy
+  has_many :posts
 
   # Paperclip
   has_attached_file :avatar, :styles => {:s => '60x60#'},

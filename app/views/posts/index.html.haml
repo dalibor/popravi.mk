@@ -1,0 +1,26 @@
+- title("Новости")
+
+.main
+  %h2 Новости
+  - if @posts.empty?
+    %p Сеуште нема новости.
+  - else
+    - @posts.each do |post|
+      .problem
+        .desc
+          %h4
+            = link_to post.title, post_path(post.slug)
+          = post.content
+          %h6
+            пред
+            = time_ago_in_words post.published_at
+
+    = will_paginate @posts
+      
+#sidebar
+  .sidebar
+    %h2 Архива
+    %ul.total
+      - @archive_items.each do |item|
+        %li
+          = link_to "#{t('date.month_names')[item[1]]} #{item[0]}", :year => item[0], :month => item[1]

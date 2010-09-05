@@ -1,3 +1,4 @@
+- @problem ||= @commentable
 - title(@problem.title)
 - description(truncate(@problem.description, :length => 100))
 
@@ -35,36 +36,7 @@
       = link_to "најавете се", new_session_path(:user)
       доколку сакате да го измените.
 
-
-
-  
-
-  %a{:name => "comments"}
-  #comments_block
-    .form
-      - semantic_form_for [@problem, @comment] do |f|
-        = f.semantic_errors :state
-        - f.inputs do
-          - unless user_signed_in?
-            = f.input :name, :label => 'Име', :required => false
-            = f.input :email, :label => 'E-mail', :required => false
-          = f.input :content, :label => 'Коментар'
-          - unless user_signed_in?
-            %div{:style => "clear:both"}
-              = recaptcha_tags
-        - f.buttons do
-          = f.commit_button "Испрати"
-    .comments
-      - @comments.each do |comment|
-        .comment
-          = image_tag comment.commenter_avatar
-          %ul
-            %li.name= comment.commenter_name
-            %li.content= simple_format comment.content
-            %li.date
-              пред
-              = time_ago_in_words(comment.created_at)
-
+  = render 'comments/comments', :commentable => @problem
 
   :javascript
     var _lat = "#{@problem.latitude}";

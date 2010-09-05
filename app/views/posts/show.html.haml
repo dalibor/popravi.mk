@@ -1,0 +1,14 @@
+- title(@post.title)
+- description(truncate(@post.content, :length => 100))
+
+.step2
+  .name
+    %h2
+      = @post.title
+    %h4
+      објавено пред
+      = time_ago_in_words(@post.published_at)
+  
+    %p= simple_format @post.content
+
+  = render 'comments/comments', :commentable => @post

@@ -8,11 +8,10 @@ class Comment < ActiveRecord::Base
 
   # Associations
   belongs_to :user
-  belongs_to :problem
+  belongs_to :commentable, :polymorphic => true
 
   # Validations
-  validates_presence_of :content
-  validates_presence_of :problem_id
+  validates_presence_of :content, :commentable_id, :commentable_type
   validates_format_of :email, :with => EMAIL_REG_EXP, :allow_blank => true
 
   def commenter_name
