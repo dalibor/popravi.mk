@@ -10,7 +10,7 @@
     <meta name="description" content="#{yield(:description)}" />
     = yield(:head)
     
-    = stylesheet_link_tag 'formtastic', 'compiled/grid.css', 'compiled/text.css', 'compiled/screen.css', :media => 'screen, projection', :cache => true
+    = stylesheet_link_tag 'formtastic', 'compiled/screen.css', :media => 'screen, projection', :cache => true
     
   %body{:id => controller.controller_name + "_" + controller.action_name}
     #dashed
