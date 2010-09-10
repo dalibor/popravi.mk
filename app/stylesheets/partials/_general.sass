@@ -131,9 +131,14 @@ body
       margin-right: 30px
       overflow: hidden
       width: 610px
+
+      .problem:hover
+        background: #f9f9f9
+        border-left: 5px #333 solid
     
     .sidebar
       float: left
+      margin-bottom: 30px
       overflow: hidden
       width: 320px
       
@@ -162,15 +167,12 @@ body
       h2, p, .problem
         margin-bottom: 1px
         
-      p, .problem, .inputs, .total
+      p, .problem, .inputs, .total, .blog
         background: white
         border-left: 5px #fff solid
         color: #444
         font-size: 0.8em
         padding: 15px 20px 10px 15px
-        &:hover
-          background: #f9f9f9
-          border-left: 5px #333 solid
         &.total
           font-size: 0.9em
           font-weight: bold
@@ -180,7 +182,7 @@ body
       
       ul.total
         border-bottom: 1px solid #eee
-      .total
+      .total, .blog
         li
           padding-bottom: 10px
           a
