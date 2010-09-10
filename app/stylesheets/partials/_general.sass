@@ -17,15 +17,12 @@ body
 
   #map_canvas
     float: left
-    margin: 0 20px 20px 0
     width: 600px
     height: 400px
     +clearfix
 
-
   #top
     background: image_url("background.jpg") #000 center top no-repeat
-    height: 450px
     overflow: hidden
   
     a
@@ -45,7 +42,7 @@ body
           font-weight: bold
           letter-spacing: 0.1em
           line-height: 0.7em
-          padding: 40px 0 20px
+          padding-top: 18px
           
           span
             font-size: 0.36em
@@ -287,57 +284,6 @@ body
     font-size: 0.8em
     margin: 5px 0 15px 0
   
-  &#problems_index, &#problems_show
-
-    #sidebar
-      margin-bottom: -30px
-      overflow: hidden
-      .sidebar
-        margin-bottom: 30px
-        .inputs:hover, .total:hover
-          border-left: 5px white solid
-        label
-          padding-bottom: 5px
-          width: 100%
-        select, input
-          width: 280px
-          &#search_q
-            width: 370px
-        .buttons
-          padding-left: 0
-          input
-            background: #333
-            color: orange
-            cursor: pointer
-            padding: 10px 25px
-            text-transform: uppercase
-            width: 120px
-            &:hover
-              background: green
-              color: #fff
-              
-  &#problems_show, &#posts_show, &#comments_create
-    .step2
-      padding-bottom: 30px
-    p
-      padding-bottom: 20px
-      color: #444
-      font-size: 0.9em
-    .if
-      background: #eee
-      margin: 0 0 20px 0
-      padding: 20px
-      clear: both
-    ul.social 
-      float: right
-      li
-        display: inline
-        float: left
-        font-size: 0.85em
-        margin: 5px 15px 0 0
-        img
-          margin-bottom: -4px
-          padding-right: 0
           
   .pagination
     background: white

@@ -1,0 +1,107 @@
+body
+
+  &#welcome_index
+    #top
+      height: 450px
+      #header
+        #logo
+          a
+            padding: 40px 0 20px
+
+  &#problems_index, &#problems_show
+    #sidebar
+      margin-bottom: -30px
+      overflow: hidden
+      .sidebar
+        margin-bottom: 30px
+        .inputs:hover, .total:hover
+          border-left: 5px white solid
+        label
+          padding-bottom: 5px
+          width: 100%
+        select, input
+          width: 280px
+          &#search_q
+            width: 370px
+        .buttons
+          padding-left: 0
+          input
+            background: #333
+            color: orange
+            cursor: pointer
+            padding: 10px 25px
+            text-transform: uppercase
+            width: 120px
+            &:hover
+              background: green
+              color: #fff
+              
+  &#problems_show, &#posts_show, &#comments_create
+    .step2
+      padding-bottom: 30px
+    p
+      padding-bottom: 20px
+      color: #444
+      font-size: 0.9em
+    .if
+      background: #eee
+      margin: 0 0 20px 0
+      padding: 20px
+      clear: both
+    ul.social 
+      float: right
+      li
+        display: inline
+        float: left
+        font-size: 0.85em
+        margin: 5px 15px 0 0
+        img
+          margin-bottom: -4px
+          padding-right: 0
+    #map_canvas
+      margin: 0 20px 20px 0
+    
+  &#registrations_edit
+    #notice
+      background: white
+      color: green
+      margin-left: 180px
+      padding: 20px
+      width: 600px
+      
+  &#problems_ownership
+    p
+      color: #555
+      font-size: 0.9em
+      padding-bottom: 10px
+    input
+      background: #333
+      color: orange
+      cursor: pointer
+      font-size: 0.9em
+      height: auto
+      padding: 10px 10px 7px 10px
+      text-transform: uppercase
+      width: 120px
+      &:hover
+        background: green
+        color: white
+        
+  &#problems_my
+    .total
+      text-transform: none
+      label
+        float: left
+        padding: 10px 0 20px 5px 
+        width: 255px
+      input
+        clear: both
+        float: left
+        width: auto
+      li
+        overflow: hidden
+        &.button input
+          background: #333
+          color: orange
+          cursor: pointer
+          text-transform: uppercase
