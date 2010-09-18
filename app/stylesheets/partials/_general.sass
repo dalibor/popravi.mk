@@ -85,14 +85,16 @@ body
       
       #slogan
         h2
+          color: #eee
           font-size: 1.5em
           font-weight: bold
           padding-bottom: 10px
+          text-transform: none
         p
           color: #aaa
           font-size: 0.8em
           line-height: 1.2em
-          padding-bottom: 20px
+          padding-bottom: 30px
           
       #download, #report
         float: left
@@ -179,6 +181,29 @@ body
           text-transform: uppercase
         &.problem
           padding-right: 0
+          
+      .blog
+        line-height: 1.3em
+        padding-top: 20px
+        
+        li
+          list-style-type: none
+          color: #999
+          
+          a
+            display: inline-block
+            font-weight: bold
+            padding: 0 7px 7px 0
+            text-decoration: none
+            text-transform: uppercase
+            &:hover
+              text-decoration: underline
+            
+          p
+            color: #444
+            font-size: 1em
+            border: none
+            padding: 0
       
       ul.total
         border-bottom: 1px solid #eee
@@ -233,6 +258,7 @@ body
           
         .desc
           float: left
+          line-height: 1.3em
           
           h6
             padding: 10px 0

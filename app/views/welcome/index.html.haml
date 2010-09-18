@@ -12,10 +12,11 @@
       - @posts.each do |post|
         %li
           = link_to post.title, post
-          објавено пред
-          = time_ago_in_words(post.published_at)
-          %br
-          = truncate post.content, :length => 150
+          %span
+            објавено пред
+            = time_ago_in_words(post.published_at)
+          %p
+            = truncate post.content, :length => 300
 
   .sidebar
     %h2 Twitter
