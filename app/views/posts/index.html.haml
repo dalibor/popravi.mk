@@ -12,7 +12,7 @@
             = link_to post.title, post_path(post.slug)
           = truncate post.content, :length => 300
           %h6
-            = render 'author', :post => post
+            = render 'posts/timestamp', :post => post
 
     = will_paginate @posts
       
