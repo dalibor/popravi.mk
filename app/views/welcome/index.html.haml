@@ -13,8 +13,7 @@
         %li
           = link_to post.title, post
           %span
-            објавено пред
-            = time_ago_in_words(post.published_at)
+            = render 'posts/timestamp', :post => post
           %p
             = truncate post.content, :length => 300
 

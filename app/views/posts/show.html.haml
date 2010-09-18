@@ -6,7 +6,7 @@
     %h2
       = @post.title
     %h4
-      = render 'author', :post => @post
+      = render 'posts/timestamp', :post => @post
   
     %p= simple_format @post.content
 
