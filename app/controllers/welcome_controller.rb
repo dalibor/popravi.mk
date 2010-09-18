@@ -1,8 +1,7 @@
 class WelcomeController < ApplicationController
 
   def index
-    @problems = Problem.with_photo
-    @now = Time.now
-    @posts = Post.published.for_month(@now.year, @now.month).paginate :per_page => 3, :page => params[:page]
+    @problems = Problem.find :all, :include => [:category, :municipality], :order => "id DESC", :limit => 5
+    @post = Post.published.last
   end
 end

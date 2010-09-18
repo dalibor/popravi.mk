@@ -9,13 +9,12 @@
   .sidebar
     %h2 Блог
     .blog
-      - @posts.each do |post|
-        %li
-          = link_to post.title, post
-          %span
-            = render 'posts/timestamp', :post => post
-          %p
-            = truncate post.content, :length => 300
+      %li
+        = link_to @post.title, @post
+        %span
+          = render 'posts/timestamp', :post => @post
+        %p
+          = truncate @post.content, :length => 300
 
   .sidebar
     %h2 Twitter
