@@ -10,11 +10,12 @@
     %h2 Блог
     .blog
       %li
-        = link_to @post.title, @post
-        %span
-          = render 'posts/timestamp', :post => @post
-        %p
-          = truncate @post.content, :length => 300
+        - if @post
+          = link_to @post.title, @post
+          %span
+            = render 'posts/timestamp', :post => @post
+          %p
+            = truncate @post.content, :length => 300
 
   .sidebar
     %h2 Twitter

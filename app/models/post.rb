@@ -49,7 +49,7 @@ class Post < ActiveRecord::Base
 
   def set_published_at
     if publish == "1"
-      self.published_at = Time.now
+      self.published_at = Time.now if published_at_was == nil
     elsif publish == "0"
       self.published_at = nil
     end
