@@ -21,20 +21,21 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'warden', :version => '>=0.10.3', :source => 'http://gemcutter.org'
   config.gem 'devise', :version => '=1.0.8', :source => 'http://gemcutter.org'
-  config.gem "compass", :version => ">= 0.10.2"
+  config.gem 'compass', :version => '>= 0.10.2'
   config.gem 'compass-960-plugin', :lib => false
   config.gem 'haml'
   config.gem 'formtastic'
-  config.gem 'responders', :version => "= 0.4.3"
-  config.gem 'inherited_resources', :version => "= 1.0.6"
+  config.gem 'responders', :version => '= 0.4.3'
+  config.gem 'inherited_resources', :version => '= 1.0.6'
   config.gem 'will_paginate'
   config.gem 'paperclip'
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
   config.gem 'web-app-theme', :lib => 'web_app_theme'
   config.gem 'acts_as_list'
-  config.gem "ambethia-recaptcha", :lib => "recaptcha/rails", :source => "http://gems.github.com"
+  config.gem 'ambethia-recaptcha', :lib => 'recaptcha/rails', :source => 'http://gems.github.com'
   config.gem 'gravtastic', :version => '>= 2.1.0'
   config.gem 'cyrillizer', :version => '=0.1.0'
+  config.gem 'RedCloth', :version => '>=4.2.3', :lib => 'redcloth'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

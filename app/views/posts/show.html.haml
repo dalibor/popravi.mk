@@ -8,6 +8,6 @@
     %h4
       = render 'posts/timestamp', :post => @post
   
-    %p= simple_format @post.content
+    %p= textilize(@post.content)
 
   = render 'comments/comments', :commentable => @post
