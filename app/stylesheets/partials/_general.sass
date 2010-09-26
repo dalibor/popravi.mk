@@ -27,6 +27,20 @@ body
   
     a
       font-size: 0.8em
+      
+    .wrapper
+      position: relative
+      
+      #vip
+
+        position: absolute
+        top: 120px
+        right: -40px
+        @include scale(0.9)
+        @include rotate(10deg)
+        &:hover
+          @include scale(1)
+          @include rotate(0deg)
         
     #header
       float: left
