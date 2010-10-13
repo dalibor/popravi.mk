@@ -19,12 +19,12 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
-  config.gem 'warden', :version => '>=0.10.3', :source => 'http://gemcutter.org'
+  config.gem 'warden', :version => '=0.10.7', :source => 'http://gemcutter.org'
   config.gem 'devise', :version => '=1.0.8', :source => 'http://gemcutter.org'
-  config.gem 'compass', :version => '>= 0.10.2'
-  config.gem 'compass-960-plugin', :lib => false
-  config.gem 'haml'
-  config.gem 'formtastic'
+  config.gem 'compass', :version => '= 0.10.5'
+  config.gem 'compass-960-plugin', :lib => false, :version => '0.10.0'
+  config.gem 'haml', :version => '=3.0.21'
+  config.gem 'formtastic', :version => '=1.1.0'
   config.gem 'responders', :version => '= 0.4.3'
   config.gem 'inherited_resources', :version => '= 1.0.6'
   config.gem 'will_paginate'
