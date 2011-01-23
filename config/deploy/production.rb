@@ -1,5 +1,5 @@
 set :application, "popravi.mk"
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_to, "/home/#{user}/www/#{application}"
 set :rails_env, "production"
 set :domain, "#{user}@#{application}"
 

@@ -1,14 +1,14 @@
 require 'capistrano/ext/multistage' # for multi stage
 
 set :repository,  "git@97.107.140.182:popravi.git"
-set :user, "detrimental"
+set :user, "dalybr"
 set :scm, :git
 set :stages, %w(staging production)
 set :default_stage, "staging"
 set :use_sudo, false
 # set :keep_releases, 1
 
-# If you’re not seeing commands prompt like they used to, like svn or passwd, 
+# If you’re not seeing commands prompt like they used to, like svn or passwd,
 # you can return to the previous behavior by adding the following line to your capfile:
 default_run_options[:pty] = true
 
