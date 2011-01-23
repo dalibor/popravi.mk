@@ -13,7 +13,6 @@ db/schema.rb
 .idea
 .sass-cache
 mkmf.log
-.rvmrc
 public/stylesheets/compiled
 public/assets
 public/javascripts/all.js
