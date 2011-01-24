@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden', :version => '=0.10.7', :source => 'http://gemcutter.org'
   config.gem 'devise', :version => '=1.0.8', :source => 'http://gemcutter.org'
   config.gem 'compass', :version => '= 0.10.5'
-  config.gem 'compass-960-plugin', :lib => false, :version => '0.10.0'
+  config.gem 'compass-960-plugin', :lib => false, :version => '=0.10.5'
   config.gem 'haml', :version => '=3.0.21'
   config.gem 'formtastic', :version => '=1.1.0'
   config.gem 'responders', :version => '= 0.4.3'
@@ -30,12 +30,13 @@ Rails::Initializer.run do |config|
   config.gem 'will_paginate'
   config.gem 'paperclip'
   config.gem 'sqlite3-ruby', :lib => 'sqlite3'
-  config.gem 'web-app-theme', :lib => 'web_app_theme'
+  config.gem 'web-app-theme', :lib => 'web_app_theme', :version => '=0.5.3'
   config.gem 'acts_as_list'
   config.gem 'ambethia-recaptcha', :lib => 'recaptcha/rails', :source => 'http://gems.github.com'
-  config.gem 'gravtastic', :version => '>= 2.1.0'
+  config.gem 'gravtastic', :version => '= 2.2.0'
   config.gem 'cyrillizer', :version => '=0.1.0'
-  config.gem 'RedCloth', :version => '>=4.2.3', :lib => 'redcloth'
+  config.gem 'RedCloth', :version => '=4.2.3', :lib => 'redcloth'
+  config.gem 'smurf', :version => '=1.0.4'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
