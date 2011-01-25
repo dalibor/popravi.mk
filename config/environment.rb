@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   config.gem 'warden', :version => '=0.10.7', :source => 'http://gemcutter.org'
   config.gem 'devise', :version => '=1.0.8', :source => 'http://gemcutter.org'
   config.gem 'compass', :version => '= 0.10.5'
-  config.gem 'compass-960-plugin', :lib => false, :version => '0.10.0'
+  config.gem 'compass-960-plugin', :lib => false, :version => '=0.10.5'
   config.gem 'haml', :version => '=3.0.21'
   config.gem 'formtastic', :version => '=1.1.0'
   config.gem 'responders', :version => '= 0.4.3'
