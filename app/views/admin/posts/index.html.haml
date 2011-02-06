@@ -1,28 +1,36 @@
-- if @posts.empty?
-  %p No posts have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th User
-        %th Slug
-        %th Title
-        %th Content
-        %th Published at
-        %th Comments closed
-    %tbody
-      - @posts.each do |post|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_posts_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_post_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Posts
+    .inner
+      %table.table
         %tr
-          %th= post.user.name
-          %th= post.slug
-          %th= post.title
-          %th= post.content
-          %th= post.published_at
-          %th= post.comments_closed
-          %td 
-            = link_to "Edit", edit_admin_post_path(post)
-            = link_to "Delete", admin_post_path(post), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_post.user", :default => t("activerecord.labels.user", :default => "User"))
+          %th= t("activerecord.attributes.admin_post.title", :default => t("activerecord.labels.title", :default => "Title"))
+          %th= t("activerecord.attributes.admin_post.published_ad", :default => t("activerecord.labels.published_at", :default => "Published at"))
+          %th= t("activerecord.attributes.admin_post.comments_closed", :default => t("activerecord.labels.comments_closed", :default => "Comments closed"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @posts.each do |post|
+          %tr{:class => cycle("odd", "even")}
+            %td= post.id
+            %td= post.user.try(:name)
+            %td= link_to post.title, admin_post_path(post)
+            %td= post.published_at
+            %td= post.comments_closed
+            %td= post.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_post_path(post)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_post_path(post)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_post_path(post), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @posts
 
-= will_paginate @posts
-
-= link_to "New Post", new_admin_post_path
+- content_for :sidebar, render(:partial => 'sidebar')
