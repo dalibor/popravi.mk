@@ -28,15 +28,15 @@ describe User do
     end
 
     it "has potentially reported problems" do
-      Factory.create(:problem1)
-      Factory.create(:problem3)
-      user = Factory.create(:user)
+      Factory.create(:problem1, :email => "user@popravi.mk")
+      Factory.create(:problem3, :email => "user@popravi.mk")
+      user = Factory.create(:user, :email => "user@popravi.mk")
       user.has_potentially_reported_problems?.should == true
     end
 
     it "can count potentially reported problems" do
-      Factory.create(:problem1)
-      user = Factory.create(:user)
+      Factory.create(:problem1, :email => "user@popravi.mk")
+      user = Factory.create(:user, :email => "user@popravi.mk")
       user.potentially_reported_problems.length.should == 1
     end
 

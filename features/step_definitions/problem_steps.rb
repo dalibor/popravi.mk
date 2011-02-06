@@ -2,14 +2,6 @@ And /^I change the value of the hidden field "([^\"]*)" to "([^\"]*)"$/ do |fiel
   msg = "cannot set value of hidden field with name '#{field_name}'"
   xpath = %{//input[@type="hidden" and @name="#{field_name}"]}
   page.locate(:xpath, xpath, msg).set(value)
-end 
-
-Given /^category exists$/ do
-  Factory.create(:category)
-end
-
-Given /^municipality exists$/ do
-  Factory.create(:municipality)
 end
 
 Given /^There are problems reported$/ do

@@ -1,25 +1,32 @@
-- if @users.empty?
-  %p No users have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Email
-        %th Role
-        %th Confirmed at
-        %th Last sign in at
-        %td Manage
-    %tbody
-      - @users.each do |user|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_users_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_user_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Users
+    .inner
+      %table.table
         %tr
-          %th= user.name
-          %th= user.email
-          %th= user.role
-          %th= user.confirmed_at
-          %th= user.last_sign_in_at
-          %td 
-            = link_to "Edit", edit_admin_user_path(user)
-            = link_to "Delete", admin_user_path(user), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_user.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @users.each do |user|
+          %tr{:class => cycle("odd", "even")}
+            %td= user.id
+            %td= link_to user.name, admin_user_path(user)
+            %td= user.email
+            %td= user.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_user_path(user)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_user_path(user)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_user_path(user), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @users
 
-= link_to "New User", new_admin_user_path
+- content_for :sidebar, render(:partial => 'sidebar')

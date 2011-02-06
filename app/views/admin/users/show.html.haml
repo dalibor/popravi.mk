@@ -1,0 +1,76 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to t("web-app-theme.list", :default => "List"), admin_users_path
+      %li= link_to t("web-app-theme.new", :default => "New"), new_admin_user_path
+      %li.active= link_to t("web-app-theme.show", :default => "Show"), admin_user_path
+  .content
+    .inner
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
+        = @user.name
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.role", :default => t("activerecord.labels.role", :default => "Role")) }:</b>
+        = @user.role
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.problems_count", :default => t("activerecord.labels.problems_count", :default => "Problems count")) }:</b>
+        = @user.problems_count
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        = @user.email
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.encrypted_password", :default => t("activerecord.labels.encrypted_password", :default => "Encrypted password")) }:</b>
+        = @user.encrypted_password
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.password_salt", :default => t("activerecord.labels.password_salt", :default => "Password salt")) }:</b>
+        = @user.password_salt
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.confirmation_token", :default => t("activerecord.labels.confirmation_token", :default => "Confirmation token")) }:</b>
+        = @user.confirmation_token
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.confirmed_at", :default => t("activerecord.labels.confirmed_at", :default => "Confirmed at")) }:</b>
+        = @user.confirmed_at
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.confirmation_sent_at", :default => t("activerecord.labels.confirmation_sent_at", :default => "Confirmation sent at")) }:</b>
+        = @user.confirmation_sent_at
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.reset_password_token", :default => t("activerecord.labels.reset_password_token", :default => "Reset password token")) }:</b>
+        = @user.reset_password_token
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.remember_token", :default => t("activerecord.labels.remember_token", :default => "Remember token")) }:</b>
+        = @user.remember_token
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.remember_created_at", :default => t("activerecord.labels.remember_created_at", :default => "Remember created at")) }:</b>
+        = @user.remember_created_at
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.sign_in_count", :default => t("activerecord.labels.sign_in_count", :default => "Sign in count")) }:</b>
+        = @user.sign_in_count
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.current_sign_in_at", :default => t("activerecord.labels.current_sign_in_at", :default => "Current sign in at")) }:</b>
+        = @user.current_sign_in_at
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.last_sign_in_at", :default => t("activerecord.labels.last_sign_in_at", :default => "Last sign in at")) }:</b>
+        = @user.last_sign_in_at
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.current_sign_in_ip", :default => t("activerecord.labels.current_sign_in_ip", :default => "Current sign in ip")) }:</b>
+        = @user.current_sign_in_ip
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.last_sign_in_ip", :default => t("activerecord.labels.last_sign_in_ip", :default => "Last sign in ip")) }:</b>
+        = @user.last_sign_in_ip
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.avatar_file_name", :default => t("activerecord.labels.avatar_file_name", :default => "Avatar file name")) }:</b>
+        = @user.avatar_file_name
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.avatar_content_type", :default => t("activerecord.labels.avatar_content_type", :default => "Avatar content type")) }:</b>
+        = @user.avatar_content_type
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.avatar_file_size", :default => t("activerecord.labels.avatar_file_size", :default => "Avatar file size")) }:</b>
+        = @user.avatar_file_size
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.avatar_updated_at", :default => t("activerecord.labels.avatar_updated_at", :default => "Avatar updated at")) }:</b>
+        = @user.avatar_updated_at
+      .wat-cf
+        #{ link_to "#{image_tag("web-app-theme/application_edit.png", :alt => t("web-app-theme.edit", :default=> "Edit"))} #{t("web-app-theme.edit", :default=> "Edit")}", edit_admin_user_path(@user), :class => "button" } 
+        #{ link_to "#{image_tag("web-app-theme/cross.png", :alt => t("web-app-theme.delete", :default=> "Delete"))} #{t("web-app-theme.delete", :default => "Delete")}", admin_user_path(@user), :method => "delete", :class => "button", :confirm => t("web-app-theme.confirm", :default => "Are you sure?") }
+
+- content_for :sidebar, render(:partial => 'sidebar')

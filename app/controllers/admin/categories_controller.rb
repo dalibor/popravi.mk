@@ -13,7 +13,8 @@ class Admin::CategoriesController < ApplicationController
   layout "admin"
 
   def index
-    @categories = Category.find(:all, :order => "position ASC")
+    @categories = Category.paginate :all, :order => "position ASC",
+                                    :per_page => 10, :page => params[:page]
   end
 
   def create
@@ -42,7 +43,7 @@ class Admin::CategoriesController < ApplicationController
     flash[:notice] = 'Category was successfully moved lower.'
     redirect_to admin_categories_url
   end
-  
+
   def move_up
     @category = Category.find(params[:id])
     @category.move_higher

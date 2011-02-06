@@ -13,7 +13,8 @@ class Admin::PostsController < ApplicationController
   layout "admin"
 
   def index
-    @posts = Post.paginate :per_page => 10, :page => params[:page], :order => "id DESC"
+    @posts = Post.paginate :all, :order => "created_at DESC",
+                           :per_page => 10, :page => params[:page]
   end
 
   def create

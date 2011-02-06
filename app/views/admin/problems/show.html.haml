@@ -1,0 +1,49 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to t("web-app-theme.list", :default => "List"), admin_problems_path
+      %li= link_to t("web-app-theme.new", :default => "New"), new_admin_problem_path
+      %li.active= link_to t("web-app-theme.show", :default => "Show"), admin_problem_path
+  .content
+    .inner
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
+        = @problem.user.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category")) }:</b>
+        = @problem.category.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality")) }:</b>
+        = @problem.municipality.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description")) }:</b>
+        = @problem.description
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status")) }:</b>
+        = @problem.status
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.latitude", :default => t("activerecord.labels.latitude", :default => "Latitude")) }:</b>
+        = @problem.latitude
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.longitude", :default => t("activerecord.labels.longitude", :default => "Longitude")) }:</b>
+        = @problem.longitude
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        = @problem.email
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device")) }:</b>
+        = @problem.device_id
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.photo_file_name", :default => t("activerecord.labels.photo_file_name", :default => "Photo file name")) }:</b>
+        = @problem.photo_file_name
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.photo", :default => t("activerecord.labels.photo", :default => "Photo")) }:</b>
+        = image_tag @problem.photo.url(:m)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.weight", :default => t("activerecord.labels.weight", :default => "Weight")) }:</b>
+        = @problem.weight
+      .wat-cf
+        #{ link_to "#{image_tag("web-app-theme/application_edit.png", :alt => t("web-app-theme.edit", :default=> "Edit"))} #{t("web-app-theme.edit", :default=> "Edit")}", edit_admin_problem_path(@problem), :class => "button" }
+        #{ link_to "#{image_tag("web-app-theme/cross.png", :alt => t("web-app-theme.delete", :default=> "Delete"))} #{t("web-app-theme.delete", :default => "Delete")}", admin_problem_path(@problem), :method => "delete", :class => "button", :confirm => t("web-app-theme.confirm", :default => "Are you sure?") }
+
+- content_for :sidebar, render(:partial => 'sidebar')

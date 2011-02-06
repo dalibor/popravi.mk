@@ -1,34 +1,53 @@
 !!!
 %html
   %head
-    %meta{'http-equiv' => "content-type", :content => "text/html;charset=UTF-8"}
-    %title Administration
-    = stylesheet_link_tag :all
-    = stylesheet_link_tag 'compiled/grid.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'compiled/text.css', :media => 'screen, projection'
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title Поправи.мк
+    = stylesheet_link_tag "web_app_theme", "compiled/web_app_theme_override", "themes/drastic-dark/style", :cache => true
   %body
-    %div#admin_nav
-      = link_to "Home", root_path
-      = link_to "Countries", admin_countries_path
-      = link_to "Regions", admin_regions_path
-      = link_to "Municipalities", admin_municipalities_path
-      = link_to "Categories", admin_categories_path
-      = link_to "Users", admin_users_path
-      = link_to "Problems", admin_problems_path
-      = link_to "Comments", admin_comments_path
-      = link_to "Posts", admin_posts_path
-    %div#user_nav
-      - if user_signed_in?
-        Signed in as #{current_user.email}. Not you?
-        = link_to "Sign out", destroy_user_session_path
-      - else
-        #{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}
+    #container
+      #header
+        %h1 <a href="/">Поправи.мк</a>
+        #user-navigation
+          %ul.wat-cf
+            %li= link_to "Settings", edit_user_registration_path
+            %li= link_to "Logout", destroy_user_session_path, :class => "logout"
+        <div id="main-navigation">
+        <ul class="wat-cf">
+        %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
+          %a{:href => admin_problems_path} Problems
 
-    - flash.each do |key, msg|
-      = content_tag :div, msg, :id => key
+        %li{:class => controller.controller_path == 'admin/comments' ? 'active' : '' }
+          %a{:href => admin_comments_path} Comments
 
-    = yield
-    
-    = javascript_include_tag 'jquery/jquery-1.4.2.min'
-    = javascript_include_tag :all, :cache => true
+        %li{:class => controller.controller_path == 'admin/users' ? 'active' : '' }
+          %a{:href => admin_users_path} Users
 
+        %li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
+          %a{:href => admin_posts_path} Posts
+
+        %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
+          %a{:href => admin_categories_path} Categories
+
+        %li{:class => controller.controller_path == 'admin/countries' ? 'active' : '' }
+          %a{:href => admin_countries_path} Countries
+
+        %li{:class => controller.controller_path == 'admin/regions' ? 'active' : '' }
+          %a{:href => admin_regions_path} Regions
+
+        %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
+          %a{:href => admin_municipalities_path} Municipalities
+        </ul>
+        </div>
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            .message{:class => type.to_s}
+              <p>#{ message }</p>
+        #main
+          = yield
+          #footer
+            .block
+              <p>#{ Time.now.year } Поправи.мк</p>
+        #sidebar
+          = yield :sidebar

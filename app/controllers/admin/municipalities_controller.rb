@@ -13,7 +13,8 @@ class Admin::MunicipalitiesController < ApplicationController
   layout "admin"
 
   def index
-    @municipalities = Municipality.find :all, :include => :region
+    @municipalities = Municipality.paginate :all, :include => :region,
+                                            :per_page => 10, :page => params[:page]
   end
 
   def create

@@ -1,19 +1,32 @@
-- if @municipalities.empty?
-  %p No municipalities have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Region
-        %td Manage
-    %tbody
-      - @municipalities.each do |municipality|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_municipalities_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_municipality_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Municipalities
+    .inner
+      %table.table
         %tr
-          %th= municipality.name
-          %th= municipality.region.name
-          %td 
-            = link_to "Edit", edit_admin_municipality_path(municipality)
-            = link_to "Delete", admin_municipality_path(municipality), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_municipality.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.admin_municipality.region", :default => t("activerecord.labels.region", :default => "Region"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @municipalities.each do |municipality|
+          %tr{:class => cycle("odd", "even")}
+            %td= municipality.id
+            %td= link_to municipality.name, admin_municipality_path(municipality)
+            %td= municipality.region.try(:name)
+            %td= municipality.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_municipality_path(municipality)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_municipality_path(municipality)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_municipality_path(municipality), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @municipalities
 
-= link_to "New Municipality", new_admin_municipality_path
+- content_for :sidebar, render(:partial => 'sidebar')

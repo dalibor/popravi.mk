@@ -12,6 +12,11 @@ class Admin::CountriesController < ApplicationController
   # Layout
   layout "admin"
 
+  def index
+    @countries = Country.paginate :all, :order => "name ASC",
+                                  :per_page => 10, :page => params[:page]
+  end
+
   def create
     create! do |success, failure|
       flash[:notice] = "Country was successfully created"

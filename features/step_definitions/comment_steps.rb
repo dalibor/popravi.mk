@@ -9,7 +9,3 @@ end
 Given /^There are no comments/ do
   Comment.count == 0
 end
-
-Given /^There are comments/ do
-  Factory.create(:comment, :user => @user)
-end

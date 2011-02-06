@@ -13,7 +13,8 @@ class Admin::RegionsController < ApplicationController
   layout "admin"
 
   def index
-    @regions = Region.find :all, :include => :country
+    @regions = Region.paginate :all, :include => :country,
+                               :per_page => 10, :page => params[:page]
   end
 
   def create
