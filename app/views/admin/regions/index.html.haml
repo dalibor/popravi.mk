@@ -10,7 +10,7 @@
         %tr
           %th.first ID
           %th= t("activerecord.attributes.admin_region.name", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("activerecord.attributes.admin_region.country_id", :default => t("activerecord.labels.country_id", :default => "Country"))
+          %th= t("activerecord.attributes.admin_region.country", :default => t("activerecord.labels.country_id", :default => "Country"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @regions.each do |region|

@@ -1,31 +1,38 @@
-- if @problems.empty?
-  %p No problems have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Description
-        %th Latitude
-        %th Longitude
-        %th Category
-        %th Municipality
-        %th Email
-        %th Device ID
-        %td Manage
-    %tbody
-      - @problems.each do |problem|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_problems_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_problem_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Problems
+    .inner
+      %table.table
         %tr
-          %th= problem.description
-          %th= problem.latitude
-          %th= problem.longitude
-          %th= problem.category.name
-          %th= problem.municipality.name
-          %th= problem.email
-          %th= problem.device_id
-          %td 
-            = link_to "Edit", edit_admin_problem_path(problem)
-            = link_to "Delete", admin_problem_path(problem), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description"))
+          %th= t("activerecord.attributes.admin_problem.user", :default => t("activerecord.labels.user", :default => "User"))
+          %th= t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category"))
+          %th= t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
+          %th= t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @problems.each do |problem|
+          %tr{:class => cycle("odd", "even")}
+            %td= problem.id
+            %td= link_to truncate(problem.description, :length => 50), admin_problem_path(problem)
+            %td= problem.user.try(:name)
+            %td= problem.category.try(:name)
+            %td= problem.municipality.try(:name)
+            %td= problem.device_id
+            %td= problem.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_problem_path(problem)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_problem_path(problem)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_problem_path(problem), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @problems
 
-= will_paginate @problems
-
-= link_to "New Problem", new_admin_problem_path
+- content_for :sidebar, render(:partial => 'sidebar')

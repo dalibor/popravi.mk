@@ -9,8 +9,8 @@
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_municipality.region_id", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("activerecord.attributes.admin_municipality.region_id", :default => t("activerecord.labels.region_id", :default => "Region"))
+          %th= t("activerecord.attributes.admin_municipality.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.admin_municipality.region", :default => t("activerecord.labels.region", :default => "Region"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @municipalities.each do |municipality|

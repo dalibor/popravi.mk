@@ -1,6 +1,6 @@
 
 .group
-  = f.label :region_id, t("activerecord.attributes.municipality.region_id", :default => "Region"), :class => :label
+  = f.label :region_id, t("activerecord.attributes.municipality.region", :default => "Region"), :class => :label
   = f.collection_select :region_id, Region.find(:all, :order => "name ASC"), :id, :name, :html => {:class => 'text_field'}
   <span class="description">Ex: a simple text</span>
 
