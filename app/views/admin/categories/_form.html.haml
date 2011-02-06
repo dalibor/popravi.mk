@@ -1,6 +1,10 @@
-- semantic_form_for [:admin, @category] do |f|
-  - f.inputs do
-    = f.input :name, :label => 'Name'
-  - f.buttons do
-    = f.commit_button
+.group
+  = f.label :name, t("activerecord.attributes.category.name", :default => "Name"), :class => :label
+  = f.text_field :name, :class => 'text_field'
+  <span class="description">Ex: a simple text</span>
 
+.group.navform.wat-cf
+  %button.button{:type => 'submit'}
+    = image_tag("web-app-theme/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  = link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", admin_categories_path, :class => "button"

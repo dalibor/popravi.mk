@@ -26,4 +26,4 @@ config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.
 config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
 config.gem 'capybara',         :lib => false, :version => '>=0.3.5' unless File.directory?(File.join(Rails.root, 'vendor/plugins/capybara'))
 config.gem 'email_spec',       :lib => 'email_spec'
-
+config.gem 'pickle', :version => '=0.4.4'

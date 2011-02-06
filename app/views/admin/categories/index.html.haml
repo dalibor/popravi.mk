@@ -1,20 +1,36 @@
-- if @categories.empty?
-  %p No categories have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Position
-        %td Manage
-    %tbody
-      - @categories.each do |category|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_categories_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_category_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Categories
+    .inner
+      %table.table
         %tr
-          %th= category.name
-          %th 
-            = [(link_to("Move Up", move_up_admin_category_path(category)) unless category.first?), (link_to("Move Down", move_down_admin_category_path(category)) unless category.last?)].compact.join(" | ") 
-          %td 
-            = link_to "Edit", edit_admin_category_path(category)
-            = link_to "Delete", admin_category_path(category), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_category.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th{:colspan => 2}= t("web-app-theme.position", :default => "Position")
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @categories.each do |category|
+          %tr{:class => cycle("odd", "even")}
+            %td= category.id
+            %td= link_to category.name, admin_category_path(category)
+            %td
+              = link_to(image_tag('go-down.png', :alt => 'Move down', :title => 'Move down'), move_down_admin_category_path(category)) unless category.last?
+            %td
+              = link_to(image_tag('go-up.png', :alt => 'Move up', :title => 'Move up'), move_up_admin_category_path(category)) unless category.first?
 
-= link_to "New Category", new_admin_category_path
+            %td= category.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_category_path(category)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_category_path(category)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_category_path(category), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @categories
+
+- content_for :sidebar, render(:partial => 'sidebar')
