@@ -1,3 +1,3 @@
-Factory.define :region do |region|
-  region.name "Skopski"
+Factory.define :region do |f|
+  f.name "Skopski"
 end

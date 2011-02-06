@@ -17,6 +17,9 @@
         <ul class="wat-cf">
         %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
           %a{:href => admin_categories_path} Categories
+        
+        %li{:class => controller.controller_path == 'admin/regions' ? 'active' : '' }
+          %a{:href => admin_regions_path} Regions
         </ul>
         </div>
       #wrapper.wat-cf

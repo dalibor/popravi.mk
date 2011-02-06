@@ -1,19 +1,32 @@
-- if @regions.empty?
-  %p No regions have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Name
-        %th Country
-        %td Manage
-    %tbody
-      - @regions.each do |region|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_regions_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_region_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Regions
+    .inner
+      %table.table
         %tr
-          %th= region.name
-          %th= region.country.name
-          %td 
-            = link_to "Edit", edit_admin_region_path(region)
-            = link_to "Delete", admin_region_path(region), :method => "delete", :confirm => "Are you sure?"
+          %th.first ID
+          %th= t("activerecord.attributes.admin_region.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.admin_region.country_id", :default => t("activerecord.labels.country_id", :default => "Country"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @regions.each do |region|
+          %tr{:class => cycle("odd", "even")}
+            %td= region.id
+            %td= link_to region.name, admin_region_path(region)
+            %td= region.country.try(:name)
+            %td= region.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_region_path(region)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_region_path(region)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_region_path(region), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @regions
 
-= link_to "New Region", new_admin_region_path
+- content_for :sidebar, render(:partial => 'sidebar')
