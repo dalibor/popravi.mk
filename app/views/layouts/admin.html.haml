@@ -14,26 +14,29 @@
             %li= link_to "Logout", destroy_user_session_path, :class => "logout"
         <div id="main-navigation">
         <ul class="wat-cf">
-        %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
-          %a{:href => admin_categories_path} Categories
+        %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
+          %a{:href => admin_problems_path} Problems
 
-        %li{:class => controller.controller_path == 'admin/regions' ? 'active' : '' }
-          %a{:href => admin_regions_path} Regions
-
-        %li{:class => controller.controller_path == 'admin/countries' ? 'active' : '' }
-          %a{:href => admin_countries_path} Countries
-
-        %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
-          %a{:href => admin_municipalities_path} Municipalities
+        %li{:class => controller.controller_path == 'admin/comments' ? 'active' : '' }
+          %a{:href => admin_comments_path} Comments
 
         %li{:class => controller.controller_path == 'admin/users' ? 'active' : '' }
           %a{:href => admin_users_path} Users
 
-        %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
-          %a{:href => admin_problems_path} Problems
-        
         %li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
           %a{:href => admin_posts_path} Posts
+
+        %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
+          %a{:href => admin_categories_path} Categories
+
+        %li{:class => controller.controller_path == 'admin/countries' ? 'active' : '' }
+          %a{:href => admin_countries_path} Countries
+
+        %li{:class => controller.controller_path == 'admin/regions' ? 'active' : '' }
+          %a{:href => admin_regions_path} Regions
+
+        %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
+          %a{:href => admin_municipalities_path} Municipalities
         </ul>
         </div>
       #wrapper.wat-cf

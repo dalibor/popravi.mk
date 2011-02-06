@@ -13,7 +13,9 @@ class Admin::CommentsController < ApplicationController
   layout "admin"
 
   def index
-    @comments = Comment.find(:all, :order => "id DESC", :include => :user)
+    @comments = Comment.paginate :all, :order => "id DESC",
+                                 :include => :user,
+                                 :per_page => 10, :page => params[:page]
   end
 
   def create

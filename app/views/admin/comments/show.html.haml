@@ -1,0 +1,34 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first= link_to t("web-app-theme.list", :default => "List"), admin_comments_path
+      %li= link_to t("web-app-theme.new", :default => "New"), new_admin_comment_path
+      %li.active= link_to t("web-app-theme.show", :default => "Show"), admin_comment_path
+  .content
+    .inner
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.user_id", :default => t("activerecord.labels.user_id", :default => "User")) }:</b>
+        = @comment.user_id
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.commentable_id", :default => t("activerecord.labels.commentable_id", :default => "Commentable")) }:</b>
+        = @comment.commentable_id
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
+        = @comment.name
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        = @comment.email
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.content", :default => t("activerecord.labels.content", :default => "Content")) }:</b>
+        = @comment.content
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.approved", :default => t("activerecord.labels.approved", :default => "Approved")) }:</b>
+        = @comment.approved
+      %p
+        <b>#{ t("activerecord.attributes.admin_comment.commentable_type", :default => t("activerecord.labels.commentable_type", :default => "Commentable type")) }:</b>
+        = @comment.commentable_type
+      .wat-cf
+        #{ link_to "#{image_tag("web-app-theme/application_edit.png", :alt => t("web-app-theme.edit", :default=> "Edit"))} #{t("web-app-theme.edit", :default=> "Edit")}", edit_admin_comment_path(@comment), :class => "button" } 
+        #{ link_to "#{image_tag("web-app-theme/cross.png", :alt => t("web-app-theme.delete", :default=> "Delete"))} #{t("web-app-theme.delete", :default => "Delete")}", admin_comment_path(@comment), :method => "delete", :class => "button", :confirm => t("web-app-theme.confirm", :default => "Are you sure?") }
+
+- content_for :sidebar, render(:partial => 'sidebar')

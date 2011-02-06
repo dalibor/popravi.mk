@@ -1,12 +1,25 @@
-- semantic_form_for [:admin, @comment] do |f|
-  - f.inputs do
-    = f.input :user, :as => :select, :collection => User.find(:all, :select => "id, email as name", :order => "name ASC")
-    = f.input :commentable_id, :label => 'Commentable id', :as => :string
-    = f.input :commentable_type, :label => 'Commentable type', :as => :string
-    = f.input :name, :label => 'Name'
-    = f.input :email, :label => 'Email'
-    = f.input :content, :label => 'Content'
-    = f.input :approved, :label => 'Approved'
-  - f.buttons do
-    = f.commit_button
+.group
+  = f.label :name, t("activerecord.attributes.comment.name", :default => "Name"), :class => :label
+  = f.text_field :name, :class => 'text_field'
+  <span class="description">Ex: a simple text</span>
 
+.group
+  = f.label :email, t("activerecord.attributes.comment.email", :default => "Email"), :class => :label
+  = f.text_field :email, :class => 'text_field'
+  <span class="description">Ex: a simple text</span>
+
+.group
+  = f.label :content, t("activerecord.attributes.comment.content", :default => "Content"), :class => :label
+  = f.text_area :content, :class => 'text_area'
+  <span class="description">Ex: a simple text</span>
+
+.group
+  = f.label :approved, t("activerecord.attributes.comment.approved", :default => "Approved"), :class => :label
+  = f.check_box :approved, :class => 'check_box'
+  <span class="description">Ex: a simple text</span>
+
+.group.navform.wat-cf
+  %button.button{:type => 'submit'}
+    = image_tag("web-app-theme/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  = link_to "#{image_tag("web-app-theme/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}")} #{t("web-app-theme.cancel", :default => "Cancel")}", admin_comments_path, :class => "button"
