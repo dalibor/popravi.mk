@@ -26,6 +26,9 @@
         
         %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
           %a{:href => admin_municipalities_path} Municipalities
+        
+        %li{:class => controller.controller_path == 'admin/users' ? 'active' : '' }
+          %a{:href => admin_users_path} Users
         </ul>
         </div>
       #wrapper.wat-cf
