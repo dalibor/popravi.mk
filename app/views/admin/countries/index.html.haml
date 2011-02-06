@@ -1,17 +1,30 @@
-- if @countries.empty?
-  %p No countries have been added yet
-- else
-  %table
-    %thead
-      %tr
-        %th Name
-        %td Manage
-    %tbody
-      - @countries.each do |country|
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_countries_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_country_path
+  .content
+    %h2.title #{ t("web-app-theme.all", :default => "All") } Countries
+    .inner
+      %table.table
         %tr
-          %th= country.name
-          %td 
-            = link_to "Edit", edit_admin_country_path(country)
-            = link_to "Delete", admin_country_path(country), :method => "delete", :confirm => "Are you sure?"
-
-= link_to "New Country", new_admin_country_path
+          %th.first ID
+          %th= t("activerecord.attributes.admin_country.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @countries.each do |country|
+          %tr{:class => cycle("odd", "even")}
+            %td= country.id
+            %td= link_to country.name, admin_country_path(country)
+            %td= country.created_at
+            %td.last
+              = link_to t("web-app-theme.show", :default => "Show"), admin_country_path(country)
+              |
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_country_path(country)
+              |
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_country_path(country), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @countries
+        
+- content_for :sidebar, render(:partial => 'sidebar')
