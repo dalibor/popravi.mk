@@ -7,11 +7,7 @@ describe Region do
   end
 
   describe "validations" do
+    subject { Factory.create(:region) }
     it { should validate_presence_of(:name) }
-
-    it "is valid given valid attributes" do
-      region = Factory.build(:region)
-      region .should be_valid
-    end
   end
 end

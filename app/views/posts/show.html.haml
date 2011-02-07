@@ -1,13 +1,13 @@
-- title(@post.title)
-- description(truncate(@post.content, :length => 100))
+- title(@commentable.title)
+- description(truncate(@commentable.content, :length => 100))
 
 .step2
   .name
     %h2
-      = @post.title
+      = @commentable.title
     %h4
-      = render 'posts/timestamp', :post => @post
-  
-    %p= textilize(@post.content)
+      = render 'posts/timestamp', :post => @commentable
 
-  = render 'comments/comments', :commentable => @post
+    %p= raw textilize(@commentable.content)
+
+  = render 'comments/comments', :commentable => @commentable, :comments => @comments

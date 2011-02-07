@@ -31,7 +31,6 @@ module EmailHelpers
     # Note that last_email_address will be reset after each Scenario.
     last_email_address || "test_user@popravi.mk"
   end
-
 end
 
 World(EmailHelpers)
@@ -87,8 +86,7 @@ end
 #
 
 Then /^(?:I|they) should see "([^"]*?)" in the email subject$/ do |text|
-  current_email.subject.should == text
-  #current_email.should have_subject(text)
+  current_email.should have_subject(text)
 end
 
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email subject$/ do |text|
@@ -96,11 +94,11 @@ Then /^(?:I|they) should see \/([^"]*?)\/ in the email subject$/ do |text|
 end
 
 Then /^(?:I|they) should see "([^"]*?)" in the email body$/ do |text|
-  current_email.body.should include(text)
+  current_email.default_part_body.to_s.should include(text)
 end
 
 Then /^(?:I|they) should see \/([^"]*?)\/ in the email body$/ do |text|
-  current_email.body.should =~ Regexp.new(text)
+  current_email.default_part_body.to_s.should =~ Regexp.new(text)
 end
 
 Then /^(?:I|they) should see the email delivered from "([^"]*?)"$/ do |text|
@@ -115,6 +113,18 @@ Then /^(?:I|they) should see \/([^\"]*)\/ in the email "([^"]*?)" header$/ do |t
   current_email.should have_header(name, Regexp.new(text))
 end
 
+Then /^I should see it is a multi\-part email$/ do
+    current_email.should be_multipart
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email html part body$/ do |text|
+    current_email.html_part.body.to_s.should include(text)
+end
+
+Then /^(?:I|they) should see "([^"]*?)" in the email text part body$/ do |text|
+    current_email.text_part.body.to_s.should include(text)
+end
+
 #
 # Inspect the Email Attachments
 #
@@ -124,24 +134,24 @@ Then /^(?:I|they) should see (an|no|\d+) attachments? with the email$/ do |amoun
 end
 
 Then /^there should be (an|no|\d+) attachments? named "([^"]*?)"$/ do |amount, filename|
-  current_email_attachments.select { |a| a.original_filename == filename }.size.should == parse_email_count(amount)
+  current_email_attachments.select { |a| a.filename == filename }.size.should == parse_email_count(amount)
 end
 
 Then /^attachment (\d+) should be named "([^"]*?)"$/ do |index, filename|
-  current_email_attachments[(index.to_i - 1)].original_filename.should == filename
+  current_email_attachments[(index.to_i - 1)].filename.should == filename
 end
 
 Then /^there should be (an|no|\d+) attachments? of type "([^"]*?)"$/ do |amount, content_type|
-  current_email_attachments.select { |a| a.content_type == content_type }.size.should == parse_email_count(amount)
+  current_email_attachments.select { |a| a.content_type.include?(content_type) }.size.should == parse_email_count(amount)
 end
 
 Then /^attachment (\d+) should be of type "([^"]*?)"$/ do |index, content_type|
-  current_email_attachments[(index.to_i - 1)].content_type.should == content_type
+  current_email_attachments[(index.to_i - 1)].content_type.should include(content_type)
 end
 
 Then /^all attachments should not be blank$/ do
   current_email_attachments.each do |attachment|
-    attachment.size.should_not == 0
+    attachment.read.size.should_not == 0
   end
 end
 

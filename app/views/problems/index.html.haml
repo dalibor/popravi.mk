@@ -7,12 +7,12 @@
 #sidebar
   .sidebar
     %h2 Барај
-    - semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
-      - f.inputs do
+    = semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
+      = f.inputs do
         = f.input :q, :label => 'Барај', :input_html => {:value => params[:q], :name => :q}
         = f.input :c, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
         = f.input :m, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC"), :selected => params[:m].to_i, :input_html => {:name => :m}
-        - f.buttons do
+        = f.buttons do
           = f.commit_button "Барај", :button_html => {:name => nil}
 
   .sidebar

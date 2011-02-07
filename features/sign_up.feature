@@ -3,7 +3,7 @@ Feature: Sign up
   As a user
   I want to register a new account with the system
 
-  @run
+  @wip
   Scenario: Sign up & activation
     Given I am not authenticated
     And I am on the sign up page
@@ -11,7 +11,7 @@ Feature: Sign up
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
     When I press "Регистрирај ме"
-    Then I should see "You have to confirm your account before continuing."
+    Then I should see "You have signed up successfully. Confirmation was sent to your e-mail."
     And I should be on the sign in page
     #And "test_user@popravi.mk" should receive an email
     And I should receive an email

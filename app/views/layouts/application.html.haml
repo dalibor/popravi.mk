@@ -12,6 +12,8 @@
 
     = stylesheet_link_tag 'formtastic', 'compiled/screen.css', :media => 'screen, projection', :cache => true
 
+    = csrf_meta_tag
+
   %body{:id => controller.controller_name + "_" + controller.action_name}
     #dashed
     #top
@@ -46,12 +48,12 @@
               Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
               = link_to 'прочитај повеќе >', '/posts/podobri-go-svojot-grad'
           #report
-            - link_to new_problem_path do
+            = link_to new_problem_path do
               Пријави
               %br
               %span проблем
           #download
-            - link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :target => '_blank' do
+            = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :target => '_blank' do
               Преземи
               %br
               %span за Android
@@ -85,7 +87,7 @@
           &nbsp;
           = mail_to 'info@popravi.mk', 'Контакт'
 
-    = javascript_include_tag 'jquery/jquery-1.4.2.min'
+    = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'application', :cache => true
     = yield :script
     = javascript_include_tag :all, :cache => true
     = render :partial => "shared/ga"

@@ -8,7 +8,11 @@ describe User do
   end
 
   describe "attributes" do
-    it {should only_mass_assign_accessible_attributes(:name, :email, :password, :password_confirmation, :avatar)}
+    it { should allow_mass_assignment_of(:name) }
+    it { should allow_mass_assignment_of(:email) }
+    it { should allow_mass_assignment_of(:password) }
+    it { should allow_mass_assignment_of(:password_confirmation) }
+    it { should allow_mass_assignment_of(:avatar) }
   end
 
   describe "instance methods" do

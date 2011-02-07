@@ -1,16 +1,16 @@
 .wrapper
   - content_for :script do
     %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
-  - semantic_form_for @problem, :html => {:multipart => true} do |f|
+  = semantic_form_for @problem, :html => {:multipart => true} do |f|
     = f.semantic_errors :state
     .step1
       .left
         #map_buttons
           %h2 Означи ја локацијата
-        
+
           = text_field_tag :address
           = link_to "Барај адреса", "#", :id => "search_address"
-          
+
         #geocode_results
       #map
         %p
@@ -19,7 +19,7 @@
         #map_canvas
 
     .step2
-      - f.inputs do
+      = f.inputs do
         = f.input :photo, :as => :file, :label => 'Слика од проблемот', :required => false
         = f.input :latitude, :label => 'Latitude', :as => :hidden
         = f.input :longitude, :label => 'Longitude', :as => :hidden
@@ -27,11 +27,11 @@
         = f.input :municipality, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
         - unless current_user
           = f.input :email, :label => 'E-mail', :required => false
-      - f.inputs do
+      = f.inputs do
         = f.input :description, :label => 'Опис'
       - unless user_signed_in?
         %div{:style => "clear:both"}
-          = recaptcha_tags
-      - f.buttons do
+          = raw recaptcha_tags
+      = f.buttons do
         = f.commit_button @problem.new_record? ? "Пријави проблем" : "Измени проблем"
 

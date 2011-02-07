@@ -3,7 +3,6 @@ Feature: Email instructions
   As a user
   I want to receive instructions via email
 
-  @wip
   Scenario: Resend email confirmation instructions and activate account
     Given I am not authenticated
     And I signed up as "test_user@popravi.mk" with password "secretpass"
@@ -14,7 +13,7 @@ Feature: Email instructions
     And I should receive 2 emails
     When I open the email with subject "Confirmation instructions"
     When I follow "Confirm my account" in the email
-    Then I should see "Најавени сте како test_user@popravi.mk"
+    Then I should see "Your account was successfully confirmed. You are now signed in."
 
   @wip
   Scenario: Send password change instructions and change password

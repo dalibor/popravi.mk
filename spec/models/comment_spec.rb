@@ -7,7 +7,9 @@ describe Comment do
   end
 
   describe "attributes" do
-    it {should only_mass_assign_accessible_attributes(:name, :email, :content)}
+    it { should allow_mass_assignment_of(:name) }
+    it { should allow_mass_assignment_of(:email) }
+    it { should allow_mass_assignment_of(:content) }
   end
 
   describe "validations" do
@@ -28,7 +30,7 @@ describe Comment do
     it "validates email is valid" do
       comment = Factory.build(:comment, :email => "invalid_email")
       comment.should_not be_valid
-      comment.errors.on(:email).should_not be_nil
+      comment.errors[:email].should_not be_nil
     end
   end
 

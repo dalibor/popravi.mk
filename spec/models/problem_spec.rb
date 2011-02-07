@@ -6,7 +6,7 @@ describe Problem do
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
     it { should have_many(:comments) }
-    it { should have_attached_file(:photo) }
+    #it { should have_attached_file(:photo) }
     #it { should validate_attachment_presence(:photo) }
   end
 
@@ -35,13 +35,13 @@ describe Problem do
     it "doesn't validate email is present for users reporting from mobile device" do
       problem = Factory.build(:problem, :email => nil, :device_id => "123456789")
       problem.should be_valid
-      problem.errors.on(:email).should be_nil
+      problem.errors[:email].should == []
     end
 
     it "doesn't validate email is present for registered user" do
       problem = Factory.build(:problem, :email => nil)
       problem.should be_valid
-      problem.errors.on(:email).should be_nil
+      problem.errors[:email].should == []
     end
   end
 

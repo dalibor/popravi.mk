@@ -7,7 +7,7 @@
   .content
     %h2.title #{ t("web-app-theme.edit", :default => "Edit") } Country
     .inner
-      - form_for @country, :url => admin_country_path(@country), :html => { :class => :form } do |f|
+      = form_for @country, :url => admin_country_path(@country), :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}
 
 - content_for :sidebar, render(:partial => 'sidebar')

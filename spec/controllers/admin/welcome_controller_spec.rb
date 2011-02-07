@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Admin::WelcomeController do
-  integrate_views
+  render_views
 
   #before(:each) do
     #create_admin_user_and_sign_in

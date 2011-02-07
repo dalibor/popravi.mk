@@ -14,9 +14,9 @@ class Post < ActiveRecord::Base
   before_validation :set_slug
   before_save :set_published_at
 
-  # Named scopes
-  named_scope :published, :conditions => 'published_at IS NOT NULL', :order => 'published_at DESC'
-  named_scope :for_month, lambda {|year, month|
+  # Scopes
+  scope :published, :conditions => 'published_at IS NOT NULL', :order => 'published_at DESC'
+  scope :for_month, lambda {|year, month|
     if !month.blank? && !year.blank?
       start_time = Time.mktime(year, month, nil)
       {:conditions => ["published_at BETWEEN ? AND ?", start_time, start_time.next_month]}

@@ -8,7 +8,6 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-
     when /the home\s?page/
       root_path
     when /the\s(redisplayed)?\s*sign\s?in page/
@@ -24,7 +23,7 @@ module NavigationHelpers
     when /the resend confirmation instructions page/
       user_confirmation_path
     when /the send password instructions page/
-      new_user_password_path       
+      new_user_password_path
     when /the send unlock instructions page/
       new_user_unlock_path
     when /the admin page/
@@ -33,6 +32,7 @@ module NavigationHelpers
       problems_path
     when /the my problems page/
       my_problems_path
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
