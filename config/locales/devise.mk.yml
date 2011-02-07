@@ -1,8 +1,8 @@
 mk:
-  errors:  
-    messages:  
-      not_found: "not found 1"  
-      already_confirmed: "was already confirmed 1"  
+  errors:
+    messages:
+      not_found: "not found 1"
+      already_confirmed: "was already confirmed 1"
       not_locked: "was not locked 1"
   devise:
     sessions:
@@ -24,6 +24,8 @@ mk:
       link: "Не добив упатство за потврдување на мојата сметка?"
       send_instructions: 'Ќе добиете e-mail со упатство како да ја потврдите вашата сметка за неколку минути.'
       confirmed: 'Вашата сметка е успешно потврдена. Најавени сте во системот.'
+      send: 'Испрати потврда'
+      confirm_mail: 'Потврди ја мојата сметка'
     registrations:
       link: 'Регистрирај се'
       signed_up: 'Успешно сте регистрирани. Порака за потврда е испратена на вашата e-mail адреса.'

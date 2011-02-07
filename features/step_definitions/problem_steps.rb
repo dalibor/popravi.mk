@@ -4,11 +4,6 @@ And /^I change the value of the hidden field "([^\"]*)" to "([^\"]*)"$/ do |fiel
   page.locate(:xpath, xpath, msg).set(value)
 end
 
-Given /^There are problems reported$/ do
-  user = User.find_by_email("test_user@popravi.mk")
-  Factory.create(:problem, :user => user) # reported by me
-  Factory.create(:problem1) # reported by others
-end
 
 Given /^There are anonymouse problems$/ do
   Factory.create(:problem1)

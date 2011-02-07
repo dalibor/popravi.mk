@@ -76,13 +76,13 @@ Spec::Matchers.define :only_mass_assign_accessible_attributes do |*attrs|
   match do |object|
     setters = object.methods.map{|m| m if m.match(/[a-z].*\=$/)}.compact
     getters = setters.map{|s| s.gsub('=', '').to_sym}
-    
+
     params = {}
     getters.each do |getter|
       params[getter] = 'test'
     end
     record = object.class.new(params)
-    
+
     @shouldnt, @should = [], []
     getters.each do |getter|
       value = record.send(getter)
@@ -92,10 +92,10 @@ Spec::Matchers.define :only_mass_assign_accessible_attributes do |*attrs|
         @should << getter.to_s
       end
     end
-    
+
     @shouldnt.length > 0 && @should.length > 0 ? false : true
   end
-  
+
   failure_message_for_should do |actual|
     str = ""
     str += "The following attributes were mass assigned even though they shouldn't have been: #{@shouldnt.to_yaml}" unless @shouldnt.empty?

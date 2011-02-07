@@ -1,17 +1,17 @@
 !!!
 %html(xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en")
   %head
-    
+
     %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
     %title= "#{yield(:title)} :: popravi.mk"
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
-    
+
     <meta name="keywords" content="#{yield(:keywords)}" />
     <meta name="description" content="#{yield(:description)}" />
     = yield(:head)
-    
+
     = stylesheet_link_tag 'formtastic', 'compiled/screen.css', :media => 'screen, projection', :cache => true
-    
+
   %body{:id => controller.controller_name + "_" + controller.action_name}
     #dashed
     #top
@@ -37,12 +37,12 @@
           %ul#app_nav
             %li.report= link_to 'Пријави проблем', new_problem_path
             %li.list= link_to 'Преглед', problems_path
-            %li= link_to 'Блог', posts_path
-        
+            %li= link_to t('menu.blog'), posts_path
+
         #action
           #slogan
             %h2 Подобри го својот град
-            %p 
+            %p
               Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
               = link_to 'прочитај повеќе >', '/posts/podobri-go-svojot-grad'
           #report
@@ -55,7 +55,7 @@
               Преземи
               %br
               %span за Android
-              
+
         #vip
           %a{ :href => '/posts/popravimk-pobednik-na-vip-predizvikot'}
             = image_tag "vip.png"
@@ -65,26 +65,26 @@
         - flash.each do |key, msg|
           = content_tag :div, msg, :id => key
         = yield
-    
+
     #bottom
       .wrapper
         .left
-          %p 
-            Created by 
+          %p
+            Created by
             %span
               = link_to 'Dalibor Nasevic', 'http://twitter.com/blackflasher', :target => '_blank'
             &
             %span
               = link_to 'Dime Pashoski', 'http://twitter.com/exterminateart', :target => '_blank'
             , Copyright 2010
-        
+
         .right
           = link_to 'Twitter', 'http://twitter.com/PopraviMK', :target => '_blank'
           &nbsp;
           = link_to 'Facebook', 'http://www.facebook.com/pages/Popravi-podobri-go-svojot-grad/150464501635940', :target => '_blank'
           &nbsp;
           = mail_to 'info@popravi.mk', 'Контакт'
-        
+
     = javascript_include_tag 'jquery/jquery-1.4.2.min'
     = yield :script
     = javascript_include_tag :all, :cache => true

@@ -2,7 +2,8 @@ Feature: Sign up
   In order to log into the system
   As a user
   I want to register a new account with the system
-  
+
+  @run
   Scenario: Sign up & activation
     Given I am not authenticated
     And I am on the sign up page
@@ -10,15 +11,15 @@ Feature: Sign up
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
     When I press "Регистрирај ме"
-    Then I should see "Потребно е да ја потврдите вашата сметка пред да продолжите понатаму"
+    Then I should see "You have to confirm your account before continuing."
     And I should be on the sign in page
     #And "test_user@popravi.mk" should receive an email
     And I should receive an email
     When I open the email
-    Then I should see "Упатство за потврда" in the email subject
+    Then I should see "Confirmation instructions" in the email subject
     When I follow "Потврди ја мојата сметка" in the email
     Then I should see "Најавени сте како test_user@popravi.mk"
-  
+
   Scenario: Sign up unsuccessful
     Given I am not authenticated
     And I am on the sign up page
