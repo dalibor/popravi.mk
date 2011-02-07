@@ -1,40 +1,55 @@
-ActionController::Routing::Routes.draw do |map|
+PopraviMk::Application.routes.draw do
   # devise routes
-  map.devise_for :users
+  devise_for :users
 
-  map.resources :problems, :collection => {:take_ownership => :post, :my => :get} do |problem|
-    problem.resources :comments, :only => [:create]
-  end
-  map.resources :municipalities, :only => [:index, :show] do |municipality|
-    municipality.resources :problems, :only => [:index]
-  end
-  map.resources :posts, :only => [:index, :show] do |post|
-    post.resources :comments, :only => [:create]
+  resources :problems do
+    collection do
+      post :take_ownership
+      get :my
+    end
+
+    resources :comments, :only => [:create]
   end
 
+  resources :municipalities, :only => [:index, :show] do
+    resources :problems, :only => [:index]
+  end
+
+  resources :posts, :only => [:index, :show] do
+    resources :comments, :only => [:create]
+  end
 
   # root route
-  map.root :controller => "welcome"
+  root :to => "welcome#index"
 
   # admin routes
-  map.namespace :admin do |admin|
-    admin.root :controller => "welcome"
-    admin.resources :categories, :member => {:move_up => :get, :move_down => :get}
-    admin.resources :countries
-    admin.resources :regions
-    admin.resources :municipalities
-    admin.resources :users
-    admin.resources :problems
-    admin.resources :comments
-    admin.resources :posts
+  namespace :admin do
+    root :to => "welcome#index"
+    resources :categories do
+      member do
+        get :move_up
+        get :move_down
+      end
+    end
+    resources :countries
+    resources :regions
+    resources :municipalities
+    resources :users
+    resources :problems
+    resources :comments
+    resources :posts
   end
 
   # api routes
-  map.namespace :api do |api|
-    api.namespace :v1 do |v1|
-      v1.resources :problems, :collection => {:photo => :post}
-      v1.resources :categories, :only => [:index]
-      v1.resources :municipalities, :only => [:index]
+  namespace :api do
+    namespace :v1 do
+      resources :problems do
+        collection do
+          post :photo
+        end
+      end
+      resources :categories, :only => [:index]
+      resources :municipalities, :only => [:index]
     end
   end
 end

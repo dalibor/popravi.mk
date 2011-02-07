@@ -1,12 +1,5 @@
-# Filters added to this controller apply to all controllers in the application.
-# Likewise, all the methods added will be available for all controllers.
-
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
-  protect_from_forgery # See ActionController::RequestForgeryProtection for details
-
-  # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :password_confirmation
+  protect_from_forgery
 
   class AccessDenied < StandardError; end
   # Rescuers
@@ -17,9 +10,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
-      if params[:controller] == "sessions" || params[:controller] == "confirmations"
+      if params[:controller] == "devise/sessions" || params[:controller] == "confirmations"
         my_problems_path
-      elsif params[:controller] == "registrations" && params[:action] == "update"
+      elsif params[:controller] == "devise/registrations" && params[:action] == "update"
         edit_user_registration_path
         #if current_user.problems_count == 0 && current_user.has_potentially_reported_problems?
           #ownership_problems_path

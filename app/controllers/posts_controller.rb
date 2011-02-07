@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find :first, :conditions => ["published_at is NOT NULL AND slug = ?", params[:id]]
-    @comments = @post.comments.find :all, :order => "created_at ASC", :include => :user
+    @commentable = Post.find :first, :conditions => ["published_at is NOT NULL AND slug = ?", params[:id]]
+    @comments = @commentable.comments.find :all, :order => "created_at ASC", :include => :user
     @comment = Comment.new
   end
 end

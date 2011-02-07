@@ -6,7 +6,7 @@
   .content
     %h2.title #{ t("web-app-theme.new", :default => "New")} User
     .inner
-      - form_for @user, :url => admin_users_path, :html => { :class => :form } do |f|
+      = form_for @user, :url => admin_users_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}
 
 - content_for :sidebar, render(:partial => 'sidebar')

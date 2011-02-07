@@ -1,7 +1,8 @@
 class Comment < ActiveRecord::Base
 
   # Gravatar
-  is_gravtastic :email, :secure => true, :size => 60
+  include Gravtastic
+  gravtastic
 
   # Attr accessible
   attr_accessible :name, :email, :content

@@ -1,17 +1,21 @@
 mk:
+  menu:
+    blog: Блог
+
+
   date:
     formats:
       default: "%d/%m/%Y"
       short: "%e %b"
       long: "%B %e, %Y"
       only_day: "%e"
- 
+
     day_names: [Недела, Понеделник, Вторник, Среда, Четврток, Петок, Сабота]
     abbr_day_names: [Нед, Пон, Вто, Сре, Чет, Пет, Саб]
     month_names: [~, Јануари, Февруари, Март, Април, Мај, Јуни, Јули, Август, Септември, Октомври, Ноември, Декември]
     abbr_month_names: [~, Јан, Фев, Мар, Апр, Мај, Јун, Јул, Авг, Сеп, Окт, Ное, Дек]
     order: [ :day, :month, :year ]
- 
+
   time:
     formats:
       default: "%a %b %d %H:%M:%S %Z %Y"
@@ -19,10 +23,10 @@ mk:
       short: "%d %b %H:%M"
       long: "%B %d, %Y %H:%M"
       only_second: "%S"
- 
+
     am: 'АМ'
     pm: 'ПМ'
- 
+
   datetime:
     formats:
       default: "%Y-%m-%dT%H:%M:%S%Z"
@@ -65,7 +69,7 @@ mk:
       over_x_years:
         one: 'над 1 година'
         other: 'над {{count}} години'
- 
+
   number:
     format:
       precision: 3
@@ -76,13 +80,13 @@ mk:
         unit: 'MKD'
         precision: 2
         format: '%n %u'
- 
+
   support:
     array:
       sentence_connector: " и "
       two_words_connector: " и "
       last_word_connector: " и "
- 
+
   activerecord:
     errors:
       template:

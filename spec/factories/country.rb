@@ -1,3 +1,3 @@
-Factory.define :country do |country|
-  country.name "Macedonia"
+Factory.define :country do |f|
+  f.name "Macedonia"
 end

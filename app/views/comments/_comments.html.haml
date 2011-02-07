@@ -3,17 +3,17 @@
 %a{:name => "comments"}
 #comments_block
   .form
-    - semantic_form_for [@commentable, @comment] do |f|
+    = semantic_form_for [@commentable, @comment] do |f|
       = f.semantic_errors :state
-      - f.inputs do
+      = f.inputs do
         - unless user_signed_in?
           = f.input :name, :label => 'Име', :required => false
           = f.input :email, :label => 'E-mail', :required => false
         = f.input :content, :label => 'Коментар'
         - unless user_signed_in?
           %div{:style => "clear:both"}
-            = recaptcha_tags
-      - f.buttons do
+            = raw recaptcha_tags
+      = f.buttons do
         = f.commit_button "Испрати"
   .comments
     - comments.each do |comment|

@@ -3,7 +3,7 @@
 
 %p Вашата сметка можете да ја потврдите преку линкот долу:
 
-%p= link_to 'Потврди ја мојата сметка', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= link_to t('devise.confirmations.confirm_mail'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
 
 %p
   \--

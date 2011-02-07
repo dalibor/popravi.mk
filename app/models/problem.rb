@@ -13,20 +13,16 @@ class Problem < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   # Validations
-  #validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? && problem.device_id.blank?}
-  validates_presence_of :description
-  validates_presence_of :longitude
-  validates_presence_of :latitude
-  validates_presence_of :category
-  validates_presence_of :municipality
-  #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
+  validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id
   validates_inclusion_of :weight, :in => 0..10 # TODO: test
+  #validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? && problem.device_id.blank?}
+  #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
 
-  # Named scopes
-  named_scope :with_photo, :conditions => 'problems.photo_file_name IS NOT NULL', :include => [:category, :municipality], :order => "id DESC", :limit => 5
-  named_scope :matching, lambda {|column, value| value.blank? ? {} : {:conditions => ["#{column} LIKE ?", "%#{value}%"]} }
-  named_scope :with_category, lambda {|category_id| category_id.blank? ? {} : {:conditions => ["problems.category_id = ?", category_id]} }
-  named_scope :with_municipality, lambda {|municipality_id| municipality_id.blank? ? {} : {:conditions => ["problems.municipality_id = ?", municipality_id]} }
+  # Scopes
+  scope :with_photo, :conditions => 'problems.photo_file_name IS NOT NULL', :include => [:category, :municipality], :order => "id DESC", :limit => 5
+  scope :matching, lambda {|column, value| value.blank? ? {} : {:conditions => ["#{column} LIKE ?", "%#{value}%"]} }
+  scope :with_category, lambda {|category_id| category_id.blank? ? {} : {:conditions => ["problems.category_id = ?", category_id]} }
+  scope :with_municipality, lambda {|municipality_id| municipality_id.blank? ? {} : {:conditions => ["problems.municipality_id = ?", municipality_id]} }
 
   attr_accessor :address
 
@@ -41,12 +37,12 @@ class Problem < ActiveRecord::Base
   private
   # formtastic errors fix for paperclip
   def add_error_on_photo
-    errors.add(:photo, errors.on(:photo_file_name)) if errors.on(:photo_file_name)
+    self.errors[:photo] << errors[:photo_file_name] if errors[:photo_file_name].present?
   end
 
   # formtastic errors fix for longitude and latitude
   def validates_longitude_and_latitude
-    errors.add(:base, "Не е означена локацијата на мапа") if errors.on(:latitude) || errors.on(:longitude)
+    self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
   end
 
   # Status

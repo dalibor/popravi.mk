@@ -7,31 +7,17 @@ describe Post do
   end
 
   describe "validations" do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:content) }
+    it { should validate_presence_of(:user_id) }
+
     it "is valid given valid attributes" do
       post = Factory.build(:post)
       post.should be_valid
     end
-
-    it "validates user is present" do
-      post = Factory.build(:post, :user => nil)
-      post.should_not be_valid
-      post.errors.on(:user_id).should_not be_nil
-    end
-
-    it "validates title is present" do
-      post = Factory.build(:post, :title => nil)
-      post.should_not be_valid
-      post.errors.on(:title).should_not be_nil
-    end
-
-    it "validates content is present" do
-      post = Factory.build(:post, :content => nil)
-      post.should_not be_valid
-      post.errors.on(:content).should_not be_nil
-    end
   end
 
-  describe "properly sets slug" do
+  describe "slug" do
     it "sets slug when no custom slug is used" do
       post = Factory.create(:post, :title => "New title")
       post.slug.should == "new-title"
@@ -43,7 +29,7 @@ describe Post do
     end
   end
 
-  describe "publish post" do
+  describe "publish" do
     it "does not set published_at when publish is not checked" do
       post = Factory.create(:post, :publish => "0")
       post.published_at.should be_nil
@@ -63,7 +49,7 @@ describe Post do
   end
 
   describe "archive items" do
-    it "properly finds archive items" do
+    it "finds archive items" do
       post = Factory.create(:post)
       Factory.create(:post, :user => post.user, :published_at => "2010-03-01", :title => "Hello world 2")
       Post.archive_items.should == [[2010, 1], [2010, 3]]

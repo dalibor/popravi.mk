@@ -5,14 +5,14 @@
 .step2
   %ul.social
     %li
-      - link_to "http://twitter.com/home?status=#{@problem.title}: #{problem_url(@problem)}", :target => "_blank" do
+      = link_to "http://twitter.com/home?status=#{@problem.title}: #{problem_url(@problem)}", :target => "_blank" do
         =image_tag("iconTwitter.png")
         %span Tweet
     %li
-      - link_to "http://www.facebook.com/share.php?u=#{problem_url(@problem)}&t=#{@problem.title}", :target => "_blank" do
+      = link_to "http://www.facebook.com/share.php?u=#{problem_url(@problem)}&t=#{@problem.title}", :target => "_blank" do
         =image_tag("iconFacebook.png")
         %span Share
-  
+
   .name
     %h2
       = @problem.municipality.name
@@ -20,9 +20,9 @@
     %h4
       пријавен пред
       = time_ago_in_words(@problem.created_at)
-  
+
     %p= simple_format @problem.description
-    
+
   #map_canvas
   = image_tag @problem.photo.url(:m)
 
@@ -30,13 +30,13 @@
     - if user_signed_in?
       = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
     - else
-      Ако овој проблем е пријавен од вас, ве молиме 
+      Ако овој проблем е пријавен од вас, ве молиме
       = link_to "регистрирајте се", new_registration_path(:user)
       или
       = link_to "најавете се", new_session_path(:user)
       доколку сакате да го измените.
 
-  = render 'comments/comments', :commentable => @problem
+  = render 'comments/comments', :commentable => @problem, :comments => @comments
 
   :javascript
     var _lat = "#{@problem.latitude}";
