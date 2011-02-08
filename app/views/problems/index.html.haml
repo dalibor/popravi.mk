@@ -6,19 +6,19 @@
 
 #sidebar
   .sidebar
-    %h2 Барај
+    %h2= t('problems.search')
     = semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
       = f.inputs do
-        = f.input :q, :label => 'Барај', :input_html => {:value => params[:q], :name => :q}
-        = f.input :c, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
-        = f.input :m, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC"), :selected => params[:m].to_i, :input_html => {:name => :m}
+        = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}
+        = f.input :c, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
+        = f.input :m, :as => :select, :label => t('problems.municipality'), :collection => Municipality.find(:all, :order => "name ASC"), :selected => params[:m].to_i, :input_html => {:name => :m}
         = f.buttons do
-          = f.commit_button "Барај", :button_html => {:name => nil}
+          = f.commit_button t('problems.search'), :button_html => {:name => nil}
 
   .sidebar
-    %h2 Вкупно
+    %h2= t('problems.total')
     .total
-      = pluralize @total_problems, "проблем"
+      = pluralize @total_problems, t('problems.problem')
 
   = render 'municipalities', :municipalities => @municipalities
 

@@ -3,40 +3,51 @@ Feature: Search and filter problems
   As a user
   I want to be able to search and filter problems
 
-  @wip
   Scenario: Search problems by description
-    Given there are reported problems for searching
+    Given a problem exists with description: "Description 1"
+    And a problem exists with description: "Description 2"
     And I am on the home page
-    And I follow "Преглед"
-    When I fill in "s_q" with "Description 1"
-    And I press "Барај"
-    Then I should see "Вкупно пронајдени: 1 проблем"
+    And I follow "Problems"
+    When I fill in "Search" with "Description 1"
+    And I press "Search"
+    Then I should see "Total found: 1 problem"
     And I should see "Description 1"
+    And I should not see "Description 2"
 
-  @wip
   Scenario: Filter problems by category
-    Given there are reported problems for searching
+    Given a category exists with name: "Category 1"
+    And a problem exists with description: "Problem from category 1", category: the category
+    And a category exists with name: "Category 2"
+    And a problem exists with description: "Problem from category 2", category: the category
     And I am on the home page
-    And I follow "Преглед"
-    When I select "Category 1" from "s_c"
-    And I press "Барај"
-    Then I should see "Вкупно пронајдени: 2 проблеми"
-    And I should see "Category 1"
+    And I follow "Problems"
+    When I select "Category 1" from "Category"
+    And I press "Search"
+    Then I should see "Total found: 1 problem"
+    And I should see "Problem from category 1"
+    And I should not see "Problem from category 2"
 
-  @wip
   Scenario: Filter problems by municipality
-    Given there are reported problems for searching
+    Given a municipality exists with name: "Municipality 1"
+    And a problem exists with description: "Problem from municipality 1", municipality: the municipality
+    Given a municipality exists with name: "Municipality 2"
+    And a problem exists with description: "Problem from municipality 2", municipality: the municipality
     And I am on the home page
-    And I follow "Преглед"
-    When I select "Municipality 1" from "s_m"
-    And I press "Барај"
-    Then I should see "Вкупно пронајдени: 2 проблеми"
-    And I should see "Municipality 1"
+    And I follow "Problems"
+    When I select "Municipality 1" from "Municipality"
+    And I press "Search"
+    Then I should see "Total found: 1 problem"
+    And I should see "Problem from municipality 1"
+    And I should not see "Problem from municipality 2"
 
-  @wip
   Scenario: Search problems in municipality
-    Given there are reported problems for searching
+    Given a municipality exists with name: "Municipality 1"
+    And a problem exists with description: "Problem from municipality 1", municipality: the municipality
+    Given a municipality exists with name: "Municipality 2"
+    And a problem exists with description: "Problem from municipality 2", municipality: the municipality
     And I am on the home page
-    And I follow "Преглед"
-    When I follow "Municipality 1 2"
-    Then I should see "Вкупно пронајдени: 2 проблеми"
+    And I follow "Problems"
+    When I follow "Municipality 1 1"
+    Then I should see "Total found: 1 problem"
+    And I should see "Problem from municipality 1"
+    And I should not see "Problem from municipality 2"

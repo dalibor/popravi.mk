@@ -37,8 +37,8 @@
               %li= link_to 'најава', new_user_session_path
 
           %ul#app_nav
-            %li.report= link_to 'Пријави проблем', new_problem_path
-            %li.list= link_to 'Преглед', problems_path
+            %li.report= link_to t('menu.report_problems'), new_problem_path
+            %li.list= link_to t('menu.problems'), problems_path
             %li= link_to t('menu.blog'), posts_path
 
         #action

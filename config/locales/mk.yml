@@ -1,11 +1,17 @@
 mk:
   menu:
     blog: Блог
+    problems: Преглед
+    report_problem: 'Пријави проблем'
   problems:
     total: Вкупно
     problem: проблем
     are_yours: "Дали сте ги пријавиле?"
     take_ownership: "Преземи"
+    search: "Барај"
+    total_found: "Вкупно пронајдени:"
+    category: 'Категорија'
+    municipality: 'Општина'
 
   date:
     formats:
