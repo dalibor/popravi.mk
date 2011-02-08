@@ -18,6 +18,10 @@ mk:
       link: 'Најави се'
       signed_in: 'Успешно сте најавени.'
       signed_out: 'Успешно сте одјавени.'
+      email: 'Email'
+      password: 'Лозинка'
+      remember_me: 'Запомни ме'
+      login: 'Најави ме'
     passwords:
       link: 'Ја заборавив лозинката?'
       send_instructions: 'Ќе добиете e-mail со упатство како да ја ресетирате лозинката за неколку минути.'

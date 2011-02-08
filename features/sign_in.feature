@@ -3,21 +3,19 @@ Feature: Sign in
   As a user
   I want to be able to log into the system
 
-  @wip
   Scenario: Sign in successfully
     Given I am an authenticated user
-    Then I should see "Успешно сте најавени"
+    Then I should see "Signed in successfully."
     And I should be on the my_problems page
 
-  @wip
   Scenario: Invalid login credentials
     Given I signed up as "test_user@popravi.mk" with password "secretpass"
     And I confirmed my email address
     When I go to the sign in page
-    And I fill in "user_email" with "test_user@popravi.mk"
-    And I fill in "user_password" with "wrongpass"
-    And I press "Најави ме"
-    Then I should see "Невалиден e-mail или лозинка"
+    And I fill in "Email" with "test_user@popravi.mk"
+    And I fill in "Password" with "wrongpass"
+    And I press "Login"
+    Then I should see "Invalid email or password"
     And I should be on the redisplayed sign in page
 
   Scenario: User has not confirmed email address
