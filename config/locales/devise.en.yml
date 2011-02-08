@@ -20,10 +20,24 @@ en:
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
+      change_your_password: 'Change your password'
+      password: 'Password'
+      password_confirmation: 'Password confirmation'
+      change_my_password: 'Change my password'
+      mail:
+        hello: 'Hello %{email}!'
+        text1: 'Someone has requested a link to change your password, and you can do this through the link below.'
+        change_my_password: 'Change my password'
+        text2: "If you didn't request this, please ignore this email."
+        text3: "Your password won't change until you access the link above and create a new one."
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send: 'Send confirmation'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      mail:
+        hello: 'Welcome %{email}!'
+        confirm_down: 'You can confirm your account through the link below:'
+        confirm: 'Confirm my account'
     registrations:
       signed_up: 'You have signed up successfully. Confirmation was sent to your e-mail.'
       updated: 'You updated your account successfully.'

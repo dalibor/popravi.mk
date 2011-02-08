@@ -1,14 +1,14 @@
 - title("Промена на лозинка")
 
 .step
-  %h2 Променете ја вашата лозинка
+  %h2= t('devise.passwords.change_your_password')
 
-  = semantic_form_for resource_name, resource, :url => password_path(resource_name), :html => { :method => :put } do |f|
+  = semantic_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put } do |f|
     = f.inputs do
       = f.input :reset_password_token, :as => :hidden
-      = f.input :password, :as => :password, :label => 'Лозинка'
-      = f.input :password_confirmation, :as => :password, :label => 'Потврда на лозинка'
+      = f.input :password, :as => :password, :label => t('devise.passwords.password')
+      = f.input :password_confirmation, :as => :password, :label => t('devise.passwords.password_confirmation')
     = f.buttons do
-      = f.commit_button 'Промени ја мојата лозинка'
+      = f.commit_button t('devise.passwords.change_my_password')
 
   = render :partial => "shared/devise_links"

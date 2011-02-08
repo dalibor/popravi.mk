@@ -1,0 +1,10 @@
+%p= t('devise.confirmations.mail.hello', :email => @resource.email)
+
+%p= t('devise.confirmations.mail.confirm_down')
+
+%p= link_to t('devise.confirmations.mail.confirm'), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+
+%p
+  \--
+  %br/
+  http://popravi.mk
