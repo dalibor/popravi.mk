@@ -18,12 +18,29 @@ Given /^I am an authenticated user$/ do
   email = 'test_user@popravi.mk'
   password = 'secretpass'
 
-  Given %{I signed up as "#{email}" with password "#{password}"} 
+  Given %{I signed up as "#{email}" with password "#{password}"}
   And %{I confirmed my email address}
   And %{I go to the sign in page}
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
   And %{I press "user_submit"}
+end
+
+Given /^I report a problem$/ do
+  steps %Q{
+    Given I am on the home page
+    And category exists
+    And municipality exists
+    When I follow "Пријави проблем"
+    And I fill in "problem_description" with "Problem description"
+    And I attach the file "public/images/rails.png" to "problem_photo"
+    And I change the value of the hidden field "problem[latitude]" to "42"
+    And I change the value of the hidden field "problem[longitude]" to "21"
+    And I select "Abandoned vehicles" from "problem_category_id"
+    And I select "Butel" from "problem_municipality_id"
+    And I press "problem_submit"
+    Then I should see "Проблемот е успешно пријавен"
+  }
 end
 
 Then /^my account should not be found$/ do

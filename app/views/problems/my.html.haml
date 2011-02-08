@@ -1,6 +1,5 @@
 - title("Листа на проблеми во општините во Македонија")
 
-
 .main
   %h2 Проблеми
   - if @problems.empty?
@@ -11,8 +10,8 @@
 
     = will_paginate @problems
   .total
-    Вкупно: 
-    = pluralize @problems.total_entries, "проблем"
+    #{t('problems.total')}:
+    = pluralize @problems.total_entries, t('problems.problem')
 
 #sidebar
   .sidebar
@@ -22,12 +21,12 @@
 
   - if current_user.has_potentially_reported_problems?
     .sidebar
-      %h2 Дали сте ги пријавиле?
+      %h2= t('problems.are_yours')
       %ul.total
-        - form_tag take_ownership_problems_path do
+        = form_tag take_ownership_problems_path do
           - @potentially_reported_problems.each do |problem|
             %li
-              = check_box_tag("problem_ids[#{problem.id}]", '1', true) 
+              = check_box_tag("problem_ids[#{problem.id}]", '1', true)
               = label_tag "problem_ids[#{problem.id}]", "#{problem.municipality.name} #{problem.category.name} - #{truncate(problem.description, :length => 60)}"
-              
-          %li.button= submit_tag "Преземи"
+
+          %li.button= submit_tag t('problems.take_ownership')

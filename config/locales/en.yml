@@ -4,4 +4,9 @@
 en:
   menu:
     blog: Blog
+  problems:
+    total: Total
+    problem: problem
+    are_yours: "Have you reported these problems?"
+    take_ownership: "Take ownership"
 

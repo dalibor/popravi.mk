@@ -1,7 +1,11 @@
 mk:
   menu:
     blog: Блог
-
+  problems:
+    total: Вкупно
+    problem: проблем
+    are_yours: "Дали сте ги пријавиле?"
+    take_ownership: "Преземи"
 
   date:
     formats:
