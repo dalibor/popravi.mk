@@ -59,3 +59,27 @@ describe Problem do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: problems
+#
+#  id                 :integer(4)      not null, primary key
+#  user_id            :integer(4)
+#  category_id        :integer(4)
+#  municipality_id    :integer(4)
+#  description        :text
+#  status             :integer(4)      default(0)
+#  longitude          :string(255)
+#  latitude           :string(255)
+#  email              :string(255)
+#  device_id          :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer(4)
+#  photo_updated_at   :datetime
+#  weight             :integer(4)      default(5)
+#
+

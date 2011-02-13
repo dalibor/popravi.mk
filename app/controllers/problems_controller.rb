@@ -9,12 +9,20 @@ class ProblemsController < ApplicationController
       @municipality = Municipality.find(params[:municipality_id])
       @categories = Category.find :all, :select => "categories.id, categories.name, COUNT(*) as problems_count", :joins => :problems, :group => "categories.id", :limit => 10, :conditions => ["problems.municipality_id = ?", @municipality.id], :order => "problems_count DESC"
       @total_problems = @municipality.problems.count
-      render :action => 'index_municipality'
+
+      respond_to do |format|
+        format.html { render :action => 'index_municipality' }
+        format.rss  { render :layout => false}
+      end
     else
       @municipalities = Municipality.find :all, :select => "municipalities.id, municipalities.name, COUNT(*) as problems_count", :joins => :problems, :group => "municipalities.id", :limit => 10, :order => "problems_count DESC"
       @categories = Category.find :all, :select => "categories.id, categories.name, COUNT(*) as problems_count", :joins => :problems, :group => "categories.id", :limit => 10, :order => "problems_count DESC"
       @total_problems = Problem.count
-      render :action => 'index'
+
+      respond_to do |format|
+        format.html { render :action => 'index' }
+        format.rss  { render :layout => false}
+      end
     end
   end
 

@@ -1,7 +1,11 @@
 - title("Листа на проблеми во општините во Македонија")
+- content_for :head do
+  = auto_discovery_link_tag(:rss, problems_path(:format => 'rss'))
 
 .main
-  %h2 Проблеми
+  .header
+    %h2 Проблеми
+    = link_to image_tag("rss.png"), problems_path(:format => 'rss')
   = render 'problems', :problems => @problems
 
 #sidebar

@@ -8,6 +8,7 @@ gem 'rails', '3.0.3'
 gem 'mysql2'
 gem 'devise'
 gem 'compass'
+gem 'html5-boilerplate'
 gem 'haml'
 gem 'formtastic'
 gem 'inherited_resources'
@@ -28,6 +29,7 @@ group :development do
   gem 'interactive_editor'
   gem 'sketches'
   gem 'looksee'
+  gem 'annotate'
 end
 
 group :development, :test do

@@ -14,3 +14,15 @@ describe Category do
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: categories
+#
+#  id         :integer(4)      not null, primary key
+#  name       :string(255)
+#  position   :integer(4)
+#  created_at :datetime
+#  updated_at :datetime
+#
+

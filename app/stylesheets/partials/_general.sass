@@ -1,11 +1,11 @@
 body
   background: #eee
   font-family: Arial, Helvetica, sans-serif
-  
+
   .wrapper
     width: 960px
-    margin: 0 auto  
-    
+    margin: 0 auto
+
   .left
     float: left
   .right
@@ -24,13 +24,13 @@ body
   #top
     background: image_url("background.jpg") #000 center top no-repeat
     overflow: hidden
-  
+
     a
       font-size: 0.8em
-      
+
     .wrapper
       position: relative
-      
+
       #vip
 
         position: absolute
@@ -41,12 +41,12 @@ body
         &:hover
           @include scale(1)
           @include rotate(0deg)
-        
+
     #header
       float: left
       margin-bottom: 50px
       width: 100%
-      
+
       #logo
         margin-left: -125px
         a
@@ -57,11 +57,11 @@ body
           letter-spacing: 0.1em
           line-height: 0.7em
           padding-top: 18px
-          
+
           span
             font-size: 0.36em
             letter-spacing: 0.2em
-  
+
       ul#app_nav, ul#user_nav
         float: right
         font-size: 0.8em
@@ -69,9 +69,9 @@ body
         li
           display: inline
           float: left
-          
+
       ul#app_nav
-        
+
         a
           background: #222
           letter-spacing: 0.15em
@@ -91,12 +91,12 @@ body
           &:hover
             background: #292929
             color: orange
-  
+
     #action
       clear: both
       color: #efefef
       padding-right: 600px
-      
+
       #slogan
         h2
           color: #eee
@@ -109,7 +109,7 @@ body
           font-size: 0.8em
           line-height: 1.2em
           padding-bottom: 30px
-          
+
       #download, #report
         float: left
         height: 50px
@@ -121,27 +121,27 @@ body
           span
             font-size: 0.6em
             font-weight: normal
-            
+
       #download
         background: image_url("arrow_download.png") no-repeat left top
-        
+
       #report
         background: image_url("arrow_report.png") no-repeat left top
         padding-right: 20px
         a:hover
           color: green
-        
+
   #middle
     margin: 40px 0
     overflow: hidden
-    
+
     #notice
       background: white
       border-bottom: 1px solid #eee
       color: green
       font-size: 0.9em
       padding: 10px
-      
+
     .main
       float: left
       margin-right: 30px
@@ -151,13 +151,23 @@ body
       .problem:hover
         background: #f9f9f9
         border-left: 5px #333 solid
-    
+
+      .header
+        overflow: hidden
+        background: url("/images/background_S.jpg?1286702412") repeat scroll center center #222222
+        h2
+          background: none
+          float: left
+        img
+          float: right
+          margin: 15px 10px
+
     .sidebar
       float: left
       margin-bottom: 30px
       overflow: hidden
       width: 320px
-      
+
     .section
       float: left
       margin-right: 30px
@@ -165,7 +175,7 @@ body
       width: 465px
       &.last
         margin: 0
-        
+
     .section, .main, .sidebar
       h2
         +border-top-radius(3px)
@@ -175,14 +185,14 @@ body
         font-weight: bold
         padding: 15px 20px 12px
         text-transform: none
-        
+
       #tweets, .problems
         p
           line-height: 1.4em
-        
+
       h2, p, .problem
         margin-bottom: 1px
-        
+
       p, .problem, .inputs, .total, .blog
         background: white
         border-left: 5px #fff solid
@@ -195,15 +205,15 @@ body
           text-transform: uppercase
         &.problem
           padding-right: 0
-          
+
       .blog
         line-height: 1.3em
         padding-top: 20px
-        
+
         li
           list-style-type: none
           color: #999
-          
+
           a
             display: block
             font-size: 1.2em
@@ -213,18 +223,18 @@ body
             text-transform: uppercase
             &:hover
               text-decoration: underline
-              
+
           span
             display: block
             font-size: 0.85em
             padding-bottom: 10px
-            
+
           p
             color: #444
             font-size: 1em
             border: none
             padding: 0
-      
+
       ul.total
         border-bottom: 1px solid #eee
       .total, .blog
@@ -235,12 +245,12 @@ body
             &:hover
               color: black
               text-decoration: underline
-              
+
       img
         float: left
         margin-bottom: 7px
         padding-right: 10px
-        
+
       .t_user
         color: orange
         font-size: 0.9em
@@ -249,7 +259,7 @@ body
         text-transform: uppercase
         &:hover
           color: black
-        
+
       .t_text
         padding-bottom: 7px
         padding-left: 60px
@@ -257,7 +267,7 @@ body
           color: #333
           &:hover
             color: orange
-      
+
       .t_date
         color: #999
         font-size: 0.8em
@@ -265,21 +275,21 @@ body
         text-transform: uppercase
         &:hover
           color: black
-          
+
       .problem
         overflow: hidden
         padding-right: 0
         &:hover h4 a
           color: #333
           text-decoration: underline
-        
+
         img
           float: left
-          
+
         .desc
           float: left
           line-height: 1.3em
-          
+
           h6
             padding: 10px 0
           .social
@@ -292,17 +302,17 @@ body
           text-decoration: none
           &:hover
             color: #333
-            
+
         h4
           font-size: 1.2em
           font-weight: bold
           padding: 5px 0 15px 0
-          
+
         h6
           color: #999
           font-size: 0.8em
           text-transform: uppercase
-        
+
         .desc
           width: 520px
           ul.social li
@@ -316,7 +326,7 @@ body
             img
               margin-top: -5px
               padding-right: 3px
-        
+
   #bottom
     background: #e9e9e9
     color: #aaa
@@ -324,15 +334,15 @@ body
     overflow: hidden
     text-transform: uppercase
 
-      
+
     .left, .right
       padding: 25px 0 20px 0
-      
+
   form.formtastic fieldset > ol > li p.inline-errors
     font-size: 0.8em
     margin: 5px 0 15px 0
-  
-          
+
+
   .pagination
     background: white
     font-size: 0.7em
