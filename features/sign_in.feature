@@ -23,7 +23,7 @@ Feature: Sign in
     When I go to the sign in page
     And I fill in "user_email" with "test_user@popravi.mk"
     And I fill in "user_password" with "secretpass"
-    And I press "Најави ме"
+    And I press "Login"
     Then I should see "You have to confirm your account before continuing."
     And I should be on the redisplayed sign in page
 

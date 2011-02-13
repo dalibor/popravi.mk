@@ -5,6 +5,17 @@ class Municipality < ActiveRecord::Base
 
   # Validations
   validates_presence_of :name
+
+  def self.top(limit_count)
+    Municipality.find :all,
+                      :select => "municipalities.id,
+                                  municipalities.name,
+                                  COUNT(*) as problems_count",
+                      :joins => :problems,
+                      :group => "municipalities.id",
+                      :limit => limit_count,
+                      :order => "problems_count DESC"
+  end
 end
 
 # == Schema Information

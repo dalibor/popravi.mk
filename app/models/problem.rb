@@ -19,10 +19,17 @@ class Problem < ActiveRecord::Base
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
 
   # Scopes
-  scope :with_photo, :conditions => 'problems.photo_file_name IS NOT NULL', :include => [:category, :municipality], :order => "id DESC", :limit => 5
-  scope :matching, lambda {|column, value| value.blank? ? {} : {:conditions => ["#{column} LIKE ?", "%#{value}%"]} }
-  scope :with_category, lambda {|category_id| category_id.blank? ? {} : {:conditions => ["problems.category_id = ?", category_id]} }
-  scope :with_municipality, lambda {|municipality_id| municipality_id.blank? ? {} : {:conditions => ["problems.municipality_id = ?", municipality_id]} }
+  scope :with_photo,
+    where('problems.photo_file_name IS NOT NULL').
+    includes([:category, :municipality]).
+    order("id DESC").
+    limit(5)
+  scope :matching, lambda {|column, value|
+    where(["#{column} LIKE ?", "%#{value}%"]) if value.present? }
+  scope :with_category, proc {|category_id|
+    where(["problems.category_id = ?", category_id]) if category_id.present? }
+  scope :with_municipality, proc {|municipality_id|
+    where(["problems.municipality_id = ?", municipality_id]) if municipality_id.present? }
 
   attr_accessor :address
 
@@ -33,6 +40,14 @@ class Problem < ActiveRecord::Base
     "Проблем со #{category.name} во општина #{municipality.name}"
   end
 
+  def self.search(params)
+    matching(:description, params[:q]).
+      with_category(params[:c]).
+      with_municipality(params[:m]).
+      order('created_at DESC').
+      includes([:category, :municipality]).
+      paginate :per_page => 10, :page => params[:page]
+  end
 
   private
   # formtastic errors fix for paperclip

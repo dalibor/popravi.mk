@@ -25,7 +25,7 @@ Feature: Sign up
     And I fill in "user_email" with "testing"
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
-    When I press "Регистрирај ме"
+    When I press "Register"
     Then I should not see "Успешно сте регистрирани"
     And I should be on the redisplayed sign up page
     And I should have no emails
