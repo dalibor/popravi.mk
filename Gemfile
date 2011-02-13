@@ -25,6 +25,9 @@ group :development do
   gem 'hpricot' # used by web-app-theme
   gem 'ruby_parser' # used by web-app-theme
   gem 'autorefresh'
+  gem 'interactive_editor'
+  gem 'sketches'
+  gem 'looksee'
 end
 
 group :development, :test do
