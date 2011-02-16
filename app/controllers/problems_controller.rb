@@ -21,7 +21,10 @@ class ProblemsController < ApplicationController
   end
 
   def my
-    @problems = current_user.problems.paginate :per_page => 10, :page => params[:page], :order => "id DESC", :include => [:municipality, :category]
+    @problems = current_user.problems.
+      order("id DESC").
+      includes([:municipality, :category]).
+      paginate :per_page => 10, :page => params[:page]
     @potentially_reported_problems = current_user.potentially_reported_problems
   end
 

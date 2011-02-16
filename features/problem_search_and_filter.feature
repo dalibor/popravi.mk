@@ -51,3 +51,25 @@ Feature: Search and filter problems
     Then I should see "Total found: 1 problem"
     And I should see "Problem from municipality 1"
     And I should not see "Problem from municipality 2"
+
+  Scenario Outline: Search problems by date
+    Given a municipality exists with name: "Municipality 1"
+    And a problem exists with description: "Problem 1", municipality: the municipality, created_at: "2010-07-20 20:25:49"
+    Given a municipality exists with name: "Municipality 2"
+    And a problem exists with description: "Problem 2", municipality: the municipality, created_at: "2011-08-20 20:25:49"
+    And I am on the home page
+    And I follow "Problems"
+    When I select "<month>" from "Month"
+    And I select "<year>" from "Year"
+    And I press "Search"
+    And I should see "<see>"
+    And I should not see "<not_see>"
+
+    Examples:
+       | month  | year | see       | not_see   |
+       | July   | 2010 | Problem 1 | Problem 2 |
+       | July   |      | Problem 1 | Problem 2 |
+       | August | 2011 | Problem 2 | Problem 1 |
+       | August |      | Problem 2 | Problem 1 |
+       |        | 2010 | Problem 1 | Problem 2 |
+       |        | 2011 | Problem 2 | Problem 1 |

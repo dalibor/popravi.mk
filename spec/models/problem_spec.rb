@@ -45,6 +45,24 @@ describe Problem do
     end
   end
 
+  describe "years" do
+    it "returns empty array when there are no problems" do
+      Problem.years.should be_empty
+    end
+
+    it "returns proper year when there is one problem" do
+      problem = Factory.create(:problem, :created_at => Date.parse("2010-10-01"))
+      Problem.years.should == [2010]
+    end
+
+    it "returns proper years sorted when there are few problems" do
+      problem = Factory.create(:problem, :created_at => Date.parse("2010-10-01"))
+      problem = Factory.create(:problem, :created_at => Date.parse("2010-10-01"))
+      problem = Factory.create(:problem, :created_at => Date.parse("2011-10-01"))
+      Problem.years.should == [2010, 2011]
+    end
+  end
+
   describe "named scopes" do
     describe "with_photo" do
       it "includes problems with photo" do

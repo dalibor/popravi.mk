@@ -30,6 +30,10 @@ class Problem < ActiveRecord::Base
     where(["problems.category_id = ?", category_id]) if category_id.present? }
   scope :with_municipality, proc {|municipality_id|
     where(["problems.municipality_id = ?", municipality_id]) if municipality_id.present? }
+  scope :with_month, proc {|month|
+    where(["MONTH(problems.created_at) = ?", month]) if month.present? }
+  scope :with_year, proc {|year|
+    where(["YEAR(problems.created_at) = ?", year]) if year.present? }
 
   attr_accessor :address
 
@@ -44,9 +48,15 @@ class Problem < ActiveRecord::Base
     matching(:description, params[:q]).
       with_category(params[:c]).
       with_municipality(params[:m]).
+      with_month(params[:month]).
+      with_year(params[:year]).
       order('created_at DESC').
       includes([:category, :municipality]).
       paginate :per_page => 10, :page => params[:page]
+  end
+
+  def self.years
+    Problem.select("YEAR(created_at) as year").group("year").order("year ASC").map{|p| p.year}
   end
 
   private

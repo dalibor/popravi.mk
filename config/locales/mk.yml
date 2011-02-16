@@ -1,3 +1,6 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
 mk:
   menu:
     blog: Блог
@@ -6,12 +9,14 @@ mk:
   problems:
     total: Вкупно
     problem: проблем
-    are_yours: "Дали сте ги пријавиле?"
-    take_ownership: "Преземи"
-    search: "Барај"
-    total_found: "Вкупно пронајдени:"
+    are_yours: 'Дали сте ги пријавиле?'
+    take_ownership: 'Преземи'
+    search: 'Барај'
+    total_found: 'Вкупно пронајдени:'
     category: 'Категорија'
     municipality: 'Општина'
+    month: 'Месец'
+    year: 'Година'
 
   date:
     formats:
