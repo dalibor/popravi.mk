@@ -2,14 +2,20 @@ PopraviMk::Application.routes.draw do
   # devise routes
   devise_for :users
 
-  resources :problems do
-    collection do
-      post :take_ownership
-      get :my
-    end
-
+  resources :problems, :only => [:index, :show, :new, :create] do
     resources :comments, :only => [:create]
   end
+
+  resources :charts, :only => [:show]
+
+  namespace :user do
+    resources :problems do
+      collection do
+        post :take_ownership
+      end
+    end
+  end
+
 
   resources :municipalities, :only => [:index, :show] do
     resources :problems, :only => [:index]

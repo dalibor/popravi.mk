@@ -1,6 +1,6 @@
 Feature: Blog
   In order to be informed about what is happening on the site
-  As a user
+  As a visitor
   I want to be able to read blog posts
 
   Scenario: Read blog posts

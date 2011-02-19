@@ -1,5 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
+# temporary hack for recaptcha:
+# https://github.com/ambethia/recaptcha/issues/closed/#issue/7
+require 'net/http'
+
 require 'rails/all'
 
 # If you have a Gemfile, require the gems listed there, including any gems
@@ -57,5 +61,3 @@ ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true
 }
 
-ENV['RECAPTCHA_PUBLIC_KEY']  = '6LfvIrwSAAAAAKV0Ovrn14kwKWDgA3bnck3Ob9SI'
-ENV['RECAPTCHA_PRIVATE_KEY'] = '6LfvIrwSAAAAACtEBL-VhUT5fWTr_MRLGU9eV-k5'

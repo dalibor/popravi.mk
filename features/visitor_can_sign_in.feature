@@ -1,12 +1,12 @@
-Feature: Sign in
+Feature: Visitor can sign in
   In order to use the system's functionality
-  As a user
-  I want to be able to log into the system
+  As a visitor
+  I want to be able to sign in into the system
 
   Scenario: Sign in successfully
     Given I am an authenticated user
     Then I should see "Signed in successfully."
-    And I should be on the my_problems page
+    And I should be on the user problems page
 
   Scenario: Invalid login credentials
     Given I signed up as "test_user@popravi.mk" with password "secretpass"

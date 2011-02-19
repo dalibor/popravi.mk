@@ -28,7 +28,7 @@
 
   %p.if
     - if user_signed_in?
-      = link_to "Измени", edit_problem_path(@problem) if current_user == @problem.user
+      = link_to "Измени", edit_user_problem_path(@problem) if current_user == @problem.user
     - else
       Ако овој проблем е пријавен од вас, ве молиме
       = link_to "регистрирајте се", new_registration_path(:user)

@@ -27,7 +27,7 @@
               //%span смени го градот
           %ul#user_nav
             - if user_signed_in?
-              %li= link_to 'мои пријави', my_problems_path
+              %li= link_to 'мои пријави', user_problems_path
               %li= link_to 'администрација', admin_root_path if current_user.is_admin?
               //%li Најавени сте како #{current_user.email}
               %li= link_to 'поставки', edit_user_registration_path

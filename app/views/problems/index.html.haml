@@ -35,6 +35,15 @@
       = pluralize @total_problems, t('problems.problem')
 
   .sidebar
+    %h2= t('problems.charts')
+    %ul.total
+      %li
+        = link_to t('problems.category'), chart_path('category')
+      %li
+        = link_to t('problems.municipality'), chart_path('municipality')
+
+
+  .sidebar
     %h2 Општини со најмногу проблеми
     %ul.total
       - @municipalities.each do |municipality|

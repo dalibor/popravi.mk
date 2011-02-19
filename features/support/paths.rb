@@ -30,8 +30,8 @@ module NavigationHelpers
       admin_root_path
     when /the problems page/
       problems_path
-    when /the my problems page/
-      my_problems_path
+    when /the user problems page/
+      user_problems_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

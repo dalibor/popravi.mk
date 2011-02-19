@@ -16,7 +16,7 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'paperclip', '~> 2.3'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'acts_as_list'
-gem 'ambethia-recaptcha', :require => 'recaptcha/rails'
+gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'gravtastic'
 gem 'cyrillizer', '=0.1.0'
 gem 'RedCloth', '=4.2.3', :require => 'redcloth'
@@ -34,11 +34,11 @@ end
 
 group :development, :test do
   gem 'web-app-theme', '>= 0.6.2'
+  gem "rspec-rails", "~> 2.1"
 end
 
 group :test do
   gem 'rspec'
-  gem "rspec-rails", "~> 2.1"
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'database_cleaner'

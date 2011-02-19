@@ -23,7 +23,7 @@
     .sidebar
       %h2= t('problems.are_yours')
       %ul.total
-        = form_tag take_ownership_problems_path do
+        = form_tag take_ownership_user_problems_path do
           - @potentially_reported_problems.each do |problem|
             %li
               = check_box_tag("problem_ids[#{problem.id}]", '1', true)

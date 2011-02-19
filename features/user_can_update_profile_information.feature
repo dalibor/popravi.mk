@@ -1,7 +1,7 @@
-Feature: Update user information
-  In order to keep my info up-to-date
+Feature: User can update profile information
+  In order to keep my profile information up-to-date
   As a user
-  I want to be able to update my information
+  I want to be able to update my profile information
 
   Scenario: Change user and confirm email
     Given I am an authenticated user

@@ -1,6 +1,6 @@
-Feature: Search and filter problems
+Feature: Visitor can search and filter problems
   In order to to find problems
-  As a user
+  As a visitor
   I want to be able to search and filter problems
 
   Scenario: Search problems by description

@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
       if params[:controller] == "devise/sessions" || params[:controller] == "confirmations"
-        my_problems_path
+        user_problems_path
       elsif params[:controller] == "devise/registrations" && params[:action] == "update"
         edit_user_registration_path
         #if current_user.problems_count == 0 && current_user.has_potentially_reported_problems?

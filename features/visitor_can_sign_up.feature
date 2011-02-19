@@ -1,7 +1,7 @@
-Feature: Sign up
-  In order to log into the system
-  As a user
-  I want to register a new account with the system
+Feature: Visitor can sign up
+  In order to be part of the system
+  As a visitor
+  I want to sign up for a new account in the system
 
   Scenario: Sign up & activation
     Given I am not authenticated

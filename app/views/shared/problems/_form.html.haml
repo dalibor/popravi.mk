@@ -1,7 +1,7 @@
 .wrapper
   - content_for :script do
     %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
-  = semantic_form_for @problem, :html => {:multipart => true} do |f|
+  = semantic_form_for @problem, :url => url, :html => {:multipart => true} do |f|
     = f.semantic_errors :state
     .step1
       .left

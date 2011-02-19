@@ -1,6 +1,6 @@
-Feature: Report a problem
-  In order to get street problems near me fixed
-  As a user
+Feature: Visitor can report a problem
+  In order to have problems near me fixed
+  As a visitor
   I want to be able to report a problem
 
   Scenario: Reporting a problem when user is not logged in
