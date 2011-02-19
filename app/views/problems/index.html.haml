@@ -38,9 +38,11 @@
     %h2= t('problems.charts')
     %ul.total
       %li
-        = link_to t('problems.category'), chart_path('category')
+        = link_to t('problems.category'), report_path('category')
       %li
-        = link_to t('problems.municipality'), chart_path('municipality')
+        = link_to t('problems.municipality'), report_path('municipality')
+      %li
+        = link_to t('problems.status'), report_path('status')
 
 
   .sidebar

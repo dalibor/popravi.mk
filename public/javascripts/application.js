@@ -5,19 +5,19 @@ var DateHelper = {
   // Takes the format of "Jan 15, 2007 15:45:00 GMT" and converts it to a relative time
   // Ruby strftime: %b %d, %Y %H:%M:%S GMT
   time_ago_in_words_with_parsing: function(from) {
-    var date = new Date; 
+    var date = new Date;
     date.setTime(Date.parse(from));
     return this.time_ago_in_words(date);
   },
-  
+
   time_ago_in_words: function(from) {
     return this.distance_of_time_in_words(new Date, from);
   },
- 
+
   distance_of_time_in_words: function(to, from) {
     var distance_in_seconds = ((to - from) / 1000);
     var distance_in_minutes = Math.floor(distance_in_seconds / 60);
- 
+
     if (distance_in_minutes == 0) { return 'пред помалку од минута'; };
     if (distance_in_minutes == 1) { return 'пред минута'; };
     if (distance_in_minutes < 45) { return 'пред ' + distance_in_minutes + ' минути'; };
@@ -57,7 +57,7 @@ var problems_edit = problems_create = problems_update = problems_new = {
     var markersArray = [];
     var markerAdded = false; // mark that marker is not added
     var lastResults = [];
-  
+
     function addMarker(location) {
       marker = new google.maps.Marker({position: location, map: map});
       markersArray.push(marker);
@@ -222,7 +222,7 @@ var welcome_index = {
         //)
       //});
     //});
-    
+
     hideNotice();
 
     var search_results = function(query, count, callback){
@@ -255,6 +255,35 @@ var welcome_index = {
 var problems_my = {
   run: function () {
     hideNotice();
+  }
+};
+
+var drawPieChart = function (element, json) {
+  var data = new google.visualization.DataTable();
+
+  $.each(json.headers, function () {
+    data.addColumn(this[0], this[1]);
+  });
+
+  data.addRows(json.rows.length);
+
+  $.each(json.rows, function (i, e) {
+    data.setValue(i, 0, e[0]);
+    data.setValue(i, 1, e[1]);
+  });
+
+  var chart = new google.visualization.PieChart(element[0]);
+
+  //chart.draw(data, {width: 950, height: 450, title: element.attr('data-chart_title')});
+  chart.draw(data, {width: 950, height: 450});
+};
+
+var reports_show = {
+  run: function (e) {
+    var chart = $('#chart');
+    $.getJSON('/reports/' + chart.attr('data-report_id') + '.json', function (json) {
+      drawPieChart(chart, json);
+    });
   }
 };
 

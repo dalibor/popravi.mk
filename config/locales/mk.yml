@@ -15,8 +15,14 @@ mk:
     total_found: 'Вкупно пронајдени:'
     category: 'Категорија'
     municipality: 'Општина'
+    status: 'Статус'
     month: 'Месец'
     year: 'Година'
+    charts: 'Графици'
+  charts:
+    category: 'Проблеми по категорија'
+    municipality: 'Проблеми по општина'
+    status: 'Проблеми по статус'
 
   date:
     formats:

@@ -15,6 +15,12 @@ en:
     total_found: 'Total found:'
     category: 'Category'
     municipality: 'Municipality'
+    status: 'Status'
     month: 'Month'
     year: 'Year'
+    charts: 'Charts'
+  charts:
+    category: 'Problems by category'
+    municipality: 'Problems by municipality'
+    status: 'Problems by status'
 
