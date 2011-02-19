@@ -1,6 +1,0 @@
-.sidebar
-  %h2 Општини со најмногу проблеми
-  %ul.total
-    - municipalities.each do |municipality|
-      %li
-        = link_to "#{municipality.name} #{municipality.problems_count}", problems_path(:m => municipality.id)

@@ -3,7 +3,7 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, :only => [:my, :ownership, :take_ownership, :update]
 
   def index
-    @problems = Problem.search(params)
+    @problems       = Problem.search(params)
     @municipalities = Municipality.top(10)
     @categories     = Category.top(10)
     @total_problems = Problem.count
@@ -33,9 +33,9 @@ class ProblemsController < ApplicationController
   end
 
   def show
-    @problem = Problem.find(params[:id])
+    @problem  = Problem.find(params[:id])
     @comments = @problem.comments.find :all, :order => "created_at ASC", :include => :user
-    @comment = Comment.new
+    @comment  = Comment.new
   end
 
   def edit
@@ -43,7 +43,7 @@ class ProblemsController < ApplicationController
   end
 
   def create
-    @problem = Problem.new(params[:problem])
+    @problem      = Problem.new(params[:problem])
     @problem.user = current_user if user_signed_in? # assign current_user if user is logged in
 
     if (user_signed_in? || verify_recaptcha(:model => @problem, :message => "Грешка со reCAPTCHA")) && @problem.save
@@ -55,9 +55,9 @@ class ProblemsController < ApplicationController
   end
 
   def update
-    @problem = Problem.find(params[:id])
+    @problem            = Problem.find(params[:id])
     @problem.attributes = params[:problem]
-    @problem.user = current_user
+    @problem.user       = current_user
 
     if @problem.save
       flash[:notice] = 'Проблемот е успешно изменет.'

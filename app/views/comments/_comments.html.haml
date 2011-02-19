@@ -1,6 +1,7 @@
 - @commentable ||= commentable
 
 %a{:name => "comments"}
+
 #comments_block
   .form
     = semantic_form_for [@commentable, @comment] do |f|
@@ -15,6 +16,7 @@
             = raw recaptcha_tags
       = f.buttons do
         = f.commit_button "Испрати"
+
   .comments
     - comments.each do |comment|
       .comment
