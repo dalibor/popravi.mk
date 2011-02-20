@@ -16,6 +16,7 @@ class Problem < ActiveRecord::Base
   belongs_to :category
   belongs_to :municipality
   has_many :comments, :as => :commentable
+  has_many :problem_transitions
 
   # Validations
   validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id

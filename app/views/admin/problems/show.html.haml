@@ -38,6 +38,22 @@
         = @problem.weight
       %p
         = image_tag @problem.photo.url(:m)
+
+      %h2 Problem status transitions
+      %table.table
+        %tr
+          %th No
+          %th From
+          %th To
+          %th Date
+        - @problem.problem_transitions.each_with_index do |transition, index|
+          %tr
+            %td= index + 1
+            %td= transition.from
+            %td= transition.to
+            %td= transition.created_at
+
+
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_problem_path(@problem), :class => "button"
         = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_problem_path(@problem), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
