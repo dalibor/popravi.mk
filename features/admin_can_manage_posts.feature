@@ -1,9 +1,9 @@
-Feature: Manage posts
+Feature: Admin can manage posts
   In order to publish posts on blog
   As a site administrator
-  I want to manage posts
+  I want to be able to manage posts
 
-  Scenario: Manage posts
+  Scenario: Admin can manage posts
     Given I am authenticated as admin
     And I am on the admin page
     And there are no posts

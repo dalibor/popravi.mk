@@ -1,9 +1,9 @@
-Feature: Manage municipalities
+Feature: Admin can manage municipalities
   In order to modify municipalities where problems will be reported
   As a site administrator
-  I want to manage municipalities
+  I want to be able to manage municipalities
 
-  Scenario: Manage municipalities
+  Scenario: Admin can manage municipalities
     Given I am authenticated as admin
     And I am on the admin page
     And there are no municipalities

@@ -1,9 +1,9 @@
-Feature: Manage regions
+Feature: Admin can manage regions
   In order to modify regions where problems will be reported
   As a site administrator
-  I want to manage regions
+  I want to be albe to manage regions
 
-  Scenario: Manage regions
+  Scenario: Admin can manage regions
     Given I am authenticated as admin
     And I am on the admin page
     And there are no regions

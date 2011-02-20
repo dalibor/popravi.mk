@@ -37,7 +37,6 @@ Scenario: Moderator can solve a problem
   Then I should see "Problem was successfully solved"
   And column "5" row "2" should have text "solved"
 
-  @run
 Scenario: Moderator can mark problem as spam
   Given a municipality exists with name: "municipality1"
   And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56"

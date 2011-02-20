@@ -1,9 +1,9 @@
-Feature: Manage comments
+Feature: Admin can manage comments
   In order to modify comments of reported problems
   As a site administrator
-  I want to manage comments
+  I want to be able to manage comments
 
-  Scenario: Manage comments
+  Scenario: Admin can manage comments
     Given I am authenticated as admin
     And I am on the admin page
     And a problem exists

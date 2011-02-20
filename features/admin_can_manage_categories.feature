@@ -1,9 +1,9 @@
-Feature: Manage categories
+Feature: Admin can manage categories
   In order to modify categories of reported problems
   As a site administrator
-  I want to manage categories
+  I want to be able to manage categories
 
-  Scenario: Manage categories
+  Scenario: Admin can manage categories
     Given I am authenticated as admin
     And I am on the admin page
     And there are no categories

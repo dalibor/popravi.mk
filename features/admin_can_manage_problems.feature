@@ -1,9 +1,9 @@
-Feature: Manage problems
+Feature: Admin can manage problems
   In order to validate problems information
   As a site administrator
-  I want to manage problems
+  I want to be albe to manage problems
 
-  Scenario: Manage problems
+  Scenario: Admin can manage problems
     Given I am authenticated as admin
     And I am on the admin page
     And there are no problems

@@ -1,7 +1,7 @@
-Feature: Email instructions
+Feature: Visitor can receive email instructions
   In order to correct issues with my account
-  As a user
-  I want to receive instructions via email
+  As a visitor
+  I want to be able to receive instructions via email
 
   Scenario: Resend email confirmation instructions and activate account
     Given I am not authenticated

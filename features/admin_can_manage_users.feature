@@ -1,9 +1,9 @@
-Feature: Manage users
+Feature: Admin can manage users
   In order to validate users information
   As a site administrator
-  I want to manage users
+  I want to be albe to manage users
 
-  Scenario: Manage users
+  Scenario: Admin can manage users
     Given I am authenticated as admin
     And I am on the admin page
     When I follow "Users"

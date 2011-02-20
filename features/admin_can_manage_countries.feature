@@ -1,9 +1,9 @@
-Feature: Manage countries
+Feature: Admin can manage countries
   In order to modify countries where problems will be reported
   As a site administrator
-  I want to manage countries
+  I want to be able to manage countries
 
-  Scenario: Manage countries
+  Scenario: Admin can manage countries
     Given I am authenticated as admin
     And I am on the admin page
     And there are no countries
