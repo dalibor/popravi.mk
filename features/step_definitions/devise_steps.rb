@@ -50,7 +50,7 @@ end
 Given /^I am authenticated as admin$/ do
   @user = Factory.build(:user)
   @user.password_confirmation = @user.password
-  @user.role = "admin"
+  @user.is_admin = true
   @user.save!
   @user.confirm!
 

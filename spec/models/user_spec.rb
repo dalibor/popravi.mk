@@ -16,16 +16,6 @@ describe User do
   end
 
   describe "instance methods" do
-    it "is admin" do
-      user = Factory.create(:user, :role => "admin")
-      user.is_admin?.should == true
-    end
-
-    it "is not admin" do
-      user = Factory.create(:user, :role => "moderator")
-      user.is_admin?.should == false
-    end
-
     it "does not have potentially reported problems" do
       user = Factory.create(:user)
       user.has_potentially_reported_problems?.should == false
