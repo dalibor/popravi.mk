@@ -19,7 +19,7 @@
 
   .comments
     - comments.each do |comment|
-      .comment
+      .comment{:class => (official_comment?(comment) ? 'official' : nil)}
         = image_tag comment.commenter_avatar
         %ul
           %li.name= comment.commenter_name
