@@ -1,10 +1,15 @@
 class Municipality < ActiveRecord::Base
+
   # Associations
-  has_many :problems
   belongs_to :region
+  has_many :problems
+  has_many :users
 
   # Validations
   validates_presence_of :name
+
+  # Scopes
+  scope :ordered, order('name ASC')
 
   def self.top(limit_count)
     Municipality.find :all,

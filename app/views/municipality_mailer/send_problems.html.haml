@@ -1,0 +1,20 @@
+== Hello #{@municipality.name},
+
+%p
+  Following problems has been reported to your municipality:
+
+%table
+  %thead
+    %tr
+      %th Problem
+      %th URL
+      %th Reported at
+  %tbody
+    - @problems.each do |problem|
+      %tr
+        %td= truncate(problem.description, :length => 400)
+        %td= link_to problem.title, problem_url(problem)
+        %td= problem.created_at
+
+
+= render 'shared/mailer/signature'

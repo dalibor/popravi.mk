@@ -1,7 +1,4 @@
-class Admin::UsersController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::UsersController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
@@ -9,19 +6,9 @@ class Admin::UsersController < ApplicationController
   # Respond type
   respond_to :html
 
-  # Layout
-  layout "admin"
-
   def index
-    @users = User.paginate :all, :order => "created_at DESC",
-                           :per_page => 10, :page => params[:page]
-  end
-
-  def create
-    create! do |success, failure|
-      flash[:notice] = "User was successfully created"
-      success.html { redirect_to admin_users_url }
-    end
+    @users = User.includes(:municipality).order("created_at DESC").
+                  paginate :all, :per_page => 10, :page => params[:page]
   end
 
   def update
@@ -29,10 +16,7 @@ class Admin::UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
     end
-    update! do |success, failure|
-      flash[:notice] = "User was successfully updated"
-      success.html { redirect_to admin_users_url }
-    end
+    update!
   end
 
   def destroy

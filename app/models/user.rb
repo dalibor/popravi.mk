@@ -5,12 +5,13 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :validatable
 
   # Attr accessible
-  attr_accessible :name, :email, :password, :password_confirmation, :avatar
+  attr_accessible :name, :email, :password, :password_confirmation, :avatar, :municipality_id
 
   # Associations
   has_many :problems
   has_many :comments, :dependent => :destroy
   has_many :posts
+  belongs_to :municipality
 
   # Paperclip
   has_attached_file :avatar, :styles => {:s => '60x60#'},

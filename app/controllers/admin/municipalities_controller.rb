@@ -1,16 +1,10 @@
-class Admin::MunicipalitiesController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::MunicipalitiesController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
 
   # Respond type
   respond_to :html
-
-  # Layout
-  layout "admin"
 
   def index
     @municipalities = Municipality.paginate :all, :include => :region,

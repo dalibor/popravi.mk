@@ -1,7 +1,7 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first= link_to t("web-app-theme.list", :default => "List"), admin_problems_path
+      = render :partial => 'list'
       %li.active= link_to t("web-app-theme.new", :default => "New"), new_admin_problem_path
   .content
     %h2.title #{ t("web-app-theme.new", :default => "New")} Problem

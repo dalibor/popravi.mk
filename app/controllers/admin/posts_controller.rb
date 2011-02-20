@@ -1,16 +1,10 @@
-class Admin::PostsController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::PostsController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
 
   # Respond type
   respond_to :html
-
-  # Layout
-  layout "admin"
 
   def index
     @posts = Post.paginate :all, :order => "created_at DESC",

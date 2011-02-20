@@ -1,16 +1,10 @@
-class Admin::RegionsController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::RegionsController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
 
   # Respond type
   respond_to :html
-
-  # Layout
-  layout "admin"
 
   def index
     @regions = Region.paginate :all, :include => :country,

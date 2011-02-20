@@ -15,8 +15,8 @@
 
   .name
     %h2
-      = @problem.municipality.name
-      = @problem.category.name
+      = @problem.title
+
     %h4
       пријавен пред
       = time_ago_in_words(@problem.created_at)

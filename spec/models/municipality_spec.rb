@@ -2,8 +2,9 @@ require 'spec_helper'
 
 describe Municipality do
   describe "associations" do
-    it { should have_many(:problems) }
     it { should belong_to(:region) }
+    it { should have_many(:problems) }
+    it { should have_many(:users) }
   end
 
   describe "validations" do

@@ -10,8 +10,11 @@
         <b>#{ t("activerecord.attributes.admin_user.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
         = @user.name
       %p
-        <b>#{ t("activerecord.attributes.admin_user.is_admin", :default => t("activerecord.labels.is_admin", :default => "Role")) }:</b>
+        <b>#{ t("activerecord.attributes.admin_user.is_admin", :default => t("activerecord.labels.is_admin", :default => "Is admin")) }:</b>
         = @user.is_admin
+      %p
+        <b>#{ t("activerecord.attributes.admin_user.municipality_id", :default => t("activerecord.labels.municipality_id", :default => "Municipality")) }:</b>
+        = @user.municipality.try(:name)
       %p
         <b>#{ t("activerecord.attributes.admin_user.problems_count", :default => t("activerecord.labels.problems_count", :default => "Problems count")) }:</b>
         = @user.problems_count
@@ -58,17 +61,7 @@
         <b>#{ t("activerecord.attributes.admin_user.last_sign_in_ip", :default => t("activerecord.labels.last_sign_in_ip", :default => "Last sign in ip")) }:</b>
         = @user.last_sign_in_ip
       %p
-        <b>#{ t("activerecord.attributes.admin_user.avatar_file_name", :default => t("activerecord.labels.avatar_file_name", :default => "Avatar file name")) }:</b>
-        = @user.avatar_file_name
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.avatar_content_type", :default => t("activerecord.labels.avatar_content_type", :default => "Avatar content type")) }:</b>
-        = @user.avatar_content_type
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.avatar_file_size", :default => t("activerecord.labels.avatar_file_size", :default => "Avatar file size")) }:</b>
-        = @user.avatar_file_size
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.avatar_updated_at", :default => t("activerecord.labels.avatar_updated_at", :default => "Avatar updated at")) }:</b>
-        = @user.avatar_updated_at
+        = image_tag @user.avatar.url(:s)
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_user_path(@user), :class => "button"
         = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_user_path(@user), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"

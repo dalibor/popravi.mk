@@ -1,7 +1,4 @@
-class Admin::ProblemsController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::ProblemsController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
@@ -9,26 +6,22 @@ class Admin::ProblemsController < ApplicationController
   # Respond type
   respond_to :html
 
-  # Layout
-  layout "admin"
-
   def index
-    @problems = Problem.paginate :all, :order => "id DESC",
-                                 :include => [:category, :municipality, :user],
-                                 :per_page => 10, :page => params[:page]
+    @problems = Problem.includes([:category, :municipality, :user]).
+                        filter(params[:filter]).
+                        order("id DESC").
+                        paginate(:per_page => 10, :page => params[:page])
   end
 
   def create
     create! do |success, failure|
-      flash[:notice] = "Problem was successfully created"
-      success.html { redirect_to admin_problems_url }
+      success.html { redirect_to admin_problems_url, :notice => "Problem was successfully created" }
     end
   end
 
   def update
     update! do |success, failure|
-      flash[:notice] = "Problem was successfully updated"
-      success.html { redirect_to admin_problems_url }
+      success.html { redirect_to admin_problems_url, :notice => "Problem was successfully updated"}
     end
   end
 
@@ -36,5 +29,10 @@ class Admin::ProblemsController < ApplicationController
     destroy! do |format|
       format.html { redirect_to admin_problems_url }
     end
+  end
+
+  def sent
+    Problem.send_problems!
+    redirect_to admin_problems_path, :notice => "Problems were successfullly sent to municipalities"
   end
 end

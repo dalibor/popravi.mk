@@ -6,5 +6,4 @@
 .block
   %h3 Links
   %ul.navigation
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
+    %li= link_to "Send problems to municipalities", sent_admin_problems_path, :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"

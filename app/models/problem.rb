@@ -25,15 +25,29 @@ class Problem < ActiveRecord::Base
     order("id DESC").
     limit(5)
   scope :matching, lambda {|column, value|
-    where(["#{column} LIKE ?", "%#{value}%"]) if value.present? }
+    where(["#{column} LIKE ?", "%#{value}%"]) if value.present?
+  }
   scope :with_category, proc {|category_id|
-    where(["problems.category_id = ?", category_id]) if category_id.present? }
+    where(["problems.category_id = ?", category_id]) if category_id.present?
+  }
   scope :with_municipality, proc {|municipality_id|
-    where(["problems.municipality_id = ?", municipality_id]) if municipality_id.present? }
+    where(["problems.municipality_id = ?", municipality_id]) if municipality_id.present?
+  }
   scope :with_month, proc {|month|
-    where(["MONTH(problems.created_at) = ?", month]) if month.present? }
+    where(["MONTH(problems.created_at) = ?", month]) if month.present?
+  }
   scope :with_year, proc {|year|
-    where(["YEAR(problems.created_at) = ?", year]) if year.present? }
+    where(["YEAR(problems.created_at) = ?", year]) if year.present?
+  }
+  scope :unsent, where(["sent_at IS NULL"])
+  scope :sent, where(["sent_at IS NOT NULL"])
+  scope :filter, proc {|filter|
+    if filter == 'unsent'
+      unsent
+    elsif filter == 'sent'
+      sent
+    end
+  }
 
   attr_accessor :address
 
@@ -41,7 +55,7 @@ class Problem < ActiveRecord::Base
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
 
   def title
-    "Проблем со #{category.name} во општина #{municipality.name}"
+    "#{municipality.name} #{category.name}"
   end
 
   def self.search(params)
@@ -57,6 +71,22 @@ class Problem < ActiveRecord::Base
 
   def self.years
     Problem.select("YEAR(created_at) as year").group("year").order("year ASC").map{|p| p.year}
+  end
+
+  def self.send_problems!
+    problems_by_municipality = unsent.includes([{:municipality => :users}, :category]).
+                               group_by{|p| p.municipality }
+
+    problems_by_municipality.each do |municipality, problems|
+      if municipality.users.present?
+        MunicipalityMailer.send_problems(municipality, problems).deliver
+
+        problems.each do |problem|
+          problem.sent_at = Time.now
+          problem.save
+        end
+      end
+    end
   end
 
   private

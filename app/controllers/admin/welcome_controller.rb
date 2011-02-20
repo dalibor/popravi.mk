@@ -1,10 +1,4 @@
-class Admin::WelcomeController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
-
-  # Layout
-  layout "admin"
+class Admin::WelcomeController < Admin::BaseController
 
   def index
   end

@@ -9,6 +9,11 @@
   <span class="description">Ex: a simple text</span>
 
 .group
+  = f.label :municipality_id, t("activerecord.attributes.user.municipality_id", :default => "Municipality"), :class => :label
+  = f.collection_select :municipality_id, Municipality.ordered.all, :id, :name, {:include_blank => 'Select a municipality'}, :class => 'text_field'
+  <span class="description">Ex: a simple text</span>
+
+.group
   = f.label :email, t("activerecord.attributes.user.email", :default => "Email"), :class => :label
   = f.text_field :email, :class => 'text_field'
   <span class="description">Ex: a simple text</span>

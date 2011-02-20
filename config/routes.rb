@@ -41,7 +41,11 @@ PopraviMk::Application.routes.draw do
     resources :regions
     resources :municipalities
     resources :users
-    resources :problems
+    resources :problems do
+      collection do
+        put :sent
+      end
+    end
     resources :comments
     resources :posts
   end

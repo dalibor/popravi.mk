@@ -1,16 +1,10 @@
-class Admin::CommentsController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::CommentsController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
 
   # Respond type
   respond_to :html
-
-  # Layout
-  layout "admin"
 
   def index
     @comments = Comment.paginate :all, :order => "id DESC",

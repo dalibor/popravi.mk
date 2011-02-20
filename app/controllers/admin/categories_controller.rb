@@ -1,16 +1,10 @@
-class Admin::CategoriesController < ApplicationController
-
-  # Filters
-  before_filter :verify_admin
+class Admin::CategoriesController < Admin::BaseController
 
   # Inherited Resources
   inherit_resources
 
   # Respond type
   respond_to :html
-
-  # Layout
-  layout "admin"
 
   def index
     @categories = Category.paginate :all, :order => "position ASC",

@@ -2,8 +2,13 @@
 %html
   %head
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+
     %title Поправи.мк
+
     = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "compiled/web_app_theme_override", :cache => true
+
+    = csrf_meta_tag
+
   %body
     #container
       #header
@@ -51,3 +56,6 @@
               <p>#{ Time.now.year } Поправи.мк</p>
         #sidebar
           = yield :sidebar
+
+    = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'admin', :cache => true
+    = yield :script

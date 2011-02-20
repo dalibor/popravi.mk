@@ -5,6 +5,7 @@ describe User do
     it { should have_many(:problems) }
     it { should have_many(:comments) }
     it { should have_many(:posts) }
+    it { should belong_to(:municipality) }
   end
 
   describe "attributes" do
