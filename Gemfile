@@ -20,6 +20,7 @@ gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'gravtastic'
 gem 'cyrillizer', '=0.1.0'
 gem 'RedCloth', '=4.2.3', :require => 'redcloth'
+gem 'whenever', :require => false
 
 group :development do
   gem 'mongrel'

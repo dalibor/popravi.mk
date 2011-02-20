@@ -80,6 +80,7 @@ class Problem < ActiveRecord::Base
     problems_by_municipality.each do |municipality, problems|
       if municipality.users.present?
         MunicipalityMailer.send_problems(municipality, problems).deliver
+        Rails.logger.info "MUNICIPALITY MAILER - problems: #{problems.map{|p| p.id}.join(', ')}; users: #{municipality.users.map{|u| u.id}.join(', ')}"
 
         problems.each do |problem|
           problem.sent_at = Time.now
