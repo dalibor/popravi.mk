@@ -175,7 +175,7 @@ body {
 
 /* pagination */
 
-.pagination a, .pagination span {
+.pagination a, .pagination span, .pagination em {
   padding: 2px 5px;
   margin-right: 5px; 
   display: block;
@@ -184,7 +184,7 @@ body {
   border-width: 1px;
 }
 
-.pagination span.current {
+.pagination em {
   font-weight: bold;  
 }
 
@@ -394,4 +394,17 @@ button.button:hover, a.button:hover {
 
 button.button:active, a.button:active {
   background-color:#e5e5e5;
+}
+.text_button_padding{
+  color: #222222;
+  display: block;
+  float: left;
+  font-size: 1em;
+  line-height: 2em;
+  margin: 0 7px 0 0;
+  padding: 5px 0 6px 7px;
+  text-decoration: none;
+}
+.link_button{
+  cursor: pointer;
 }
