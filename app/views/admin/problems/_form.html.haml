@@ -43,6 +43,11 @@
   = f.text_field :weight, :class => 'text_field'
   <span class="description">Ex: a simple text</span>
 
+.group
+  = f.label :status, t("activerecord.attributes.problem.status", :default => "Status"), :class => :label
+  = f.select :status, Problem::STATUSES
+  <span class="description">Ex: a simple text</span>
+
 .group.navform.wat-cf
   %button.button{:type => "submit"}
     = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")

@@ -15,6 +15,7 @@
           %th= t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category"))
           %th= t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
           %th= t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device"))
+          %th= t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @problems.each do |problem|
@@ -25,6 +26,7 @@
             %td= problem.category.try(:name)
             %td= problem.municipality.try(:name)
             %td= problem.device_id
+            %td= problem.status
             %td= problem.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), admin_problem_path(problem)

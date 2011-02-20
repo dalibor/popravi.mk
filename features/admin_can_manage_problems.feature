@@ -26,3 +26,21 @@ Feature: Admin can manage problems
     And I press "Save"
     Then I should see "Problem was successfully updated"
     And I should see "Problem description 2"
+
+    @run
+  Scenario: Admin can change state of a problem
+    Given I am authenticated as admin
+    And a problem exists with description: "problem1"
+    When I follow "Problems"
+    Then I should see "problem1"
+    And column "7" row "2" should have text "reported"
+    When I follow "Edit"
+    And I select "solved" from "Status"
+    And I press "Save"
+    Then I should see "Problem was successfully updated"
+    And column "7" row "2" should have text "solved"
+    When I follow "Edit"
+    And I select "approved" from "Status"
+    And I press "Save"
+    Then I should see "Problem was successfully updated"
+    And column "7" row "2" should have text "approved"

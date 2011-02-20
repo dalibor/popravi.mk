@@ -1,5 +1,7 @@
 class Problem < ActiveRecord::Base
 
+  STATUSES = [:reported, :approved, :activated, :solved, :invalid]
+
   # Attributes
   attr_accessor :address
 
@@ -73,14 +75,6 @@ class Problem < ActiveRecord::Base
     event :invalidate do
       transition [:reported] => :invalid
     end
-
-    #event :start do
-      #transition [:valid] => :wip
-    #end
-
-    #event :solve do
-      #transition [:valid] => :solved
-    #end
   end
 
 
