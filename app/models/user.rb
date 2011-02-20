@@ -24,6 +24,21 @@ class User < ActiveRecord::Base
   #validates_attachment_size :avatar, :less_than => 5.megabytes
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/pjpeg', 'image/pjpg', 'image/x-png', 'image/png', 'image/jpg']
 
+
+  # Scopes
+  scope :admins, where('is_admin = TRUE')
+  scope :moderators, where('is_admin = FALSE && municipality_id IS NOT NULL')
+  scope :reporters, where('is_admin = FALSE && municipality_id IS NULL')
+  scope :filter, proc {|filter|
+    if filter == 'admins'
+      admins
+    elsif filter == 'moderators'
+      moderators
+    elsif filter == 'reporters'
+      reporters
+    end
+  }
+
   def has_potentially_reported_problems?
     if Problem.count(:conditions => {:email => self.email, :user_id => nil}) > 0
       true

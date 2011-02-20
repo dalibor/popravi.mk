@@ -7,7 +7,9 @@ class Admin::UsersController < Admin::BaseController
   respond_to :html
 
   def index
-    @users = User.includes(:municipality).order("created_at DESC").
+    @users = User.includes(:municipality).
+                  filter(params[:filter]).
+                  order("created_at DESC").
                   paginate :all, :per_page => 10, :page => params[:page]
   end
 

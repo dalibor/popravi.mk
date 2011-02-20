@@ -48,7 +48,7 @@ Then /^my account should not be found$/ do
 end
 
 Given /^I am authenticated as admin$/ do
-  @user = Factory.build(:user)
+  @user = Factory.build(:user, :email => 'admin@popravi.mk')
   @user.password_confirmation = @user.password
   @user.is_admin = true
   @user.save!

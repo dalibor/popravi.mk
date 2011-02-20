@@ -48,7 +48,6 @@ Scenario: Filter problems by sent and unsent
     And I should see "problem4"
     And I should see "problem5"
 
-@run
 Scenario: Admin sends problems to municipalities via email
     When I follow "Problems"
     And I follow "Send problems to municipalities"

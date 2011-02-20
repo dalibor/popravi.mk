@@ -1,7 +1,7 @@
 .block
   .secondary-navigation
     %ul.wat-cf
-      %li.first= link_to t("web-app-theme.list", :default => "List"), admin_users_path
+      = render :partial => 'list'
       %li= link_to t("web-app-theme.new", :default => "New"), new_admin_user_path
       %li.active= link_to t("web-app-theme.show", :default => "Show"), admin_user_path
   .content

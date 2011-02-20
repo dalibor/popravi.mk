@@ -1,0 +1,4 @@
+%li.first{:class => (params[:action] == "index" && params[:filter].blank? ? 'active' : nil)}= link_to "#{t("web-app-theme.list", :default => "List")}", admin_users_path
+%li{:class => (params[:filter] == 'admins' ? 'active' : nil)}= link_to "#{t("web-app-theme.unsent", :default => "Admins")}", admin_users_path(:filter => 'admins')
+%li{:class => (params[:filter] == 'moderators' ? 'active' : nil)}= link_to "#{t("web-app-theme.moderators", :default => "Moderators")}", admin_users_path(:filter => 'moderators')
+%li{:class => (params[:filter] == 'reporters' ? 'active' : nil)}= link_to "#{t("web-app-theme.reporters", :default => "Reporters")}", admin_users_path(:filter => 'reporters')
