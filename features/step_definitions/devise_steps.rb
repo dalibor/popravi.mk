@@ -54,8 +54,12 @@ Given /^I am authenticated as admin$/ do
   @user.save!
   @user.confirm!
 
+  And %{I sign in as "#{@user.email}" with "#{@user.password}"}
+end
+
+Given /^I sign in as "([^\"]*)" with "([^\"]*)"$/ do |email, password|
   And %{I go to the sign in page}
-  And %{I fill in "user_email" with "#{@user.email}"}
-  And %{I fill in "user_password" with "#{@user.password}"}
+  And %{I fill in "user_email" with "#{email}"}
+  And %{I fill in "user_password" with "#{password}"}
   And %{I press "user_submit"}
 end

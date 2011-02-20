@@ -21,6 +21,7 @@ gem 'gravtastic'
 gem 'cyrillizer', '=0.1.0'
 gem 'RedCloth', '=4.2.3', :require => 'redcloth'
 gem 'whenever', :require => false
+gem 'state_machine'
 
 group :development do
   gem 'mongrel'
@@ -31,6 +32,7 @@ group :development do
   gem 'sketches'
   gem 'looksee'
   gem 'annotate'
+  gem 'ruby-debug'
 end
 
 group :development, :test do

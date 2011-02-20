@@ -28,6 +28,8 @@ module NavigationHelpers
       new_user_unlock_path
     when /the admin page/
       admin_root_path
+    when /the moderator page/
+      moderator_root_path
     when /the problems page/
       problems_path
     when /the user problems page/

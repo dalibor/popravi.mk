@@ -1,0 +1,41 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li= link_to "#{t("web-app-theme.list", :default => "List")}", moderator_problems_path
+      %li.active= link_to t("web-app-theme.show", :default => "Show"), moderator_problems_path(@problem)
+  .content
+    .inner
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
+        = @problem.user.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category")) }:</b>
+        = @problem.category.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality")) }:</b>
+        = @problem.municipality.try(:name)
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description")) }:</b>
+        = @problem.description
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status")) }:</b>
+        = @problem.status
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.latitude", :default => t("activerecord.labels.latitude", :default => "Latitude")) }:</b>
+        = @problem.latitude
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.longitude", :default => t("activerecord.labels.longitude", :default => "Longitude")) }:</b>
+        = @problem.longitude
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        = @problem.email
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device")) }:</b>
+        = @problem.device_id
+      %p
+        <b>#{ t("activerecord.attributes.admin_problem.weight", :default => t("activerecord.labels.weight", :default => "Weight")) }:</b>
+        = @problem.weight
+      %p
+        = image_tag @problem.photo.url(:m)
+
+- content_for :sidebar, render(:partial => 'sidebar')

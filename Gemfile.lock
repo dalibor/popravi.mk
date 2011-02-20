@@ -51,6 +51,7 @@ GEM
     cgi_multipart_eof_fix (2.5.0)
     childprocess (0.1.6)
       ffi (~> 0.6.3)
+    columnize (0.3.2)
     compass (0.10.6)
       haml (>= 3.0.4)
     configuration (1.2.0)
@@ -106,6 +107,7 @@ GEM
     launchy (0.3.7)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
+    linecache (0.43)
     looksee (0.2.1)
     mail (2.2.15)
       activesupport (>= 2.3.6)
@@ -168,6 +170,11 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    ruby-debug (0.10.4)
+      columnize (>= 0.1)
+      ruby-debug-base (~> 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (>= 0.3)
     ruby-hmac (0.4.0)
     ruby_parser (2.0.5)
       sexp_processor (~> 3.0)
@@ -187,6 +194,7 @@ GEM
     sqlite3 (1.3.3)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
+    state_machine (0.9.4)
     term-ansicolor (1.0.5)
     thor (0.14.6)
     treetop (1.4.9)
@@ -238,11 +246,13 @@ DEPENDENCIES
   recaptcha
   rspec
   rspec-rails (~> 2.1)
+  ruby-debug
   ruby_parser
   shoulda
   sketches
   spork
   sqlite3-ruby
+  state_machine
   web-app-theme (>= 0.6.2)
   whenever
   will_paginate (~> 3.0.pre2)

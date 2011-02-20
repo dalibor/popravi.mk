@@ -1,0 +1,2 @@
+module Moderator::ProblemsHelper
+end

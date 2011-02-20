@@ -50,6 +50,21 @@ PopraviMk::Application.routes.draw do
     resources :posts
   end
 
+  # moderator routes
+  namespace :moderator do
+    root :to => "welcome#index"
+    resources :problems, :only => [:index, :show] do
+      member do
+        put :approve
+        put :activate
+        put :solve
+        put :invalidate
+      end
+    end
+    #resources :comments
+    #resources :posts
+  end
+
   # api routes
   namespace :api do
     namespace :v1 do

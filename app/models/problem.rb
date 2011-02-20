@@ -1,5 +1,8 @@
 class Problem < ActiveRecord::Base
 
+  # Attributes
+  attr_accessor :address
+
   # Paperclip
   has_attached_file :photo, :styles => {:s => '60x60#', :m => '300x300#'},
                   :url  => "/assets/problems/:id/:style/:basename.:extension",
@@ -49,10 +52,37 @@ class Problem < ActiveRecord::Base
     end
   }
 
-  attr_accessor :address
-
   # Callbacks
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
+
+  # State machine
+
+  state_machine :status, :initial => :reported do
+    event :approve do
+      transition [:reported] => :approved
+    end
+
+    event :activate do
+      transition [:approved] => :activated
+    end
+
+    event :solve do
+      transition [:activated] => :solved
+    end
+
+    event :invalidate do
+      transition [:reported] => :invalid
+    end
+
+    #event :start do
+      #transition [:valid] => :wip
+    #end
+
+    #event :solve do
+      #transition [:valid] => :solved
+    #end
+  end
+
 
   def title
     "#{municipality.name} #{category.name}"

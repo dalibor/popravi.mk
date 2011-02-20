@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+
+    %title Поправи.мк
+
+    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "compiled/web_app_theme_override", :cache => true
+
+    = csrf_meta_tag
+
+  %body
+    #container
+      #header
+        %h1 <a href="/">Поправи.мк</a>
+        #user-navigation
+          %ul.wat-cf
+            %li= link_to "Settings", edit_user_registration_path
+            %li= link_to "Logout", destroy_user_session_path, :class => "logout"
+        <div id="main-navigation">
+        <ul class="wat-cf">
+        %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
+          %a{:href => moderator_problems_path} Problems
+
+        -#%li{:class => controller.controller_path == 'admin/comments' ? 'active' : '' }
+          -#%a{:href => admin_comments_path} Comments
+
+        -#%li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
+          -#%a{:href => admin_posts_path} Posts
+
+        </ul>
+        </div>
+      #wrapper.wat-cf
+        .flash
+          - flash.each do |type, message|
+            .message{:class => type.to_s}
+              <p>#{ message }</p>
+        #main
+          = yield
+          #footer
+            .block
+              <p>#{ Time.now.year } Поправи.мк</p>
+        #sidebar
+          = yield :sidebar
+
+    = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'admin', :cache => true
+    = yield :script

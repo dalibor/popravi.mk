@@ -64,3 +64,11 @@ Then /^the "([^"]*)" should contain "([^"]*)"$/ do |selector, value|
   find(selector).value.should =~ /#{value}/
 end
 
+Then /^debug$/ do
+  $page = page # to access the capybara page for debugging
+  debugger
+end
+
+Then /^column "([^"]*)" row "([^"]*)" should have text "([^"]*)"$/ do |column, row, text|
+  page.find("table.table tr[#{row}] td[#{column}]").text.should == text
+end

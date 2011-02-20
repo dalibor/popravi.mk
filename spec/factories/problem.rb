@@ -7,5 +7,5 @@ Factory.define :problem do |f|
   f.latitude "41"
   f.association :category
   f.association :municipality
-  f.user
+  f.status 'reported'
 end
