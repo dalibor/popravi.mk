@@ -1,0 +1,2 @@
+module Moderator::CommentsHelper
+end

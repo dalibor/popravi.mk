@@ -19,11 +19,11 @@
             %li= link_to "Logout", destroy_user_session_path, :class => "logout"
         <div id="main-navigation">
         <ul class="wat-cf">
-        %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
+        %li{:class => controller.controller_path == 'moderator/problems' ? 'active' : '' }
           %a{:href => moderator_problems_path} Problems
 
-        -#%li{:class => controller.controller_path == 'admin/comments' ? 'active' : '' }
-          -#%a{:href => admin_comments_path} Comments
+        %li{:class => controller.controller_path == 'moderator/comments' ? 'active' : '' }
+          %a{:href => moderator_comments_path} Comments
 
         -#%li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
           -#%a{:href => admin_posts_path} Posts

@@ -3,7 +3,6 @@ Feature: Moderator can add official comment to a problem
   As a moderator
   I want to be able to add official comment to a problem
 
-  @run
 Scenario: Moderator can add official comment to a problem
   Given a municipality exists with name: "municipality1"
   And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56"

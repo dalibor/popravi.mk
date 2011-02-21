@@ -61,7 +61,7 @@ PopraviMk::Application.routes.draw do
         put :invalidate
       end
     end
-    #resources :comments
+    resources :comments, :only => [:index, :show, :edit, :update, :destroy]
     #resources :posts
   end
 

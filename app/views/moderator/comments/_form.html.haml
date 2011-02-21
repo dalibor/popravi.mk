@@ -1,0 +1,11 @@
+.group
+  = f.label :content, t("activerecord.attributes.comment.content", :default => "Content"), :class => :label
+  = f.text_area :content, :class => 'text_area'
+  <span class="description">Ex: a simple text</span>
+
+.group.navform.wat-cf
+  %button.button{:type => "submit"}
+    = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+    = t("web-app-theme.save", :default => "Save")
+  %span.text_button_padding= t("web-app-theme.or", :default => "or")
+  = link_to t("web-app-theme.cancel", :default => "Cancel"), moderator_comments_path, :class => "text_button_padding link_button"
