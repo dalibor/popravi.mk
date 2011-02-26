@@ -22,7 +22,7 @@
     %ul.total
       - @municipalities.each do |municipality|
         %li
-          = link_to "#{municipality.name} #{municipality.problems_count}", problems_path(:m => municipality.id)
+          = link_to "#{municipality.name} #{municipality.problems_count}", municipality_path(municipality.slug)
       %li.view_all= link_to t('municipalities.view_all'), municipalities_path
 
 

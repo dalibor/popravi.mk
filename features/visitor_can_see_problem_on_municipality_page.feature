@@ -3,9 +3,9 @@ Feature: Visitor can see problem on municipality page
   As a visitor
   I want to be able to see problem on municipality page
 
-  @wip
 Scenario: Visitor can see problems on municipality page
-  Given a municipality exists with name: "municipality1"
+  Given a region exists with name: "region1"
+  And a municipality exists with name: "municipality1", region: the region
   And a problem exists with description: "problem1", municipality: the municipality
   And I am on the home page
   Then I should see "municipality1 1"

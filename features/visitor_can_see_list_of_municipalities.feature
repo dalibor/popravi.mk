@@ -3,7 +3,6 @@ Feature: Visitor can see list of municipalities
   As a visitor
   I want to be able to see list of municipalities with problems there
 
-  @run
 Scenario: Visitor can see list of municipalities
   Given a region exists with name: "region1"
   And a municipality exists with name: "municipality1", region: the region

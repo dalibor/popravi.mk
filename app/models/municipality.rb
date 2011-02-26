@@ -9,8 +9,17 @@ class Municipality < ActiveRecord::Base
   # Validations
   validates_presence_of :name
 
+  # Callbacks
+  before_save :set_slug
+
   # Scopes
   scope :ordered, order('name ASC')
+
+  private
+
+    def set_slug
+      self.slug = name.to_s.to_lat.parameterize.to_s
+    end
 end
 
 # == Schema Information

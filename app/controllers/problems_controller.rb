@@ -2,7 +2,7 @@ class ProblemsController < ApplicationController
 
   def index
     @problems       = Problem.search(params)
-    @categories     = Category.top(10)
+    @categories     = Category.order("problems_count DESC").limit(10)
     @total_problems = Problem.count
 
     respond_to do |format|

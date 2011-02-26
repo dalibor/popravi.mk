@@ -17,7 +17,7 @@ PopraviMk::Application.routes.draw do
   end
 
 
-  resources :municipalities, :only => [:index, :show] do
+  resources :municipalities, :only => [:index] do
     resources :problems, :only => [:index]
   end
 
@@ -77,4 +77,6 @@ PopraviMk::Application.routes.draw do
       resources :municipalities, :only => [:index]
     end
   end
+
+  match "/:id", :to => "municipalities#show", :as => :municipality
 end

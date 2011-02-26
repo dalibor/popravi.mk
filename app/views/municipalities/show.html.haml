@@ -1,0 +1,34 @@
+- title("Листа на проблеми во општина #{@municipality.name}")
+-#- content_for :head do
+  -#= auto_discovery_link_tag(:rss, problems_path(:format => 'rss'))
+
+.main
+  .header
+    %h2 Проблеми
+    = link_to image_tag("rss.png"), problems_path(:format => 'rss')
+
+  .problems
+    = render :partial => 'problems/problem', :collection => @problems
+
+    = will_paginate @problems
+
+    .total
+      = t('problems.total_found')
+      = pluralize @problems.total_entries, t('problems.problem')
+
+#sidebar
+  .sidebar
+    %h2= t('problems.search')
+    = semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
+      = f.inputs do
+        = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}
+        = f.input :c, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
+        = f.input :month, :as => :select, :label => t('problems.month'), :selected => params[:month].to_i, :required => false, :input_html => {:name => :month}, :collection => get_month_names
+        = f.input :year, :as => :select, :label => t('problems.year'), :selected => params[:year].to_i, :required => false, :input_html => {:name => :year}, :collection => Problem.years
+        = f.buttons do
+          = f.commit_button t('problems.search'), :button_html => {:name => nil}
+
+  .sidebar
+    %h2= t('problems.total')
+    .total
+      = pluralize @total_problems, t('problems.problem')

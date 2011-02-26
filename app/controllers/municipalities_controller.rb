@@ -7,6 +7,8 @@ class MunicipalitiesController < ApplicationController
   end
 
   def show
-    redirect_to root_path
+    @municipality = Municipality.find_by_slug(params[:id])
+    @problems = @municipality.problems.paginate :per_page => 10, :page => params[:page]
+    @total_problems = @municipality.problems.count
   end
 end
