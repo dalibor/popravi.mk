@@ -32,12 +32,12 @@ group :development do
   gem 'sketches'
   gem 'looksee'
   gem 'annotate'
-  gem 'ruby-debug'
 end
 
 group :development, :test do
   gem 'web-app-theme', '>= 0.6.2'
   gem "rspec-rails", "~> 2.1"
+  gem 'ruby-debug'
 end
 
 group :test do

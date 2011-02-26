@@ -11,7 +11,8 @@
           %th.first ID
           %th= t("activerecord.attributes.admin_post.user", :default => t("activerecord.labels.user", :default => "User"))
           %th= t("activerecord.attributes.admin_post.title", :default => t("activerecord.labels.title", :default => "Title"))
-          %th= t("activerecord.attributes.admin_post.published_ad", :default => t("activerecord.labels.published_at", :default => "Published at"))
+          %th= t("activerecord.attributes.admin_post.published", :default => t("activerecord.labels.published_at", :default => "Published at"))
+          %th= t("activerecord.attributes.admin_post.published_at", :default => t("activerecord.labels.published_at", :default => "Published at"))
           %th= t("activerecord.attributes.admin_post.comments_closed", :default => t("activerecord.labels.comments_closed", :default => "Comments closed"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
@@ -20,6 +21,7 @@
             %td= post.id
             %td= post.user.try(:name)
             %td= link_to post.title, admin_post_path(post)
+            %td= post.published
             %td= post.published_at
             %td= post.comments_closed
             %td= post.created_at

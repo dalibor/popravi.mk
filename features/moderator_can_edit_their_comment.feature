@@ -3,7 +3,6 @@ Feature: Moderator can edit their comment
   As a moderator
   I want to be able to edit my comment
 
-  @run
 Scenario: Moderator can edit their comment
   Given a municipality exists with name: "municipality1"
   And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56"

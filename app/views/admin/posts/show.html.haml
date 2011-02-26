@@ -19,6 +19,9 @@
         <b>#{ t("activerecord.attributes.admin_post.content", :default => t("activerecord.labels.content", :default => "Content")) }:</b>
         = @post.content
       %p
+        <b>#{ t("activerecord.attributes.admin_post.published", :default => t("activerecord.labels.published", :default => "Published")) }:</b>
+        = @post.published
+      %p
         <b>#{ t("activerecord.attributes.admin_post.published_at", :default => t("activerecord.labels.published_at", :default => "Published at")) }:</b>
         = @post.published_at
       %p

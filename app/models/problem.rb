@@ -25,11 +25,7 @@ class Problem < ActiveRecord::Base
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
 
   # Scopes
-  scope :with_photo,
-    where('problems.photo_file_name IS NOT NULL').
-    includes([:category, :municipality]).
-    order("id DESC").
-    limit(5)
+  scope :ordered, order("created_at DESC")
   scope :matching, lambda {|column, value|
     where(["#{column} LIKE ?", "%#{value}%"]) if value.present?
   }
@@ -140,7 +136,7 @@ end
 #  category_id        :integer(4)
 #  municipality_id    :integer(4)
 #  description        :text
-#  status             :integer(4)      default(0)
+#  status             :string(255)     default("0")
 #  longitude          :string(255)
 #  latitude           :string(255)
 #  email              :string(255)
@@ -152,5 +148,6 @@ end
 #  photo_file_size    :integer(4)
 #  photo_updated_at   :datetime
 #  weight             :integer(4)      default(5)
+#  sent_at            :datetime
 #
 

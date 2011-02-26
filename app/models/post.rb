@@ -8,14 +8,14 @@ class Post < ActiveRecord::Base
 
   # Attributes
   attr_accessor :custom_slug
-  attr_writer :publish
 
   # Callbacks
   before_validation :set_slug
   before_save :set_published_at
 
   # Scopes
-  scope :published, :conditions => 'published_at IS NOT NULL', :order => 'published_at DESC'
+  scope :published, where('published IS TRUE')
+  scope :ordered, order('published_at DESC')
   scope :for_month, lambda {|year, month|
     if !month.blank? && !year.blank?
       start_time = Time.mktime(year, month, nil)
@@ -24,10 +24,6 @@ class Post < ActiveRecord::Base
       {}
     end
   }
-
-  def publish
-    @publish || !published_at.nil?
-  end
 
   def self.archive_items
     find(:all, :select => "published_at", :conditions => "published_at IS NOT NULL").collect{|a| [a.published_at.year, a.published_at.month]}.uniq || []
@@ -39,21 +35,17 @@ class Post < ActiveRecord::Base
 
   private
 
-  def set_slug
-    if custom_slug == "1"
-      self.slug = slug.to_s.to_lat.parameterize.to_s
-    else
-      self.slug = title.to_s.to_lat.parameterize.to_s
+    def set_slug
+      if custom_slug == "1"
+        self.slug = slug.to_s.to_lat.parameterize.to_s
+      else
+        self.slug = title.to_s.to_lat.parameterize.to_s
+      end
     end
-  end
 
-  def set_published_at
-    if publish == "1"
-      self.published_at = Time.now if published_at_was == nil
-    elsif publish == "0"
-      self.published_at = nil
+    def set_published_at
+      self.published_at = published ? Time.now : nil
     end
-  end
 end
 
 # == Schema Information
@@ -69,5 +61,6 @@ end
 #  comments_closed :boolean(1)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  published       :boolean(1)      default(TRUE)
 #
 

@@ -63,21 +63,8 @@ describe Problem do
       Problem.years.should == [2010, 2011]
     end
   end
-
-  describe "named scopes" do
-    describe "with_photo" do
-      it "includes problems with photo" do
-        problem = Factory.create(:problem)
-        Problem.with_photo.should include(problem)
-      end
-
-      it "excludes problems without photo" do
-        problem = Factory.create(:problem, :photo => nil)
-        Problem.with_photo.should_not include(problem)
-      end
-    end
-  end
 end
+
 
 # == Schema Information
 #
@@ -88,7 +75,7 @@ end
 #  category_id        :integer(4)
 #  municipality_id    :integer(4)
 #  description        :text
-#  status             :integer(4)      default(0)
+#  status             :string(255)     default("0")
 #  longitude          :string(255)
 #  latitude           :string(255)
 #  email              :string(255)
@@ -100,5 +87,6 @@ end
 #  photo_file_size    :integer(4)
 #  photo_updated_at   :datetime
 #  weight             :integer(4)      default(5)
+#  sent_at            :datetime
 #
 

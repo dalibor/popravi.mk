@@ -3,9 +3,13 @@ Feature: Blog
   As a visitor
   I want to be able to read blog posts
 
+  @run
   Scenario: Read blog posts
-    Given I am on the home page
-    And posts exists
+    Given now is "2010-01-01 12:00:00"
+    And a post exists with title: "Hello world 1"
+    And now is "2010-03-01 12:00:00"
+    And a post exists with title: "Hello world 2"
+    And I am on the home page
     And I follow "Blog"
     When I follow "Hello world 1"
     Then I should see "Hello world 1"

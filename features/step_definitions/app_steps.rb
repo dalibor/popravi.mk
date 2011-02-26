@@ -72,3 +72,7 @@ end
 Then /^column "([^"]*)" row "([^"]*)" should have text "([^"]*)"$/ do |column, row, text|
   page.find("table.table tr[#{row}] td[#{column}]").text.should == text
 end
+
+Given /^now is "([^"]*)"$/ do |time|
+  Time.stub(:now).and_return(Time.parse(time))
+end

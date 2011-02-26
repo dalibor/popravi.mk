@@ -69,13 +69,14 @@ describe User do
   end
 end
 
+
 # == Schema Information
 #
 # Table name: users
 #
 #  id                   :integer(4)      not null, primary key
 #  name                 :string(255)
-#  role                 :string(255)
+#  is_admin             :boolean(1)      default(FALSE)
 #  problems_count       :integer(4)      default(0)
 #  email                :string(255)     default(""), not null
 #  encrypted_password   :string(128)     default(""), not null
@@ -97,5 +98,6 @@ end
 #  avatar_content_type  :string(255)
 #  avatar_file_size     :integer(4)
 #  avatar_updated_at    :datetime
+#  municipality_id      :integer(4)
 #
 

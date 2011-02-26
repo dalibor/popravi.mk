@@ -29,20 +29,20 @@ describe Post do
     end
   end
 
-  describe "publish" do
-    it "does not set published_at when publish is not checked" do
-      post = Factory.create(:post, :publish => "0")
+  describe "published" do
+    it "does not set published_at when published is not checked" do
+      post = Factory.create(:post, :published => "0")
       post.published_at.should be_nil
     end
 
-    it "does sets published_at when publish is checked" do
-      post = Factory.create(:post, :publish => "1")
+    it "does sets published_at when published is checked" do
+      post = Factory.create(:post, :published => "1")
       post.published_at.should_not be_nil
     end
 
     it "removes published_at when post is unpublished" do
-      post = Factory.create(:post, :publish => "1")
-      post.publish = "0"
+      post = Factory.create(:post, :published => "1")
+      post.published = "0"
       post.save
       post.published_at.should be_nil
     end
@@ -50,8 +50,12 @@ describe Post do
 
   describe "archive items" do
     it "finds archive items" do
-      post = Factory.create(:post)
-      Factory.create(:post, :user => post.user, :published_at => "2010-03-01", :title => "Hello world 2")
+      Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
+      Factory.create(:post, :user => Factory.create(:user), :published => true,
+                     :title => "Hello world 1")
+      Time.stub(:now).and_return(Time.parse("2010-03-01 12:00:00"))
+      Factory.create(:post, :user => Factory.create(:user), :published => true,
+                     :title => "Hello world 2")
       Post.archive_items.should == [[2010, 1], [2010, 3]]
     end
   end
@@ -64,15 +68,20 @@ describe Post do
       end
 
       it "excludes problmes without photo" do
-        post = Factory.create(:post, :published_at => nil)
+        post = Factory.create(:post, :published => false)
         Post.published.should_not include(post)
       end
     end
 
     describe "for month" do
       it "filters posts for months" do
-        post1 = Factory.create(:post)
-        post2 = Factory.create(:post, :user => post1.user, :published_at => "2010-03-01", :title => "Hello world 2")
+        Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
+        post1 = Factory.create(:post, :user => Factory.create(:user),
+                               :published => true, :title => "Hello world 1")
+        Time.stub(:now).and_return(Time.parse("2010-03-01 12:00:00"))
+        post2 = Factory.create(:post, :user => Factory.create(:user),
+                               :published => true, :title => "Hello world 2")
+
         Post.for_month(2010, 1).should include(post1)
         Post.for_month(2010, 1).should_not include(post2)
         Post.for_month(2010, 3).should include(post2)
@@ -81,6 +90,7 @@ describe Post do
     end
   end
 end
+
 
 # == Schema Information
 #
@@ -95,5 +105,6 @@ end
 #  comments_closed :boolean(1)
 #  created_at      :datetime
 #  updated_at      :datetime
+#  published       :boolean(1)      default(TRUE)
 #
 
