@@ -6,8 +6,8 @@ class ProblemsController < ApplicationController
     @total_problems = Problem.count
 
     respond_to do |format|
-      format.html { render :action => 'index' }
-      format.rss  { render :layout => false   }
+      format.html
+      format.rss { render :layout => false }
     end
   end
 

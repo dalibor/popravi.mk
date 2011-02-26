@@ -10,5 +10,10 @@ class MunicipalitiesController < ApplicationController
     @municipality = Municipality.find_by_slug(params[:id])
     @problems = @municipality.problems.search(params)
     @total_problems = @municipality.problems.count
+
+    respond_to do |format|
+      format.html
+      format.rss { render :layout => false }
+    end
   end
 end
