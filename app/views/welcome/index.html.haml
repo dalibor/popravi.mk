@@ -11,7 +11,7 @@
     .blog
       %li
         - if @post
-          = link_to @post.title, @post
+          = link_to @post.title, post_path(@post.slug)
           %span
             = render 'posts/timestamp', :post => @post
           %p

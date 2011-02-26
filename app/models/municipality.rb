@@ -4,6 +4,7 @@ class Municipality < ActiveRecord::Base
   belongs_to :region
   has_many :problems
   has_many :users
+  has_many :posts, :through => :users
 
   # Validations
   validates_presence_of :name

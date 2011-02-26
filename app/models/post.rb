@@ -29,10 +29,6 @@ class Post < ActiveRecord::Base
     find(:all, :select => "published_at", :conditions => "published_at IS NOT NULL").collect{|a| [a.published_at.year, a.published_at.month]}.uniq || []
   end
 
-  def to_param
-    slug
-  end
-
   private
 
     def set_slug

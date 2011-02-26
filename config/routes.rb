@@ -62,7 +62,7 @@ PopraviMk::Application.routes.draw do
       end
     end
     resources :comments, :only => [:index, :show, :edit, :update, :destroy]
-    #resources :posts
+    resources :posts
   end
 
   # api routes

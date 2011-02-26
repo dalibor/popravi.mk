@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     if (user_signed_in? || verify_recaptcha(:model => @comment, :message => "Грешка со reCAPTCHA")) && @comment.save
       flash[:notice] = 'Успешно коментиравте.'
-      redirect_to @commentable
+      redirect_to commentable_path(@commentable)
     else
       @comments = @commentable.comments.find :all, :order => "created_at ASC"
       render :template => commentable_show_template
@@ -15,25 +15,30 @@ class CommentsController < ApplicationController
   end
 
   private
-  def find_commentable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        if $1 == "post"
-          return $1.classify.constantize.find_by_slug(value)
-        else
+
+    def find_commentable
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
           return $1.classify.constantize.find(value)
         end
       end
+      nil
     end
-    nil
-  end
 
-  def commentable_show_template
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return "#{$1.pluralize}/show"
+    def commentable_show_template
+      params.each do |name, value|
+        if name =~ /(.+)_id$/
+          return "#{$1.pluralize}/show"
+        end
+      end
+      nil
+    end
+
+    def commentable_path(commentable)
+      if commentable.is_a?(Post)
+        post_path(commentable.slug)
+      else
+        commentable
       end
     end
-    nil
-  end
 end

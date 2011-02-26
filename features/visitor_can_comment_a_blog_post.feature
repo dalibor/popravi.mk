@@ -3,6 +3,7 @@ Feature: Visitor can comment a blog post
   As a visitor
   I want to be able to comment a blog post
 
+  @run
   Scenario: Visitor can comment a blog post
     Given a post exists
     And I am on the home page

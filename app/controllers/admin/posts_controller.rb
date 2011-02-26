@@ -15,10 +15,4 @@ class Admin::PostsController < Admin::BaseController
     @post = current_user.posts.new(params[:post])
     create!
   end
-
-  protected
-
-    def resource
-      @post = Post.find_by_slug(params[:id])
-    end
 end

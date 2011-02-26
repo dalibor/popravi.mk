@@ -5,6 +5,7 @@ describe Municipality do
     it { should belong_to(:region) }
     it { should have_many(:problems) }
     it { should have_many(:users) }
+    it { should have_many(:posts) }
   end
 
   describe "validations" do
