@@ -2,6 +2,14 @@ class Problem < ActiveRecord::Base
 
   STATUSES = [:reported, :approved, :activated, :solved, :invalid]
 
+  def self.statuses
+    statuses = []
+    STATUSES.each do |status|
+      statuses << [I18n.t("problems.statuses.#{status}"), status]
+    end
+    statuses
+  end
+
   # Attributes
   attr_accessor :address
   attr_accessible :category_id, :municipality_id, :description, :status,
@@ -42,6 +50,9 @@ class Problem < ActiveRecord::Base
   }
   scope :with_year, proc {|year|
     where(["YEAR(problems.created_at) = ?", year]) if year.present?
+  }
+  scope :with_status, proc {|status|
+    where(["status = ?", status]) if status.present?
   }
   scope :unsent, where(["sent_at IS NULL"])
   scope :sent, where(["sent_at IS NOT NULL"])
@@ -87,6 +98,7 @@ class Problem < ActiveRecord::Base
       with_municipality(params[:m]).
       with_month(params[:month]).
       with_year(params[:year]).
+      with_status(params[:s]).
       order('created_at DESC').
       includes([:category, :municipality]).
       paginate :per_page => 10, :page => params[:page]

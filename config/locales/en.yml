@@ -19,6 +19,12 @@ en:
     month: 'Month'
     year: 'Year'
     charts: 'Charts'
+    statuses:
+      reported: 'reported'
+      approved: 'approved'
+      activated: 'active'
+      solved: 'solved'
+      invalid: 'invalid'
   charts:
     category: 'Problems by category'
     municipality: 'Problems by municipality'

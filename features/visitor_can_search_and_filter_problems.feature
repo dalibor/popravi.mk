@@ -40,6 +40,19 @@ Feature: Visitor can search and filter problems
     And I should see "Problem from municipality 1"
     And I should not see "Problem from municipality 2"
 
+  Scenario: Filter problems by status
+    Given a municipality exists with name: "Municipality 1"
+    And a problem exists with description: "Problem from municipality 1", municipality: the municipality, status: "approved"
+    Given a municipality exists with name: "Municipality 2"
+    And a problem exists with description: "Problem from municipality 2", municipality: the municipality, status: "activated"
+    And I am on the home page
+    And I follow "Problems"
+    When I select "approved" from "Status"
+    And I press "Search"
+    Then I should see "Total found: 1 problem"
+    And I should see "Problem from municipality 1"
+    And I should not see "Problem from municipality 2"
+
   Scenario Outline: Search problems by date
     Given a municipality exists with name: "Municipality 1"
     And a problem exists with description: "Problem 1", municipality: the municipality, created_at: "2010-07-20 20:25:49"

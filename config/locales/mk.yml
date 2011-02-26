@@ -19,6 +19,12 @@ mk:
     month: 'Месец'
     year: 'Година'
     charts: 'Графици'
+    statuses:
+      reported: 'пријавен'
+      approved: 'одобрен'
+      activated: 'активен'
+      solved: 'поправен'
+      invalid: 'невалиден'
   charts:
     category: 'Проблеми по категорија'
     municipality: 'Проблеми по општина'

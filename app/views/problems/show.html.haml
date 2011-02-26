@@ -21,6 +21,8 @@
       пријавен пред
       = time_ago_in_words(@problem.created_at)
 
+    %p= t("problems.statuses.#{@problem.status}")
+
     %p= simple_format @problem.description
 
   .problem_assets
