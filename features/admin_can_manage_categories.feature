@@ -5,8 +5,6 @@ Feature: Admin can manage categories
 
   Scenario: Admin can manage categories
     Given I am authenticated as admin
-    And I am on the admin page
-    And there are no categories
     When I follow "Categories"
     And I follow "New"
     And I fill in "Name" with "Category name"
@@ -23,7 +21,6 @@ Feature: Admin can manage categories
     Given I am authenticated as admin
     And a category exists with name: "Category 1", position: "1"
     And a category exists with name: "Category 2", position: "2"
-    And I am on the admin page
     When I follow "Categories"
     Then I should see "Category 1" within ".odd"
     And I should see "Category 2" within ".even"

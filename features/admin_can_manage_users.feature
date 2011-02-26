@@ -5,7 +5,6 @@ Feature: Admin can manage users
 
   Scenario: Admin can manage users
     Given I am authenticated as admin
-    And I am on the admin page
     When I follow "Users"
     And I follow "New"
     And I fill in "Name" with "Test User 2"

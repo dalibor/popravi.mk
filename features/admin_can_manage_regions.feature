@@ -6,8 +6,7 @@ Feature: Admin can manage regions
   Scenario: Admin can manage regions
     Given I am authenticated as admin
     And I am on the admin page
-    And there are no regions
-    And there is country
+    And a country exists with name: "Macedonia"
     When I follow "Regions"
     When I follow "New"
     And I fill in "Name" with "Region name"

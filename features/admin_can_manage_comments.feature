@@ -5,7 +5,6 @@ Feature: Admin can manage comments
 
   Scenario: Admin can manage comments
     Given I am authenticated as admin
-    And I am on the admin page
     And a problem exists
     And a comment exists with commentable: the problem
     When I follow "Comments"

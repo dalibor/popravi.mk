@@ -5,10 +5,8 @@ Feature: Admin can manage posts
 
   Scenario: Admin can manage posts
     Given I am authenticated as admin
-    And I am on the admin page
-    And there are no posts
     When I follow "Posts"
-    When I follow "New"
+    And I follow "New"
     And I check "Custom slug"
     And I fill in "Slug" with "my-custom-slug"
     And I fill in "Title" with "Hello world"

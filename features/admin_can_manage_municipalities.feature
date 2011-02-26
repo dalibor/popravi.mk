@@ -5,11 +5,9 @@ Feature: Admin can manage municipalities
 
   Scenario: Admin can manage municipalities
     Given I am authenticated as admin
-    And I am on the admin page
-    And there are no municipalities
-    And there is region
+    And a region exists
     When I follow "Municipalities"
-    When I follow "New"
+    And I follow "New"
     And I fill in "Name" with "Municipality name"
     And I select "Skopski" from "Region"
     And I press "Save"

@@ -5,8 +5,6 @@ Feature: Admin can manage countries
 
   Scenario: Admin can manage countries
     Given I am authenticated as admin
-    And I am on the admin page
-    And there are no countries
     When I follow "Countries"
     When I follow "New"
     And I fill in "Name" with "Country name"

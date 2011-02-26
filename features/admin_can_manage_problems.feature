@@ -6,11 +6,10 @@ Feature: Admin can manage problems
   Scenario: Admin can manage problems
     Given I am authenticated as admin
     And I am on the admin page
-    And there are no problems
     And a category exists
     And a municipality exists
     When I follow "Problems"
-    When I follow "New"
+    And I follow "New"
     And I fill in "Description" with "Problem description"
     And I attach the file "public/images/rails.png" to "Photo"
     And I fill in "Latitude" with "42"
