@@ -22,11 +22,11 @@
         %li{:class => controller.controller_path == 'moderator/problems' ? 'active' : '' }
           %a{:href => moderator_problems_path} Problems
 
+        %li{:class => controller.controller_path == 'moderator/posts' ? 'active' : '' }
+          %a{:href => moderator_posts_path} Posts
+
         %li{:class => controller.controller_path == 'moderator/comments' ? 'active' : '' }
           %a{:href => moderator_comments_path} Comments
-
-        -#%li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
-          -#%a{:href => admin_posts_path} Posts
 
         </ul>
         </div>

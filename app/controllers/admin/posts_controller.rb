@@ -13,28 +13,12 @@ class Admin::PostsController < Admin::BaseController
 
   def create
     @post = current_user.posts.new(params[:post])
-
-    create! do |success, failure|
-      flash[:notice] = "Post was successfully created"
-      success.html { redirect_to admin_posts_url }
-    end
-  end
-
-  def update
-    update! do |success, failure|
-      flash[:notice] = "Post was successfully updated"
-      success.html { redirect_to admin_posts_url }
-    end
-  end
-
-  def destroy
-    destroy! do |format|
-      format.html { redirect_to admin_posts_url }
-    end
+    create!
   end
 
   protected
-  def resource
-    @post = Post.find_by_slug(params[:id])
-  end
+
+    def resource
+      @post = Post.find_by_slug(params[:id])
+    end
 end

@@ -15,6 +15,7 @@ class Admin::ProblemsController < Admin::BaseController
 
   def sent
     Problem.send_problems!
-    redirect_to admin_problems_path, :notice => "Problems were successfullly sent to municipalities"
+    redirect_to admin_problems_path,
+      :notice => "Problems were successfullly sent to municipalities"
   end
 end

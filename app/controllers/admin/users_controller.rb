@@ -20,10 +20,4 @@ class Admin::UsersController < Admin::BaseController
     end
     update!
   end
-
-  def destroy
-    destroy! do |format|
-      format.html { redirect_to admin_users_url }
-    end
-  end
 end
