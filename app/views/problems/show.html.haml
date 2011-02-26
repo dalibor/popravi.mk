@@ -23,8 +23,11 @@
 
     %p= simple_format @problem.description
 
-  #map_canvas
-  = image_tag @problem.photo.url(:m)
+  .problem_assets
+    #map_canvas
+    = image_tag @problem.photo.url(:m)
+
+  %p.official_notes= simple_format @problem.official_notes
 
   %p.if
     - if user_signed_in?

@@ -8,7 +8,20 @@ describe Problem do
     it { should have_many(:comments) }
     it { should have_many(:problem_transitions) }
     #it { should have_attached_file(:photo) }
-    #it { should validate_attachment_presence(:photo) }
+  end
+
+  describe "attributes" do
+    it { should allow_mass_assignment_of(:category_id) }
+    it { should allow_mass_assignment_of(:municipality_id) }
+    it { should allow_mass_assignment_of(:description) }
+    it { should allow_mass_assignment_of(:status) }
+    it { should allow_mass_assignment_of(:longitude) }
+    it { should allow_mass_assignment_of(:latitude) }
+    it { should allow_mass_assignment_of(:email) }
+    it { should allow_mass_assignment_of(:device_id) }
+    it { should allow_mass_assignment_of(:photo) }
+    it { should allow_mass_assignment_of(:weight) }
+    it { should_not allow_mass_assignment_of(:official_notes) }
   end
 
   describe "validations" do
@@ -17,6 +30,7 @@ describe Problem do
     it { should validate_presence_of(:longitude) }
     it { should validate_presence_of(:category_id) }
     it { should validate_presence_of(:municipality_id) }
+    #it { should validate_attachment_presence(:photo) }
 
     it "is valid given valid attributes for unregistered user" do
       problem = Factory.build(:problem)

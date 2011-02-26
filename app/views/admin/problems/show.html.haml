@@ -19,6 +19,9 @@
         <b>#{ t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description")) }:</b>
         = @problem.description
       %p
+        <b>#{ t("activerecord.attributes.admin_problem.official_notes", :default => t("activerecord.labels.official_notes", :default => "Official notes")) }:</b>
+        = @problem.official_notes
+      %p
         <b>#{ t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status")) }:</b>
         = @problem.status
       %p

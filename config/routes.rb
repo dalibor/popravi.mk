@@ -53,7 +53,7 @@ PopraviMk::Application.routes.draw do
   # moderator routes
   namespace :moderator do
     root :to => "welcome#index"
-    resources :problems, :only => [:index, :show] do
+    resources :problems, :only => [:index, :show, :edit, :update] do
       member do
         put :approve
         put :activate

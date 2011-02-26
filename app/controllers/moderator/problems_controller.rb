@@ -11,6 +11,20 @@ class Moderator::ProblemsController < Moderator::BaseController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    @problem.official_notes = params[:problem][:official_notes] if params[:problem]
+
+    if @problem.save
+      redirect_to moderator_problem_path(@problem),
+        :notice => "Problem was successfully updated."
+    else
+      render :edit
+    end
+  end
+
   def approve
     @problem.approve!
     redirect_to :back, :notice => 'Problem was successfully approved.'
@@ -38,6 +52,6 @@ class Moderator::ProblemsController < Moderator::BaseController
     end
 
     def load_problem
-      @problem= @municipality.problems.find(params[:id])
+      @problem = @municipality.problems.find(params[:id])
     end
 end

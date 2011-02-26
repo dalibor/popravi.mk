@@ -1,0 +1,12 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li= link_to "#{t("web-app-theme.list", :default => "List")}", moderator_problems_path
+      %li.active= link_to t("web-app-theme.edit", :default => "Edit"), edit_moderator_problem_path(@problem)
+  .content
+    %h2.title #{ t("web-app-theme.edit", :default => "Edit") } Problem
+    .inner
+      = form_for @problem, :url => moderator_problem_path(@problem), :html => { :class => :form, :multipart => true } do |f|
+        = render :partial => "form", :locals => {:f => f}
+
+- content_for :sidebar, render(:partial => 'sidebar')

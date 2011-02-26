@@ -25,6 +25,8 @@
             %td= problem.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), moderator_problem_path(problem)
+              = link_to t("web-app-theme.edit", :default => "Edit"), edit_moderator_problem_path(problem)
+              = link_to t("web-app-theme.delete", :default => "Delete"), admin_problem_path(problem), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
               = link_to t("web-app-theme.approve", :default => "Approve"), approve_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.reported?
               = link_to t("web-app-theme.approve", :default => "Invalidate"), invalidate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.reported?
               = link_to t("web-app-theme.approve", :default => "Activate"), activate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.approved?

@@ -11,6 +11,7 @@ Feature: Admin can manage problems
     When I follow "Problems"
     And I follow "New"
     And I fill in "Description" with "Problem description"
+    And I fill in "Official notes" with "Problem official notes"
     And I attach the file "public/images/rails.png" to "Photo"
     And I fill in "Latitude" with "42"
     And I fill in "Longitude" with "21"
@@ -20,11 +21,14 @@ Feature: Admin can manage problems
     And I press "Save"
     Then I should see "Problem was successfully created"
     And I should see "Problem description"
+    And I should see "Problem official notes"
     When I follow "Edit"
     And I fill in "Description" with "Problem description 2"
+    And I fill in "Official notes" with "Problem official notes 2"
     And I press "Save"
     Then I should see "Problem was successfully updated"
     And I should see "Problem description 2"
+    And I should see "Problem official notes 2"
 
   Scenario: Admin can change state of a problem
     Given I am authenticated as admin

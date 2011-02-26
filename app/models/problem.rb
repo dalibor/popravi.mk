@@ -4,6 +4,8 @@ class Problem < ActiveRecord::Base
 
   # Attributes
   attr_accessor :address
+  attr_accessible :category_id, :municipality_id, :description, :status,
+                  :longitude, :latitude, :email, :device_id, :photo, :weight
 
   # Paperclip
   has_attached_file :photo, :styles => {:s => '60x60#', :m => '300x300#'},
@@ -112,19 +114,16 @@ class Problem < ActiveRecord::Base
   end
 
   private
-  # formtastic errors fix for paperclip
-  def add_error_on_photo
-    self.errors[:photo] << errors[:photo_file_name] if errors[:photo_file_name].present?
-  end
 
-  # formtastic errors fix for longitude and latitude
-  def validates_longitude_and_latitude
-    self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
-  end
+    # formtastic errors fix for paperclip
+    def add_error_on_photo
+      self.errors[:photo] << errors[:photo_file_name] if errors[:photo_file_name].present?
+    end
 
-  # Status
-  #  0 New
-  # -1 Invalid
+    # formtastic errors fix for longitude and latitude
+    def validates_longitude_and_latitude
+      self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
+    end
 end
 
 # == Schema Information

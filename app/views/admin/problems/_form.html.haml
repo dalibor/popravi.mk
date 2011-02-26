@@ -4,6 +4,11 @@
   <span class="description">Ex: a simple text</span>
 
 .group
+  = f.label :official_notes, t("activerecord.attributes.problem.official_notes", :default => "Official notes"), :class => :label
+  = f.text_area :official_notes, :class => 'text_area'
+  <span class="description">Official notes about problem resolution</span>
+
+.group
   = f.label :photo, t("activerecord.attributes.problem.photo", :default => "Photo"), :class => :label
   = f.file_field :photo, :class => 'text_field'
   <span class="description">Ex: a simple text</span>
