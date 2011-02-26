@@ -16,7 +16,7 @@ class Problem < ActiveRecord::Base
   # Associations
   belongs_to :user, :counter_cache => true
   belongs_to :category
-  belongs_to :municipality
+  belongs_to :municipality, :counter_cache => true
   has_many :comments, :as => :commentable
   has_many :problem_transitions
 

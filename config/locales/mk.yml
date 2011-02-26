@@ -23,6 +23,9 @@ mk:
     category: 'Проблеми по категорија'
     municipality: 'Проблеми по општина'
     status: 'Проблеми по статус'
+  municipalities:
+    view_all: 'Погледај ги сите'
+    total_problems: 'Вкупно проблеми'
 
   date:
     formats:

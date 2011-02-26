@@ -1,0 +1,34 @@
+- title("Дома")
+
+.main
+  %h2 Општини со најмногу проблеми
+  - @municipalities.each do |municipality|
+    .problem
+      -#= image_tag municipality.photo.url(:s)
+      .desc
+        %h4
+          =link_to municipality.name, municipality_path(municipality)
+
+        %span
+          = t('municipalities.total_problems')
+          = municipality.problems_count
+
+        %span= municipality.region.name
+
+  = will_paginate @municipalities
+
+#sidebar
+  .sidebar
+    %h2 Блог
+    .blog
+      %li
+        - if @post
+          = link_to @post.title, post_path(@post.slug)
+          %span
+            = render 'posts/timestamp', :post => @post
+          %p
+            = truncate @post.content, :length => 300
+
+  .sidebar
+    %h2 Twitter
+    #tweets

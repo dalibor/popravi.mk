@@ -11,17 +11,6 @@ class Municipality < ActiveRecord::Base
 
   # Scopes
   scope :ordered, order('name ASC')
-
-  def self.top(limit_count)
-    Municipality.find :all,
-                      :select => "municipalities.id,
-                                  municipalities.name,
-                                  COUNT(*) as problems_count",
-                      :joins => :problems,
-                      :group => "municipalities.id",
-                      :limit => limit_count,
-                      :order => "problems_count DESC"
-  end
 end
 
 # == Schema Information

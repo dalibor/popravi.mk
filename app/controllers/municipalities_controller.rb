@@ -1,7 +1,9 @@
 class MunicipalitiesController < ApplicationController
 
   def index
-    redirect_to root_path
+    @municipalities = Municipality.order('problems_count DESC').limit(10).
+                      paginate :per_page => 20, :page => params[:page]
+    @post = Post.published.ordered.first
   end
 
   def show

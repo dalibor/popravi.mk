@@ -32,6 +32,8 @@ module NavigationHelpers
       moderator_root_path
     when /the problems page/
       problems_path
+    when /the municipalities page/
+      municipalities_path
     when /the user problems page/
       user_problems_path
 

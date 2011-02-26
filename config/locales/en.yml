@@ -23,4 +23,7 @@ en:
     category: 'Problems by category'
     municipality: 'Problems by municipality'
     status: 'Problems by status'
+  municipalities:
+    view_all: 'View all'
+    total_problems: 'Total problems'
 

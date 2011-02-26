@@ -18,5 +18,14 @@
             = truncate @post.content, :length => 300
 
   .sidebar
+    %h2 Општини со најмногу проблеми
+    %ul.total
+      - @municipalities.each do |municipality|
+        %li
+          = link_to "#{municipality.name} #{municipality.problems_count}", problems_path(:m => municipality.id)
+      %li.view_all= link_to t('municipalities.view_all'), municipalities_path
+
+
+  .sidebar
     %h2 Twitter
     #tweets

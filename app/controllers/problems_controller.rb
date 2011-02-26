@@ -2,7 +2,6 @@ class ProblemsController < ApplicationController
 
   def index
     @problems       = Problem.search(params)
-    @municipalities = Municipality.top(10)
     @categories     = Category.top(10)
     @total_problems = Problem.count
 
