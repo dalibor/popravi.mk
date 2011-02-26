@@ -34,6 +34,8 @@ module NavigationHelpers
       problems_path
     when /the municipalities page/
       municipalities_path
+    when /the municipality page for: (.+)/
+      municipality_path(model($1).slug)
     when /the user problems page/
       user_problems_path
 

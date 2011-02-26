@@ -8,7 +8,7 @@ class MunicipalitiesController < ApplicationController
 
   def show
     @municipality = Municipality.find_by_slug(params[:id])
-    @problems = @municipality.problems.paginate :per_page => 10, :page => params[:page]
+    @problems = @municipality.problems.search(params)
     @total_problems = @municipality.problems.count
   end
 end
