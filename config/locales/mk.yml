@@ -34,6 +34,8 @@ mk:
     total_problems: 'Вкупно проблеми'
   posts:
     view_all: 'Погледај ги сите новости'
+  comments:
+    success: 'Успешно коментиравте.'
 
   date:
     formats:

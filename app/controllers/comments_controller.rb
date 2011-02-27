@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user if user_signed_in?
 
     if (user_signed_in? || verify_recaptcha(:model => @comment, :message => "Грешка со reCAPTCHA")) && @comment.save
-      flash[:notice] = 'Успешно коментиравте.'
+      flash[:notice] = t('comments.success')
     else
       flash[:error] = @comment.errors.full_messages[0]
     end

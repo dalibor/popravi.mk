@@ -34,6 +34,8 @@ en:
     total_problems: 'Total problems'
   posts:
     view_all: 'View all posts'
+  comments:
+    success: 'You have successfully commented.'
 
   activerecord:
     attributes:
