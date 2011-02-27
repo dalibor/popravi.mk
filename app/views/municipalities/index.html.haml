@@ -4,7 +4,7 @@
   %h2 Општини со најмногу проблеми
   - @municipalities.each do |municipality|
     .problem
-      -#= image_tag municipality.photo.url(:s)
+      = image_tag municipality.photo.url(:s)
       .desc
         %h4
           =link_to municipality.name, municipality_path(municipality.slug)

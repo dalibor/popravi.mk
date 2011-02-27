@@ -6,6 +6,13 @@ class Municipality < ActiveRecord::Base
   has_many :users
   has_many :posts, :through => :users
 
+  # Paperclip
+  has_attached_file :photo, :styles => {:s => '60x60#', :m => '300x300#'},
+                  :url  => "/assets/municipalities/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/assets/municipalities/:id/:style/:basename.:extension",
+                  :default_url => "/images/municipalities/default_:style.png"
+
+
   # Validations
   validates_presence_of :name
 
