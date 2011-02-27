@@ -53,7 +53,6 @@ Feature: Visitor can search and filter problems on municipality
     And I should see "Problem1"
     And I should not see "Problem2"
 
-    @run
   Scenario Outline: Search problems by date
     Given a municipality exists with name: "municipality1"
     And a problem exists with description: "Problem1", municipality: the municipality, created_at: "2010-07-20 20:25:49"

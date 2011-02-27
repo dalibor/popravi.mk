@@ -13,7 +13,7 @@
         - if @post
           = link_to @post.title, post_path(@post.slug)
           %span
-            = render 'posts/timestamp', :post => @post
+            = render 'shared/timestamp', :post => @post
           %p
             = truncate @post.content, :length => 300
 

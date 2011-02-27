@@ -30,8 +30,10 @@ mk:
     municipality: 'Проблеми по општина'
     status: 'Проблеми по статус'
   municipalities:
-    view_all: 'Погледај ги сите'
+    view_all: 'Погледај ги сите општини'
     total_problems: 'Вкупно проблеми'
+  posts:
+    view_all: 'Погледај ги сите новости'
 
   date:
     formats:
@@ -156,3 +158,5 @@ mk:
         category: "Категорија"
         municipality: "Општина"
         photo_file_name: "Слика"
+      comment:
+        content: "Коментар"

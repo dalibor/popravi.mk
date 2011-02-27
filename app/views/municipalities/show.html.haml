@@ -18,6 +18,19 @@
 
 #sidebar
   .sidebar
+    %h2 Блог
+    .blog
+      - if @post
+        %li
+          = link_to @post.title, municipality_post_path(@municipality.slug, @post.slug)
+          %span
+            = render 'shared/timestamp', :post => @post
+          %p
+            = truncate @post.content, :length => 300
+
+      %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
+
+  .sidebar
     %h2= t('problems.search')
     = semantic_form_for :s, :url => municipality_path(@municipality.slug), :html => {:method => :get} do |f|
       = f.inputs do

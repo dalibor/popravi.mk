@@ -9,7 +9,7 @@ Scenario: Visitor can see problems on municipality page
   And a problem exists with description: "problem1", municipality: the municipality
   And I am on the home page
   Then I should see "municipality1 1"
-  When I follow "View all"
+  When I follow "View all municipalities"
   And I follow "municipality1"
   And I follow "problem1"
   Then I should see "problem1"

@@ -30,6 +30,19 @@ en:
     municipality: 'Problems by municipality'
     status: 'Problems by status'
   municipalities:
-    view_all: 'View all'
+    view_all: 'View all municipalities'
     total_problems: 'Total problems'
+  posts:
+    view_all: 'View all posts'
 
+  activerecord:
+    attributes:
+      problem:
+        description: "Description"
+        longitude: "Longitude"
+        latitude: "Latitude"
+        category: "Category"
+        municipality: "Municipality"
+        photo_file_name: "Photo"
+      comment:
+        content: "Comment"

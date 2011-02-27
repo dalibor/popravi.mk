@@ -7,11 +7,11 @@ class CommentsController < ApplicationController
 
     if (user_signed_in? || verify_recaptcha(:model => @comment, :message => "Грешка со reCAPTCHA")) && @comment.save
       flash[:notice] = 'Успешно коментиравте.'
-      redirect_to commentable_path(@commentable)
     else
-      @comments = @commentable.comments.find :all, :order => "created_at ASC"
-      render :template => commentable_show_template
+      flash[:error] = @comment.errors.full_messages[0]
     end
+
+    redirect_to commentable_path(@commentable)
   end
 
   private
@@ -25,18 +25,13 @@ class CommentsController < ApplicationController
       nil
     end
 
-    def commentable_show_template
-      params.each do |name, value|
-        if name =~ /(.+)_id$/
-          return "#{$1.pluralize}/show"
-        end
-      end
-      nil
-    end
-
     def commentable_path(commentable)
       if commentable.is_a?(Post)
-        post_path(commentable.slug)
+        if commentable.user.is_moderator?
+          municipality_post_path(commentable.user.municipality.slug, commentable.slug)
+        else
+          post_path(commentable.slug)
+        end
       else
         commentable
       end

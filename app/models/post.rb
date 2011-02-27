@@ -15,6 +15,7 @@ class Post < ActiveRecord::Base
 
   # Scopes
   scope :published, where('published IS TRUE')
+  scope :from_admins, joins(:user).where('users.is_admin is TRUE')
   scope :ordered, order('published_at DESC')
   scope :for_month, lambda {|year, month|
     if !month.blank? && !year.blank?
@@ -26,7 +27,8 @@ class Post < ActiveRecord::Base
   }
 
   def self.archive_items
-    find(:all, :select => "published_at", :conditions => "published_at IS NOT NULL").collect{|a| [a.published_at.year, a.published_at.month]}.uniq || []
+    select("published_at").where("published_at IS NOT NULL").
+      collect{|a| [a.published_at.year, a.published_at.month]}.uniq || []
   end
 
   private

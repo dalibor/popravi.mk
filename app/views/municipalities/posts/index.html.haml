@@ -6,7 +6,7 @@
     .problem
       .desc
         %h4
-          = link_to post.title, post_path(post.slug)
+          = link_to post.title, municipality_post_path(@municipality.slug, post.slug)
         = truncate post.content, :length => 300
         %h6
           = render 'shared/timestamp', :post => post
@@ -21,4 +21,4 @@
         %li
           = link_to "#{t('date.month_names')[item[1]]} #{item[0]}", :year => item[0], :month => item[1]
 
-      %li.view_all= link_to t('posts.view_all'), posts_path
+      %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)

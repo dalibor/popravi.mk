@@ -5,7 +5,7 @@ Feature: User can comment a problem
 
   Scenario: User can comment a problem
     Given a user exists
-    Given a municipality exists with name: "Municipality 1"
+    And a municipality exists with name: "Municipality 1"
     And a problem exists with user: the user, municipality: the municipality
     And I am an authenticated user
     And I am on the home page

@@ -18,16 +18,6 @@
   = will_paginate @municipalities
 
 #sidebar
-  .sidebar
-    %h2 Блог
-    .blog
-      %li
-        - if @post
-          = link_to @post.title, post_path(@post.slug)
-          %span
-            = render 'posts/timestamp', :post => @post
-          %p
-            = truncate @post.content, :length => 300
 
   .sidebar
     %h2 Twitter
