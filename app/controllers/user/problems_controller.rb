@@ -19,7 +19,7 @@ class User::ProblemsController < User::BaseController
       flash[:notice] = t('problems.flash.update.success')
       redirect_to @problem
     else
-      render :action => :new
+      render :action => :edit
     end
   end
 end

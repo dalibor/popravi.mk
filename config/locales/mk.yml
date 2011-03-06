@@ -65,6 +65,7 @@ mk:
     total_found: 'Вкупно пронајдени:'
     category: 'Категорија'
     municipality: 'Општина'
+    weight: 'Тежина'
     status: 'Статус'
     month: 'Месец'
     year: 'Година'

@@ -49,6 +49,7 @@ en:
     problem_photo: 'Photo of the problem'
     category: 'Category'
     municipality: 'Municipality'
+    weight: 'Weight'
     email: 'E-mail'
     description: 'Description'
     report_problem: 'Report a problem'

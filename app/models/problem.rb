@@ -30,7 +30,8 @@ class Problem < ActiveRecord::Base
 
   # Validations
   validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id
-  validates_inclusion_of :weight, :in => 0..10 # TODO: test
+  validates_inclusion_of :weight, :in => 1..10
+  validates_numericality_of :weight
   #validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? && problem.device_id.blank?}
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
 

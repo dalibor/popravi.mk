@@ -19,6 +19,8 @@
 
     %h4= t('g.reported_ago', :time => time_ago_in_words(@problem.created_at))
 
+    %p= "#{t('problems.weight')}: #{@problem.weight}"
+
     %p= t("problems.statuses.#{@problem.status}")
 
     %p= simple_format @problem.description

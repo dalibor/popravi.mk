@@ -30,6 +30,8 @@ describe Problem do
     it { should validate_presence_of(:longitude) }
     it { should validate_presence_of(:category_id) }
     it { should validate_presence_of(:municipality_id) }
+    it { should validate_numericality_of(:weight) }
+    it { should ensure_inclusion_of(:weight).in_range(1..10) }
     #it { should validate_attachment_presence(:photo) }
 
     it "is valid given valid attributes for unregistered user" do

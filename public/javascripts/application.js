@@ -52,6 +52,16 @@ jQuery.fn.autolink = function () {
 
 var problems_edit = problems_create = problems_update = problems_new = {
   run: function () {
+
+    $("#slider").slider({
+      min: 1, 
+      max: 10, 
+      value: $('#problem_weight').val(),
+      change: function(event, ui) {
+        $('#problem_weight').val($(event.target).slider("option", "value"))
+      }
+    });
+
     var map;
     var geocoder;
     var markersArray = [];

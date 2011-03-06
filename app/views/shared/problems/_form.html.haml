@@ -27,6 +27,8 @@
         - unless current_user
           = f.input :email, :label => t('problems.email'), :required => false
       = f.inputs do
+        <div id="slider"></div>
+        = f.input :weight, :label => false#, :input_html => { :disabled => true }
         = f.input :description, :label => t('problems.description')
       - unless user_signed_in?
         %div{:style => "clear:both"}
