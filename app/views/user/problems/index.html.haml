@@ -18,15 +18,3 @@
     %h2= t('user.about')
     %ul.problem
       %li= t('user.logged_in_as', :name => current_user.email)
-
-  - if current_user.has_potentially_reported_problems?
-    .sidebar
-      %h2= t('problems.are_yours')
-      %ul.total
-        = form_tag take_ownership_user_problems_path do
-          - @potentially_reported_problems.each do |problem|
-            %li
-              = check_box_tag("problem_ids[#{problem.id}]", '1', true)
-              = label_tag "problem_ids[#{problem.id}]", "#{problem.municipality.name} #{problem.category.name} - #{truncate(problem.description, :length => 60)}"
-
-          %li.button= submit_tag t('problems.take_ownership')

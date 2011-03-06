@@ -26,6 +26,7 @@ class ProblemsController < ApplicationController
   def create
     @problem      = Problem.new(params[:problem])
     @problem.user = current_user if user_signed_in? # assign current_user if user is logged in
+    #@problem.user = current_user || User.find_by_email(params[:email])
 
     if (user_signed_in? || verify_recaptcha(:model => @problem, :message => "Грешка со reCAPTCHA")) && @problem.save
       flash[:notice] = t('problems.flash.create.success')

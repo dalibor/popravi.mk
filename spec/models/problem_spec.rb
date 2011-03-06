@@ -77,6 +77,23 @@ describe Problem do
       Problem.years.should == [2010, 2011]
     end
   end
+
+  describe "assign_user" do
+    it "assigns user when user is nil" do
+      user    = Factory.create(:user, :email => 'test_user@popravi.mk')
+      problem = Factory.build(:problem, :email => 'test_user@popravi.mk', :user => nil)
+      problem.save
+      problem.user.should == user
+    end
+
+    it "does not assigns user when user is present" do
+      user1   = Factory.create(:user, :email => 'test_user1@popravi.mk')
+      user2   = Factory.create(:user, :email => 'test_user2@popravi.mk')
+      problem = Factory.build(:problem, :email => 'test_user1@popravi.mk', :user => user2)
+      problem.save
+      problem.user.should == user2
+    end
+  end
 end
 
 

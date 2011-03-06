@@ -39,28 +39,23 @@ class User < ActiveRecord::Base
     end
   }
 
+  # Devise override
+  def send_confirmation_instructions
+    assign_user_to_problems
+    super
+  end
+
   def is_moderator?
     !is_admin && municipality_id.present?
   end
 
-  def has_potentially_reported_problems?
-    if Problem.count(:conditions => {:email => self.email, :user_id => nil}) > 0
-      true
-    else
-      false
+  private
+    def assign_user_to_problems
+      Problem.where(['email = ?', email]).each do |problem|
+        problem.user = self
+        problem.save(:validate => false)
+      end
     end
-  end
-
-  def potentially_reported_problems
-    Problem.find(:all, :conditions => {:email => self.email, :user_id => nil})
-  end
-
-  def take_ownership_of_problems(problems)
-    problems.each do |problem|
-      problem.user = self
-      problem.save!
-    end
-  end
 end
 
 # == Schema Information

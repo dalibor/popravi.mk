@@ -66,6 +66,7 @@ class Problem < ActiveRecord::Base
 
   # Callbacks
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
+  before_save :assign_user
 
   # State machine
 
@@ -135,6 +136,10 @@ class Problem < ActiveRecord::Base
     # formtastic errors fix for longitude and latitude
     def validates_longitude_and_latitude
       self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
+    end
+
+    def assign_user
+      self.user = User.find_by_email(email) unless user
     end
 end
 

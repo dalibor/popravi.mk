@@ -38,34 +38,6 @@ describe User do
         user.is_moderator?.should be_false
       end
     end
-
-
-    it "does not have potentially reported problems" do
-      user = Factory.create(:user)
-      user.has_potentially_reported_problems?.should == false
-    end
-
-    it "has potentially reported problems" do
-      Factory.create(:problem, :email => "user@popravi.mk")
-      Factory.create(:problem, :email => "user@popravi.mk")
-      user = Factory.create(:user, :email => "user@popravi.mk")
-      user.has_potentially_reported_problems?.should == true
-    end
-
-    it "can count potentially reported problems" do
-      Factory.create(:problem, :email => "user@popravi.mk")
-      user = Factory.create(:user, :email => "user@popravi.mk")
-      user.potentially_reported_problems.length.should == 1
-    end
-
-    it "can take ownership of problems" do
-      user = Factory.create(:user, :email => "user@popravi.mk")
-      p1 = Factory.create(:problem, :email => "user@popravi.mk")
-      p2 = Factory.create(:problem, :email => "user@popravi.mk")
-      user.problems.count.should == 0
-      user.take_ownership_of_problems([p1, p2])
-      user.problems.count.should == 2
-    end
   end
 end
 
