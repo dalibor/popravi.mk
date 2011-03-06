@@ -6,16 +6,27 @@
     = render :partial => 'problems/problem', :object => problem
 
 #sidebar
-  .sidebar
-    %h2= t('problems.blog')
-    .blog
-      %li
-        - if @post
+  - if @post
+    .sidebar
+      %h2= t('problems.blog')
+      .blog
+        %li
           = link_to @post.title, post_path(@post.slug)
           %span
             = render 'shared/timestamp', :post => @post
           %p
             = truncate @post.content, :length => 300
+
+  - if @problem
+    .sidebar
+      %h2= t('problems.solved_problem', :municipality => @problem.municipality.try(:name))
+      .blog
+        %li
+          = link_to @problem.title, problem_path(@problem)
+          %span
+            = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
+          %p
+            = truncate @problem.description, :length => 300
 
   .sidebar
     %h2= t('problems.municipalities_most')

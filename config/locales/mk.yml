@@ -36,6 +36,7 @@ mk:
     about: 'За вас'
     logged_in_as: 'Најавени сте како %{name}'
   problems:
+    solved_problem: '%{municipality} отстрани проблем'
     my_reported_problems: 'Проблеми пријавени од мене'
     problems: 'Проблеми'
     categories_most: 'Категории со најмногу проблеми'

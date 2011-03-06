@@ -34,3 +34,10 @@ end
 Given /^now is "([^"]*)"$/ do |time|
   Time.stub(:now).and_return(Time.parse(time))
 end
+
+Given /^([^"]*) is solved$/ do |name|
+  problem = model(name)
+  problem.approve!
+  problem.activate!
+  problem.solve!
+end

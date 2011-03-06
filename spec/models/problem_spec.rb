@@ -62,6 +62,44 @@ describe Problem do
     end
   end
 
+  describe "transitions" do
+    it "sets solved_at when transitioning to solved status" do
+      time = Time.parse("2011-01-01 12:00:00")
+      Time.stub(:now).and_return(time)
+
+      problem = Factory.create(:problem)
+      problem.solved_at.should be_nil
+      problem.approve!
+      problem.solved_at.should be_nil
+      problem.activate!
+      problem.solved_at.should be_nil
+      problem.solve!
+      problem.solved_at.should == time
+
+      problem.status = 'approved'
+      problem.save!
+      problem.solved_at.should be_nil
+    end
+
+    it "resets solved_at when status is not solved" do
+      time = Time.parse("2011-01-01 12:00:00")
+      Time.stub(:now).and_return(time)
+
+      problem = Factory.create(:problem)
+      problem.solved_at.should be_nil
+      problem.approve!
+      problem.solved_at.should be_nil
+      problem.activate!
+      problem.solved_at.should be_nil
+      problem.solve!
+      problem.solved_at.should == time
+
+      problem.status = 'approved'
+      problem.save!
+      problem.solved_at.should be_nil
+    end
+  end
+
   describe "years" do
     it "returns empty array when there are no problems" do
       Problem.years.should be_empty

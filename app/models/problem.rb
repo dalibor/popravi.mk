@@ -67,7 +67,8 @@ class Problem < ActiveRecord::Base
 
   # Callbacks
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
-  before_save :assign_user
+  before_save :assign_user, :unless => Proc.new{|model| model.user }
+  before_save :reset_solved_at, :if => Proc.new{|model| !model.solved? }
 
   # State machine
 
@@ -82,6 +83,10 @@ class Problem < ActiveRecord::Base
 
     event :solve do
       transition [:activated] => :solved
+    end
+
+    before_transition any => :solved do |problem, transition|
+      problem.solved_at = Time.now
     end
 
     event :invalidate do
@@ -140,7 +145,11 @@ class Problem < ActiveRecord::Base
     end
 
     def assign_user
-      self.user = User.find_by_email(email) unless user
+      self.user = User.find_by_email(email)
+    end
+
+    def reset_solved_at
+      self.solved_at = nil
     end
 end
 

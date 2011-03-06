@@ -21,15 +21,19 @@
 
     %p= "#{t('problems.weight')}: #{@problem.weight}"
 
-    %p= t("problems.statuses.#{@problem.status}")
+    %p
+      = t("problems.statuses.#{@problem.status}")
+      - if @problem.solved?
+        = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
+
+    - if @problem.official_notes.present?
+      %p.official_notes= simple_format @problem.official_notes
 
     %p= simple_format @problem.description
 
   .problem_assets
     #map_canvas
     = image_tag @problem.photo.url(:m)
-
-  %p.official_notes= simple_format @problem.official_notes
 
   - if user_signed_in?
     %p.if

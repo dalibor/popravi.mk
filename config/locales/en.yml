@@ -36,6 +36,7 @@ en:
     about: 'About you'
     logged_in_as: 'You are logged in as %{name}'
   problems:
+    solved_problem: '%{municipality} solved a problem'
     my_reported_problems: 'Problems reported by me'
     problems: 'Problems'
     categories_most: 'Categories with most problems'
