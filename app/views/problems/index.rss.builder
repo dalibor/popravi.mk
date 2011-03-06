@@ -1,9 +1,9 @@
 xml.instruct!
 xml.rss("version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/") do
   xml.channel do
-    xml.title "Листа на проблеми во општините во Македонија"
+    xml.title t('problems.recent_problems')
     xml.link problems_path(:format => 'rss')
-    xml.description "Последно пријавени проблеми во општините во Македонија"
+    xml.description t('problems.recent_problems')
     xml.language "en-gb"
     for problem in @problems
       xml.item do

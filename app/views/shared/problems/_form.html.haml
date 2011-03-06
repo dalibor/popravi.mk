@@ -6,32 +6,31 @@
     .step1
       .left
         #map_buttons
-          %h2 Означи ја локацијата
+          %h2= t('problems.mark_location_on_map')
 
           = text_field_tag :address
-          = link_to "Барај адреса", "#", :id => "search_address"
+          = link_to t('problems.search_address'), "#", :id => "search_address" 
 
         #geocode_results
       #map
-        %p
-          Кликнете на мапата за да ја означите бараната локација. Доколку сакате да ја промените локацијата, кликнете повторно на мапата. Со опцијата за пребарување полесно пронајдете ја бараната локација.
-        = link_to "Избриши маркер", "#", :id => "delete_marker"
+        %p= t('problems.map_description')
+        = link_to t('problems.delete_marker'), "#", :id => "delete_marker"
         #map_canvas
 
     .step2
       = f.inputs do
-        = f.input :photo, :as => :file, :label => 'Слика од проблемот', :required => false
+        = f.input :photo, :as => :file, :label => t('problems.problem_photo'), :required => false
         = f.input :latitude, :label => 'Latitude', :as => :hidden
         = f.input :longitude, :label => 'Longitude', :as => :hidden
-        = f.input :category, :as => :select, :label => 'Категорија', :collection => Category.find(:all, :order => "position ASC")
-        = f.input :municipality, :as => :select, :label => 'Општина', :collection => Municipality.find(:all, :order => "name ASC")
+        = f.input :category, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC")
+        = f.input :municipality, :as => :select, :label => t('problems.municipality'), :collection => Municipality.find(:all, :order => "name ASC")
         - unless current_user
-          = f.input :email, :label => 'E-mail', :required => false
+          = f.input :email, :label => t('problems.email'), :required => false
       = f.inputs do
-        = f.input :description, :label => 'Опис'
+        = f.input :description, :label => t('problems.description')
       - unless user_signed_in?
         %div{:style => "clear:both"}
           = raw recaptcha_tags
       = f.buttons do
-        = f.commit_button @problem.new_record? ? "Пријави проблем" : "Измени проблем"
+        = f.commit_button @problem.new_record? ? t('problems.report_problem') : t('problems.update_problem')
 

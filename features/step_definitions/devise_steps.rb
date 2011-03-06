@@ -31,7 +31,7 @@ Given /^I report a problem$/ do
     Given I am on the home page
     And category exists
     And municipality exists
-    When I follow "Пријави проблем"
+    When I follow "Report a problem"
     And I fill in "problem_description" with "Problem description"
     And I attach the file "public/images/rails.png" to "problem_photo"
     And I change the value of the hidden field "problem[latitude]" to "42"
@@ -39,7 +39,7 @@ Given /^I report a problem$/ do
     And I select "Abandoned vehicles" from "problem_category_id"
     And I select "Butel" from "problem_municipality_id"
     And I press "problem_submit"
-    Then I should see "Проблемот е успешно пријавен"
+    Then I should see "Problem was successfully reported"
   }
 end
 

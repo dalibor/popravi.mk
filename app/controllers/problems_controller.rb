@@ -28,7 +28,7 @@ class ProblemsController < ApplicationController
     @problem.user = current_user if user_signed_in? # assign current_user if user is logged in
 
     if (user_signed_in? || verify_recaptcha(:model => @problem, :message => "Грешка со reCAPTCHA")) && @problem.save
-      flash[:notice] = 'Проблемот е успешно пријавен.'
+      flash[:notice] = t('problems.flash.create.success')
       redirect_to @problem
     else
       render :action => :new

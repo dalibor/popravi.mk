@@ -5,4 +5,4 @@ Feature: Visitor can see home page
 
   Scenario: Visiting the site for the first time
     Given I am on the home page
-    Then I should see "Подобри го својот град"
+    Then I should see "Improve your city"

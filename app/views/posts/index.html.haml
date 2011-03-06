@@ -1,7 +1,7 @@
-- title("Новости")
+- title(t('posts.news'))
 
 .main
-  %h2 Новости
+  %h2= t('posts.news')
   - @posts.each do |post|
     .problem
       .desc
@@ -15,7 +15,7 @@
 
 #sidebar
   .sidebar
-    %h2 Архива
+    %h2= t('posts.archive')
     %ul.total
       - @archive_items.each do |item|
         %li

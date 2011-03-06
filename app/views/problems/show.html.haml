@@ -17,9 +17,7 @@
     %h2
       = @problem.title
 
-    %h4
-      пријавен пред
-      = time_ago_in_words(@problem.created_at)
+    %h4= t('g.reported_ago', :time => time_ago_in_words(@problem.created_at))
 
     %p= t("problems.statuses.#{@problem.status}")
 
@@ -31,15 +29,9 @@
 
   %p.official_notes= simple_format @problem.official_notes
 
-  %p.if
-    - if user_signed_in?
-      = link_to "Измени", edit_user_problem_path(@problem) if current_user == @problem.user
-    - else
-      Ако овој проблем е пријавен од вас, ве молиме
-      = link_to "регистрирајте се", new_registration_path(:user)
-      или
-      = link_to "најавете се", new_session_path(:user)
-      доколку сакате да го измените.
+  - if user_signed_in?
+    %p.if
+      = link_to t('g.edit'), edit_user_problem_path(@problem) if current_user == @problem.user
 
   = render 'comments/comments', :commentable => @problem, :comments => @comments
 

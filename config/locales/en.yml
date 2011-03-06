@@ -2,13 +2,63 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  homepage:
+    title: 'Improve your city'
+    info: 'Report problems with infrastructure of your city and help municipalities to faster and more efficiently remove them. %{link}'
+  g:
+    download: 'Download'
+    for_android: 'for Android'
+    read_more: 'read more >'
+    published_ago: 'published %{time} ago'
+    reported_ago: 'reported %{time} ago'
+    ago: '%{time} ago'
+    edit: 'Edit'
+    captcha_error: 'Error with reCAPTCHA'
+  mm:
+    hello: 'Hello %{name},'
+    info: 'Following problems has been reported to your municipality:'
+    problem: 'Problem'
+    url: 'URL'
+    reported_at: 'Reported at'
   menu:
-    blog: Blog
-    problems: Problems
+    blog: 'Blog'
+    problems: 'Problems'
+    municipalities: 'Municipalities'
     report_problem: 'Report a problem'
+    my_reports: 'My reports'
+    administration: 'Administration'
+    settings: 'Settings'
+    sign_out: 'Sign out'
+    sign_up: 'Sign up'
+    sign_in: 'Sign in'
+    contact: 'Contact'
+  user:
+    about: 'About you'
+    logged_in_as: 'You are logged in as %{name}'
   problems:
-    total: Total
-    problem: problem
+    my_reported_problems: 'Problems reported by me'
+    problems: 'Problems'
+    categories_most: 'Categories with most problems'
+    send: 'Send'
+    report_new_problem: 'Report new problem'
+    recent_problems: 'Recent problems'
+    mark_location_on_map: 'Mark the location on map'
+    search_address: 'Search for address'
+    delete_marker: 'Delete marker'
+    map_description: 'Click on the map to mark the location. If you want to change the location, click again. With search option you can easily find the address you are looking for.'
+    problem_photo: 'Photo of the problem'
+    category: 'Category'
+    municipality: 'Municipality'
+    email: 'E-mail'
+    description: 'Description'
+    report_problem: 'Report a problem'
+    edit_problem: 'Edit problem'
+    update_problem: 'Update problem'
+    blog: 'Blog'
+    municipalities_most: 'Municipalities with most problems'
+    total: 'Total'
+    problem: 'problem'
+    a_problem: 'a problem'
     are_yours: 'Have you reported these problems?'
     take_ownership: 'Take ownership'
     search: 'Search'
@@ -19,22 +69,32 @@ en:
     month: 'Month'
     year: 'Year'
     charts: 'Charts'
+    report: 'Report'
     statuses:
       reported: 'reported'
       approved: 'approved'
       activated: 'active'
       solved: 'solved'
       invalid: 'invalid'
+    flash:
+      create:
+        success: 'Problem was successfully reported.'
+      update:
+        success: 'Problem was successfully updated.'
   charts:
     category: 'Problems by category'
     municipality: 'Problems by municipality'
     status: 'Problems by status'
   municipalities:
+    problems_in: 'Problems in municipality %{name}'
     view_all: 'View all municipalities'
     total_problems: 'Total problems'
   posts:
     view_all: 'View all posts'
+    news: 'News'
+    archive: 'Archive'
   comments:
+    comment: 'Comment'
     success: 'You have successfully commented.'
 
   activerecord:

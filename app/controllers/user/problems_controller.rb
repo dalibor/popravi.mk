@@ -18,7 +18,7 @@ class User::ProblemsController < User::BaseController
     @problem.user       = current_user
 
     if @problem.save
-      flash[:notice] = 'Проблемот е успешно изменет.'
+      flash[:notice] = t('problems.flash.update.success')
       redirect_to @problem
     else
       render :action => :new

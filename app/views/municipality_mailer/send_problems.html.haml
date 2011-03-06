@@ -1,20 +1,19 @@
-== Hello #{@municipality.name},
+= t('mm.hello', :name => @municipality.name)
 
 %p
-  Following problems has been reported to your municipality:
+  = t('mm.info')
 
 %table
   %thead
     %tr
-      %th Problem
-      %th URL
-      %th Reported at
+      %th= t('mm.problem')
+      %th= t('mm.url')
+      %th= t('mm.reported_at')
   %tbody
     - @problems.each do |problem|
       %tr
         %td= truncate(problem.description, :length => 400)
         %td= link_to problem.title, problem_url(problem)
         %td= problem.created_at
-
 
 = render 'shared/mailer/signature'

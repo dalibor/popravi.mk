@@ -2,13 +2,63 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 mk:
+  homepage:
+    title: 'Подобри го својот град'
+    info: 'Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите. %{link}'
+  g:
+    download: 'Преземи'
+    for_android: 'за Android'
+    read_more: 'прочитај повеќе >'
+    published_ago: 'објавено пред %{time}'
+    reported_ago: 'пријавен пред %{time}'
+    ago: 'пред %{time}'
+    edit: 'Измени'
+    captcha_error: 'Грешка со reCAPTCHA'
+  mm:
+    hello: 'Здраво %{name},'
+    info: 'Следниве проблеми се пријавени во вашата општина:'
+    problem: 'Проблем'
+    url: 'Линк'
+    reported_at: 'Датум'
   menu:
-    blog: Блог
-    problems: Преглед
+    blog: 'Блог'
+    problems: 'Преглед'
+    municipalities: 'Општини'
     report_problem: 'Пријави проблем'
+    my_reports: 'Мои пријави'
+    administration: 'Администрација'
+    settings: 'Поставки'
+    sign_out: 'Одјави се'
+    sign_up: 'Регистрација'
+    sign_in: 'Најава'
+    contact: 'Контакт'
+  user:
+    about: 'За вас'
+    logged_in_as: 'Најавени сте како %{name}'
   problems:
-    total: Вкупно
-    problem: проблем
+    my_reported_problems: 'Проблеми пријавени од мене'
+    problems: 'Проблеми'
+    categories_most: 'Категории со најмногу проблеми'
+    send: 'Испрати'
+    report_new_problem: 'Пријави нов проблем'
+    recent_problems: 'Последни проблеми'
+    mark_location_on_map: 'Означи ја локацијата'
+    search_address: 'Барај адреса'
+    delete_marker: 'Избриши маркер'
+    map_description: 'Кликнете на мапата за да ја означите бараната локација. Доколку сакате да ја промените локацијата, кликнете повторно на мапата. Со опцијата за пребарување полесно пронајдете ја бараната локација.'
+    problem_photo: 'Слика од проблемот'
+    category: 'Категорија'
+    municipality: 'Општина'
+    email: 'E-mail'
+    description: 'Опис'
+    report_problem: 'Пријави проблем'
+    edit_problem: 'Измени проблем'
+    update_problem: 'Измени проблем'
+    blog: 'Блог'
+    municipalities_most: 'Општини со најмногу проблеми'
+    total: 'Вкупно'
+    problem: 'проблем'
+    a_problem: 'проблем'
     are_yours: 'Дали сте ги пријавиле?'
     take_ownership: 'Преземи'
     search: 'Барај'
@@ -19,22 +69,33 @@ mk:
     month: 'Месец'
     year: 'Година'
     charts: 'Графици'
+    report: 'Пријави'
     statuses:
       reported: 'пријавен'
       approved: 'одобрен'
       activated: 'активен'
       solved: 'поправен'
       invalid: 'невалиден'
+    flash:
+      create:
+        success: 'Проблемот е успешно пријавен.'
+      update:
+        success: 'Проблемот е успешно изменет.'
   charts:
     category: 'Проблеми по категорија'
     municipality: 'Проблеми по општина'
     status: 'Проблеми по статус'
   municipalities:
+    problems_in: 'Листа на проблеми во општина %{name}'
+    municipalities: 'Општини'
     view_all: 'Погледај ги сите општини'
     total_problems: 'Вкупно проблеми'
   posts:
     view_all: 'Погледај ги сите новости'
+    news: 'Новости'
+    archive: 'Архива'
   comments:
+    comment: 'Коментар'
     success: 'Успешно коментиравте.'
 
   date:

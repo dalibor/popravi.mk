@@ -1,11 +1,11 @@
-- title("Упатство за потврда на сметка")
+- title(t('devise.confirmations.title'))
 
 .step
-  %h2 Не ви е потврдена сметката?
+  %h2= t('devise.confirmations.title')
 
   = semantic_form_for resource, :as => resource_name, :url => confirmation_path(resource_name) do |f|
     = f.inputs do
-      = f.input :email, :label => 'E-mail'
+      = f.input :email, :label => t('devise.registrations.email')
     = f.buttons do
       = f.commit_button t('devise.confirmations.send')
 

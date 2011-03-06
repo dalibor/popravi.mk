@@ -4,7 +4,7 @@
 
 .main
   .header
-    %h2 Проблеми
+    %h2= t('problems.problems')
     = link_to image_tag("rss.png"), problems_path(:format => 'rss')
 
   .problems
@@ -46,7 +46,7 @@
         = link_to t('problems.status'), report_path('status')
 
   .sidebar
-    %h2 Категории со најмногу проблеми
+    %h2= t('problems.categories_most')
     %ul.total
       - @categories.each do |category|
         %li

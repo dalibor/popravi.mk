@@ -1,8 +1,8 @@
-- title("Листа на проблеми во општините во Македонија")
+- title(t('problems.my_reported_problems'))
 
 .main
   .header
-    %h2 Проблеми
+    %h2= t('problems.my_reported_problems')
 
   .problems
     = render :partial => 'problems/problem', :collection => @problems
@@ -15,9 +15,9 @@
 
 #sidebar
   .sidebar
-    %h2 За вас
+    %h2= t('user.about')
     %ul.problem
-      %li Најавени сте како #{current_user.email}
+      %li= t('user.logged_in_as', :name => current_user.email)
 
   - if current_user.has_potentially_reported_problems?
     .sidebar

@@ -14,6 +14,4 @@
       %span= link_to problem.municipality.name, problem
       %span= link_to problem.category.name, problem
     = link_to problem.description, problem
-    %h6
-      пред
-      = time_ago_in_words problem.created_at
+    %h6= t('g.ago', :time => time_ago_in_words(problem.created_at))

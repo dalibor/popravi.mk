@@ -1,7 +1,7 @@
-- title("Најави се")
+- title(t('devise.sessions.title'))
 
 .step
-  %h2 Најави се
+  %h2=t('devise.sessions.title')
   = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     = f.semantic_errors :state
     = f.inputs do

@@ -27,39 +27,38 @@
               //%span смени го градот
           %ul#user_nav
             - if user_signed_in?
-              %li= link_to 'мои пријави', user_problems_path
-              %li= link_to 'администрација', admin_root_path if current_user.is_admin?
-              //%li Најавени сте како #{current_user.email}
-              %li= link_to 'поставки', edit_user_registration_path
-              %li= link_to 'одјави се', destroy_user_session_path
+              %li= link_to t('menu.my_reports'), user_problems_path
+              %li= link_to t('menu.administration'), admin_root_path if current_user.is_admin?
+              %li= link_to t('menu.settings'), edit_user_registration_path
+              %li= link_to t('menu.sign_out'), destroy_user_session_path
             - else
-              %li= link_to 'регистрација', new_user_registration_path
-              %li= link_to 'најава', new_user_session_path
+              %li= link_to t('menu.sign_up'), new_user_registration_path
+              %li= link_to t('menu.sign_in'), new_user_session_path
 
           %ul#app_nav
             %li.report= link_to t('menu.report_problem'), new_problem_path
             %li.list= link_to t('menu.problems'), problems_path
+            %li.list= link_to t('menu.municipalities'), municipalities_path
             %li= link_to t('menu.blog'), posts_path
 
         #action
           #slogan
-            %h2 Подобри го својот град
-            %p
-              Пријавувај проблеми со инфраструктурата на твојот град и помогни им на општините побрзо и поефикасно да ги отстранат истите.
-              = link_to 'прочитај повеќе >', '/posts/podobri-go-svojot-grad'
+            %h2= t('homepage.title')
+            %p= raw t('homepage.info', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
+              
           #report
             = link_to new_problem_path do
-              Пријави
+              = t('problems.report')
               %br
-              %span проблем
+              %span= t('problems.a_problem')
           #download
             = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :target => '_blank' do
-              Преземи
+              = t('g.download')
               %br
-              %span за Android
+              %span= t('g.for_android')
 
         #vip
-          %a{ :href => '/posts/popravimk-pobednik-na-vip-predizvikot'}
+          = link_to '/posts/popravimk-pobednik-na-vip-predizvikot' do
             = image_tag "vip.png"
 
     #middle
@@ -78,14 +77,14 @@
             &
             %span
               = link_to 'Dime Pashoski', 'http://twitter.com/exterminateart', :target => '_blank'
-            , Copyright 2010
+            = ", Copyright 2010 - #{Time.now.year}"
 
         .right
           = link_to 'Twitter', 'http://twitter.com/PopraviMK', :target => '_blank'
           &nbsp;
           = link_to 'Facebook', 'http://www.facebook.com/pages/Popravi-podobri-go-svojot-grad/150464501635940', :target => '_blank'
           &nbsp;
-          = mail_to 'info@popravi.mk', 'Контакт'
+          = mail_to 'info@popravi.mk', t('menu.contact')
 
     = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'application', :cache => true
     = yield :script

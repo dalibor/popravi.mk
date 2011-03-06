@@ -7,7 +7,7 @@ Feature: Visitor can receive email instructions
     Given I am not authenticated
     And I signed up as "test_user@popravi.mk" with password "secretpass"
     And I go to the resend confirmation instructions page
-    When I fill in "E-mail" with "test_user@popravi.mk"
+    When I fill in "Email" with "test_user@popravi.mk"
     And I press "Send confirmation"
     Then I should see "You will receive an email with instructions about how to confirm your account in a few minutes."
     And I should receive 2 emails

@@ -8,14 +8,14 @@
       = f.semantic_errors :state
       = f.inputs do
         - unless user_signed_in?
-          = f.input :name, :label => 'Име', :required => false
-          = f.input :email, :label => 'E-mail', :required => false
-        = f.input :content, :label => 'Коментар'
+          = f.input :name, :label => t('problems.name'), :required => false
+          = f.input :email, :label => t('problems.email'), :required => false
+        = f.input :content, :label => t('comments.comment')
         - unless user_signed_in?
           %div{:style => "clear:both"}
             = raw recaptcha_tags
       = f.buttons do
-        = f.commit_button "Испрати"
+        = f.commit_button t('problems.send')
 
   .comments
     - comments.each do |comment|
@@ -24,6 +24,4 @@
         %ul
           %li.name= comment.commenter_name
           %li.content= simple_format comment.content
-          %li.date
-            пред
-            = time_ago_in_words(comment.created_at)
+          %li.date= t('g.ago', :time => time_ago_in_words(comment.created_at))

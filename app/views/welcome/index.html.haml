@@ -1,13 +1,13 @@
-- title("Дома")
+- title(t('homepage.title'))
 
 .main
-  %h2 Последни пријави
+  %h2= t('problems.recent_problems')
   - @problems.each do |problem|
     = render :partial => 'problems/problem', :object => problem
 
 #sidebar
   .sidebar
-    %h2 Блог
+    %h2= t('problems.blog')
     .blog
       %li
         - if @post
@@ -18,7 +18,7 @@
             = truncate @post.content, :length => 300
 
   .sidebar
-    %h2 Општини со најмногу проблеми
+    %h2= t('problems.municipalities_most')
     %ul.total
       - @municipalities.each do |municipality|
         %li

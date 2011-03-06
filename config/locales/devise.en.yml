@@ -15,6 +15,8 @@ en:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
+      title: 'Sign in'
+      link: 'Sign in'
       signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
       email: 'Email'
@@ -22,12 +24,16 @@ en:
       remember_me: 'Remember me'
       login: 'Login'
     passwords:
+      change_title: "Промена на лозинка"
+      reset_title: 'Password reset'
+      link: 'I forgot my password?'
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
       updated: 'Your password was changed successfully. You are now signed in.'
       change_your_password: 'Change your password'
       password: 'Password'
       password_confirmation: 'Password confirmation'
       change_my_password: 'Change my password'
+      reset_password: 'Reset password'
       mail:
         hello: 'Hello %{email}!'
         text1: 'Someone has requested a link to change your password, and you can do this through the link below.'
@@ -35,6 +41,8 @@ en:
         text2: "If you didn't request this, please ignore this email."
         text3: "Your password won't change until you access the link above and create a new one."
     confirmations:
+      title:  "Confirmation instructions"
+      link: "I didn't received confirmation instructions on email?"
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send: 'Send confirmation'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
@@ -43,6 +51,8 @@ en:
         confirm_down: 'You can confirm your account through the link below:'
         confirm: 'Confirm my account'
     registrations:
+      title: 'Register'
+      link: 'Register'
       signed_up: 'You have signed up successfully. Confirmation was sent to your e-mail.'
       updated: 'You updated your account successfully.'
       destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
@@ -50,6 +60,18 @@ en:
       password: 'Password'
       password_confirmation: 'Password confirmation'
       register: 'Register'
+      settings: 'Settings'
+      name: 'Name and surname'
+      avatar: 'Avatar'
+      password: 'Password'
+      password_hint: "(leave blank if you don't want a change)"
+      password_confirmation: 'Password confirmation'
+      current_password: 'Current password'
+      current_password_hint: '(you need to enter your current password in order to confirm the changes)'
+      update: 'Update'
+      cancel: 'Cancel'
+      cancel_my_account: 'Cancel my account'
+      cancel_confirmation: 'Your account will be deleted?'
     unlocks:
       send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
       unlocked: 'Your account was successfully unlocked. You are now signed in.'

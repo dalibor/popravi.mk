@@ -1,26 +1,26 @@
-- title("Поставки")
+- title(t('devise.registrations.settings'))
 
 .step
-  %h2 Поставки
+  %h2= t('devise.registrations.settings')
 
   = semantic_form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true } do |f|
     = f.semantic_errors :state
     = f.inputs do
-      = f.input :email, :label => 'E-mail'
-      = f.input :name, :label => 'Име и презиме', :required => false
+      = f.input :email, :label => t('devise.registrations.email')
+      = f.input :name, :label => t('devise.registrations.name'), :required => false
       -if resource.avatar.exists?
         .edit_avatar
           = image_tag resource.avatar.url(:s)
-      = f.input :avatar, :label => 'Аватар', :required => false, :as => :file
-      = f.input :password, :as => :password, :label => 'Лозинка'
-      %i (оставете празно ако не сакате да ја промените)
-      = f.input :password_confirmation, :as => :password, :label => 'Потврда на лозинка'
-      = f.input :current_password, :as => :password, :label => 'Тековна лозинка'
-      %i (потребно е да ја внесете вашата тековна лозинка за да се потврдат измените)
+      = f.input :avatar, :label => t('devise.registrations.avatar'), :required => false, :as => :file
+      = f.input :password, :as => :password, :label => t('devise.registrations.password')
+      %i= t('devise.registrations.password_hint')
+      = f.input :password_confirmation, :as => :password, :label => t('devise.registrations.password_confirmation')
+      = f.input :current_password, :as => :password, :label => t('devise.registrations.current_password')
+      %i= t('devise.registrations.current_password_hint')
       = f.buttons do
-        = f.commit_button 'Измени'
+        = f.commit_button t('devise.registrations.update')
 
   #delete
-    %h3 Откажи ја твојата сметка
+    %h3= t('devise.registrations.cancel_my_account')
     %p
-      #{link_to "Откажи", registration_path(resource_name), :confirm => "Дали сакаш твојата сметка да биде избришана?", :method => :delete}
+      #{link_to t('devise.registrations.cancel'), registration_path(resource_name), :confirm => t('devise.registrations.cancel_confirmation'), :method => :delete}
