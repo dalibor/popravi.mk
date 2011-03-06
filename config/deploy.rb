@@ -1,7 +1,7 @@
 require 'capistrano/ext/multistage' # for multi stage
 
-set :repository,  "git@97.107.140.182:popravi.git"
-set :user, "dalybr"
+set :repository, ENV['popravi_mk_ssh']
+set :user, ENV['popravi_mk_user']
 set :scm, :git
 set :stages, %w(staging production)
 set :default_stage, "staging"
@@ -21,6 +21,7 @@ namespace :deploy do
   task :symlink_shared do
     run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
     run "ln -nfs #{shared_path}/public/assets #{release_path}/public/assets"
+    run "ln -nfs #{shared_path}/config/initializers/secret_token.rb #{release_path}/config/initializers/secret_token.rb"
   end
 
   [:start, :stop].each do |t|

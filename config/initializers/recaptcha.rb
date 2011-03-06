@@ -5,3 +5,4 @@ Recaptcha.configure do |config|
   config.private_key = '6LfvIrwSAAAAACtEBL-VhUT5fWTr_MRLGU9eV-k5'
 end
 
+

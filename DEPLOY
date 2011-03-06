@@ -1,0 +1,2 @@
+- Change: config/initializers/secret_token.rb on production
+- Run: rails runner db/fixes/assign_user_to_problems.rb
