@@ -7,7 +7,7 @@
       = image_tag municipality.photo.url(:s)
       .desc
         %h4
-          =link_to municipality.name, municipality_path(municipality.slug)
+          =link_to municipality.name, municipality_root_path(municipality.slug)
 
         %span
           = t('municipalities.total_problems')

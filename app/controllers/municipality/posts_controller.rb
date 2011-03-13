@@ -1,4 +1,4 @@
-class Municipalities::PostsController < ApplicationController
+class Municipality::PostsController < Municipality::BaseController
   before_filter :load_municipality
 
   def index

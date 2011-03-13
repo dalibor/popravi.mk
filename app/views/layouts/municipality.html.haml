@@ -37,9 +37,8 @@
 
           %ul#app_nav
             %li.report= link_to t('menu.report_problem'), new_problem_path
-            %li.list= link_to t('menu.problems'), problems_path
-            %li.list= link_to t('menu.municipalities'), municipalities_path
-            %li= link_to t('menu.blog'), posts_path
+            %li.list= link_to t('menu.problems'), municipality_root_path(@municipality.slug)
+            %li= link_to t('menu.blog'), municipality_posts_path(@municipality.slug)
 
         #action
           #slogan

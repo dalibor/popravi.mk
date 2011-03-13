@@ -78,7 +78,8 @@ PopraviMk::Application.routes.draw do
     end
   end
 
-  match "/:id", :to => "municipalities#show", :as => :municipality
-  match "/:municipality_id/posts", :to => "municipalities/posts#index", :as => :municipality_posts
-  match "/:municipality_id/posts/:id", :to => "municipalities/posts#show", :as => :municipality_post
+  scope :module => "municipality" do
+    root :to => "welcome#index", :as => :municipality_root, :path => ":id"
+    resources :posts, :path => ":municipality_id/posts", :as => :municipality_posts
+  end
 end

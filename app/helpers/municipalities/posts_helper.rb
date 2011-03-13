@@ -1,2 +1,0 @@
-module Municipalities::PostsHelper
-end

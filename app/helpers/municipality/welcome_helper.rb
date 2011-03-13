@@ -1,0 +1,2 @@
+module Municipality::WelcomeHelper
+end

@@ -1,11 +1,11 @@
 - title("Листа на проблеми во општина #{@municipality.name}")
 - content_for :head do
-  = auto_discovery_link_tag(:rss, municipality_path(@municipality.slug, :format => 'rss'))
+  = auto_discovery_link_tag(:rss, municipality_root_path(@municipality.slug, :format => 'rss'))
 
 .main
   .header
     %h2 Проблеми
-    = link_to image_tag("rss.png"), municipality_path(@municipality.slug, :format => 'rss')
+    = link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
 
   .problems
     = render :partial => 'problems/problem', :collection => @problems
@@ -17,10 +17,10 @@
       = pluralize @problems.total_entries, t('problems.problem')
 
 #sidebar
-  .sidebar
-    %h2 Блог
-    .blog
-      - if @post
+  - if @post
+    .sidebar
+      %h2 Блог
+      .blog
         %li
           = link_to @post.title, municipality_post_path(@municipality.slug, @post.slug)
           %span
@@ -28,11 +28,11 @@
           %p
             = truncate @post.content, :length => 300
 
-      %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
+        %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
 
   .sidebar
     %h2= t('problems.search')
-    = semantic_form_for :s, :url => municipality_path(@municipality.slug), :html => {:method => :get} do |f|
+    = semantic_form_for :s, :url => municipality_root_path(@municipality.slug), :html => {:method => :get} do |f|
       = f.inputs do
         = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}
         = f.input :c, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}

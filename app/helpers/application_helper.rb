@@ -18,4 +18,10 @@ module ApplicationHelper
   def description(page_description)
     content_for(:description) { page_description }
   end
+
+  def body_id
+    parts = controller.controller_path.split('/')
+    parts << controller.action_name
+    parts.join('_')
+  end
 end
