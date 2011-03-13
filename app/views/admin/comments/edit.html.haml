@@ -5,7 +5,9 @@
       %li= link_to t("web-app-theme.new", :default => "New"), new_admin_comment_path
       %li.active= link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_comment_path
   .content
-    %h2.title #{ t("web-app-theme.edit", :default => "Edit") } Comment
+    %h2.title 
+      #{ t("web-app-theme.edit", :default => "Edit")}
+      = t("web-app-theme.comment")
     .inner
       = form_for @comment, :url => admin_comment_path(@comment), :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

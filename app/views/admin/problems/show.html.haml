@@ -7,53 +7,53 @@
   .content
     .inner
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
         = @problem.user.try(:name)
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.category", :default => t("activerecord.labels.category", :default => "Category")) }:</b>
         = @problem.category.try(:name)
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality")) }:</b>
         = @problem.municipality.try(:name)
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.description", :default => t("activerecord.labels.description", :default => "Description")) }:</b>
         = @problem.description
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.official_notes", :default => t("activerecord.labels.official_notes", :default => "Official notes")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.official_notes", :default => t("activerecord.labels.official_notes", :default => "Official notes")) }:</b>
         = @problem.official_notes
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status")) }:</b>
-        = @problem.status
+        <b>#{ t("activerecord.attributes.problem.status", :default => t("activerecord.labels.status", :default => "Status")) }:</b>
+        = t("problems.statuses.#{@problem.status}")
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.latitude", :default => t("activerecord.labels.latitude", :default => "Latitude")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.latitude", :default => t("activerecord.labels.latitude", :default => "Latitude")) }:</b>
         = @problem.latitude
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.longitude", :default => t("activerecord.labels.longitude", :default => "Longitude")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.longitude", :default => t("activerecord.labels.longitude", :default => "Longitude")) }:</b>
         = @problem.longitude
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
         = @problem.email
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.device", :default => t("activerecord.labels.device", :default => "Device")) }:</b>
         = @problem.device_id
       %p
-        <b>#{ t("activerecord.attributes.admin_problem.weight", :default => t("activerecord.labels.weight", :default => "Weight")) }:</b>
+        <b>#{ t("activerecord.attributes.problem.weight", :default => t("activerecord.labels.weight", :default => "Weight")) }:</b>
         = @problem.weight
       %p
         = image_tag @problem.photo.url(:m)
 
-      %h2 Problem status transitions
+      %h2= t('web-app-theme.problem_status_transitions')
       %table.table
         %tr
-          %th No
-          %th From
-          %th To
-          %th Date
+          %th= t('web-app-theme.number')
+          %th= t('web-app-theme.from')
+          %th= t('web-app-theme.to')
+          %th= t('web-app-theme.date')
         - @problem.problem_transitions.each_with_index do |transition, index|
           %tr
             %td= index + 1
-            %td= transition.from
-            %td= transition.to
+            %td= t("problems.statuses.#{transition.from}") if transition.from
+            %td= t("problems.statuses.#{transition.to}") if transition.to
             %td= transition.created_at
 
 

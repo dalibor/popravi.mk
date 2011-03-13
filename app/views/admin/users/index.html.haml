@@ -4,14 +4,16 @@
       = render :partial => 'list'
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_user_path
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Users
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('web-app-theme.users')
     .inner
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_user.name", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email"))
-          %th= t("activerecord.attributes.admin_user.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
+          %th= t("activerecord.attributes.user.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email"))
+          %th= t("activerecord.attributes.user.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @users.each do |user|

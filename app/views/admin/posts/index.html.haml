@@ -4,7 +4,9 @@
       %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_posts_path
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_post_path
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Posts
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('web-app-theme.posts')
     .inner
       %table.table
         %tr
@@ -21,9 +23,9 @@
             %td= post.id
             %td= post.user.try(:name)
             %td= link_to post.title, admin_post_path(post)
-            %td= post.published
+            %td= t("web-app-theme.#{post.published}")
             %td= post.published_at
-            %td= post.comments_closed
+            %td= t("web-app-theme.#{post.comments_closed}")
             %td= post.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), admin_post_path(post)

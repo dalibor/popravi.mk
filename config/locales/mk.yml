@@ -35,14 +35,6 @@ mk:
   user:
     about: 'За вас'
     logged_in_as: 'Најавени сте како %{name}'
-  moderator:
-    welcome: 'Добредојдовте во админ панелот!'
-    problems: 'Проблеми'
-    posts: 'Новости'
-    post: 'Новост'
-    comments: 'Коментари'
-    settings: 'Подесувања'
-    logout: 'Одјави се'
   rates:
     create: 'Гласај'
     update: 'Измени глас'
@@ -245,12 +237,16 @@ mk:
         status: "Статус"
         user: 'Корисник'
         device: 'Уред'
+        name: 'Име'
         email: 'Е-маил'
         weight: 'Тежина'
         official_notes: 'Официјална белешка'
+        photo: 'Слика'
       comment:
         content: "Коментар"
         user: 'Корисник'
+        name: 'Име'
+        email: 'Е-маил'
         commentable: 'Коментар на'
         approved: 'Одобрен'
       post:
@@ -262,3 +258,29 @@ mk:
         published_at: 'Објавен на'
         comments_closed: 'Затворени коментари'
         custom_slug: 'Користи ја внесената УРЛ наставка'
+      user:
+        name: 'Име'
+        is_admin: 'Дали е админ?'
+        email: 'Е-маил'
+        municipality: 'Општина'
+        problems_count: 'Број на проблеми'
+        confirmed_at: 'Потврден на'
+        confirmation_sent_at: 'Потврда испратена на'
+        sign_in_count: 'Вкупен број на логирања'
+        current_sign_in_at: 'Моментално логирање на'
+        last_sign_in_at: 'Последно логирање'
+        current_sign_in_ip: 'IP адреса на моментално логирање'
+        last_sign_in_ip: 'IP адреса од последно логирање'
+        password: 'Лозинка'
+        password_confirmation: 'Потврда на лозинка'
+      category:
+        name: 'Име'
+        position: 'Позиција'
+      country:
+        name: 'Име'
+      region:
+        name: 'Име'
+        country: 'Држава'
+      municipality:
+        name: 'Име'
+        region: 'Регион'

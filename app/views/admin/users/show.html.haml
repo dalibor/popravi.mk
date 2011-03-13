@@ -7,58 +7,40 @@
   .content
     .inner
       %p
-        <b>#{ t("activerecord.attributes.admin_user.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
+        <b>#{ t("activerecord.attributes.user.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
         = @user.name
       %p
-        <b>#{ t("activerecord.attributes.admin_user.is_admin", :default => t("activerecord.labels.is_admin", :default => "Is admin")) }:</b>
+        <b>#{ t("activerecord.attributes.user.is_admin", :default => t("activerecord.labels.is_admin", :default => "Is admin")) }:</b>
         = @user.is_admin
       %p
-        <b>#{ t("activerecord.attributes.admin_user.municipality_id", :default => t("activerecord.labels.municipality_id", :default => "Municipality")) }:</b>
+        <b>#{ t("activerecord.attributes.user.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality")) }:</b>
         = @user.municipality.try(:name)
       %p
-        <b>#{ t("activerecord.attributes.admin_user.problems_count", :default => t("activerecord.labels.problems_count", :default => "Problems count")) }:</b>
+        <b>#{ t("activerecord.attributes.user.problems_count", :default => t("activerecord.labels.problems_count", :default => "Problems count")) }:</b>
         = @user.problems_count
       %p
-        <b>#{ t("activerecord.attributes.admin_user.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
+        <b>#{ t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) }:</b>
         = @user.email
       %p
-        <b>#{ t("activerecord.attributes.admin_user.encrypted_password", :default => t("activerecord.labels.encrypted_password", :default => "Encrypted password")) }:</b>
-        = @user.encrypted_password
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.password_salt", :default => t("activerecord.labels.password_salt", :default => "Password salt")) }:</b>
-        = @user.password_salt
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.confirmation_token", :default => t("activerecord.labels.confirmation_token", :default => "Confirmation token")) }:</b>
-        = @user.confirmation_token
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.confirmed_at", :default => t("activerecord.labels.confirmed_at", :default => "Confirmed at")) }:</b>
+        <b>#{ t("activerecord.attributes.user.confirmed_at", :default => t("activerecord.labels.confirmed_at", :default => "Confirmed at")) }:</b>
         = @user.confirmed_at
       %p
-        <b>#{ t("activerecord.attributes.admin_user.confirmation_sent_at", :default => t("activerecord.labels.confirmation_sent_at", :default => "Confirmation sent at")) }:</b>
+        <b>#{ t("activerecord.attributes.user.confirmation_sent_at", :default => t("activerecord.labels.confirmation_sent_at", :default => "Confirmation sent at")) }:</b>
         = @user.confirmation_sent_at
       %p
-        <b>#{ t("activerecord.attributes.admin_user.reset_password_token", :default => t("activerecord.labels.reset_password_token", :default => "Reset password token")) }:</b>
-        = @user.reset_password_token
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.remember_token", :default => t("activerecord.labels.remember_token", :default => "Remember token")) }:</b>
-        = @user.remember_token
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.remember_created_at", :default => t("activerecord.labels.remember_created_at", :default => "Remember created at")) }:</b>
-        = @user.remember_created_at
-      %p
-        <b>#{ t("activerecord.attributes.admin_user.sign_in_count", :default => t("activerecord.labels.sign_in_count", :default => "Sign in count")) }:</b>
+        <b>#{ t("activerecord.attributes.user.sign_in_count", :default => t("activerecord.labels.sign_in_count", :default => "Sign in count")) }:</b>
         = @user.sign_in_count
       %p
-        <b>#{ t("activerecord.attributes.admin_user.current_sign_in_at", :default => t("activerecord.labels.current_sign_in_at", :default => "Current sign in at")) }:</b>
+        <b>#{ t("activerecord.attributes.user.current_sign_in_at", :default => t("activerecord.labels.current_sign_in_at", :default => "Current sign in at")) }:</b>
         = @user.current_sign_in_at
       %p
-        <b>#{ t("activerecord.attributes.admin_user.last_sign_in_at", :default => t("activerecord.labels.last_sign_in_at", :default => "Last sign in at")) }:</b>
+        <b>#{ t("activerecord.attributes.user.last_sign_in_at", :default => t("activerecord.labels.last_sign_in_at", :default => "Last sign in at")) }:</b>
         = @user.last_sign_in_at
       %p
-        <b>#{ t("activerecord.attributes.admin_user.current_sign_in_ip", :default => t("activerecord.labels.current_sign_in_ip", :default => "Current sign in ip")) }:</b>
+        <b>#{ t("activerecord.attributes.user.current_sign_in_ip", :default => t("activerecord.labels.current_sign_in_ip", :default => "Current sign in ip")) }:</b>
         = @user.current_sign_in_ip
       %p
-        <b>#{ t("activerecord.attributes.admin_user.last_sign_in_ip", :default => t("activerecord.labels.last_sign_in_ip", :default => "Last sign in ip")) }:</b>
+        <b>#{ t("activerecord.attributes.user.last_sign_in_ip", :default => t("activerecord.labels.last_sign_in_ip", :default => "Last sign in ip")) }:</b>
         = @user.last_sign_in_ip
       %p
         = image_tag @user.avatar.url(:s)

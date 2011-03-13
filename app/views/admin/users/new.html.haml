@@ -4,7 +4,9 @@
       = render :partial => 'list'
       %li.active= link_to t("web-app-theme.new", :default => "New"), new_admin_user_path
   .content
-    %h2.title #{ t("web-app-theme.new", :default => "New")} User
+    %h2.title 
+      #{ t("web-app-theme.new", :default => "New")}
+      = t("web-app-theme.user")
     .inner
       = form_for @user, :url => admin_users_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

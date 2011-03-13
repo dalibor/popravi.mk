@@ -4,7 +4,9 @@
       = render :partial => 'list'
       %li.active= link_to t("web-app-theme.new", :default => "New"), new_admin_problem_path
   .content
-    %h2.title #{ t("web-app-theme.new", :default => "New")} Problem
+    %h2.title 
+      #{ t("web-app-theme.new", :default => "New")}
+      = t("web-app-theme.problem")
     .inner
       = form_for @problem, :url => admin_problems_path, :html => { :class => :form, :multipart => true } do |f|
         = render :partial => "form", :locals => {:f => f}

@@ -7,7 +7,7 @@
   .content
     .inner
       %p
-        <b>#{ t("activerecord.attributes.admin_post.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
+        <b>#{ t("activerecord.attributes.post.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
         = @post.user.try(:name)
       %p
         <b>#{ t("activerecord.attributes.post.slug", :default => t("activerecord.labels.slug", :default => "Slug")) }:</b>
@@ -20,13 +20,13 @@
         = @post.content
       %p
         <b>#{ t("activerecord.attributes.post.published", :default => t("activerecord.labels.published", :default => "Published")) }:</b>
-        = @post.published
+        = t("web-app-theme.#{@post.published}")
       %p
         <b>#{ t("activerecord.attributes.post.published_at", :default => t("activerecord.labels.published_at", :default => "Published at")) }:</b>
         = @post.published_at
       %p
         <b>#{ t("activerecord.attributes.post.comments_closed", :default => t("activerecord.labels.comments_closed", :default => "Comments closed")) }:</b>
-        = @post.comments_closed
+        = t("web-app-theme.#{@post.comments_closed}")
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_post_path(@post), :class => "button"
         = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_post_path(@post), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"

@@ -4,13 +4,15 @@
       %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_regions_path
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_region_path
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Regions
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('web-app-theme.regions')
     .inner
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_region.name", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("activerecord.attributes.admin_region.country", :default => t("activerecord.labels.country_id", :default => "Country"))
+          %th= t("activerecord.attributes.region.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.region.country", :default => t("activerecord.labels.country_id", :default => "Country"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @regions.each do |region|

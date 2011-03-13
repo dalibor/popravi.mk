@@ -8,7 +8,7 @@ Feature: Admin can manage users
     When I follow "Users"
     And I follow "New"
     And I fill in "Name" with "Test User 2"
-    And I fill in "Email" with "test_user2@popravi.mk"
+    And I fill in "E-mail" with "test_user2@popravi.mk"
     And I fill in "Password" with "secretpass"
     And I fill in "Password confirmation" with "secretpass"
     And I press "Save"

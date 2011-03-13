@@ -4,13 +4,15 @@
       %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_municipalities_path
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_municipality_path
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Municipalities
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('web-app-theme.municipalities')
     .inner
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_municipality.name", :default => t("activerecord.labels.name", :default => "Name"))
-          %th= t("activerecord.attributes.admin_municipality.region", :default => t("activerecord.labels.region", :default => "Region"))
+          %th= t("activerecord.attributes.municipality.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("activerecord.attributes.municipality.region", :default => t("activerecord.labels.region", :default => "Region"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @municipalities.each do |municipality|

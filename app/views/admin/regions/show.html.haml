@@ -7,10 +7,10 @@
   .content
     .inner
       %p
-        <b>#{ t("activerecord.attributes.admin_region.country_id", :default => t("activerecord.labels.country_id", :default => "Country")) }:</b>
+        <b>#{ t("activerecord.attributes.region.country", :default => t("activerecord.labels.country", :default => "Country")) }:</b>
         = @region.country_id
       %p
-        <b>#{ t("activerecord.attributes.admin_region.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
+        <b>#{ t("activerecord.attributes.region.name", :default => t("activerecord.labels.name", :default => "Name")) }:</b>
         = @region.name
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_region_path(@region), :class => "button"

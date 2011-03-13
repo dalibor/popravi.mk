@@ -5,7 +5,9 @@
       %li= link_to t("web-app-theme.new", :default => "New"), new_admin_category_path
       %li.active= link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_category_path
   .content
-    %h2.title #{ t("web-app-theme.edit", :default => "Edit") } Category
+    %h2.title 
+      #{ t("web-app-theme.edit", :default => "Edit")}
+      = t("web-app-theme.category")
     .inner
       = form_for @category, :url => admin_category_path(@category), :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

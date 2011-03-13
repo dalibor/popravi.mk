@@ -1,9 +1,5 @@
 .block
-  %h3 Simple Block
-  .content
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-.block
-  %h3 Links
+  %h3= t("web-app-theme.actions")
   %ul.navigation
-    %li= link_to "Send problems to municipalities", sent_admin_problems_path, :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+    %li= link_to t("web-app-theme.send_problems_to_municipalities"), sent_admin_problems_path, :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+

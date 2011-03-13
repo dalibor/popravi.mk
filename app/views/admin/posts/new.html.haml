@@ -4,7 +4,9 @@
       %li.first= link_to t("web-app-theme.list", :default => "List"), admin_posts_path
       %li.active= link_to t("web-app-theme.new", :default => "New"), new_admin_post_path
   .content
-    %h2.title #{ t("web-app-theme.new", :default => "New")} Post
+    %h2.title 
+      #{ t("web-app-theme.new", :default => "New")}
+      = t("web-app-theme.post")
     .inner
       = form_for @post, :url => admin_posts_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

@@ -5,7 +5,9 @@
       %li= link_to t("web-app-theme.new", :default => "New"), new_admin_municipality_path
       %li.active= link_to t("web-app-theme.edit", :default => "Edit"), edit_admin_municipality_path
   .content
-    %h2.title #{ t("web-app-theme.edit", :default => "Edit") } Municipality
+    %h2.title 
+      #{ t("web-app-theme.edit", :default => "Edit")}
+      = t("web-app-theme.municipality")
     .inner
       = form_for @municipality, :url => admin_municipality_path(@municipality), :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

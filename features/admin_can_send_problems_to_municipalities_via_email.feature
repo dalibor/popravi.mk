@@ -49,7 +49,7 @@ Feature: Admin can send problems to municipalities via email
 
   Scenario: Admin sends problems to municipalities via email
     When I follow "Problems"
-    And I follow "Send problems to municipalities"
+    And I follow "Send problems to municipalities via email"
     Then I should see "Problems were successfullly sent to municipalities"
     And "municipality1@popravi.mk" should receive 1 email
     And "municipality2@popravi.mk" should receive 0 emails

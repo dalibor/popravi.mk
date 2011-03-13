@@ -4,7 +4,9 @@
       %li.first= link_to t("web-app-theme.list", :default => "List"), admin_regions_path
       %li.active= link_to t("web-app-theme.new", :default => "New"), new_admin_region_path
   .content
-    %h2.title #{ t("web-app-theme.new", :default => "New")} Region
+    %h2.title 
+      #{ t("web-app-theme.new", :default => "New")}
+      = t("web-app-theme.region")
     .inner
       = form_for @region, :url => admin_regions_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

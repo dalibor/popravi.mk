@@ -20,28 +20,28 @@
         <div id="main-navigation">
         <ul class="wat-cf">
         %li{:class => controller.controller_path == 'admin/problems' ? 'active' : '' }
-          %a{:href => admin_problems_path} Problems
+          %a{:href => admin_problems_path}= t('web-app-theme.problems')
 
         %li{:class => controller.controller_path == 'admin/comments' ? 'active' : '' }
-          %a{:href => admin_comments_path} Comments
+          %a{:href => admin_comments_path}= t('web-app-theme.comments')
 
         %li{:class => controller.controller_path == 'admin/users' ? 'active' : '' }
-          %a{:href => admin_users_path} Users
+          %a{:href => admin_users_path}= t('web-app-theme.users')
 
         %li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
-          %a{:href => admin_posts_path} Posts
+          %a{:href => admin_posts_path}= t('web-app-theme.posts')
 
         %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
-          %a{:href => admin_categories_path} Categories
+          %a{:href => admin_categories_path}= t('web-app-theme.categories')
 
         %li{:class => controller.controller_path == 'admin/countries' ? 'active' : '' }
-          %a{:href => admin_countries_path} Countries
+          %a{:href => admin_countries_path}= t('web-app-theme.countries')
 
         %li{:class => controller.controller_path == 'admin/regions' ? 'active' : '' }
-          %a{:href => admin_regions_path} Regions
+          %a{:href => admin_regions_path}= t('web-app-theme.regions')
 
         %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
-          %a{:href => admin_municipalities_path} Municipalities
+          %a{:href => admin_municipalities_path}= t('web-app-theme.municipalities')
         </ul>
         </div>
       #wrapper.wat-cf

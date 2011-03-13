@@ -35,14 +35,6 @@ en:
   user:
     about: 'About you'
     logged_in_as: 'You are logged in as %{name}'
-  moderator:
-    welcome: 'Welcome to admin panel!'
-    problems: 'Problems'
-    posts: 'Posts'
-    post: 'Post'
-    comments: 'Comments'
-    settings: 'Settings'
-    logout: 'Logout'
   rates:
     create: 'Rate'
     update: 'Update rate'
@@ -94,7 +86,7 @@ en:
     statuses:
       reported: 'reported'
       approved: 'approved'
-      activated: 'active'
+      activated: 'activated'
       solved: 'solved'
       invalid: 'invalid'
     flash:
@@ -130,20 +122,50 @@ en:
         status: "Status"
         user: 'User'
         device: 'Devise'
+        name: 'Name'
         email: 'Email'
         weight: 'Weight'
         official_notes: 'Official notes'
+        photo: 'Photo'
       comment:
         content: "Comment"
         user: 'User'
+        name: 'Name'
+        email: 'Email'
         commentable: 'Commentable'
         approved: 'Approved'
       post:
         user: 'User'
         title: 'Title'
-        slug: 'URL slug'
-        content: "Comment"
+        slug: 'Slug'
+        content: "Content"
         published: "Published"
         published_at: 'Published at'
         comments_closed: 'Comments closed'
         custom_slug: 'Custom slug'
+      user:
+        name: 'Name'
+        is_admin: 'Is admin'
+        email: 'E-mail'
+        municipality: 'Municipality'
+        problems_count: 'Problems count'
+        confirmed_at: 'Confirmed at'
+        confirmation_sent_at: 'Confirmation sent at'
+        sign_in_count: 'Sign in count'
+        current_sign_in_at: 'Current sign in at'
+        last_sign_in_at: 'Last sign in at'
+        current_sign_in_ip: 'Current sign in ip'
+        last_sign_in_ip: 'Last sign in ip'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+      category:
+        name: 'Name'
+        position: 'Position'
+      country:
+        name: 'Name'
+      region:
+        name: 'Name'
+        country: 'Country'
+      municipality:
+        name: 'Name'
+        region: 'Region'

@@ -5,17 +5,19 @@
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_problem_path
 
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Problems
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('web-app-theme.problems')
     .inner
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description"))
-          %th= t("activerecord.attributes.admin_problem.user", :default => t("activerecord.labels.user", :default => "User"))
-          %th= t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category"))
-          %th= t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
-          %th= t("activerecord.attributes.admin_problem.device", :default => t("activerecord.labels.device", :default => "Device"))
-          %th= t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status"))
+          %th= t("activerecord.attributes.problem.description", :default => t("activerecord.labels.description", :default => "Description"))
+          %th= t("activerecord.attributes.problem.user", :default => t("activerecord.labels.user", :default => "User"))
+          %th= t("activerecord.attributes.problem.category", :default => t("activerecord.labels.category", :default => "Category"))
+          %th= t("activerecord.attributes.problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
+          %th= t("activerecord.attributes.problem.device", :default => t("activerecord.labels.device", :default => "Device"))
+          %th= t("activerecord.attributes.problem.status", :default => t("activerecord.labels.status", :default => "Status"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @problems.each do |problem|
@@ -26,7 +28,7 @@
             %td= problem.category.try(:name)
             %td= problem.municipality.try(:name)
             %td= problem.device_id
-            %td= problem.status
+            %td= t("problems.statuses.#{problem.status}")
             %td= problem.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), admin_problem_path(problem)
