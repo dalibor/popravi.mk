@@ -25,4 +25,12 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def render_problem_show
+    @comments = @problem.comments.
+                        includes([{:user => :municipality}, [:commentable => :municipality]]).
+                        order("created_at ASC")
+    @comment  = Comment.new
+    render 'problems/show'
+  end
 end

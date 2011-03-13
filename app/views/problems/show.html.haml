@@ -22,6 +22,18 @@
     %p= "#{t('problems.weight')}: #{@problem.weight}"
 
     %p
+      = "#{t('rates.current_rating')}: #{@problem.current_rating}"
+      = "#{t('rates.total_votes')}: #{@problem.rates.count}"
+
+    - if user_signed_in?
+      = semantic_form_for @rate, :url => (@rate.new_record? ? user_problem_rates_path(@problem) : user_problem_rate_path(@problem, @rate)) do |f|
+        = f.inputs do
+          <div id="slider"></div>
+          = f.input :weight, :label => false#, :input_html => { :disabled => true }
+        = f.buttons do
+          = f.commit_button @rate.new_record? ? t('rates.create') : t('rates.update')
+
+    %p
       = t("problems.statuses.#{@problem.status}")
       - if @problem.solved?
         = t('g.ago', :time => time_ago_in_words(@problem.solved_at))

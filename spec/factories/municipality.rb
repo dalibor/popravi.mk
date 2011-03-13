@@ -1,3 +1,3 @@
 Factory.define :municipality do |f|
-  f.name "Butel"
+  f.name 'Butel'
 end

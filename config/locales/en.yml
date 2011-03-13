@@ -35,7 +35,18 @@ en:
   user:
     about: 'About you'
     logged_in_as: 'You are logged in as %{name}'
+  rates:
+    create: 'Rate'
+    update: 'Update rate'
+    current_rating: 'Current rating'
+    total_votes: 'Total votes'
+    flash:
+      create:
+        success: 'Rate was successfully created.'
+      update:
+        success: 'Rate was successfully updated.'
   problems:
+    name: 'Name'
     solved_problem: '%{municipality} solved a problem'
     my_reported_problems: 'Problems reported by me'
     problems: 'Problems'

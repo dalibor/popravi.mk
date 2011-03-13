@@ -2,6 +2,8 @@ PopraviMk::Application.routes.draw do
   # devise routes
   devise_for :users
 
+  resources :municipalities, :only => [:index]
+
   resources :problems, :only => [:index, :show, :new, :create] do
     resources :comments, :only => [:create]
   end
@@ -13,12 +15,8 @@ PopraviMk::Application.routes.draw do
       collection do
         post :take_ownership
       end
+      resources :rates, :only => [:create, :update]
     end
-  end
-
-
-  resources :municipalities, :only => [:index] do
-    resources :problems, :only => [:index]
   end
 
   resources :posts, :only => [:index, :show] do

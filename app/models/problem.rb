@@ -27,6 +27,7 @@ class Problem < ActiveRecord::Base
   belongs_to :municipality, :counter_cache => true
   has_many :comments, :as => :commentable
   has_many :problem_transitions
+  has_many :rates
 
   # Validations
   validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id
@@ -130,6 +131,10 @@ class Problem < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def current_rating
+    rates.count > 0 ? rates.sum(:weight).to_f / rates.count : ''
   end
 
   private

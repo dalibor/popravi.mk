@@ -13,10 +13,8 @@ class ProblemsController < ApplicationController
 
   def show
     @problem  = Problem.find(params[:id])
-    @comments = @problem.comments.
-                        includes([{:user => :municipality}, [:commentable => :municipality]]).
-                        order("created_at ASC")
-    @comment  = Comment.new
+    @rate = @problem.rates.find_or_initialize_by_user_id(current_user.id) if user_signed_in?
+    render_problem_show
   end
 
   def new

@@ -35,7 +35,18 @@ mk:
   user:
     about: 'За вас'
     logged_in_as: 'Најавени сте како %{name}'
+  rates:
+    create: 'Гласај'
+    update: 'Измени глас'
+    current_rating: 'Просечна оценка'
+    total_votes: 'Вкупно гласови'
+    flash:
+      create:
+        success: 'Гласот е успешно креиран.'
+      update:
+        success: 'Гласот е успешно изменет.'
   problems:
+    name: 'Име'
     solved_problem: '%{municipality} отстрани проблем'
     my_reported_problems: 'Проблеми пријавени од мене'
     problems: 'Проблеми'

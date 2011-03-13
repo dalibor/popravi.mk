@@ -3,7 +3,7 @@ Feature: Admin can filter users
   As a admin
   I want be able to filter users by role
 
-Scenario: Admin can filter users by role
+  Scenario: Admin can filter users by role
     Given a municipality exists with name: "municipality"
     And a user exists with email: "moderator@popravi.mk", municipality: the municipality
     And a user exists with email: "reporter@popravi.mk"
@@ -29,4 +29,3 @@ Scenario: Admin can filter users by role
     Then I should not see "admin@popravi.mk"
     And I should not see "moderator@popravi.mk"
     And I should see "reporter@popravi.mk"
-

@@ -50,17 +50,25 @@ jQuery.fn.autolink = function () {
   });
 };
 
+var initializeSlider = function (element, field) {
+  element.slider({
+    min: 1, 
+    max: 10, 
+    value: field.val(),
+    change: function(e, ui) {
+      field.val($(e.target).slider("option", "value"))
+    }
+  });
+
+  field.change(function (e) {
+    element.slider({value: field.val()})
+  });
+}
+
 var problems_edit = problems_create = problems_update = problems_new = {
   run: function () {
 
-    $("#slider").slider({
-      min: 1, 
-      max: 10, 
-      value: $('#problem_weight').val(),
-      change: function(event, ui) {
-        $('#problem_weight').val($(event.target).slider("option", "value"))
-      }
-    });
+    initializeSlider($("#slider"), $('#problem_weight'));
 
     var map;
     var geocoder;
@@ -193,7 +201,7 @@ var problems_edit = problems_create = problems_update = problems_new = {
   }
 };
 
-var problems_show = comments_create = {
+var problems_show = comments_create = user_rates_create = user_rates_update = {
   run: function () {
     var initialize = function () {
       var latlng = new google.maps.LatLng(_lat, _lng);
@@ -207,6 +215,8 @@ var problems_show = comments_create = {
 
     initialize();
     hideNotice();
+
+    initializeSlider($("#slider"), $('#rate_weight'));
   }
 };
 

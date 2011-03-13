@@ -1,4 +1,4 @@
-Factory.define :comment do |comment|
-  comment.association :commentable, :factory => "problem"
-  comment.content "My comment"
+Factory.define :comment do |f|
+  f.association :commentable, :factory => 'problem'
+  f.content     'My comment'
 end

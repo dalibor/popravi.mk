@@ -3,10 +3,10 @@ Feature: Admin can send problems to municipalities via email
   As a admin
   I want to be able to send problems to municipalities via email
 
-# problem1 is already reported
-# problem4 is in municipality that don't have user in the system
-# problem2, problem3 and problem5 should be sent
-Background:
+  # problem1 is already reported
+  # problem4 is in municipality that don't have user in the system
+  # problem2, problem3 and problem5 should be sent
+  Background:
     Given a category exists with name: "category1"
     And a municipality exists with name: "municipality1"
     And a user exists with email: "municipality1@popravi.mk", municipality: the municipality
@@ -25,8 +25,7 @@ Background:
     And I am on the admin page
     And a clear email queue
 
-
-Scenario: Filter problems by sent and unsent
+  Scenario: Filter problems by sent and unsent
     When I follow "Problems"
     Then I should see "problem1"
     And I should see "problem2"
@@ -48,7 +47,7 @@ Scenario: Filter problems by sent and unsent
     And I should see "problem4"
     And I should see "problem5"
 
-Scenario: Admin sends problems to municipalities via email
+  Scenario: Admin sends problems to municipalities via email
     When I follow "Problems"
     And I follow "Send problems to municipalities"
     Then I should see "Problems were successfullly sent to municipalities"

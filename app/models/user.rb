@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :problems
   has_many :comments, :dependent => :destroy
   has_many :posts
+  has_many :rates
   belongs_to :municipality
 
   # Paperclip

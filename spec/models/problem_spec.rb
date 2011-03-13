@@ -7,6 +7,7 @@ describe Problem do
     it { should belong_to(:municipality) }
     it { should have_many(:comments) }
     it { should have_many(:problem_transitions) }
+    it { should have_many(:rates) }
     #it { should have_attached_file(:photo) }
   end
 
@@ -134,8 +135,25 @@ describe Problem do
       problem.user.should == user2
     end
   end
-end
 
+  describe "current_rating" do
+    it "returns 0.0 when no rates" do
+      problem = Factory.create(:problem)
+
+      problem.current_rating.should == ''
+      problem.rates.count == 0
+    end
+
+    it "returns current_rating" do
+      problem = Factory.create(:problem)
+      Factory.create(:rate, :weight => 10, :problem => problem)
+      Factory.create(:rate, :weight => 9, :problem => problem)
+
+      problem.current_rating.should == 9.5
+      problem.rates.count == 2
+    end
+  end
+end
 
 # == Schema Information
 #
