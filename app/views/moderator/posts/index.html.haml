@@ -4,7 +4,9 @@
       %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", moderator_posts_path
       %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_moderator_post_path
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Posts
+    %h2.title 
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('moderator.posts')
     .inner
       %table.table
         %tr
@@ -21,18 +23,16 @@
             %td= post.id
             %td= post.user.try(:name)
             %td= link_to post.title, moderator_post_path(post)
-            %td= post.published
+            %td= t("web-app-theme.#{post.published}")
             %td= post.published_at
-            %td= post.comments_closed
+            %td= t("web-app-theme.#{post.comments_closed}")
             %td= post.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), moderator_post_path(post)
-              |
               = link_to t("web-app-theme.edit", :default => "Edit"), edit_moderator_post_path(post)
-              |
               = link_to t("web-app-theme.delete", :default => "Delete"), moderator_post_path(post), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
       .actions-bar.wat-cf
         .actions
-        = will_paginate @posts
+        = will_paginate @posts, :previous_label => t("web-app-theme.previous"), :next_label => t("web-app-theme.next")
 
-- content_for :sidebar, render(:partial => 'sidebar')
+-#- content_for :sidebar, render(:partial => 'sidebar')

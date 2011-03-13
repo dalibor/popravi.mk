@@ -6,14 +6,17 @@
   .content
     .inner
       %p
-        <b>#{ t("activerecord.attributes.admin_comment.commentable_id", :default => t("activerecord.labels.commentable_id", :default => "Commentable")) }:</b>
+        <b>#{ t("activerecord.attributes.comment.user", :default => t("activerecord.labels.user", :default => "User")) }:</b>
+        = @comment.commenter_name
+      %p
+        <b>#{ t("activerecord.attributes.comment.commentable", :default => t("activerecord.labels.commentable_id", :default => "Commentable")) }:</b>
         = @comment.commentable.try(:description)
       %p
-        <b>#{ t("activerecord.attributes.admin_comment.content", :default => t("activerecord.labels.content", :default => "Content")) }:</b>
+        <b>#{ t("activerecord.attributes.comment.content", :default => t("activerecord.labels.content", :default => "Content")) }:</b>
         = @comment.content
       %p
-        <b>#{ t("activerecord.attributes.admin_comment.approved", :default => t("activerecord.labels.approved", :default => "Approved")) }:</b>
-        = @comment.approved
+        <b>#{ t("activerecord.attributes.comment.approved", :default => t("activerecord.labels.approved", :default => "Approved")) }:</b>
+        = t("web-app-theme.#{@comment.approved}")
       .wat-cf
         = link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_moderator_comment_path(@comment), :class => "button"
         = link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), moderator_comment_path(@comment), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"

@@ -35,6 +35,14 @@ en:
   user:
     about: 'About you'
     logged_in_as: 'You are logged in as %{name}'
+  moderator:
+    welcome: 'Welcome to admin panel!'
+    problems: 'Problems'
+    posts: 'Posts'
+    post: 'Post'
+    comments: 'Comments'
+    settings: 'Settings'
+    logout: 'Logout'
   rates:
     create: 'Rate'
     update: 'Update rate'
@@ -119,5 +127,23 @@ en:
         category: "Category"
         municipality: "Municipality"
         photo_file_name: "Photo"
+        status: "Status"
+        user: 'User'
+        device: 'Devise'
+        email: 'Email'
+        weight: 'Weight'
+        official_notes: 'Official notes'
       comment:
         content: "Comment"
+        user: 'User'
+        commentable: 'Commentable'
+        approved: 'Approved'
+      post:
+        user: 'User'
+        title: 'Title'
+        slug: 'URL slug'
+        content: "Comment"
+        published: "Published"
+        published_at: 'Published at'
+        comments_closed: 'Comments closed'
+        custom_slug: 'Custom slug'

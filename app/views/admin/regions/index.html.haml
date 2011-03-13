@@ -27,6 +27,6 @@
               = link_to t("web-app-theme.delete", :default => "Delete"), admin_region_path(region), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
       .actions-bar.wat-cf
         .actions
-        = will_paginate @regions
+        = will_paginate @regions, :previous_label => t("web-app-theme.previous"), :next_label => t("web-app-theme.next")
 
 - content_for :sidebar, render(:partial => 'sidebar')

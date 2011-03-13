@@ -4,15 +4,17 @@
       %li= link_to "#{t("web-app-theme.list", :default => "List")}", moderator_problems_path
 
   .content
-    %h2.title #{ t("web-app-theme.all", :default => "All") } Problems
+    %h2.title
+      #{ t("web-app-theme.all", :default => "All") }
+      = t('moderator.problems')
     .inner
       %table.table
         %tr
           %th.first ID
-          %th= t("activerecord.attributes.admin_problem.description", :default => t("activerecord.labels.description", :default => "Description"))
-          %th= t("activerecord.attributes.admin_problem.category", :default => t("activerecord.labels.category", :default => "Category"))
-          %th= t("activerecord.attributes.admin_problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
-          %th= t("activerecord.attributes.admin_problem.status", :default => t("activerecord.labels.status", :default => "Status"))
+          %th= t("activerecord.attributes.problem.description", :default => t("activerecord.labels.description", :default => "Description"))
+          %th= t("activerecord.attributes.problem.category", :default => t("activerecord.labels.category", :default => "Category"))
+          %th= t("activerecord.attributes.problem.municipality", :default => t("activerecord.labels.municipality", :default => "Municipality"))
+          %th= t("activerecord.attributes.problem.status", :default => t("activerecord.labels.status", :default => "Status"))
           %th= t("web-app-theme.created_at", :default => "Created at")
           %th.last &nbsp;
         - @problems.each do |problem|
@@ -21,18 +23,18 @@
             %td= link_to truncate(problem.description, :length => 50), moderator_problem_path(problem)
             %td= problem.category.try(:name)
             %td= problem.municipality.try(:name)
-            %td= problem.status
+            %td= t("problems.statuses.#{problem.status}")
             %td= problem.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), moderator_problem_path(problem)
               = link_to t("web-app-theme.edit", :default => "Edit"), edit_moderator_problem_path(problem)
               = link_to t("web-app-theme.delete", :default => "Delete"), admin_problem_path(problem), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
               = link_to t("web-app-theme.approve", :default => "Approve"), approve_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.reported?
-              = link_to t("web-app-theme.approve", :default => "Invalidate"), invalidate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.reported?
-              = link_to t("web-app-theme.approve", :default => "Activate"), activate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.approved?
-              = link_to t("web-app-theme.approve", :default => "Solve"), solve_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.activated?
+              = link_to t("web-app-theme.invalidate", :default => "Invalidate"), invalidate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.reported?
+              = link_to t("web-app-theme.activate", :default => "Activate"), activate_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.approved?
+              = link_to t("web-app-theme.solve", :default => "Solve"), solve_moderator_problem_path(problem), :method => :put, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" if problem.activated?
       .actions-bar.wat-cf
         .actions
-        = will_paginate @problems
+        = will_paginate @problems, :previous_label => t("web-app-theme.previous"), :next_label => t("web-app-theme.next")
 
 - content_for :sidebar, render(:partial => 'sidebar')

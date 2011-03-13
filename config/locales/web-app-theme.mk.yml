@@ -1,0 +1,25 @@
+mk:
+  web-app-theme:
+    save: "Сочувај"
+    cancel: "Откажи"
+    list: "Листање"
+    edit: "Измени"
+    new: "Нов/а"
+    show: "Прикажи"
+    delete: "Избриши"
+    confirm: "Дали сте сигурни?"
+    created_at: "Креирано на"
+    all: "Сите"
+    profile: "Профил"
+    settings: "Подесувања"
+    logout: "Одјави се"
+    approve: "Валиден"
+    invalidate: "Невалиден"
+    activate: "Во изработка"
+    solve: "Решен"
+    or: 'или'
+    previous: 'Предходна'
+    next: 'Следна'
+    'true': 'да'
+    'false': 'не'
+

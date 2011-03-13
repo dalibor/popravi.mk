@@ -35,6 +35,14 @@ mk:
   user:
     about: 'За вас'
     logged_in_as: 'Најавени сте како %{name}'
+  moderator:
+    welcome: 'Добредојдовте во админ панелот!'
+    problems: 'Проблеми'
+    posts: 'Новости'
+    post: 'Новост'
+    comments: 'Коментари'
+    settings: 'Подесувања'
+    logout: 'Одјави се'
   rates:
     create: 'Гласај'
     update: 'Измени глас'
@@ -234,5 +242,23 @@ mk:
         category: "Категорија"
         municipality: "Општина"
         photo_file_name: "Слика"
+        status: "Статус"
+        user: 'Корисник'
+        device: 'Уред'
+        email: 'Е-маил'
+        weight: 'Тежина'
+        official_notes: 'Официјална белешка'
       comment:
         content: "Коментар"
+        user: 'Корисник'
+        commentable: 'Коментар на'
+        approved: 'Одобрен'
+      post:
+        user: 'Корисник'
+        title: 'Наслов'
+        slug: 'УРЛ наставка'
+        content: "Содржина"
+        published: "Објавен"
+        published_at: 'Објавен на'
+        comments_closed: 'Затворени коментари'
+        custom_slug: 'Користи ја внесената УРЛ наставка'
