@@ -27,9 +27,9 @@ class User < ActiveRecord::Base
 
 
   # Scopes
-  scope :admins, where('is_admin = TRUE')
-  scope :moderators, where('is_admin = FALSE && municipality_id IS NOT NULL')
-  scope :reporters, where('is_admin = FALSE && municipality_id IS NULL')
+  scope :admins, where(['is_admin = ?', true])
+  scope :moderators, where(['is_admin = ? AND municipality_id IS NOT NULL', false])
+  scope :reporters, where(['is_admin = ? AND municipality_id IS NULL', false])
   scope :filter, proc {|filter|
     if filter == 'admins'
       admins

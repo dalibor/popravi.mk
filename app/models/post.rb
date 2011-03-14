@@ -14,8 +14,8 @@ class Post < ActiveRecord::Base
   before_save :set_published_at
 
   # Scopes
-  scope :published, where('published IS TRUE')
-  scope :from_admins, joins(:user).where('users.is_admin is TRUE')
+  scope :published, where(['published = ?', true])
+  scope :from_admins, joins(:user).where(['users.is_admin = ?', true])
   scope :ordered, order('published_at DESC')
   scope :for_month, lambda {|year, month|
     if !month.blank? && !year.blank?

@@ -48,10 +48,10 @@ class Problem < ActiveRecord::Base
     where(["problems.municipality_id = ?", municipality_id]) if municipality_id.present?
   }
   scope :with_month, proc {|month|
-    where(["MONTH(problems.created_at) = ?", month]) if month.present?
+    where(["#{month_select} = ?", month]) if month.present?
   }
   scope :with_year, proc {|year|
-    where(["YEAR(problems.created_at) = ?", year]) if year.present?
+    where(["#{year_select} = ?", year]) if year.present?
   }
   scope :with_status, proc {|status|
     where(["status = ?", status]) if status.present?
@@ -112,8 +112,24 @@ class Problem < ActiveRecord::Base
       paginate :per_page => 10, :page => params[:page]
   end
 
+  def self.year_select
+    if ActiveRecord::Base.connection.adapter_name == 'SQLite'
+      "CAST(STRFTIME('%Y', problems.created_at) AS INTEGER)"
+    else # MySQL
+      "YEAR(problems.created_at)"
+    end
+  end
+
+  def self.month_select
+    if ActiveRecord::Base.connection.adapter_name == 'SQLite'
+      "CAST(STRFTIME('%m', problems.created_at) AS INTEGER)"
+    else # MySQL
+      "MONTH(problems.created_at)"
+    end
+  end
+
   def self.years
-    Problem.select("YEAR(created_at) as year").group("year").order("year ASC").map{|p| p.year}
+    Problem.select("#{year_select} as year").group("year").order("year ASC").map{|p| p.year}
   end
 
   def self.send_problems!

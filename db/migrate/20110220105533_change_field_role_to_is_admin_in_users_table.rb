@@ -9,7 +9,10 @@ class ChangeFieldRoleToIsAdminInUsersTable < ActiveRecord::Migration
       user.is_admin = true
       user.save!
     end
-    User.update_all('is_admin = FALSE', 'is_admin IS NULL')
+    User.find(:all, :conditions => 'is_admin IS NULL').each do |user|
+      user.is_admin = false
+      user.save(false)
+    end
   end
 
   def self.down
@@ -22,6 +25,9 @@ class ChangeFieldRoleToIsAdminInUsersTable < ActiveRecord::Migration
       user.role = 'admin'
       user.save!
     end
-    User.update_all('role = NULL', 'role = "0"')
+    User.find(:all, :conditions => 'role = NULL').each do |user|
+      user.role = "0"
+      user.save(false)
+    end
   end
 end
