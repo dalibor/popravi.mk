@@ -10,7 +10,7 @@
     <meta name="description" content="#{yield(:description)}" />
     = yield(:head)
 
-    = stylesheet_link_tag 'formtastic', 'ui-lightness/jquery-ui-1.8.10.custom.css', 'compiled/screen.css', :media => 'screen, projection', :cache => true
+    = stylesheet_link_tag 'formtastic', 'ui-lightness/jquery-ui-1.8.10.custom.css', 'compiled/screen.css', :media => 'screen, projection', :cache => 'application_cached'
 
     = csrf_meta_tag
 
@@ -86,6 +86,6 @@
           &nbsp;
           = mail_to 'info@popravi.mk', t('menu.contact')
 
-    = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min.js', 'rails', 'application', :cache => true
+    = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min.js', 'rails', 'application', :cache => 'application_cached'
     = yield :script
     = render :partial => "shared/ga"

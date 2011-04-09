@@ -5,7 +5,7 @@
 
     %title Поправи.мк
 
-    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "compiled/web_app_theme_override", :cache => true
+    = stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/drastic-dark/style", "compiled/web_app_theme_override", :cache => 'admin_cached'
 
     = csrf_meta_tag
 
@@ -57,5 +57,5 @@
         #sidebar
           = yield :sidebar
 
-    = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'admin', :cache => true
+    = javascript_include_tag 'jquery-1.4.4.min', 'rails', 'admin', :cache => 'admin_cached'
     = yield :script
