@@ -63,6 +63,14 @@ PopraviMk::Application.routes.draw do
     resources :posts
   end
 
+  scope :module => "municipality" do
+    root :to => "welcome#index", :as => :municipality_root, :path => ":id"
+    resources :posts, :path => ":municipality_id/posts", :as => :municipality_posts
+  end
+
+
+
+
   # api routes
   namespace :api do
     namespace :v1 do
@@ -74,10 +82,15 @@ PopraviMk::Application.routes.draw do
       resources :categories, :only => [:index]
       resources :municipalities, :only => [:index]
     end
-  end
 
-  scope :module => "municipality" do
-    root :to => "welcome#index", :as => :municipality_root, :path => ":id"
-    resources :posts, :path => ":municipality_id/posts", :as => :municipality_posts
+    namespace :v2 do
+      resources :problems do
+        collection do
+          post :photo
+        end
+      end
+      resources :categories, :only => [:index]
+      resources :municipalities, :only => [:index]
+    end
   end
 end
