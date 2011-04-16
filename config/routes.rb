@@ -91,6 +91,7 @@ PopraviMk::Application.routes.draw do
       end
       resources :categories, :only => [:index]
       resources :municipalities, :only => [:index]
+      resource :session
     end
   end
 end
