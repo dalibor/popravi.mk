@@ -8,4 +8,5 @@ Factory.define :problem do |f|
   f.association :category
   f.association :municipality
   f.status      'reported'
+  f.association :user
 end

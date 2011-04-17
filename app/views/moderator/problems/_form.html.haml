@@ -3,6 +3,10 @@
   = f.text_area :official_notes, :class => 'text_area'
   <span class="description">Official notes about problem resolution</span>
 
+.group
+  = f.label :status, t("activerecord.attributes.problem.status", :default => "Status"), :class => :label
+  = f.select :status, Problem::statuses
+
 .group.navform.wat-cf
   %button.button{:type => "submit"}
     = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")

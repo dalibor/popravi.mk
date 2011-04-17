@@ -1,6 +1,6 @@
 class Problem < ActiveRecord::Base
 
-  STATUSES = [:reported, :approved, :activated, :solved, :invalid]
+  STATUSES = ['reported', 'approved', 'activated', 'solved', 'invalid']
 
   def self.statuses
     statuses = []
@@ -23,6 +23,7 @@ class Problem < ActiveRecord::Base
 
   # Associations
   belongs_to :user, :counter_cache => true
+  belongs_to :last_editor, :class_name => 'User'
   belongs_to :category, :counter_cache => true
   belongs_to :municipality, :counter_cache => true
   has_many :comments, :as => :commentable
@@ -32,6 +33,7 @@ class Problem < ActiveRecord::Base
   # Validations
   validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id
   validates_inclusion_of :weight, :in => 1..10
+  validates_inclusion_of :status, :in => STATUSES
   validates_numericality_of :weight
   #validates_presence_of :email, :if => Proc.new { |problem| problem.user_id.blank? && problem.device_id.blank?}
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
@@ -67,37 +69,17 @@ class Problem < ActiveRecord::Base
   }
 
   # Callbacks
+  before_validation :set_initial_status, :on => :create
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
   before_save :assign_user, :unless => Proc.new{|model| model.user }
   before_save :reset_solved_at, :if => Proc.new{|model| !model.solved? }
 
-  # State machine
-
-  state_machine :status, :initial => :reported do
-    event :approve do
-      transition [:reported] => :approved
-    end
-
-    event :activate do
-      transition [:approved] => :activated
-    end
-
-    event :solve do
-      transition [:activated] => :solved
-    end
-
-    before_transition any => :solved do |problem, transition|
-      problem.solved_at = Time.now
-    end
-
-    event :invalidate do
-      transition [:reported] => :invalid
-    end
-  end
-
-
   def title
     "#{municipality.name} #{category.name}"
+  end
+
+  def solved?
+    status == 'solved'
   end
 
   def self.search(params)
@@ -171,6 +153,10 @@ class Problem < ActiveRecord::Base
 
     def reset_solved_at
       self.solved_at = nil
+    end
+
+    def set_initial_status
+      self.status = 'reported'
     end
 end
 

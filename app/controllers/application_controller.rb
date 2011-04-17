@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   class AccessDenied < StandardError; end
   # Rescuers
   rescue_from AccessDenied do |exception|
-    flash[:error] = "Access denied."
-    redirect_to new_session_path(:user)
+    sign_out_and_redirect(current_user) if current_user
   end
 
   def after_sign_in_path_for(resource)

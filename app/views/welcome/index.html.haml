@@ -24,7 +24,7 @@
         %li
           = link_to @problem.title, problem_path(@problem)
           %span
-            = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
+            = t('g.ago', :time => time_ago_in_words(@problem.solved_at)) if @problem.solved_at
           %p
             = truncate @problem.description, :length => 300
 

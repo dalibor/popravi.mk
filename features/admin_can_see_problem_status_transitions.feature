@@ -5,13 +5,19 @@ Feature: Admin can see problem status transitions
 
   Scenario: Admin can see problem status transitions
     Given a municipality exists with name: "municipality1"
-    And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56"
+    And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56", name: "Moderator1"
     And a problem exists with municipality: the municipality, description: "problem1"
     And I sign in as "moderator@popravi.mk" with "password"
     When I follow "Problems"
-    And I follow "Approve"
-    And I follow "Activate"
-    And I follow "Solve"
+    And I follow "Edit"
+    And I select "approved" from "Status"
+    And I press "Save"
+    And I follow "Edit"
+    And I select "activated" from "Status"
+    And I press "Save"
+    And I follow "Edit"
+    And I select "solved" from "Status"
+    And I press "Save"
     And I follow "Logout"
 
     When I am authenticated as admin
@@ -19,8 +25,8 @@ Feature: Admin can see problem status transitions
     And I follow "Show"
     Then I should see "Problem status transitions"
     And I should see following problem status transitions:
-      | no | from      | to        |
-      | 1  |           | reported  |
-      | 2  | reported  | approved  |
-      | 3  | approved  | activated |
-      | 4  | activated | solved    |
+       | no | from      | to        | user       | 
+       | 1  |           | reported  | Test User  |
+       | 2  | reported  | approved  | Moderator1 | 
+       | 3  | approved  | activated | Moderator1 | 
+       | 4  | activated | solved    | Moderator1 | 

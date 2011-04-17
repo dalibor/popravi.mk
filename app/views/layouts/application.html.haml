@@ -28,7 +28,8 @@
           %ul#user_nav
             - if user_signed_in?
               %li= link_to t('menu.my_reports'), user_problems_path
-              %li= link_to t('menu.administration'), admin_root_path if current_user.is_admin?
+              %li= link_to t('menu.admin'), admin_root_path if current_user.is_admin?
+              %li= link_to t('menu.admin'), moderator_root_path if current_user.is_moderator?
               %li= link_to t('menu.settings'), edit_user_registration_path
               %li= link_to t('menu.sign_out'), destroy_user_session_path
             - else

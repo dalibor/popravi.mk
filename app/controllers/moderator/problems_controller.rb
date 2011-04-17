@@ -15,7 +15,11 @@ class Moderator::ProblemsController < Moderator::BaseController
   end
 
   def update
-    @problem.official_notes = params[:problem][:official_notes] if params[:problem]
+    if params[:problem]
+      @problem.official_notes = params[:problem][:official_notes]
+      @problem.status         = params[:problem][:status] 
+      @problem.last_editor    = current_user
+    end
 
     if @problem.save
       redirect_to moderator_problem_path(@problem),
@@ -26,21 +30,25 @@ class Moderator::ProblemsController < Moderator::BaseController
   end
 
   def approve
+    @problem.last_editor = current_user
     @problem.approve!
     redirect_to :back, :notice => 'Problem was successfully approved.'
   end
 
   def activate
+    @problem.last_editor = current_user
     @problem.activate!
     redirect_to :back, :notice => 'Problem was successfully activated.'
   end
 
   def solve
+    @problem.last_editor = current_user
     @problem.solve!
     redirect_to :back, :notice => 'Problem was successfully solved.'
   end
 
   def invalidate
+    @problem.last_editor = current_user
     @problem.invalidate!
     redirect_to :back, :notice => 'Problem was successfully invalidated.'
   end

@@ -48,12 +48,14 @@
           %th= t('web-app-theme.number')
           %th= t('web-app-theme.from')
           %th= t('web-app-theme.to')
+          %th= t('web-app-theme.user')
           %th= t('web-app-theme.date')
         - @problem.problem_transitions.each_with_index do |transition, index|
           %tr
             %td= index + 1
             %td= t("problems.statuses.#{transition.from}") if transition.from
             %td= t("problems.statuses.#{transition.to}") if transition.to
+            %td= transition.user.try(:full_name)
             %td= transition.created_at
 
 

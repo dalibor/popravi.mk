@@ -22,6 +22,7 @@ class Admin::ProblemsController < Admin::BaseController
   def update
     @problem = Problem.find(params[:id])
     @problem.official_notes = params[:problem][:official_notes] if params[:problem]
+    @problem.last_editor = current_user
     update!
   end
 

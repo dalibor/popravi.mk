@@ -224,5 +224,6 @@ Then /^I should see following problem status transitions:$/ do |table|
     page.find("table tr[#{index}] td[1]").text.should == hash[:no]
     page.find("table tr[#{index}] td[2]").text.should == hash[:from]
     page.find("table tr[#{index}] td[3]").text.should == hash[:to]
+    page.find("table tr[#{index}] td[4]").text.should == hash[:user]
   end
 end

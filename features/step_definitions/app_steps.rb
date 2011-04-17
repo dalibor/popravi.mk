@@ -35,9 +35,8 @@ Given /^now is "([^"]*)"$/ do |time|
   Time.stub(:now).and_return(Time.parse(time))
 end
 
-Given /^([^"]*) is solved$/ do |name|
-  problem = model(name)
-  problem.approve!
-  problem.activate!
-  problem.solve!
+Given /^([^"]*) status has changed to: "([^"]*)"$/ do |model_name, status|
+  problem = model(model_name)
+  problem.status = status
+  problem.save!
 end

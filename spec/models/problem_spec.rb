@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Problem do
   describe "associations" do
     it { should belong_to(:user) }
+    it { should belong_to(:last_editor) }
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
     it { should have_many(:comments) }
@@ -34,6 +35,22 @@ describe Problem do
     it { should validate_numericality_of(:weight) }
     it { should ensure_inclusion_of(:weight).in_range(1..10) }
     #it { should validate_attachment_presence(:photo) }
+    #
+    
+    it "allows status assignment for official statuses" do
+      Problem::STATUSES.each do |status|
+        problem = Factory.build(:problem, :status => status)
+        problem.should be_valid
+      end
+    end
+
+    it "does not allows invalid status assignment" do
+      Problem::STATUSES.each do |status|
+        problem = Factory.create(:problem)
+        problem.status = 'invalid_status'
+        problem.should_not be_valid
+      end
+    end
 
     it "is valid given valid attributes for unregistered user" do
       problem = Factory.build(:problem)
@@ -60,44 +77,6 @@ describe Problem do
       problem = Factory.build(:problem, :email => nil)
       problem.should be_valid
       problem.errors[:email].should == []
-    end
-  end
-
-  describe "transitions" do
-    it "sets solved_at when transitioning to solved status" do
-      time = Time.parse("2011-01-01 12:00:00")
-      Time.stub(:now).and_return(time)
-
-      problem = Factory.create(:problem)
-      problem.solved_at.should be_nil
-      problem.approve!
-      problem.solved_at.should be_nil
-      problem.activate!
-      problem.solved_at.should be_nil
-      problem.solve!
-      problem.solved_at.should == time
-
-      problem.status = 'approved'
-      problem.save!
-      problem.solved_at.should be_nil
-    end
-
-    it "resets solved_at when status is not solved" do
-      time = Time.parse("2011-01-01 12:00:00")
-      Time.stub(:now).and_return(time)
-
-      problem = Factory.create(:problem)
-      problem.solved_at.should be_nil
-      problem.approve!
-      problem.solved_at.should be_nil
-      problem.activate!
-      problem.solved_at.should be_nil
-      problem.solve!
-      problem.solved_at.should == time
-
-      problem.status = 'approved'
-      problem.save!
-      problem.solved_at.should be_nil
     end
   end
 

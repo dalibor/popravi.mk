@@ -74,19 +74,15 @@ PopraviMk::Application.routes.draw do
   # api routes
   namespace :api do
     namespace :v1 do
-      resources :problems do
-        collection do
-          post :photo
-        end
-      end
+      resources :problems
       resources :categories, :only => [:index]
       resources :municipalities, :only => [:index]
     end
 
     namespace :v2 do
       resources :problems do
-        collection do
-          post :photo
+        member do
+          put :update_status
         end
       end
       resources :categories, :only => [:index]

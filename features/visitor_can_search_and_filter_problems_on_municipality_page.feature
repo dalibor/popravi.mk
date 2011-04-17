@@ -39,8 +39,10 @@ Feature: Visitor can search and filter problems on municipality
 
   Scenario: Filter problems by status
     Given a municipality exists with name: "municipality1"
-    And a problem exists with description: "Problem1", municipality: the municipality, status: "approved"
-    And a problem exists with description: "Problem2", municipality: the municipality, status: "activated"
+    And a problem exists with description: "Problem1", municipality: the municipality
+    And the problem status has changed to: "approved"
+    And a problem exists with description: "Problem2", municipality: the municipality
+    And the problem status has changed to: "activated"
     And I am on the home page
     When I follow "municipality1 2"
     Then I should be on the municipality page for: the municipality

@@ -50,6 +50,14 @@ class User < ActiveRecord::Base
     !is_admin && municipality_id.present?
   end
 
+  def full_name
+    if name.present?
+      name
+    else
+      email
+    end
+  end
+
   private
     def assign_user_to_problems
       Problem.where(['email = ?', email]).each do |problem|

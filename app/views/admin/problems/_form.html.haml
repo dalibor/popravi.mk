@@ -50,7 +50,7 @@
 
 .group
   = f.label :status, t("activerecord.attributes.problem.status", :default => "Status"), :class => :label
-  = f.select :status, Problem::STATUSES
+  = f.select :status, Problem::statuses
   -#<span class="description">Ex: a simple text</span>
 
 .group.navform.wat-cf

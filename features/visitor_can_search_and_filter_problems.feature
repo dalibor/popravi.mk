@@ -42,9 +42,11 @@ Feature: Visitor can search and filter problems
 
   Scenario: Filter problems by status
     Given a municipality exists with name: "Municipality 1"
-    And a problem exists with description: "Problem from municipality 1", municipality: the municipality, status: "approved"
+    And a problem exists with description: "Problem from municipality 1", municipality: the municipality
+    And the problem status has changed to: "approved"
     Given a municipality exists with name: "Municipality 2"
-    And a problem exists with description: "Problem from municipality 2", municipality: the municipality, status: "activated"
+    And a problem exists with description: "Problem from municipality 2", municipality: the municipality
+    And the problem status has changed to: "activated"
     And I am on the home page
     And I follow "Problems"
     When I select "approved" from "Status"

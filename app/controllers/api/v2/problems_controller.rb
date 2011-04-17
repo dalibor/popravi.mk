@@ -1,4 +1,5 @@
 class Api::V2::ProblemsController < ApplicationController
+  before_filter :require_moderator, :only => :update_status
 
   layout false
 
@@ -44,9 +45,10 @@ class Api::V2::ProblemsController < ApplicationController
         :latitude => problem.latitude,
         :category => problem.category_name,
         :municipality => problem.municipality_name,
+        :status => problem.status,
         :photo_small => problem.photo.url(:s).gsub(" ", "%20"),
         :photo_medium => problem.photo.url(:m).gsub(" ", "%20"),
-        :created_at => problem.created_at.to_s(:rfc822) #problem.created_at.strftime("%b %d, %Y %H:%M:%S")
+        :created_at => problem.created_at.to_s(:rfc822)
       }
     end
 
@@ -60,7 +62,7 @@ class Api::V2::ProblemsController < ApplicationController
 
     if @problem.save
       respond_to do |format|
-        format.json { render :json => {:status => "ok", :id => @problem.id}.to_json }
+        format.json { render :json => { :status => "ok", :id => @problem.id }.to_json }
       end
     else
       actions = {}
@@ -68,7 +70,9 @@ class Api::V2::ProblemsController < ApplicationController
       actions[:municipality] = "sync" if @problem.errors[:municipality_id].present?
 
       respond_to do |format|
-        format.json { render :json => {:status => "error", :message => @problem.errors.full_messages.join(", "), :actions => actions}.to_json }
+        format.json { render :json => { :status => "error", 
+                                        :message => @problem.errors.full_messages.join(", "), 
+                                        :actions => actions}.to_json }
       end
     end
   end
@@ -85,17 +89,46 @@ class Api::V2::ProblemsController < ApplicationController
 
       if @problem.save
         respond_to do |format|
-          format.json { render :json => {:status => "ok"}.to_json }
+          format.json { render :json => { :status => "ok" }.to_json }
         end
       else
         respond_to do |format|
-          format.json { render :json => {:status => "error", :type => "photo"}.to_json }
+          format.json { render :json => { :status => "error", :type => "photo" }.to_json }
         end
       end
     else
       respond_to do |format|
-        format.json { render :json => {:status => "error", :type => "device_id"}.to_json }
+        format.json { render :json => { :status => "error", :type => "device_id" }.to_json }
       end
     end
   end
+
+  def update_status
+    problem = Problem.find(params[:id])
+
+    if params[:status].present?
+      problem.status = params[:status]
+      problem.last_editor = @editor
+    end
+
+    if problem.save
+      respond_to do |format|
+        format.json { render :json => { :status => "ok" }.to_json }
+      end
+    else
+      respond_to do |format|
+        format.json { render :json => { :status => "error" }.to_json }
+      end
+    end
+  end
+
+  private
+    def require_moderator
+      
+      unless (@editor = User.find_by_id(session[:user_id]))
+        respond_to do |format|
+          format.json { render :json => { :status => "access_denied" }.to_json }
+        end
+      end
+    end
 end
