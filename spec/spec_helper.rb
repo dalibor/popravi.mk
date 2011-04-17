@@ -28,3 +28,7 @@ RSpec.configure do |config|
 
   config.include Devise::TestHelpers, :type => :controller
 end
+
+def login(user)
+  session[:user_id] = user.id
+end

@@ -1,13 +1,12 @@
-class Api::V2::MunicipalitiesController < ApplicationController
+class Api::V2::MunicipalitiesController < Api::V2::BaseController
 
   def index
     municipalities = Municipality.find(:all, :select => "id, name", :order => "name ASC")
 
     @municipalities = []
-    municipalities.each { |municipality| @municipalities << {:id => municipality.id, :name => municipality.name} }
+    municipalities.each { |municipality| 
+      @municipalities << {:id => municipality.id, :name => municipality.name} }
 
-    respond_to do |format|
-      format.json { render :json => @municipalities.to_json }
-    end
+    render_json(@municipalities)
   end
 end

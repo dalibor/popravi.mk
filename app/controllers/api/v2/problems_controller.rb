@@ -1,38 +1,15 @@
-class Api::V2::ProblemsController < ApplicationController
+class Api::V2::ProblemsController < Api::V2::BaseController
   before_filter :require_moderator, :only => :update_status
 
   layout false
 
   def index
     if params[:type] == "nearest"
-      problems = Problem.find :all, 
-        :select => ActiveRecord::Base.send(:sanitize_sql_array,
-           ["problems.*, categories.name AS category_name, 
-             municipalities.name AS municipality_name, 
-             SQRT( POW( 69.1 * (latitude - ?), 2) + 
-                   POW( 69.1 * (? - longitude) * COS(latitude / 57.3), 2)) AS distance", 
-             params[:latitude], params[:longitude]]),
-        :joins => "JOIN categories ON categories.id = problems.category_id 
-                   JOIN municipalities ON municipalities.id = problems.municipality_id",
-        :order => "distance ASC",
-        :limit => 20
+      problems = Problem.find_nearest(params, 20)
     elsif params[:type] == "my"
-      problems = Problem.find :all, 
-        :select => "problems.*, categories.name AS category_name, 
-                    municipalities.name AS municipality_name", 
-        :joins => "JOIN categories ON categories.id = problems.category_id 
-                   JOIN municipalities ON municipalities.id = problems.municipality_id",
-        :conditions => ['device_id = ?', params[:device_id]],
-        :order => "problems.id DESC",
-        :limit => 20
+      problems = Problem.find_my(params, 20)
     else # params[:type] == "latest"
-      problems = Problem.find :all, 
-        :select => "problems.*, categories.name AS category_name, 
-                    municipalities.name AS municipality_name", 
-        :joins => "JOIN categories ON categories.id = problems.category_id 
-                   JOIN municipalities ON municipalities.id = problems.municipality_id",
-        :order => "problems.id DESC",
-        :limit => 20
+      problems = Problem.find_latest(20)
     end
 
     @problems = []
@@ -44,6 +21,7 @@ class Api::V2::ProblemsController < ApplicationController
         :longitude => problem.longitude,
         :latitude => problem.latitude,
         :category => problem.category_name,
+        :municipality_id => problem.municipality_id,
         :municipality => problem.municipality_name,
         :status => problem.status,
         :photo_small => problem.photo.url(:s).gsub(" ", "%20"),
@@ -52,28 +30,22 @@ class Api::V2::ProblemsController < ApplicationController
       }
     end
 
-    respond_to do |format|
-      format.json { render :json => @problems.to_json }
-    end
+    render_json(@problems)
   end
 
   def create
     @problem = Problem.new(params[:problem])
 
     if @problem.save
-      respond_to do |format|
-        format.json { render :json => { :status => "ok", :id => @problem.id }.to_json }
-      end
+      render_json({ :status => "ok", :id => @problem.id })
     else
       actions = {}
       actions[:category] = "sync" if @problem.errors[:category_id].present?
       actions[:municipality] = "sync" if @problem.errors[:municipality_id].present?
 
-      respond_to do |format|
-        format.json { render :json => { :status => "error", 
+      render_json({ :status => "error", 
                                         :message => @problem.errors.full_messages.join(", "), 
-                                        :actions => actions}.to_json }
-      end
+                                        :actions => actions })
     end
   end
 
@@ -81,54 +53,37 @@ class Api::V2::ProblemsController < ApplicationController
     #File.open('t.jpg', "wb") { |f| f.write(params['media'].read) }
     @problem = Problem.find(params[:id])
 
-    device_id = (params[:device_id].read rescue params[:device_id])
+    token = (params[:token].read rescue params[:token])
 
     # if photo is submitted from the same device
-    if @problem.device_id.to_s == device_id.to_s
+    if @problem.token.to_s == token.to_s
       @problem.photo = params[:photo]
 
       if @problem.save
-        respond_to do |format|
-          format.json { render :json => { :status => "ok" }.to_json }
-        end
+        render_json({ :status => "ok" })
       else
-        respond_to do |format|
-          format.json { render :json => { :status => "error", :type => "photo" }.to_json }
-        end
+        render_json({ :status => "error", :type => "photo" })
       end
     else
-      respond_to do |format|
-        format.json { render :json => { :status => "error", :type => "device_id" }.to_json }
-      end
+      render_json({ :status => "error", :type => "token" })
     end
   end
 
   def update_status
-    problem = Problem.find(params[:id])
+    problem = Problem.find(:first, :conditions => { :id => params[:id],
+                                      :municipality_id => @editor.municipality_id })
 
-    if params[:status].present?
+    if problem.present? && params[:status].present?
       problem.status = params[:status]
       problem.last_editor = @editor
-    end
 
-    if problem.save
-      respond_to do |format|
-        format.json { render :json => { :status => "ok" }.to_json }
+      if problem.save
+        render_json({ :status => "ok" })
+      else
+        render_json({ :status => "error" })
       end
     else
-      respond_to do |format|
-        format.json { render :json => { :status => "error" }.to_json }
-      end
+      render_json({ :status => "error" })
     end
   end
-
-  private
-    def require_moderator
-      
-      unless (@editor = User.find_by_id(session[:user_id]))
-        respond_to do |format|
-          format.json { render :json => { :status => "access_denied" }.to_json }
-        end
-      end
-    end
 end
