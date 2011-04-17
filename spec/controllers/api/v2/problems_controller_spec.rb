@@ -291,6 +291,21 @@ describe Api::V2::ProblemsController do
       json['message'].should == "Category can't be blank, Municipality can't be blank"
       json['actions'].should == {"category"=>"sync", "municipality"=>"sync"}
     end
+
+    it "assigns user when user is logged in" do
+      user = Factory.create(:user)
+      login(user)
+      post :create, :format => :json, 
+                    :problem => {
+                      :description => 'problem 123',
+                      :token => 123,
+                      :longitude => 21,
+                      :latitude => 42,
+                      :email => 'test@example.com'
+                    }
+
+      assigns(:problem).user.should == user
+    end
   end
 
   describe "update" do

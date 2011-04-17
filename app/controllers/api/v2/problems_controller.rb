@@ -36,6 +36,11 @@ class Api::V2::ProblemsController < Api::V2::BaseController
   def create
     @problem = Problem.new(params[:problem])
 
+    if session[:user_id].present?
+      user = User.find(session[:user_id]) 
+      @problem.user = user
+    end
+
     if @problem.save
       render_json({ :status => "ok", :id => @problem.id })
     else
