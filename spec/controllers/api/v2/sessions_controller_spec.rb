@@ -1,10 +1,13 @@
 require 'spec_helper'
 
 describe Api::V2::SessionsController do
+  before :each do
+    @api_key = Factory.create(:api_key, :key => 'key')
+  end
 
   describe "login" do
     it "can't login when invalid email" do
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
            :email => 'invalid'
 
       json = JSON.parse(response.body)
@@ -17,7 +20,7 @@ describe Api::V2::SessionsController do
       user = Factory.create(:user, :email => 'tested@popravi.mk', 
                                    :password => 'password')
 
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
            :email => 'tested@popravi.mk', :password => 'invalid'
 
       json = JSON.parse(response.body)
@@ -32,7 +35,7 @@ describe Api::V2::SessionsController do
                                    :password => 'password',
                                    :municipality => municipality)
 
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
            :email => 'tested@popravi.mk', :password => 'password'
 
       json = JSON.parse(response.body)

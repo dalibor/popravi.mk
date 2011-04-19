@@ -284,3 +284,7 @@ mk:
       municipality:
         name: 'Име'
         region: 'Регион'
+      api_key:
+        key: 'Клуч'
+        name: 'Име'
+        description: 'Опис'

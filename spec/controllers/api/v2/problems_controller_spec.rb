@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 describe Api::V2::ProblemsController do
+  before :each do
+    @api_key = Factory.create(:api_key, :key => 'key')
+  end
+
   describe "index" do
     context "nearest" do
       it "returns empty json when no problems" do
-        get :index, :format => 'json', 
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => "nearest"
 
         response.body.should == '[]'
@@ -16,7 +20,7 @@ describe Api::V2::ProblemsController do
                        :longitude => 21, :latitude => 41,
                        :municipality => municipality)
 
-        get :index, :format => 'json', 
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => "nearest", 
                     :longitude => 21.2, 
                     :latitude => 41.2
@@ -42,7 +46,7 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 2", :id => 2, 
                        :longitude => 22, :latitude => 42)
 
-        get :index, :format => 'json', 
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => "nearest", 
                     :longitude => 21.2, 
                     :latitude => 41.2
@@ -64,9 +68,9 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 2", :id => 2, 
                        :longitude => 22, :latitude => 42)
 
-        get :index, :format => 'json', 
-                    :type => "nearest", 
-                    :longitude => 21.7, 
+        get :index, :format => 'json', :api_key => @api_key.key,
+                    :type => "nearest",
+                    :longitude => 21.7,
                     :latitude => 41.7
 
         json = JSON.parse(response.body)
@@ -83,8 +87,8 @@ describe Api::V2::ProblemsController do
 
     context "my" do
       it "returns empty json when there is no problems" do
-        get :index, :format => 'json', 
-                    :type => "my"
+        get :index, :format => 'json', :api_key => @api_key.key,
+                    :type => 'my'
         response.body.should == '[]'
       end
 
@@ -92,8 +96,8 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 1", :id => 1, 
                        :longitude => 21, :latitude => 41, :email => 'tester@popravi.mk')
 
-        get :index, :format => 'json', 
-                    :type => "my", 
+        get :index, :format => 'json', :api_key => @api_key.key,
+                    :type => 'my',
                     :email => 'tester@popravi.mk'
 
         json = JSON.parse(response.body)
@@ -115,8 +119,8 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 1", :id => 1, 
                        :longitude => 21, :latitude => 41, :user => user)
 
-        get :index, :format => 'json', 
-                    :type => "my", 
+        get :index, :format => 'json', :api_key => @api_key.key,
+                    :type => 'my',
                     :email => 'tester@popravi.mk'
 
         json = JSON.parse(response.body)
@@ -139,8 +143,8 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 2", :id => 2, 
                        :longitude => 22, :latitude => 42, :email => 'tester@popravi.mk')
 
-        get :index, :format => 'json', 
-                    :type => "my", 
+        get :index, :format => 'json', :api_key => @api_key.key,
+                    :type => 'my', 
                     :email => 'tester@popravi.mk'
 
         json = JSON.parse(response.body)
@@ -157,7 +161,7 @@ describe Api::V2::ProblemsController do
 
     context "latest" do
       it "returns empty json when there is no problems" do
-        get :index, :format => 'json', 
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => 'latest'
 
         response.body.should == '[]'
@@ -167,7 +171,7 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 1", :id => 1, 
                        :longitude => 21, :latitude => 41)
 
-        get :index, :format => 'json',
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => 'latest'
 
         json = JSON.parse(response.body)
@@ -190,7 +194,7 @@ describe Api::V2::ProblemsController do
         Factory.create(:problem, :description => "Problem 2", :id => 2, 
                        :longitude => 22, :latitude => 42)
 
-        get :index, :format => 'json',
+        get :index, :format => 'json', :api_key => @api_key.key,
                     :type => 'latest'
 
         json = JSON.parse(response.body)
@@ -211,7 +215,7 @@ describe Api::V2::ProblemsController do
       municipality = Factory.create(:municipality)
       category = Factory.create(:category)
 
-      post :create, :format => :json, 
+      post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -232,7 +236,7 @@ describe Api::V2::ProblemsController do
     it "returns error when no municipality" do
       category = Factory.create(:category)
 
-      post :create, :format => :json, 
+      post :create, :format => :json, :api_key => @api_key.key, 
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -254,7 +258,7 @@ describe Api::V2::ProblemsController do
     it "returns error when no category" do
       municipality = Factory.create(:municipality)
 
-      post :create, :format => :json, 
+      post :create, :format => :json, :api_key => @api_key.key, 
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -274,7 +278,7 @@ describe Api::V2::ProblemsController do
     end
 
     it "returns error when no category and no municipality" do
-      post :create, :format => :json, 
+      post :create, :format => :json, :api_key => @api_key.key, 
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -295,7 +299,7 @@ describe Api::V2::ProblemsController do
     it "assigns user when user is logged in" do
       user = Factory.create(:user)
       login(user)
-      post :create, :format => :json, 
+      post :create, :format => :json, :api_key => @api_key.key, 
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -312,7 +316,7 @@ describe Api::V2::ProblemsController do
     it "can update problem by submiting a photo for it" do
       Factory.create(:problem, :photo => nil, :token => 123, :id => 1)
 
-      put :update, :format => 'json', 
+      put :update, :format => 'json', :api_key => @api_key.key, 
                    :id => 1, 
                    :token => 123, 
                    :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
@@ -327,7 +331,7 @@ describe Api::V2::ProblemsController do
     it "cannot update problem submiting by other device id" do
       Factory.create(:problem, :photo => nil, :token => 123, :id => 1)
 
-      put :update, :format => 'json', 
+      put :update, :format => 'json', :api_key => @api_key.key, 
                    :id => 1, 
                    :token => 124, 
                    :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
@@ -345,7 +349,7 @@ describe Api::V2::ProblemsController do
     it "can't change the status when not logged in" do
       problem = Factory.create(:problem)
 
-      put :update_status, :format => 'json',
+      put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id
 
       json = JSON.parse(response.body)
@@ -357,7 +361,7 @@ describe Api::V2::ProblemsController do
       user = Factory.create(:user)
       login(user)
 
-      put :update_status, :format => 'json',
+      put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id
 
       json = JSON.parse(response.body)
@@ -369,7 +373,7 @@ describe Api::V2::ProblemsController do
       user = Factory.create(:user)
       login(user)
 
-      put :update_status, :format => 'json',
+      put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'unexisting'
 
       json = JSON.parse(response.body)
@@ -382,7 +386,7 @@ describe Api::V2::ProblemsController do
       user = Factory.create(:user, :municipality => municipality1)
       problem = Factory.create(:problem, :municipality => municipality2)
       login(user)
-      put :update_status, :format => 'json',
+      put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'
 
       json = JSON.parse(response.body)
@@ -395,7 +399,7 @@ describe Api::V2::ProblemsController do
       user = Factory.create(:user, :municipality => municipality)
       problem = Factory.create(:problem, :municipality => municipality)
       login(user)
-      put :update_status, :format => 'json',
+      put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'
 
       json = JSON.parse(response.body)

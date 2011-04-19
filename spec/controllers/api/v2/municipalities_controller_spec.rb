@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe Api::V2::MunicipalitiesController do
+  before :each do
+    @api_key = Factory.create(:api_key, :key => 'key')
+  end
+
   it "returns empty json when no municipalities" do
-    get :index, :format => 'json'
+    get :index, :format => 'json', :api_key => @api_key.key
     response.body.should == '[]'
   end
 
@@ -10,7 +14,7 @@ describe Api::V2::MunicipalitiesController do
     Factory.create(:municipality, :name => "Municipality 1", :id => 1)
     Factory.create(:municipality, :name => "Municipality 2", :id => 2)
 
-    get :index, :format => 'json'
+    get :index, :format => 'json', :api_key => @api_key.key
     response.body.should == '[{"name":"Municipality 1","id":1},{"name":"Municipality 2","id":2}]'
   end
 
@@ -18,7 +22,7 @@ describe Api::V2::MunicipalitiesController do
     Factory.create(:municipality, :name => "Municipality 2", :id => 1)
     Factory.create(:municipality, :name => "Municipality 1", :id => 2)
 
-    get :index, :format => 'json'
+    get :index, :format => 'json', :api_key => @api_key.key
     response.body.should == '[{"name":"Municipality 1","id":2},{"name":"Municipality 2","id":1}]'
   end
 end

@@ -42,6 +42,9 @@
 
         %li{:class => controller.controller_path == 'admin/municipalities' ? 'active' : '' }
           %a{:href => admin_municipalities_path}= t('web-app-theme.municipalities')
+
+        %li{:class => controller.controller_path == 'admin/api_keys' ? 'active' : '' }
+          %a{:href => admin_api_keys_path}= t('web-app-theme.api_keys')
         </ul>
         </div>
       #wrapper.wat-cf

@@ -1,10 +1,14 @@
 require 'spec_helper'
 
 describe Api::V2::CommentsController do
+  before :each do
+    @api_key = Factory.create(:api_key, :key => 'key')
+  end
+
   describe "index" do
     it "returns empty json when no comments" do
       problem = Factory.create(:problem)
-      get :index, :format => 'json', 
+      get :index, :format => 'json', :api_key => @api_key.key, 
                   :problem_id => problem.id
 
       response.body.should == '[]'
@@ -15,7 +19,7 @@ describe Api::V2::CommentsController do
       comment = Factory.create(:comment, :commentable => problem, 
                                :name => 'Test User', :content => 'Test comment')
 
-      get :index, :format => 'json', 
+      get :index, :format => 'json', :api_key => @api_key.key, 
                   :problem_id => problem.id
 
       json = JSON.parse(response.body)
@@ -30,7 +34,7 @@ describe Api::V2::CommentsController do
 
     it "can't create comments when content is blank" do
       problem = Factory.create(:problem)
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id
 
       json = JSON.parse(response.body)
@@ -40,7 +44,7 @@ describe Api::V2::CommentsController do
 
     it "can create comment" do
       problem = Factory.create(:problem)
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id, :content => 'test comment'
 
       json = JSON.parse(response.body)
@@ -55,7 +59,7 @@ describe Api::V2::CommentsController do
       user = Factory.create(:user)
       login(user)
       problem = Factory.create(:problem)
-      post :create, :format => 'json',
+      post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id, :content => 'test comment'
 
       json = JSON.parse(response.body)
@@ -64,6 +68,5 @@ describe Api::V2::CommentsController do
 
       Comment.first.user.should == user
     end
-
   end
 end

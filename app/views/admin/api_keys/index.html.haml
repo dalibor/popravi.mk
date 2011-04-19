@@ -1,0 +1,34 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_api_keys_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_api_key_path
+  .content
+    %h2.title
+      = t("web-app-theme.all", :default => "All")
+      ApiKeys
+    .inner
+      %table.table
+        %tr
+          %th.first ID
+          %th
+            = t("activerecord.attributes.api_key.name")
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @api_keys.each do |api_key|
+          %tr{:class => cycle("odd", "even")}
+            %td
+              = api_key.id
+            %td
+              = link_to api_key.name, admin_api_key_path(api_key)
+            %td
+              = api_key.created_at
+            %td.last
+              = link_to "#{t("web-app-theme.show", :default => "Show")}", admin_api_key_path(api_key)
+              |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_api_key_path(api_key)} |
+              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_api_key_path(api_key), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @api_keys
+- content_for :sidebar, render(:partial => 'sidebar')

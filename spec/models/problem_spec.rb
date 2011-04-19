@@ -6,6 +6,7 @@ describe Problem do
     it { should belong_to(:last_editor) }
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
+    it { should belong_to(:api_key) }
     it { should have_many(:comments) }
     it { should have_many(:problem_transitions) }
     it { should have_many(:rates) }

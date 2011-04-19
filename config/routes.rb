@@ -46,6 +46,7 @@ PopraviMk::Application.routes.draw do
     end
     resources :comments
     resources :posts
+    resources :api_keys
   end
 
   # moderator routes

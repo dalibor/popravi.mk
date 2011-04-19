@@ -169,3 +169,7 @@ en:
       municipality:
         name: 'Name'
         region: 'Region'
+      api_key:
+        key: 'Key'
+        name: 'Name'
+        description: 'Description'

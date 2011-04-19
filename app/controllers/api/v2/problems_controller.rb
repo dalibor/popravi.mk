@@ -34,8 +34,9 @@ class Api::V2::ProblemsController < Api::V2::BaseController
   end
 
   def create
-    @problem = Problem.new(params[:problem])
-    @problem.user = user_from_session
+    @problem         = Problem.new(params[:problem])
+    @problem.user    = user_from_session
+    @problem.api_key = @api_key
 
     if @problem.save
       render_json({ :status => "ok", :id => @problem.id })

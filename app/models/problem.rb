@@ -26,6 +26,7 @@ class Problem < ActiveRecord::Base
   belongs_to :last_editor, :class_name => 'User'
   belongs_to :category, :counter_cache => true
   belongs_to :municipality, :counter_cache => true
+  belongs_to :api_key
   has_many :comments, :as => :commentable
   has_many :problem_transitions
   has_many :rates
