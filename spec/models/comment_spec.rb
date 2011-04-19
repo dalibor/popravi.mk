@@ -63,7 +63,7 @@ describe Comment do
       it "displays 'Анонимен корисник'" do
         problem = Factory.create(:problem)
         comment = problem.comments.new(:content => "My comment")
-        comment.commenter_name.should == "Анонимен посетител"
+        comment.commenter_name.should == "Анонимен корисник"
       end
     end
   end

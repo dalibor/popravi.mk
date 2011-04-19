@@ -17,10 +17,10 @@ class Comment < ActiveRecord::Base
   validates_format_of :email, :with => EMAIL_REG_EXP, :allow_blank => true
 
   def commenter_name
-    if user
-      user.name.present? ? user.name : 'Анонимен корисник'
+    if user && user.name.present?
+      user.name
     else
-      name.present? ? name : 'Анонимен посетител'
+      name.present? ? name : 'Анонимен корисник'
     end
   end
 

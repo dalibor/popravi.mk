@@ -12,4 +12,12 @@ class Api::V2::BaseController < ApplicationController
         render_json({ :status => "access_denied" })
       end
     end
+
+    def user_from_session
+      if session[:user_id].present?
+        User.find(session[:user_id]) 
+      else
+        nil
+      end
+    end
 end
