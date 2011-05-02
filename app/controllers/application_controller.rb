@@ -2,9 +2,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   class AccessDenied < StandardError; end
+
   # Rescuers
   rescue_from AccessDenied do |exception|
-    sign_out_and_redirect(current_user) if current_user
+    if current_user
+      sign_out_and_redirect(current_user) 
+    else
+      redirect_to new_user_session_url
+    end
   end
 
   def after_sign_in_path_for(resource)

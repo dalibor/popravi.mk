@@ -73,7 +73,7 @@ class Problem < ActiveRecord::Base
   before_validation :set_initial_status, :on => :create
   after_validation :add_error_on_photo, :validates_longitude_and_latitude
   before_save :assign_user, :unless => Proc.new{|model| model.user }
-  before_save :reset_solved_at, :if => Proc.new{|model| !model.solved? }
+  before_save :set_solved_at
 
   def title
     "#{municipality.name} #{category.name}"
@@ -189,8 +189,8 @@ class Problem < ActiveRecord::Base
       self.user = User.find_by_email(email)
     end
 
-    def reset_solved_at
-      self.solved_at = nil
+    def set_solved_at
+      self.solved_at = (solved? ? Time.now : nil) if status_changed?
     end
 
     def set_initial_status

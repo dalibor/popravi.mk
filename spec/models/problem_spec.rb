@@ -133,6 +133,29 @@ describe Problem do
       problem.rates.count == 2
     end
   end
+
+  describe "solved_at" do
+    it "sets solved_at when status is changed to solved" do
+      time1 = Time.parse("2010-01-01 12:00:00")
+      Time.stub(:now).and_return(time1)
+      problem = Factory.create(:problem)
+      problem.solved_at.should be_nil
+      problem.status = 'solved'
+      problem.save!
+      problem.solved_at.should == time1
+
+      time2 = Time.parse("2010-02-01 12:00:00")
+      Time.stub(:now).and_return(time2)
+      problem.status = 'solved'
+      problem.description = 'changed'
+      problem.save!
+      problem.solved_at.should == time1
+
+      problem.status = 'approved'
+      problem.save!
+      problem.solved_at.should be_nil
+    end
+  end
 end
 
 # == Schema Information
