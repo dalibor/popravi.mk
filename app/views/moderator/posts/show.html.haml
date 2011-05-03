@@ -17,7 +17,7 @@
         = @post.title
       %p
         <b>#{ t("activerecord.attributes.post.content", :default => t("activerecord.labels.content", :default => "Content")) }:</b>
-        = @post.content
+        = raw @post.content
       %p
         <b>#{ t("activerecord.attributes.post.published", :default => t("activerecord.labels.published", :default => "Published")) }:</b>
         = t("web-app-theme.#{@post.published}")

@@ -15,7 +15,7 @@
           %span
             = render 'shared/timestamp', :post => @post
           %p
-            = truncate @post.content, :length => 300
+            = truncate strip_tags_with_space(@post.content), :length => 300
 
   - if @problem
     .sidebar

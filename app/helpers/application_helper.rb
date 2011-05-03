@@ -24,4 +24,8 @@ module ApplicationHelper
     parts << controller.action_name
     parts.join('_')
   end
+
+  def strip_tags_with_space(string)
+    string.to_s.gsub(/<\/?[^>]*>/, " ").strip
+  end
 end

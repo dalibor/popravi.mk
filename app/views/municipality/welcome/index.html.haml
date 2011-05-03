@@ -26,7 +26,7 @@
           %span
             = render 'shared/timestamp', :post => @post
           %p
-            = truncate @post.content, :length => 300
+            = truncate strip_tags_with_space(@post.content), :length => 300
 
         %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
 

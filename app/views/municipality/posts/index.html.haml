@@ -7,7 +7,7 @@
       .desc
         %h4
           = link_to post.title, municipality_post_path(@municipality.slug, post.slug)
-        = truncate post.content, :length => 300
+        = truncate strip_tags_with_space(post.content), :length => 300
         %h6
           = render 'shared/timestamp', :post => post
 

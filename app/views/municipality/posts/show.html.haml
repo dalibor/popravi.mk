@@ -8,6 +8,6 @@
     %h4
       = render 'shared/timestamp', :post => @commentable
 
-    %p= raw textilize(@commentable.content)
+    %p= raw @commentable.content
 
   = render 'comments/comments', :commentable => @commentable, :comments => @comments
