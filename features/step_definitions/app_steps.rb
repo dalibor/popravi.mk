@@ -40,3 +40,7 @@ Given /^([^"]*) status has changed to: "([^"]*)"$/ do |model_name, status|
   problem.status = status
   problem.save!
 end
+
+Then /^I should see "([^"]*)" in body$/ do |src|
+  page.body.should match(src)
+end

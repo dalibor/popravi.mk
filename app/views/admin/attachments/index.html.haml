@@ -1,0 +1,34 @@
+.block
+  .secondary-navigation
+    %ul.wat-cf
+      %li.first.active= link_to "#{t("web-app-theme.list", :default => "List")}", admin_attachments_path
+      %li= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_attachment_path
+  .content
+    %h2.title
+      = t("web-app-theme.all", :default => "All")
+      Attachments
+    .inner
+      %table.table
+        %tr
+          %th.first ID
+          %th
+            = t("activerecord.attributes.admin_attachment.name", :default => t("activerecord.labels.name", :default => "Name"))
+          %th= t("web-app-theme.created_at", :default => "Created at")
+          %th.last &nbsp;
+        - @attachments.each do |attachment|
+          %tr{:class => cycle("odd", "even")}
+            %td
+              = attachment.id
+            %td
+              = link_to attachment.name, admin_attachment_path(attachment)
+            %td
+              = attachment.created_at
+            %td.last
+              = link_to "#{t("web-app-theme.show", :default => "Show")}", admin_attachment_path(attachment)
+              |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_attachment_path(attachment)} |
+              \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_attachment_path(attachment), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
+      .actions-bar.wat-cf
+        .actions
+        = will_paginate @attachments
+- content_for :sidebar, render(:partial => 'sidebar')

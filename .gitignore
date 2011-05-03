@@ -19,3 +19,4 @@ public/assets
 public/javascripts/all.js
 public/stylesheets/all.css
 capybara*
+public/system/

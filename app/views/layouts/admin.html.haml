@@ -31,6 +31,9 @@
         %li{:class => controller.controller_path == 'admin/posts' ? 'active' : '' }
           %a{:href => admin_posts_path}= t('web-app-theme.posts')
 
+        %li{:class => controller.controller_path == 'admin/attachments' ? 'active' : '' }
+          %a{:href => admin_attachments_path}= t('web-app-theme.attachments')
+
         %li{:class => controller.controller_path == 'admin/categories' ? 'active' : '' }
           %a{:href => admin_categories_path}= t('web-app-theme.categories')
 

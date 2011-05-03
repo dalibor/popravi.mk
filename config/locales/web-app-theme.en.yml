@@ -49,6 +49,7 @@ en:
     to: 'To'
     date: 'Date'
     actions: 'Actions'
-    send_problems_to_municipalities: "Send problems to municipalities via email"
+    send_problems_to_municipalities: 'Send problems to municipalities via email'
     api_keys: 'API Keys'
     name: 'Name'
+    attachments: 'Attachments'

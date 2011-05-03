@@ -54,6 +54,7 @@ mk:
     to: 'До'
     date: 'Датум'
     actions: 'Акции'
-    send_problems_to_municipalities: "Испрати ги проблеми до општините на е-маил"
+    send_problems_to_municipalities: 'Испрати ги проблеми до општините на е-маил'
     api_keys: 'API Keys'
     name: 'Име'
+    attachments: 'Attachments'
