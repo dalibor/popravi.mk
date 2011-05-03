@@ -4,7 +4,7 @@
 
 .main
   .header
-    %h2 Проблеми
+    %h2= t('problems.problems')
     = link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
 
   .problems
@@ -19,7 +19,7 @@
 #sidebar
   - if @post
     .sidebar
-      %h2 Блог
+      %h2= t('posts.news')
       .blog
         %li
           = link_to @post.title, municipality_post_path(@municipality.slug, @post.slug)

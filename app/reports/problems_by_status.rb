@@ -7,10 +7,12 @@ class ProblemsByStatus
 
   private
     def fetch_data
-      Problem.find(:all,
+      problems = Problem.find(:all,
                    :select => 'problems.status AS name,
                                COUNT(problems.status) AS amount',
                    :group => 'problems.status'
                    )
+
+      problems.each{|problem| problem.name = I18n.t("problems.statuses.#{problem.name}")}
     end
 end

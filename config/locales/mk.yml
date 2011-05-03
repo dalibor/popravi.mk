@@ -86,7 +86,7 @@ mk:
     statuses:
       reported: 'пријавен'
       approved: 'одобрен'
-      activated: 'активен'
+      activated: 'во изработка'
       solved: 'поправен'
       invalid: 'невалиден'
     flash:
@@ -94,6 +94,7 @@ mk:
         success: 'Проблемот е успешно пријавен.'
       update:
         success: 'Проблемот е успешно изменет.'
+    status_changed_by: 'Статусот е променет од'
   charts:
     category: 'Проблеми по категорија'
     municipality: 'Проблеми по општина'
@@ -288,3 +289,5 @@ mk:
         key: 'Клуч'
         name: 'Име'
         description: 'Опис'
+  mailer:
+    send_problems_subject: 'Последно пријавени проблеми'

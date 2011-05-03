@@ -6,7 +6,7 @@
   .content
     %h2.title 
       #{ t("web-app-theme.new", :default => "New")}
-      = t('moderator.post')
+      = t("web-app-theme.post")
     .inner
       = form_for @post, :url => moderator_posts_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

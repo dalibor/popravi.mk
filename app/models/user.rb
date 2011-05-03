@@ -51,11 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    if name.present?
-      name
-    else
-      email
-    end
+    name || 'Анонимен Корисник'
   end
 
   private

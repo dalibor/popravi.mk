@@ -173,6 +173,10 @@ class Problem < ActiveRecord::Base
     rates.count > 0 ? rates.sum(:weight).to_f / rates.count : ''
   end
 
+  def last_status_editor
+    problem_transitions.last.user.try(:full_name)
+  end
+
   private
 
     # formtastic errors fix for paperclip

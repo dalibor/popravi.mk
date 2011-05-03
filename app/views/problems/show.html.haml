@@ -35,6 +35,9 @@
 
     %p
       = t("problems.statuses.#{@problem.status}")
+      - if @problem.last_status_editor
+        = t("problems.status_changed_by")
+        = @problem.last_status_editor
       - if @problem.solved?
         = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
 

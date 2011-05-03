@@ -94,6 +94,7 @@ en:
         success: 'Problem was successfully reported.'
       update:
         success: 'Problem was successfully updated.'
+    status_changed_by: 'Status changed by'
   charts:
     category: 'Problems by category'
     municipality: 'Problems by municipality'
@@ -173,3 +174,5 @@ en:
         key: 'Key'
         name: 'Name'
         description: 'Description'
+  mailer:
+    send_problems_subject: 'Recently reported problems'

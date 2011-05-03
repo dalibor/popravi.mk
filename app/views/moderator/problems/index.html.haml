@@ -27,6 +27,7 @@
             %td= problem.created_at
             %td.last
               = link_to t("web-app-theme.show", :default => "Show"), moderator_problem_path(problem)
+              |
               = link_to t("web-app-theme.edit", :default => "Edit"), edit_moderator_problem_path(problem)
       .actions-bar.wat-cf
         .actions
