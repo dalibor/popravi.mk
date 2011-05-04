@@ -3,8 +3,8 @@
   = auto_discovery_link_tag(:rss, problems_path(:format => 'rss'))
 
 .main
-  .header
-    %h2= t('problems.problems')
+  %h2
+    = t('problems.problems')
     = link_to image_tag("rss.png"), problems_path(:format => 'rss')
 
   .problems

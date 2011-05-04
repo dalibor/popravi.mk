@@ -1,0 +1,35 @@
+#nav
+  .wrapper
+
+    %ul#app_nav
+      %li
+        = link_to new_problem_path, :class => "active" do
+          = image_tag "icon1.png"
+          = t('menu.report')
+      %li
+        = link_to problems_path do
+          = image_tag "icon2.png"
+          = t('menu.problems')
+      %li
+        = link_to municipalities_path do
+          = image_tag "icon3.png"
+          = t('menu.municipalities')
+      %li
+        = link_to posts_path do
+          = image_tag "icon5.png"
+          = t('menu.blog')
+      %li
+        = link_to android_path do
+          = image_tag "icon4.png"
+          Андроид
+      
+    %ul#user_nav
+      - if user_signed_in?
+        %li= link_to t('menu.my_reports'), user_problems_path
+        %li= link_to t('menu.admin'), admin_root_path if current_user.is_admin?
+        %li= link_to t('menu.admin'), moderator_root_path if current_user.is_moderator?
+        %li= link_to t('menu.settings'), edit_user_registration_path
+        %li= link_to t('menu.sign_out'), destroy_user_session_path
+      - else
+        %li= link_to t('menu.sign_up'), new_user_registration_path
+        %li= link_to t('menu.sign_in'), new_user_session_path

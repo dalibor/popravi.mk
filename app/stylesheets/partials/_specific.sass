@@ -1,20 +1,23 @@
 body
+  #header
+    background: image_url("header-bg.jpg") no-repeat 300px top
+    height: 100px
+    overflow: hidden
+    #logo
+      padding-top: 22px
 
   &#welcome_index
-    #top
-      height: 450px
-      #header
-        #logo
-          a
-            padding: 40px 0 20px
+    #header
+      height: 400px
+      #logo
+        padding-top: 80px
+        
 
   &#problems_index, &#problems_show, &#municipality_welcome_index
     #sidebar
       margin-bottom: -30px
-      overflow: hidden
+      +pie-clearfix
       .sidebar
-        .inputs:hover, .total:hover
-          border-left: 5px white solid
         label
           padding-bottom: 5px
           width: 100%
@@ -99,7 +102,7 @@ body
         float: left
         width: auto
       li
-        overflow: hidden
+        +pie-clearfix
         &.button input
           background: #333
           color: orange

@@ -1,312 +1,315 @@
-body
 
-  #top
-    height: 140px
-    ul#user_nav, ul#app_nav
-      margin-top: 60px
 
-  .step1, .step2, .step
-    background: white
-    border-top: 10px #999 solid
-    padding: 20px
-    +clearfix
 
-  .step1
-    margin-bottom: 30px
-    .left
-      width: 320px
-  .step2
-    padding: 30px 20px 0
+// OLD STYLES!!!
 
-  .step2, .step
-    clear: all
-    form
-      overflow: hidden
-    ol
-      width: 440px
-      li
+#top
+  height: 140px
+  ul#user_nav, ul#app_nav
+    margin-top: 60px
 
-    a
-      text-decoration: none
-      color: #999
-      &:hover
-        color: #333
-    .name h4
-      color: #999
-      font-size: 0.8em
-      margin: -15px 0 20px 0
-      text-transform: uppercase
+.step1, .step2, .step
+  background: white
+  border-top: 10px #999 solid
+  padding: 20px
+  +pie-clearfix
 
-    .name p
-      color: #444
-      line-height: 1.2em
+.step1
+  margin-bottom: 30px
+  .left
+    width: 320px
+.step2
+  padding: 30px 20px 0
 
-    .inputs
-      color: #999
-      float: left
-      font-size: 0.8em
-      padding-right: 20px
-      text-transform: uppercase
-      ol li
-        margin-bottom: 5px
-
-      i
-        letter-spacing: 0.03em
-        text-transform: none
-      textarea
-        +border-radius
-        background: #eee
-        border: 1px #dcdcdc solid
-        height: 235px
-        width: 100%
-
-      label
-        margin-bottom: 5px
-      #problem_photo
-        border: 1px #dcdcdc solid
-        height: 25px
-      .required, .optional
-        label
-          width: 100%
-
-    .buttons
-      margin-top: 20px
-      padding-left: 0
-      width: 100%
-      input
-        +border-radius
-        background: #333
-        border: none
-        color: orange
-        cursor: pointer
-        padding: 12px 10px 10px
-        text-transform: uppercase
-        &:hover
-          background: green
-          color: white
-  .step
-    width: 600px
-    margin-left: 180px
+.step2, .step
+  clear: all
+  form
+    overflow: hidden
+  ol
+    width: 440px
     li
-      margin-bottom: 10px
-    .inputs
-      margin-bottom: 20px
-      ol
-        width: 100%
-        li
-          margin-top: 10px
-          margin-bottom: 10px
-      #user_email, #user_password
-        width: 500px
-    .required, .optional
-      #user_remember_me
-        width: auto
-        font-size: 0.6em
-      label
-        margin: 0
-        padding: 0 0 5px 0
-        width: auto
 
-    #delete
-      background: #eee
-      margin-top: 20px
-      overflow: hidden
-      padding: 15px
-      h3
-        color: #999
-        font-size: 0.8em
-        font-weight: bold
-        text-transform: uppercase
-      a
-        +border-radius
-        background: #333
-        color: orange
-        font-size: 0.8em
-        margin-top: 10px
-        padding: 10px 10px 7px 10px
-        text-align: center
-        text-decoration: none
-        text-transform: uppercase
-        width: 100px
-        &:hover
-          background: red
-          color: white
-
-    a
-      color: #aaa
-      float: left
-      font-size: 0.8em
-      padding-bottom: 5px
-      width: 100%
-      &:hover
-        color: #333
-
-  select, input
-    +border-radius
-    background: #eee
-    border: 1px solid #dcdcdc
-    height: 30px
-    width: 300px
-
-  .commit
-    input
-      +border-radius
-      background: #eee
-      border: 1px solid white
-      height: auto
-      width: 100%
-
-  h2
+  a
+    text-decoration: none
     color: #999
-    font-size: 1.2em
-    font-weight: bold
-    padding: 20px 0 20px 0
+    &:hover
+      color: #333
+  .name h4
+    color: #999
+    font-size: 0.8em
+    margin: -15px 0 20px 0
     text-transform: uppercase
 
-  #map_buttons, #geocode_results
+  .name p
+    color: #444
+    line-height: 1.2em
+
+  .inputs
+    color: #999
     float: left
-    width: 320px
+    font-size: 0.8em
+    padding-right: 20px
+    text-transform: uppercase
+    ol li
+      margin-bottom: 5px
 
-    a
-      color: #333
-      font-size: 0.7em
-      text-decoration: none
-      text-transform: uppercase
-      &:hover
-        color: orange
-
-    input
+    i
+      letter-spacing: 0.03em
+      text-transform: none
+    textarea
       +border-radius
       background: #eee
-      border: 1px solid #dcdcdc
-      font-size: 1em
-      margin-bottom: 10px
-      padding: 7px
-      width: 260px
-      &:hover
-        background: #dcdcdc
+      border: 1px #dcdcdc solid
+      height: 235px
+      width: 100%
 
-    #search_address
+    label
+      margin-bottom: 5px
+    #problem_photo
+      border: 1px #dcdcdc solid
+      height: 25px
+    .required, .optional
+      label
+        width: 100%
+
+  .buttons
+    margin-top: 20px
+    padding-left: 0
+    width: 100%
+    input
       +border-radius
       background: #333
+      border: none
       color: orange
-      float: left
-      padding: 15px 15px 12px 15px
+      cursor: pointer
+      padding: 12px 10px 10px
+      text-transform: uppercase
       &:hover
         background: green
         color: white
+.step
+  width: 600px
+  margin-left: 180px
+  li
+    margin-bottom: 10px
+  .inputs
+    margin-bottom: 20px
+    ol
+      width: 100%
+      li
+        margin-top: 10px
+        margin-bottom: 10px
+    #user_email, #user_password
+      width: 500px
+  .required, .optional
+    #user_remember_me
+      width: auto
+      font-size: 0.6em
+    label
+      margin: 0
+      padding: 0 0 5px 0
+      width: auto
 
-    #delete_marker
-      +border-radius
-      background: #dcdcdc
-      float: right
-      margin-right: 45px
-      padding: 10px 10px 7px 10px
-      &:hover
-        background: #666
-
-  #geocode_results
-    margin-top: 30px
-    div
-      float: left
-      margin: 1px 0
-      overflow: hidden
-      padding: 5px 0
-    a
-      background: #eee
-      color: green
-      padding: 10px
-
-  #map
-    background: #777
-    color: white
-    float: right
-    width: 600px
-    p
-      float: left
+  #delete
+    background: #eee
+    margin-top: 20px
+    overflow: hidden
+    padding: 15px
+    h3
+      color: #999
       font-size: 0.8em
-      padding: 10px
-      width: 430px
-    a#delete_marker
+      font-weight: bold
+      text-transform: uppercase
+    a
       +border-radius
       background: #333
       color: orange
-      float: right
       font-size: 0.8em
-      margin: 12px
-      padding: 10px
+      margin-top: 10px
+      padding: 10px 10px 7px 10px
+      text-align: center
       text-decoration: none
+      text-transform: uppercase
+      width: 100px
       &:hover
-        background: white
-        color: #333
+        background: red
+        color: white
 
-  .step2
-    padding-bottom: 20px
-  #bottom
-    p
-      padding: 0
-  #alert
-    background: white
-    color: red
-    margin-left: 180px
-    padding: 20px
-    width: 600px
+  a
+    color: #aaa
+    float: left
+    font-size: 0.8em
+    padding-bottom: 5px
+    width: 100%
+    &:hover
+      color: #333
 
-  #comments_block
-    background: #f9f9f9
-    margin-top: 20px
-    padding: 20px
-    +clearfix
+select, input
+  +border-radius
+  background: #eee
+  border: 1px solid #dcdcdc
+  height: 30px
+  width: 300px
 
-    ul.errors
-      margin: 20px 0
-      padding: 10px 0 10px 20px
+.commit
+  input
+    +border-radius
+    background: #eee
+    border: 1px solid white
+    height: auto
+    width: 100%
 
-    .inline-errors
-      color: #cc0000 !important
-      padding: 0
+h2
+  color: #999
+  font-size: 1.2em
+  font-weight: bold
+  padding: 20px 0 20px 0
+  text-transform: uppercase
 
-    .form
+#map_buttons, #geocode_results
+  float: left
+  width: 320px
+
+  a
+    color: #333
+    font-size: 0.7em
+    text-decoration: none
+    text-transform: uppercase
+    &:hover
+      color: orange
+
+  input
+    +border-radius
+    background: #eee
+    border: 1px solid #dcdcdc
+    font-size: 1em
+    margin-bottom: 10px
+    padding: 7px
+    width: 260px
+    &:hover
+      background: #dcdcdc
+
+  #search_address
+    +border-radius
+    background: #333
+    color: orange
+    float: left
+    padding: 15px 15px 12px 15px
+    &:hover
+      background: green
+      color: white
+
+  #delete_marker
+    +border-radius
+    background: #dcdcdc
+    float: right
+    margin-right: 45px
+    padding: 10px 10px 7px 10px
+    &:hover
+      background: #666
+
+#geocode_results
+  margin-top: 30px
+  div
+    float: left
+    margin: 1px 0
+    overflow: hidden
+    padding: 5px 0
+  a
+    background: #eee
+    color: green
+    padding: 10px
+
+#map
+  background: #777
+  color: white
+  float: right
+  width: 600px
+  p
+    float: left
+    font-size: 0.8em
+    padding: 10px
+    width: 430px
+  a#delete_marker
+    +border-radius
+    background: #333
+    color: orange
+    float: right
+    font-size: 0.8em
+    margin: 12px
+    padding: 10px
+    text-decoration: none
+    &:hover
+      background: white
+      color: #333
+
+.step2
+  padding-bottom: 20px
+#bottom
+  p
+    padding: 0
+#alert
+  background: white
+  color: red
+  margin-left: 180px
+  padding: 20px
+  width: 600px
+
+#comments_block
+  background: #f9f9f9
+  margin-top: 20px
+  padding: 20px
+  +pie-clearfix
+
+  ul.errors
+    margin: 20px 0
+    padding: 10px 0 10px 20px
+
+  .inline-errors
+    color: #cc0000 !important
+    padding: 0
+
+  .form
+    float: left
+  .comments
+    float: right
+    padding-top: 20px
+    width: 400px
+    .comment
+      border-bottom: 1px #eee solid
+      padding-bottom: 20px
+      margin-bottom: 20px
+      +pie-clearfix
+    .official /* official comment */
+      background: #EEE
+
+      p
+        padding-bottom: 5px
+
+    img
       float: left
-    .comments
-      float: right
-      padding-top: 20px
-      width: 400px
-      .comment
-        border-bottom: 1px #eee solid
-        padding-bottom: 20px
-        margin-bottom: 20px
-        +clearfix
-      .official /* official comment */
-        background: #EEE
+      margin-right: 10px
+    ul
+      float: left
+      width: 320px
+      .name, .date
+        color: #666
+        margin-bottom: 5px
+        padding-top: 5px
+        text-transform: uppercase
+      .name
+        font-size: 0.7em
+      .date
+        font-size: 0.6em
+        margin-top: 5px
+      .content
+        color: #333
+        font-size: 0.8em
+        line-height: 1.2em
 
-        p
-          padding-bottom: 5px
-
-      img
-        float: left
-        margin-right: 10px
-      ul
-        float: left
-        width: 320px
-        .name, .date
-          color: #666
-          margin-bottom: 5px
-          padding-top: 5px
-          text-transform: uppercase
-        .name
-          font-size: 0.7em
-        .date
-          font-size: 0.6em
-          margin-top: 5px
-        .content
-          color: #333
-          font-size: 0.8em
-          line-height: 1.2em
-
-    #comment_submit
-    li.commit
-      margin: 20px 0 0 0
+  #comment_submit
+  li.commit
+    margin: 20px 0 0 0
 
 .problem
   #slider

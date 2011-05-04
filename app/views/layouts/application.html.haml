@@ -15,52 +15,12 @@
     = csrf_meta_tag
 
   %body{:id => body_id}
-    #dashed
-    #top
+    = render "layouts/nav"
+
+    #header_app
       .wrapper
-        #header
-          #logo
-            %a{:href => "/"}
-              =image_tag('logo.png')
-              //Поправи
-              //%br
-              //%span смени го градот
-          %ul#user_nav
-            - if user_signed_in?
-              %li= link_to t('menu.my_reports'), user_problems_path
-              %li= link_to t('menu.admin'), admin_root_path if current_user.is_admin?
-              %li= link_to t('menu.admin'), moderator_root_path if current_user.is_moderator?
-              %li= link_to t('menu.settings'), edit_user_registration_path
-              %li= link_to t('menu.sign_out'), destroy_user_session_path
-            - else
-              %li= link_to t('menu.sign_up'), new_user_registration_path
-              %li= link_to t('menu.sign_in'), new_user_session_path
-
-          %ul#app_nav
-            %li.report= link_to t('menu.report_problem'), new_problem_path
-            %li.list= link_to t('menu.problems'), problems_path
-            %li.list= link_to t('menu.municipalities'), municipalities_path
-            %li= link_to t('menu.blog'), posts_path
-
-        #action
-          #slogan
-            %h2= t('homepage.title')
-            %p= raw t('homepage.info', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
-              
-          #report
-            = link_to new_problem_path do
-              = t('problems.report')
-              %br
-              %span= t('problems.a_problem')
-          #download
-            = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :target => '_blank' do
-              = t('g.download')
-              %br
-              %span= t('g.for_android')
-
-        #vip
-          = link_to '/posts/popravimk-pobednik-na-vip-predizvikot' do
-            = image_tag "vip.png"
+        %a{:href => "/", :id => "logo"}
+          =image_tag('logo.png')
 
     #middle
       .wrapper
@@ -69,6 +29,16 @@
         = yield
 
     #bottom
+      .wrapper.border
+        .two-thirds
+          %h2 За Поправи.мк
+          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+          = image_tag "vip_logo.png"
+          = image_tag "metamorfozis.png"
+        .third
+          %h2 Контакт
+          %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+          
       .wrapper
         .left
           %p
@@ -78,7 +48,7 @@
             &
             %span
               = link_to 'Dime Pashoski', 'http://twitter.com/exterminateart', :target => '_blank'
-            = ", Copyright 2010 - #{Time.now.year}"
+            //= ", Copyright 2010 - #{Time.now.year}"
 
         .right
           = link_to 'Twitter', 'http://twitter.com/PopraviMK', :target => '_blank'

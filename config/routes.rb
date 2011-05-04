@@ -1,4 +1,4 @@
-PopraviMk::Application.routes.draw do
+  PopraviMk::Application.routes.draw do
   # devise routes
   devise_for :users
 
@@ -25,6 +25,8 @@ PopraviMk::Application.routes.draw do
 
   # root route
   root :to => "welcome#index"
+  
+  get 'android' => "welcome#android", :as => 'android'
 
   # admin routes
   namespace :admin do

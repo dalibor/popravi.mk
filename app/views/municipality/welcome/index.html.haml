@@ -3,9 +3,9 @@
   = auto_discovery_link_tag(:rss, municipality_root_path(@municipality.slug, :format => 'rss'))
 
 .main
-  .header
-    %h2= t('problems.problems')
-    = link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
+  %h2
+    = t('problems.problems')
+    %span.right= link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
 
   .problems
     = render :partial => 'problems/problem', :collection => @problems

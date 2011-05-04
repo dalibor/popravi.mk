@@ -1,144 +1,22 @@
 body
-  background: #eee
-  font-family: Arial, Helvetica, sans-serif
-
-  .wrapper
-    width: 960px
-    margin: 0 auto
-
-  .left
-    float: left
-  .right
-    float: right
 
   #map_canvas
     float: left
     width: 600px
     height: 400px
-    +clearfix
+    +pie-clearfix
 
   #dashed
     background: image_url("dashed.jpg")
     height: 10px
 
   .problem_assets
-    overflow: hidden
-
-  .official_notes
-
-  #top
-    background: image_url("background.jpg") #000 center top no-repeat
-    overflow: hidden
-
-    a
-      font-size: 0.8em
-
-    .wrapper
-      position: relative
-
-      #vip
-
-        position: absolute
-        top: 120px
-        right: -40px
-        @include scale(0.9)
-        @include rotate(10deg)
-        &:hover
-          @include scale(1)
-          @include rotate(0deg)
-
-    #header
-      float: left
-      margin-bottom: 50px
-      width: 100%
-
-      #logo
-        margin-left: -125px
-        a
-          color: #bbb
-          float: left
-          font-size: 1.8em
-          font-weight: bold
-          letter-spacing: 0.1em
-          line-height: 0.7em
-          padding-top: 18px
-
-          span
-            font-size: 0.36em
-            letter-spacing: 0.2em
-
-      ul#app_nav, ul#user_nav
-        float: right
-        font-size: 0.8em
-        margin-top: 60px
-        li
-          display: inline
-          float: left
-
-      ul#app_nav
-
-        a
-          background: #222
-          letter-spacing: 0.15em
-          padding: 15px
-          &:hover
-            background: #333
-        li.report a
-          background: #2a2a2a
-        li.report a, li.list a
-          &:hover
-            background: #444
-      ul#user_nav
-        a
-          background: #191919
-          color: #999
-          padding: 15px
-          &:hover
-            background: #292929
-            color: orange
-
-    #action
-      clear: both
-      color: #efefef
-      padding-right: 600px
-
-      #slogan
-        h2
-          color: #eee
-          font-size: 1.5em
-          font-weight: bold
-          padding-bottom: 10px
-          text-transform: none
-        p
-          color: #aaa
-          font-size: 0.8em
-          line-height: 1.2em
-          padding-bottom: 30px
-
-      #download, #report
-        float: left
-        height: 50px
-        padding: 15px 0 0 70px
-        a
-          font-size: 1em
-          font-weight: bold
-          letter-spacing: 0.1em
-          span
-            font-size: 0.6em
-            font-weight: normal
-
-      #download
-        background: image_url("arrow_download.png") no-repeat left top
-
-      #report
-        background: image_url("arrow_report.png") no-repeat left top
-        padding-right: 20px
-        a:hover
-          color: green
+    +pie-clearfix
 
   #middle
-    margin: 40px 0
-    overflow: hidden
+    background: #e9e9e9
+    padding: 40px 0
+    +pie-clearfix
 
     #notice
       background: white
@@ -148,18 +26,20 @@ body
       padding: 10px
 
     .main
+      background: #FFF
       float: left
       margin-right: 30px
-      overflow: hidden
       width: 610px
+      +border-radius(6px)
+      +box-shadow(#ddd, 0, 0, 6px)
+      +pie-clearfix
 
       .problem:hover
         background: #f9f9f9
-        border-left: 5px #333 solid
 
       .header
-        overflow: hidden
         background: url("/images/background_S.jpg?1286702412") repeat scroll center center #222222
+        +pie-clearfix
         h2
           background: none
           float: left
@@ -168,28 +48,34 @@ body
           margin: 15px 10px
 
     .sidebar
+      background: #FFF
       float: left
       margin-bottom: 30px
-      overflow: hidden
       width: 320px
+      +border-radius(6px)
+      +box-shadow(#ddd, 0, 0, 6px)
+      +pie-clearfix
 
     .section
       float: left
       margin-right: 30px
-      overflow: hidden
       width: 465px
+      +pie-clearfix
       &.last
         margin: 0
 
     .section, .main, .sidebar
       h2
-        +border-top-radius(3px)
+        +border-radius(6px)
+        +box-shadow(#666, 0, 0, 4px)
         background: image_url("background_S.jpg") center #222
         color: white
+        font-family: Impact, sans-serif
         font-size: 1em
-        font-weight: bold
+        font-weight: normal
+        letter-spacing: 1px
         padding: 15px 20px 12px
-        text-transform: none
+        text-transform: uppercase
 
       #tweets, .problems
         p
@@ -199,15 +85,17 @@ body
         margin-bottom: 1px
 
       p, .problem, .inputs, .total, .blog
-        background: white
-        border-left: 5px #fff solid
         color: #444
         font-size: 0.8em
-        padding: 15px 20px 10px 15px
+        padding: 15px 20px 10px 20px
         &.total
+          background: #f8f8f8
+          border-top: 1px solid #eee
           font-size: 0.9em
           font-weight: bold
           text-transform: uppercase
+          +border-bottom-radius
+          +linear-gradient(color-stops(#fcfcfc, #f4f4f4))
         &.problem
           padding-right: 0
 
@@ -241,12 +129,14 @@ body
             padding: 0
 
       ul.total
-        border-bottom: 1px solid #eee
+        //border-bottom: 1px solid #eee
       .total, .blog
         li
           padding-bottom: 10px
           a
             color: #555
+            font-weight: normal
+            text-transform: none
             &:hover
               color: black
               text-decoration: underline
@@ -285,8 +175,8 @@ body
           color: black
 
       .problem
-        overflow: hidden
         padding-right: 0
+        +pie-clearfix
         &:hover h4 a
           color: #333
           text-decoration: underline
@@ -336,12 +226,12 @@ body
               padding-right: 3px
 
   #bottom
-    background: #e9e9e9
+    background: #000
     color: #aaa
     font-size: 0.65em
-    overflow: hidden
     text-transform: uppercase
-
+    +linear-gradient(color-stops(#0a0a0a, #000))
+    +pie-clearfix
 
     .left, .right
       padding: 25px 0 20px 0

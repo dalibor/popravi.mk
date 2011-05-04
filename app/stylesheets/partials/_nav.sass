@@ -1,0 +1,38 @@
+#nav
+  background: image_url("nav-bg.png") repeat-x
+  li
+    display: inline
+    float: left
+  a
+    display: inline-block
+    letter-spacing: 0.5px
+    text-decoration: none
+    text-transform: lowercase
+    &:hover, &.active
+      background: image_url("nav-bg_hover.png") repeat-x
+      color: #eee
+    &.active
+      color: #fff
+      font-weight: bold
+  img
+    padding-right: 4px
+    position: relative
+    top: 3px
+
+#app_nav
+  +float(left)
+  a
+    color: #666
+    font-size: 12px
+    padding: 9px 14px 12px
+    &.active
+      
+
+#user_nav
+  +float(right)
+  a
+    color: #aaa
+    font-size: 11px
+    padding: 15px 14px 14px
+    &:active
+      padding: 16px 14px 13px

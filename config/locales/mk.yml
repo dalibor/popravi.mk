@@ -25,6 +25,7 @@ mk:
     problems: 'Преглед'
     municipalities: 'Општини'
     report_problem: 'Пријави проблем'
+    report: 'Пријави'
     my_reports: 'Мои пријави'
     admin: 'Админ'
     settings: 'Поставки'

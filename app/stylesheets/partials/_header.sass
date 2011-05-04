@@ -1,0 +1,50 @@
+#header
+  background: image_url("header-bg.jpg") no-repeat 300px bottom
+  height: 400px
+
+  .wrapper
+    padding-left: 35px
+
+#logo
+  color: #bbb
+  display: block
+  float: left
+  padding-top: 80px
+
+#slogan
+  clear: both
+  float: left
+  padding-left: 67px
+  width: 270px
+  h2
+    color: $red
+    font-family: Impact, sans-serif
+    font-size: 1.5em
+    font-weight: normal
+    padding: 20px 0 10px
+    text-transform: none
+  p
+    color: #777
+    font-size: 11.5px
+    line-height: 1.3em
+    padding-bottom: 30px
+
+#download, #report
+  float: left
+  font-size: 1em
+  font-weight: bold
+  letter-spacing: 0.1em
+  span
+    font-size: 0.6em
+    font-weight: normal
+
+#download
+  height: 38px
+  width: 112px
+  +replace-text("button2.png")
+  
+#report
+  height: 38px
+  margin-right: 10px
+  width: 105px
+  +replace-text("button1.png")

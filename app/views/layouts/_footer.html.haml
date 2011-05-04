@@ -1,0 +1,28 @@
+#bottom
+  .wrapper.border
+    .two-thirds
+      %h2 За Поправи.мк
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+      = image_tag "vip_logo.png"
+      = image_tag "metamorfozis.png"
+    .third
+      %h2 Контакт
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+      
+  .wrapper
+    .left
+      %p
+        Created by
+        %span
+          = link_to 'Dalibor Nasevic', 'http://twitter.com/blackflasher', :target => '_blank'
+        &
+        %span
+          = link_to 'Dime Pashoski', 'http://twitter.com/exterminateart', :target => '_blank'
+        //= ", Copyright 2010 - #{Time.now.year}"
+
+    .right
+      = link_to 'Twitter', 'http://twitter.com/PopraviMK', :target => '_blank'
+      &nbsp;
+      = link_to 'Facebook', 'http://www.facebook.com/pages/Popravi-podobri-go-svojot-grad/150464501635940', :target => '_blank'
+      &nbsp;
+      = mail_to 'info@popravi.mk', t('menu.contact')

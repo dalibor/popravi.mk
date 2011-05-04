@@ -1,42 +1,81 @@
 - title(t('homepage.title'))
 
-.main
-  %h2= t('problems.recent_problems')
-  - @problems.each do |problem|
-    = render :partial => 'problems/problem', :object => problem
+#header
+  .wrapper
+    %a{:href => "/", :id => "logo"}
+      =image_tag('logo.png')
 
-#sidebar
-  - if @post
-    .sidebar
-      %h2= t('problems.blog')
-      .blog
-        %li
-          = link_to @post.title, post_path(@post.slug)
-          %span
-            = render 'shared/timestamp', :post => @post
-          %p
-            = truncate strip_tags_with_space(@post.content), :length => 300
+    #slogan
+      // proveri!
+      //%h2= t('homepage.title')
+      
+      %h2 Смени го градот
+      %p= raw t('homepage.info', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
+        
+      = link_to new_problem_path, :id => "report" do
+        Пријави проблем
+        
+      = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :id => "download", :target => '_blank' do
+        Преземи за Андроид
 
-  - if @problem
-    .sidebar
-      %h2= t('problems.solved_problem', :municipality => @problem.municipality.try(:name))
-      .blog
-        %li
-          = link_to @problem.title, problem_path(@problem)
-          %span
-            = t('g.ago', :time => time_ago_in_words(@problem.solved_at)) if @problem.solved_at
-          %p
-            = truncate @problem.description, :length => 300
+#wtf
+  .wrapper
+    .third
+      = image_tag "tour1.png"
+      %h2 Пронајди!
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.
+    .third
+      = image_tag "tour2.png"
+      %h2 Пријави!
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+    .third
+      = image_tag "tour3.png"
+      %h2 Поправи!
+      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.
 
-  .sidebar
-    %h2= t('problems.municipalities_most')
-    %ul.total
-      - @municipalities.each do |municipality|
-        %li
-          = link_to "#{municipality.name} #{municipality.problems_count}", municipality_root_path(municipality.slug)
-      %li.view_all= link_to t('municipalities.view_all'), municipalities_path
+#middle
+  .wrapper
+    .main
+      %h2= t('problems.recent_problems')
+      - @problems.each do |problem|
+        = render :partial => 'problems/problem', :object => problem
+
+    #sidebar
+      .sidebar
+        = link_to '', 'http://www.appbrain.com/app/mk.popravi.mobile', :id => "effective", :target => '_blank'
+      
+
+      - if @post
+        .sidebar
+          %h2= t('problems.blog')
+          .blog
+            %li
+              = link_to @post.title, post_path(@post.slug)
+              %span
+                = render 'shared/timestamp', :post => @post
+              %p
+                = truncate strip_tags_with_space(@post.content), :length => 300
+
+      - if @problem
+        .sidebar
+          %h2= t('problems.solved_problem', :municipality => @problem.municipality.try(:name))
+          .blog
+            %li
+              = link_to @problem.title, problem_path(@problem)
+              %span
+                = t('g.ago', :time => time_ago_in_words(@problem.solved_at)) if @problem.solved_at
+              %p
+                = truncate @problem.description, :length => 300
+
+      .sidebar
+        %h2= t('problems.municipalities_most')
+        %ul.total
+          - @municipalities.each do |municipality|
+            %li
+              = link_to "#{municipality.name} #{municipality.problems_count}", municipality_root_path(municipality.slug)
+          %li.view_all= link_to t('municipalities.view_all'), municipalities_path
 
 
-  .sidebar
-    %h2 Twitter
-    #tweets
+      .sidebar
+        %h2 Twitter
+        #tweets
