@@ -1,6 +1,6 @@
 - title(t('homepage.title'))
 
-#header
+#header_android
   .wrapper
     %a{:href => "/", :id => "logo"}
       =image_tag('logo.png')
@@ -9,13 +9,10 @@
       // proveri!
       //%h2= t('homepage.title')
       
-      %h2 Смени го градот
-      %p= raw t('homepage.info', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
+      %h2 Андроид акција
+      %p= raw t('homepage.android', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
         
-      = link_to new_problem_path, :id => "report" do
-        Пријави проблем
-        
-      = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :id => "download", :target => '_blank' do
+      = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :id => "download2", :target => '_blank' do
         Преземи за Андроид
 
 #wtf

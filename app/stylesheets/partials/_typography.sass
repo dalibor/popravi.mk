@@ -1,23 +1,35 @@
-body
-  a
-    color: $red
-    text-decoration: none
-    &:hover, &:focus
-      text-decoration: underline
-    &:active
-      position: relative
-      outline: none
-      top: 1px
-    
-  #top, #bottom
-    a
-      color: #e9c41a
-      text-decoration: none
-      text-transform: uppercase
-      &:hover
-        color: orange
+
+a
+  color: $red
+  text-decoration: none
+  &:hover, &:focus
+    text-decoration: underline
+  &:active
+    position: relative
+    outline: none
+    top: 1px
   
-  #bottom
-    a
-      color: #666
-      font-weight: bold
+#top, #bottom
+  a
+    color: #e9c41a
+    text-decoration: none
+    text-transform: uppercase
+    &:hover
+      color: orange
+
+#bottom
+  a
+    color: #666
+    font-weight: bold
+      
+h2.main_title
+  +border-radius(6px)
+  +box-shadow(#666, 0, 0, 4px)
+  background: image_url("background_S.jpg") center #222
+  color: white
+  font-family: Impact, sans-serif
+  font-size: 1em
+  font-weight: normal
+  letter-spacing: 1px
+  padding: 15px 20px 12px
+  text-transform: uppercase

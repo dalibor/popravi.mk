@@ -1,27 +1,35 @@
 #header
   background: image_url("header-bg.jpg") no-repeat 300px bottom
-  height: 400px
+  height: 420px
 
-  .wrapper
-    padding-left: 35px
+#header_android
+  background: image_url("header-bg2.jpg") no-repeat 300px bottom
+  height: 420px
 
 #logo
   color: #bbb
   display: block
   float: left
-  padding-top: 80px
+  margin-left: 12px
+  padding-top: 90px
+  
+#header_app
+  background: image_url("header-bg1.jpg") no-repeat right top
+  border-bottom: 1px solid #eee
+  #logo
+    padding: 20px 0 10px
 
 #slogan
   clear: both
   float: left
-  padding-left: 67px
+  padding-left: 88px
   width: 270px
   h2
     color: $red
     font-family: Impact, sans-serif
     font-size: 1.5em
     font-weight: normal
-    padding: 20px 0 10px
+    padding: 30px 0 10px
     text-transform: none
   p
     color: #777
@@ -48,3 +56,14 @@
   margin-right: 10px
   width: 105px
   +replace-text("button1.png")
+
+#download2
+  background: image_url("button3a.png") no-repeat
+  display: block
+  font-size: 11px
+  height: 15px
+  margin-top: -25px
+  padding-top: 75px
+  width: 240px
+  &:hover, &:focus
+    background: image_url("button3.png") no-repeat
