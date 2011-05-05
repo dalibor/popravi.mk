@@ -21,7 +21,7 @@
     %h2= t('problems.search')
     = semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
       = f.inputs do
-        = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}
+        = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}, :wrapper_html => {:class => 'search'}
         = f.input :c, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
         = f.input :m, :as => :select, :label => t('problems.municipality'), :collection => Municipality.find(:all, :order => "name ASC"), :selected => params[:m].to_i, :input_html => {:name => :m}
         = f.input :s, :as => :select, :label => t('problems.status'), :selected => params[:s], :required => false, :input_html => {:name => :s}, :collection => Problem.statuses

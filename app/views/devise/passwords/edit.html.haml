@@ -1,7 +1,7 @@
 - title(t('devise.passwords.change_title'))
 
+%h2.main_title.wrap600= t('devise.passwords.change_your_password')
 .step
-  %h2= t('devise.passwords.change_your_password')
 
   = semantic_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put } do |f|
     = f.inputs do
