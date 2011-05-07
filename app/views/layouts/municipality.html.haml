@@ -18,11 +18,9 @@
     #nav
       .wrapper
 
-        %ul#app_nav
-          %li
-            = link_to new_problem_path, :class => "active" do
-              = image_tag "icon1.png"
-              = t('menu.report')
+        = render "layouts/nav"
+
+        %ul#municipality_nav
           %li
             = link_to municipality_root_path(@municipality.slug) do
               = image_tag "icon2.png"
@@ -31,17 +29,7 @@
             = link_to municipality_posts_path(@municipality.slug) do
               = image_tag "icon5.png"
               = t('menu.blog')
-                            
-        %ul#user_nav
-          - if user_signed_in?
-            %li= link_to t('menu.my_reports'), user_problems_path
-            %li= link_to t('menu.administration'), admin_root_path if current_user.is_admin?
-            %li= link_to t('menu.settings'), edit_user_registration_path
-            %li= link_to t('menu.sign_out'), destroy_user_session_path
-          - else
-            %li= link_to t('menu.sign_up'), new_user_registration_path
-            %li= link_to t('menu.sign_in'), new_user_session_path
-            
+
     #header_app
       .wrapper
         #logo
