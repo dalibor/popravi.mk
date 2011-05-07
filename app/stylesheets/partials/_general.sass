@@ -149,7 +149,14 @@
             text-decoration: underline
       li.view_all
         text-align: right
-        font-size: 0.8em
+        a
+          background: #ddd
+          font-size: 11px
+          padding: 4px 8px
+          +border-radius
+          &:hover
+            background: #f6e9bc
+            text-decoration: none
 
     img
       float: left

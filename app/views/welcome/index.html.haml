@@ -72,6 +72,7 @@
         %ul.total
           - @municipalities.each do |municipality|
             %li
+              = image_tag "rails.png", :width => "11"
               = link_to "#{municipality.name} #{municipality.problems_count}", municipality_root_path(municipality.slug)
           %li.view_all= link_to t('municipalities.view_all'), municipalities_path
 
