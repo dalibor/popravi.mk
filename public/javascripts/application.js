@@ -35,8 +35,9 @@ var DateHelper = {
 
 var hideNotice = function () {
   $("#notice").fadeOut(3000, function () {
-    $("#middle").css({marginTop: "60px"});
-    $("#middle").animate({marginTop: "40px"}, 1000);
+    $(this).parents('.wrapper')
+    $("#middle").css({paddingTop: "50px"});
+    $("#middle").animate({paddingTop: "30px"}, 1000);
   });
 };
 
