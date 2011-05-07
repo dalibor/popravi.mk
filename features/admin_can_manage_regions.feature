@@ -5,10 +5,10 @@ Feature: Admin can manage regions
 
   Scenario: Admin can manage regions
     Given I am authenticated as admin
-    And I am on the admin page
+    And I follow "Admin"
     And a country exists with name: "Macedonia"
     When I follow "Regions"
-    When I follow "New"
+    And I follow "New"
     And I fill in "Name" with "Region name"
     And I select "Macedonia" from "Country"
     And I press "Save"

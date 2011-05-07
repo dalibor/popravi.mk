@@ -201,7 +201,28 @@ var problems_edit = problems_create = problems_update = problems_new = {
   }
 };
 
-var problems_show = comments_create = user_rates_create = user_rates_update = {
+var problems_index = municipality_welcome_index = municipality_problems_index = {
+  run: function () {
+    $('#advanced_search').click(function (e) {
+      e.preventDefault();
+      $(this).parents('form').find('.toggle').toggleClass('hidden');
+      $(this).parents('form').find('.advanced').toggleClass('hidden');
+    });
+
+    $('#simple_search').click(function (e) {
+      e.preventDefault();
+      $(this).parents('form').find('.toggle').toggleClass('hidden');
+      $(this).parents('form').find('.advanced').toggleClass('hidden');
+      $('#s_c').val('');
+      $('#s_m').val('');
+      $('#s_s').val('');
+      $('#s_month').val('');
+      $('#s_year').val('');
+    });
+  }
+};
+
+var problems_show = municipality_problems_show = comments_create = user_rates_create = user_rates_update = {
   run: function () {
     var initialize = function () {
       var latlng = new google.maps.LatLng(_lat, _lng);

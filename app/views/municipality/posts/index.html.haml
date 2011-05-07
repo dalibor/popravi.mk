@@ -21,4 +21,5 @@
         %li
           = link_to "#{t('date.month_names')[item[1]]} #{item[0]}", :year => item[0], :month => item[1]
 
-      %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
+      - if @archive_items.present?
+        %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)

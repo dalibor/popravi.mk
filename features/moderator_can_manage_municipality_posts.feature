@@ -7,8 +7,9 @@ Feature: Moderator can manage municipality posts
     Given a municipality exists with name: "municipality1"
     And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56", name: "The moderator"
     And I sign in as "moderator@popravi.mk" with "password"
+    And I follow "Admin"
     When I follow "Posts"
-    When I follow "New"
+    And I follow "New"
     And I check "Custom slug"
     And I fill in "Slug" with "my-custom-slug"
     And I fill in "Title" with "Hello world"
@@ -40,6 +41,7 @@ Feature: Moderator can manage municipality posts
     And a post exists with title: "Municipality 2 post", user: the user "user2"
 
     And I sign in as "moderator2@popravi.mk" with "password"
+    And I follow "Admin"
 
     When I follow "Posts"
     Then I should see "Municipality 2 post"

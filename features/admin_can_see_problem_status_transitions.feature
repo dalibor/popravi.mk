@@ -8,6 +8,7 @@ Feature: Admin can see problem status transitions
     And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56", name: "Moderator1"
     And a problem exists with municipality: the municipality, description: "problem1"
     And I sign in as "moderator@popravi.mk" with "password"
+    And I follow "Admin"
     When I follow "Problems"
     And I follow "Edit"
     And I select "approved" from "Status"
@@ -21,6 +22,7 @@ Feature: Admin can see problem status transitions
     And I follow "Logout"
 
     When I am authenticated as admin
+    And I follow "Admin"
     And I follow "Problems"
     And I follow "Show"
     Then I should see "Problem status transitions"

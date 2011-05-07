@@ -4,9 +4,10 @@ Feature: Visitor can receive email instructions
   I want to be able to receive instructions via email
 
   Scenario: Resend email confirmation instructions and activate account
-    Given I am not authenticated
-    And I signed up as "test_user@popravi.mk" with password "secretpass"
-    And I go to the resend confirmation instructions page
+    Given I signed up as "test_user@popravi.mk" with password "secretpass"
+    And I am not authenticated
+    And I follow "Sign in"
+    And I follow "I didn't received confirmation instructions on email?"
     When I fill in "Email" with "test_user@popravi.mk"
     And I press "Send confirmation"
     Then I should see "You will receive an email with instructions about how to confirm your account in a few minutes."
@@ -16,8 +17,10 @@ Feature: Visitor can receive email instructions
     Then I should see "Your account was successfully confirmed. You are now signed in."
 
   Scenario: Send password change instructions and change password
-    Given I am not authenticated
-    And I signed up as "test_user@popravi.mk" with password "secretpass"
+    Given I signed up as "test_user@popravi.mk" with password "secretpass"
+    And I am not authenticated
+    And I follow "Sign in"
+    And I follow "I forgot my password"
     And I confirmed my email address
     And I go to the send password instructions page
     When I fill in "user_email" with "test_user@popravi.mk"

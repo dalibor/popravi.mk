@@ -5,6 +5,7 @@ Feature: Manage attachments
 
   Scenario: Editor lists attachments in administration
     Given I am authenticated as admin
+    And I follow "Admin"
     When I follow "Attachments"
     And I follow "New"
     And I fill in "Name" with "Attachment1"

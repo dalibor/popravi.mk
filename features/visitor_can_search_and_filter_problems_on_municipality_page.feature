@@ -14,7 +14,7 @@ Feature: Visitor can search and filter problems on municipality
     And I should see "Problem2"
     When I fill in "Search" with "Problem1"
     And I press "Search"
-    Then I should be on the municipality page for: the municipality
+    Then I should be on the municipality problems page for: the municipality
     And I should see "Total found: 1 problem"
     And I should see "Problem1"
     And I should not see "Problem2"
@@ -32,7 +32,7 @@ Feature: Visitor can search and filter problems on municipality
     And I should see "Problem2"
     When I select "Category1" from "Category"
     And I press "Search"
-    Then I should be on the municipality page for: the municipality
+    Then I should be on the municipality problems page for: the municipality
     And I should see "Total found: 1 problem"
     And I should see "Problem1"
     And I should not see "Problem2"
@@ -50,7 +50,7 @@ Feature: Visitor can search and filter problems on municipality
     And I should see "Problem2"
     When I select "approved" from "Status"
     And I press "Search"
-    Then I should be on the municipality page for: the municipality
+    Then I should be on the municipality problems page for: the municipality
     And I should see "Total found: 1 problem"
     And I should see "Problem1"
     And I should not see "Problem2"
@@ -67,7 +67,7 @@ Feature: Visitor can search and filter problems on municipality
     When I select "<month>" from "Month"
     And I select "<year>" from "Year"
     And I press "Search"
-    Then I should be on the municipality page for: the municipality
+    Then I should be on the municipality problems page for: the municipality
     And I should see "Total found: 1 problem"
     And I should see "<see>"
     And I should not see "<not_see>"

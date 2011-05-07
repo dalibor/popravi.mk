@@ -8,7 +8,7 @@ Feature: Admin can filter users
     And a user exists with email: "moderator@popravi.mk", municipality: the municipality
     And a user exists with email: "reporter@popravi.mk"
     And I am authenticated as admin
-    And I am on the admin page
+    And I follow "Admin"
 
     When I follow "Users"
     Then I should see "admin@popravi.mk"

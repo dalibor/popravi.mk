@@ -6,31 +6,19 @@
       %span= link_to problem.category.name, problem
     %ul.problem_status.inline
       %li
-        %span име
-        0
-        //%span= "#{t('problems.weight')}"
-        //= "#{@problem.weight}"
+        %span= t('problems.weight')
+        = problem.weight
 
       %li
-        %span име
-        0
-        //%span= "#{t('rates.current_rating')}"
-        //= "#{@problem.current_rating}"
+        %span= t('rates.current_rating')
+        = problem.current_rating
       %li
-        %span име
-        0
-        //%span= "#{t('rates.total_votes')}"
-        //= "#{@problem.rates.count}"
+        %span= t('rates.total_votes')
+        = problem.rates.count
 
       %li
-        %span статус
-        %span.atm
-          //= t("problems.statuses.#{@problem.status}")
-          //- if @problem.last_status_editor
-          //  = t("problems.status_changed_by")
-          //  = @problem.last_status_editor
-          //- if @problem.solved?
-          //  = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
+        %span= t('problems.status')
+        %span.atm= t("problems.statuses.#{problem.status}")
             
     %p= problem.description
     %ul.social

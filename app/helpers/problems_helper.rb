@@ -1,4 +1,5 @@
 module ProblemsHelper
+  extend ActiveSupport::Memoizable
 
   def get_month_names
     months = []
@@ -9,4 +10,10 @@ module ProblemsHelper
 
     months
   end
+
+  def advanced_search
+    params[:c].present? || params[:m].present? || params[:month].present? || 
+      params[:year].present? || params[:s].present?
+  end
+  memoize :advanced_search
 end

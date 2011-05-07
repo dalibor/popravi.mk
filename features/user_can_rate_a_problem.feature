@@ -21,8 +21,8 @@ Feature: User can rate a problem
     When I fill in "rate_weight" with "7"
     And I press "rate_submit"
     Then I should see "Rate was successfully created"
-    Then I should see "Current rating: 7.0"
-    And I should see "Total votes: 1"
+    Then I should see "7.0" within ".rating"
+    And I should see "1" within ".votes"
 
     # see error on update
     When I fill in "rate_weight" with "33"
@@ -34,5 +34,5 @@ Feature: User can rate a problem
     And I fill in "rate_weight" with "3"
     When I press "rate_submit"
     Then I should see "Rate was successfully updated"
-    Then I should see "Current rating: 3.0"
-    And I should see "Total votes: 1"
+    Then I should see "3.0" within ".rating"
+    And I should see "1" within ".votes"

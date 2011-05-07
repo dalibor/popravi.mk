@@ -1,0 +1,2 @@
+module Municipality::ProblemsHelper
+end

@@ -6,7 +6,7 @@ Feature: User can manage their problems
   Scenario: List problems reported by me
     Given I am an authenticated user
     And I report a problem
-    When I go to the user problems page
+    When I follow "My reports"
     Then I should see "Total: 1 problem"
     When I follow "Butel"
     And I follow "Edit"

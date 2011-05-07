@@ -9,6 +9,7 @@ Feature: Moderator can edit their comment
     And a problem exists with municipality: the municipality, description: "problem1"
     And a comment exists with commentable: the problem, user: the user
     And I sign in as "moderator@popravi.mk" with "password"
+    And I follow "Admin"
     And I follow "Comments"
     Then I should see "My comment"
     And I follow "Edit"

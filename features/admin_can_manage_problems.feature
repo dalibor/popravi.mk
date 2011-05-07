@@ -5,9 +5,9 @@ Feature: Admin can manage problems
 
   Scenario: Admin can manage problems
     Given I am authenticated as admin
-    And I am on the admin page
     And a category exists
     And a municipality exists
+    And I follow "Admin"
     When I follow "Problems"
     And I follow "New"
     And I fill in "Description" with "Problem description"
@@ -33,6 +33,7 @@ Feature: Admin can manage problems
   Scenario: Admin can change state of a problem
     Given I am authenticated as admin
     And a problem exists with description: "problem1"
+    And I follow "Admin"
     When I follow "Problems"
     Then I should see "problem1"
     And column "7" row "2" should have text "reported"

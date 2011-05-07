@@ -8,6 +8,7 @@ Feature: Moderator can change problem status
     And a user exists with municipality: the municipality, email: "moderator@popravi.mk", password: "password", confirmed_at: "2010-07-25 14:05:56"
     And a problem exists with municipality: the municipality, description: "problem1"
     And I sign in as "moderator@popravi.mk" with "password"
+    And I follow "Admin"
     When I follow "Problems"
     And I follow "problem1"
     And I follow "Edit"

@@ -7,6 +7,7 @@ Feature: Admin can manage comments
     Given I am authenticated as admin
     And a problem exists
     And a comment exists with commentable: the problem
+    And I follow "Admin"
     When I follow "Comments"
     And I follow "Edit"
     And I fill in "Comment" with "Comment name 2"

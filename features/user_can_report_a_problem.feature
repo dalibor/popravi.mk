@@ -8,7 +8,7 @@ Feature: User can report a problem
     And I am on the home page
     And category exists
     And municipality exists
-    When I follow "Report a problem"
+    When I follow "Report"
     Then I should not see "Email"
     And I fill in "problem_description" with "Problem description"
     And I fill in "problem_weight" with "7"
@@ -20,7 +20,7 @@ Feature: User can report a problem
     And I press "problem_submit"
     Then I should see "Problem was successfully reported"
     And I should see "Problem description"
-    And I should see "Weight: 7"
+    And I should see "7" within ".weight"
     And I should see "Butel"
     And I should see "Abandoned vehicles"
     When I follow "Edit"
@@ -35,7 +35,7 @@ Feature: User can report a problem
     And I am on the home page
     And category exists
     And municipality exists
-    When I follow "Report a problem"
+    When I follow "Report"
     And I fill in "problem_description" with "Problem description"
     And I attach the file "public/images/rails.png" to "problem_photo"
     And I change the value of the hidden field "problem[latitude]" to "42"

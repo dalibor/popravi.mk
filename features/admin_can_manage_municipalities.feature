@@ -6,6 +6,7 @@ Feature: Admin can manage municipalities
   Scenario: Admin can manage municipalities
     Given I am authenticated as admin
     And a region exists
+    And I follow "Admin"
     When I follow "Municipalities"
     And I follow "New"
     And I fill in "Name" with "Municipality name"

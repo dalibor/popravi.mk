@@ -7,7 +7,7 @@ Feature: User can update profile information
     Given I am an authenticated user
     And I am on the edit user page
     When I fill in "user_email" with "new_test_user@popravi.mk"
-    When I fill in "user_name" with "My Name"
+    And I fill in "user_name" with "My Name"
     And I attach the file "public/images/rails.png" to "user_avatar"
     And I fill in "user_password" with "newpass"
     And I fill in "user_password_confirmation" with "newpass"

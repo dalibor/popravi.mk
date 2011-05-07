@@ -23,16 +23,18 @@
     = semantic_form_for :s, :url => problems_path, :html => {:method => :get} do |f|
       = f.inputs do
         = f.input :q, :label => t('problems.search'), :input_html => {:value => params[:q], :name => :q}, :wrapper_html => {:class => 'search'}
-        %li.advanced= link_to "напредно пребарување"
-        %li.more
+        %li.advanced{:class => advanced_search ? nil : 'hidden'}
           %ul
             = f.input :c, :as => :select, :label => t('problems.category'), :collection => Category.find(:all, :order => "position ASC"), :selected => params[:c].to_i, :input_html => {:name => :c}
             = f.input :m, :as => :select, :label => t('problems.municipality'), :collection => Municipality.find(:all, :order => "name ASC"), :selected => params[:m].to_i, :input_html => {:name => :m}
             = f.input :s, :as => :select, :label => t('problems.status'), :selected => params[:s], :required => false, :input_html => {:name => :s}, :collection => Problem.statuses
             = f.input :month, :as => :select, :label => t('problems.month'), :selected => params[:month].to_i, :required => false, :input_html => {:name => :month}, :collection => get_month_names
             = f.input :year, :as => :select, :label => t('problems.year'), :selected => params[:year].to_i, :required => false, :input_html => {:name => :year}, :collection => Problem.years
-        = f.buttons do
-          = f.commit_button t('problems.search'), :button_html => {:name => nil}
+        .advanced{:class => advanced_search ? nil : 'hidden'}
+          = f.buttons do
+            = f.commit_button t('problems.search'), :button_html => {:name => nil}
+        %li.advanced{:class => advanced_search ? 'hidden' : nil}= link_to t('problems.advanced_search'), '#', :id => 'advanced_search'
+        %li.advanced{:class => advanced_search ? nil : 'hidden'}= link_to t('problems.simple_search'), '#', :id => 'simple_search'
 
   .sidebar
     %h2= t('problems.total')
@@ -43,11 +45,11 @@
     %h2= t('problems.charts')
     %ul.total
       %li
-        = link_to t('problems.category'), report_path('category')
+        = link_to t('charts.category'), report_path('category')
       %li
-        = link_to t('problems.municipality'), report_path('municipality')
+        = link_to t('charts.municipality'), report_path('municipality')
       %li
-        = link_to t('problems.status'), report_path('status')
+        = link_to t('charts.status'), report_path('status')
 
   .sidebar
     %h2= t('problems.categories_most')

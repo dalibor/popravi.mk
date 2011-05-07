@@ -6,6 +6,7 @@ Feature: Admin can manage API keys
   @run
   Scenario: Admin can manage api keys
     Given I am authenticated as admin
+    And I follow "Admin"
     When I follow "API Keys"
     And I follow "New"
     And I fill in "Name" with "API Key 1"

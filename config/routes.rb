@@ -70,6 +70,7 @@
   scope :module => "municipality" do
     root :to => "welcome#index", :as => :municipality_root, :path => ":id"
     resources :posts, :path => ":municipality_id/posts", :as => :municipality_posts
+    resources :problems, :path => ":municipality_id/problems", :as => :municipality_problems
   end
 
 

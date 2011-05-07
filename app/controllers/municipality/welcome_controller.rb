@@ -1,14 +1,8 @@
 class Municipality::WelcomeController < Municipality::BaseController
+  before_filter :load_municipality
 
   def index
-    @municipality = Municipality.find_by_slug(params[:id])
-    @problems = @municipality.problems.search(params)
+    @problems = @municipality.problems.ordered.last(5)
     @post = @municipality.posts.published.ordered.first
-    @total_problems = @municipality.problems.count
-
-    respond_to do |format|
-      format.html
-      format.rss { render :layout => false }
-    end
   end
 end

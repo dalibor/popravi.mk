@@ -5,6 +5,7 @@ Feature: Admin can manage posts
 
   Scenario: Admin can manage posts
     Given I am authenticated as admin
+    And I follow "Admin"
     When I follow "Posts"
     And I follow "New"
     And I check "Custom slug"

@@ -5,8 +5,9 @@ Feature: Admin can manage countries
 
   Scenario: Admin can manage countries
     Given I am authenticated as admin
+    And I follow "Admin"
     When I follow "Countries"
-    When I follow "New"
+    And I follow "New"
     And I fill in "Name" with "Country name"
     And I press "Save"
     Then I should see "Country was successfully created"

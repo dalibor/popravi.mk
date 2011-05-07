@@ -9,7 +9,14 @@
 
   .problems
     %ul
-      = render :partial => 'problems/problem', :collection => @problems
+      - @problems.each do |problem|
+        = render 'problems/problem', :problem => problem, :problem_link => municipality_problem_url(@municipality.slug, problem)
+
+    = will_paginate @problems
+
+    .total
+      = t('problems.total_found')
+      = pluralize @problems.total_entries, t('problems.problem')
 
 #sidebar
   - if @post
@@ -27,3 +34,7 @@
 
   = render 'municipality/problems/search'
 
+  .sidebar
+    %h2= t('problems.total')
+    .total
+      = pluralize @total_problems, t('problems.problem')

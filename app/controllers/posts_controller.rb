@@ -9,5 +9,6 @@ class PostsController < ApplicationController
     @commentable = Post.from_admins.published.find_by_slug(params[:id])
     @comments = @commentable.comments.order("created_at ASC").includes(:user)
     @comment = Comment.new
+    #@posts = Post.from_admins.published.ordered.limit(5)
   end
 end

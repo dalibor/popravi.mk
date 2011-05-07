@@ -11,7 +11,7 @@
           = image_tag "icon2.png"
           = t('menu.problems')
       %li
-        = link_to municipalities_path, :class => ((params[:controller] == 'municipalities' && params[:action]) || (params[:controller] == 'municipality/posts' || params[:controller] == 'municipality/welcome') ? 'active' : nil) do
+        = link_to municipalities_path, :class => ((params[:controller] == 'municipalities' && params[:action]) || (params[:controller] == 'municipality/posts' || params[:controller] == 'municipality/problems' || params[:controller] == 'municipality/welcome') ? 'active' : nil) do
           = image_tag "icon3.png"
           = t('menu.municipalities')
       %li

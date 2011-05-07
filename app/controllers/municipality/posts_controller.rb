@@ -11,9 +11,4 @@ class Municipality::PostsController < Municipality::BaseController
     @comments = @commentable.comments.order("created_at ASC").includes(:user)
     @comment = Comment.new
   end
-
-  private
-    def load_municipality
-      @municipality = Municipality.find_by_slug(params[:municipality_id])
-    end
 end

@@ -32,7 +32,7 @@ GEM
     activesupport (3.0.3)
     acts_as_list (0.1.2)
     annotate (2.4.0)
-    arel (2.0.7)
+    arel (2.0.9)
     autorefresh (1.0.0)
       pusher (>= 0.7.0)
       watchr (>= 0.7)
@@ -120,10 +120,11 @@ GEM
       daemons (>= 1.0.3)
       fastthread (>= 1.0.1)
       gem_plugin (>= 0.2.3)
+    mysql2 (0.2.6)
     nokogiri (1.4.4)
-    paperclip (2.3.8)
-      activerecord
-      activesupport
+    paperclip (2.3.11)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
     pickle (0.4.4)
       cucumber (>= 0.8)
       rake
@@ -197,7 +198,7 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.24)
+    tzinfo (0.3.27)
     warden (1.0.3)
       rack (>= 1.0.0)
     watchr (0.7)
@@ -237,7 +238,8 @@ DEPENDENCIES
   launchy
   looksee
   mongrel
-  paperclip (~> 2.3)
+  mysql2
+  paperclip
   pickle
   rails (= 3.0.3)
   recaptcha
