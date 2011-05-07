@@ -28,7 +28,17 @@
     padding: 14px 14px 17px
     &:active
       padding: 16px 14px 15px
-      
+  li:first-child
+    background: #e8e8e8
+    //background: image_url("nav-bg_hover2.png") repeat-x
+
+body#welcome_index
+  #app_nav li:first-child
+    background: image_url("nav-bg_hover.png") repeat-x
+    a
+      color: #ccc
+      &:hover
+        color: #fff
 
 #user_nav
   +float(right)
@@ -38,3 +48,25 @@
     padding: 20px 14px 18px
     &:active
       padding: 22px 14px 16px
+      
+#municipality_nav
+  background: #000
+  border-bottom: 1px solid #222
+  position: relative
+  top: -1px
+  ul
+    li
+      display: inline-block
+      float: left
+      padding: 5px 0 5px 10px
+      a
+        background: #999
+        color: #000
+        display: inline-block
+        font-size: 10px
+        padding: 4px 8px
+        text-decoration: none
+        text-transform: uppercase
+        +border-radius
+        &:hover, &:focus
+          background: #fff

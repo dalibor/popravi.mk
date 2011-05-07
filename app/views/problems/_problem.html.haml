@@ -1,6 +1,38 @@
-.problem
+%li.problem
   = image_tag problem.photo.url(:s)
   .desc
+    %h4
+      %span= link_to problem.municipality.name, problem
+      %span= link_to problem.category.name, problem
+    %ul.problem_status.inline
+      %li
+        %span име
+        0
+        //%span= "#{t('problems.weight')}"
+        //= "#{@problem.weight}"
+
+      %li
+        %span име
+        0
+        //%span= "#{t('rates.current_rating')}"
+        //= "#{@problem.current_rating}"
+      %li
+        %span име
+        0
+        //%span= "#{t('rates.total_votes')}"
+        //= "#{@problem.rates.count}"
+
+      %li
+        %span статус
+        %span.atm
+          //= t("problems.statuses.#{@problem.status}")
+          //- if @problem.last_status_editor
+          //  = t("problems.status_changed_by")
+          //  = @problem.last_status_editor
+          //- if @problem.solved?
+          //  = t('g.ago', :time => time_ago_in_words(@problem.solved_at))
+            
+    %p= problem.description
     %ul.social
       %li
         = link_to "http://twitter.com/home?status=#{CGI.escape(problem.title + ': ' + problem_url(problem) + ' #popravimk')}", :target => "_blank" do
@@ -10,8 +42,6 @@
         = link_to "http://www.facebook.com/share.php?u=#{CGI.escape(problem_url(problem))}&t=#{problem.title}", :target => "_blank" do
           =image_tag("iconFacebook.png")
           %span Share
-    %h4
-      %span= link_to problem.municipality.name, problem
-      %span= link_to problem.category.name, problem
-    = link_to problem.description, problem
+    
     %h6= t('g.ago', :time => time_ago_in_words(problem.created_at))
+    

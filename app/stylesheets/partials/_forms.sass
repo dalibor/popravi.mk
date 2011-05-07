@@ -272,12 +272,15 @@ h2
 #bottom
   p
     padding: 0
-#alert
-  background: white
+#alert, #error
+  background: #f8e8e8
   color: red
-  margin-left: 180px
-  padding: 20px
+  font-size: 12px
+  margin: 0 auto
+  padding: 15px 20px
+  text-align: center
   width: 600px
+  +border-top-radius
 
 #comments_block
   background: #f9f9f9
@@ -336,6 +339,7 @@ h2
     margin: 20px 0 0 0
 
 .problem
+    
   #slider
     margin: 10px
     width: 270px
@@ -353,6 +357,8 @@ h2
     clear: both
     display: inline-block
     padding-top: 5px
+  .social
+    padding-top: 10px
 
 
 .rate
@@ -393,12 +399,15 @@ body
     fieldset > ol > li.boolean label, fieldset.buttons
       padding-left: 0px
 
-.search input[type=text]
-  background: image_url("search.png") 250px center no-repeat
-  font-size: 18px
-  padding: 5px 10px 5px 5px
-  width: 265px !important
-  &:hover, &:focus
-    background: image_url("search_hover.png") 250px center no-repeat
-    border: 1px solid #bbb
-    +box-shadow(#ccc, 0, 0, 3px)
+.search 
+  margin-bottom: 3px !important
+  input[type=text]
+    background: image_url("search.png") 250px center no-repeat #f8f8f8
+    font-size: 18px
+    padding: 5px 10px 5px 5px
+    width: 265px !important
+    &:hover, &:focus
+      background: image_url("search_hover.png") 250px center no-repeat
+      border: 1px solid #bbb
+      +box-shadow(#ccc, 0, 0, 3px)
+  .advanced

@@ -6,7 +6,6 @@
   google.load("visualization", "1", {packages:["corechart"]});
 
 
-.header
-  %h2= @title
+%h2.main_title= @title
 
 #chart{'data-report_id' => params[:id], 'data-chart_title' => @title}

@@ -1,8 +1,7 @@
 - title(t('problems.my_reported_problems'))
 
 .main
-  .header
-    %h2= t('problems.my_reported_problems')
+  %h2.main_title= t('problems.my_reported_problems')
 
   .problems
     = render :partial => 'problems/problem', :collection => @problems

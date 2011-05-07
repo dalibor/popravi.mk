@@ -40,8 +40,8 @@ mk:
   rates:
     create: 'Гласај'
     update: 'Измени глас'
-    current_rating: 'Просечна оценка'
-    total_votes: 'Вкупно гласови'
+    current_rating: 'Oценка'
+    total_votes: 'Гласови'
     flash:
       create:
         success: 'Гласот е успешно креиран.'

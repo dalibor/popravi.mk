@@ -15,20 +15,15 @@
     = csrf_meta_tag
 
   %body{:id => body_id}
-    #nav
-      .wrapper
-
-        = render "layouts/nav"
-
-        %ul#municipality_nav
-          %li
-            = link_to municipality_root_path(@municipality.slug) do
-              = image_tag "icon2.png"
-              = t('menu.problems')
-          %li
-            = link_to municipality_posts_path(@municipality.slug) do
-              = image_tag "icon5.png"
-              = t('menu.blog')
+    = render "layouts/nav"
+    #municipality_nav
+      %ul.wrapper
+        %li
+          = link_to municipality_root_path(@municipality.slug) do
+            = t('menu.problems')
+        %li
+          = link_to municipality_posts_path(@municipality.slug) do
+            = t('menu.blog')
 
     #header_app
       .wrapper

@@ -1,258 +1,355 @@
-body
 
-  #map_canvas
-    float: left
+#map_canvas
+  float: left
+  width: 600px
+  height: 400px
+  +pie-clearfix
+
+#dashed
+  background: image_url("dashed.jpg")
+  height: 10px
+
+.problem_assets
+  +pie-clearfix
+
+#middle
+  background: #f6f6f6
+  padding: 30px 0
+  +pie-clearfix
+
+  #notice
+    background: white
+    border-bottom: 1px solid #eee
+    color: green
+    font-size: 12px
+    margin: 0 auto
+    padding: 15px 20px
+    text-align: center
     width: 600px
-    height: 400px
+
+  .main
+    background: #FFF
+    float: left
+    margin-right: 30px
+    width: 610px
+    +border-radius(6px)
+    +box-shadow(#ddd, 0, 0, 6px)
     +pie-clearfix
 
-  #dashed
-    background: image_url("dashed.jpg")
-    height: 10px
+    .problem:hover
+      background: #f9f9f9
 
-  .problem_assets
-    +pie-clearfix
-
-  #middle
-    background: #f6f6f6
-    padding: 30px 0
-    +pie-clearfix
-
-    #notice
-      background: white
-      border-bottom: 1px solid #eee
-      color: green
-      font-size: 0.9em
-      padding: 10px
-
-    .main
-      background: #FFF
-      float: left
-      margin-right: 30px
-      width: 610px
-      +border-radius(6px)
-      +box-shadow(#ddd, 0, 0, 6px)
+    .header
+      background: url("/images/background_S.jpg") repeat scroll center center #222222
       +pie-clearfix
-
-      .problem:hover
-        background: #f9f9f9
-
-      .header
-        background: url("/images/background_S.jpg") repeat scroll center center #222222
-        +pie-clearfix
-        h2
-          background: none
-          float: left
-        img
-          float: right
-          margin: 15px 10px
-
-    .sidebar
-      background: #FFF
-      float: left
-      margin-bottom: 30px
-      width: 320px
-      +border-radius(6px)
-      +box-shadow(#ddd, 0, 0, 6px)
-      +pie-clearfix
-
-    .section
-      float: left
-      margin-right: 30px
-      width: 465px
-      +pie-clearfix
-      &.last
-        margin: 0
-
-    .section, .main, .sidebar
       h2
-        +border-radius(6px)
-        +box-shadow(#666, 0, 0, 4px)
-        background: image_url("background_S.jpg") center #222
-        color: white
-        font-family: Impact, sans-serif
-        font-size: 1em
-        font-weight: normal
-        letter-spacing: 1px
-        padding: 15px 20px 12px
-        text-transform: uppercase
-
-      #tweets, .problems
-        p
-          line-height: 1.4em
-
-      h2, p, .problem
-        margin-bottom: 1px
-
-      p, .problem, .inputs, .total, .blog
-        color: #444
-        font-size: 0.8em
-        padding: 15px 20px 10px 20px
-        &.total
-          background: #f8f8f8
-          border-top: 1px solid #eee
-          font-size: 0.9em
-          font-weight: bold
-          text-transform: uppercase
-          +border-bottom-radius
-          +linear-gradient(color-stops(#fcfcfc, #f4f4f4))
-        &.problem
-          padding-right: 0
-
-      .blog
-        line-height: 1.3em
-        padding-top: 20px
-
-        li
-          list-style-type: none
-          color: #999
-
-          a
-            display: block
-            font-size: 1.2em
-            font-weight: bold
-            padding: 0 7px 0 0
-            text-decoration: none
-            text-transform: uppercase
-            &:hover
-              text-decoration: underline
-
-          span
-            display: block
-            font-size: 0.85em
-            padding-bottom: 10px
-
-          p
-            color: #444
-            font-size: 1em
-            border: none
-            padding: 0
-
-      ul.total
-        //border-bottom: 1px solid #eee
-      .total, .blog
-        li
-          padding-bottom: 10px
-          a
-            color: #555
-            font-weight: normal
-            text-transform: none
-            &:hover
-              color: black
-              text-decoration: underline
-        li.view_all
-          text-align: right
-          font-size: 0.8em
-
-      img
+        background: none
         float: left
-        margin-bottom: 7px
-        padding-right: 10px
+      img
+        float: right
+        margin: 15px 10px
 
-      .t_user
-        color: orange
+  .sidebar
+    background: #FFF
+    float: left
+    margin-bottom: 30px
+    width: 320px
+    +border-radius(6px)
+    +box-shadow(#ddd, 0, 0, 6px)
+    +pie-clearfix
+
+  .section
+    float: left
+    margin-right: 30px
+    width: 465px
+    +pie-clearfix
+    &.last
+      margin: 0
+
+  .section, .main, .sidebar
+    h2
+      +border-radius(6px)
+      +box-shadow(#666, 0, 0, 4px)
+      background: image_url("background_S.jpg") center #222
+      color: white
+      font-family: Impact, sans-serif
+      font-size: 1em
+      font-weight: normal
+      letter-spacing: 1px
+      padding: 15px 20px 12px
+      text-transform: uppercase
+
+    #tweets, .problems
+      p
+        line-height: 1.4em
+    .problems
+      .problem
+        border-bottom: 1px solid #eee
+      ul li:last-child
+        border-bottom: 0
+    h2, p, .problem
+      margin-bottom: 1px
+
+    p, .problem, .inputs, .total, .blog
+      color: #444
+      font-size: 0.8em
+      padding: 15px 20px 10px 20px
+      &.total
+        background: #f8f8f8
+        border-top: 1px solid #eee
         font-size: 0.9em
         font-weight: bold
-        padding-bottom: 5px
         text-transform: uppercase
-        &:hover
-          color: black
-
-      .t_text
-        padding-bottom: 7px
-        padding-left: 60px
-        a
-          color: #333
-          &:hover
-            color: orange
-
-      .t_date
-        color: #999
-        font-size: 0.8em
-        padding-left: 58px
-        text-transform: uppercase
-        &:hover
-          color: black
-
-      .problem
+        +border-bottom-radius
+        +linear-gradient(color-stops(#fcfcfc, #f4f4f4))
+      &.problem
         padding-right: 0
-        +pie-clearfix
-        &:hover h4 a
-          color: #333
-          text-decoration: underline
 
-        img
-          float: left
+    .blog
+      line-height: 1.3em
+      padding-top: 20px
 
-        .desc
-          float: left
-          line-height: 1.3em
+      li
+        list-style-type: none
+        color: #999
 
-          h6
-            padding: 10px 0
-          .social
-            float: right
         a
-          color: #666
           display: block
-          line-height: 1.2em
-          margin-bottom: 2px
-          text-decoration: none
-          &:hover
-            color: #333
-
-        h4
           font-size: 1.2em
           font-weight: bold
-          padding: 5px 0 15px 0
-
-        h6
-          color: #999
-          font-size: 0.8em
+          padding: 0 7px 0 0
+          text-decoration: none
           text-transform: uppercase
+          &:hover
+            text-decoration: underline
 
-        .desc
-          width: 520px
-          ul.social li
-            display: none
-          &:hover ul.social li
-            display: inline
-            float: left
-            font-size: 0.85em
-            margin: 5px 10px 0 0
+        span
+          display: block
+          font-size: 0.85em
+          padding-bottom: 10px
 
-            img
-              margin-top: -5px
-              padding-right: 3px
+        p
+          color: #444
+          font-size: 1em
+          border: none
+          padding: 0
 
-  #bottom
-    background: #000
-    color: #aaa
-    font-size: 0.65em
-    text-transform: uppercase
-    +linear-gradient(color-stops(#0a0a0a, #000))
-    +pie-clearfix
+    ul.total
+      //border-bottom: 1px solid #eee
+    .total, .blog
+      li
+        padding-bottom: 10px
+        a
+          color: #555
+          font-weight: normal
+          text-transform: none
+          &:hover
+            color: black
+            text-decoration: underline
+      li.view_all
+        text-align: right
+        font-size: 0.8em
 
-    .left, .right
-      padding: 25px 0 20px 0
+    img
+      float: left
+      margin-bottom: 7px
+      padding-right: 10px
 
-  form.formtastic fieldset > ol > li p.inline-errors
-    font-size: 0.8em
-    margin: 5px 0 15px 0
+    .t_user
+      color: orange
+      font-size: 0.9em
+      font-weight: bold
+      padding-bottom: 5px
+      text-transform: uppercase
+      &:hover
+        color: black
+
+    .t_text
+      padding-bottom: 7px
+      padding-left: 60px
+      a
+        color: #333
+        &:hover
+          color: orange
+
+    .t_date
+      color: #999
+      font-size: 0.8em
+      padding-left: 58px
+      text-transform: uppercase
+      &:hover
+        color: black
+
+    .problem
+      padding-right: 0
+      +pie-clearfix
+      &:hover h4 a
+        color: #333
+        text-decoration: underline
+        
+      img
+        float: left
+
+      .desc
+        
+      a
+        color: #666
+        display: block
+        line-height: 1.2em
+        margin-bottom: 2px
+        text-decoration: none
+        &:hover
+          color: #333
+
+      h4
+        font-size: 1.2em
+        font-weight: bold
+        padding: 5px 0 15px 0
+
+      h6
+        color: #999
+        font-size: 0.8em
+        text-transform: uppercase
+
+      .desc
+        float: left
+        line-height: 1.3em
+        position: relative
+        width: 520px
+        p
+          clear: both
+          color: #666
+          font-size: 11px
+          padding: 0 20px 0 0
+        h6
+          padding: 10px 0
+        .social
+          float: right
+        ul.social li
+          display: none
+        &:hover ul.social li
+          display: inline
+          float: left
+          font-size: 0.85em
+          margin: 5px 10px 0 0
+
+          img
+            margin-top: -5px
+            padding-right: 3px
+        
+
+#bottom
+  background: #000
+  color: #aaa
+  font-size: 0.65em
+  text-transform: uppercase
+  +linear-gradient(color-stops(#0a0a0a, #000))
+  +pie-clearfix
+
+  .left, .right
+    padding: 25px 0 20px 0
+
+form.formtastic fieldset > ol > li p.inline-errors
+  font-size: 0.8em
+  margin: 5px 0 15px 0
 
 
-  .pagination
-    background: white
-    font-size: 0.7em
-    margin-bottom: 1px
-    padding: 15px
-    text-transform: uppercase
-    *
-      background: #eee
-      padding: 5px
-    a
-      color: #666
-      text-decoration: none
-    .current
-      background: #666
-      color: white
+.pagination
+  background: white
+  font-size: 0.7em
+  margin-bottom: 1px
+  padding: 15px
+  text-transform: uppercase
+  *
+    background: #eee
+    padding: 5px
+  a
+    color: #666
+    text-decoration: none
+  .current
+    background: #666
+    color: white
+
+.problem_status
+  margin-bottom: 20px
+  +pie-clearfix
+  li
+    background: #e8e8e8
+    display: inline-block
+    float: left
+    font-size: 30px
+    margin-right: 10px
+    height: 55px
+    padding: 0 0 4px
+    text-align: center
+    +border-bottom-radius
+    +linear-gradient(color-stops(#ddd, #eee))
+    span
+      background: #333
+      color: #fff
+      display: block
+      font-size: 10px
+      margin-bottom: 5px
+      padding: 4px 7px 3px
+      text-transform: uppercase
+      +border-radius
+      +linear-gradient(color-stops(#444, #222))
+      &.atm
+        background: none
+        color: green
+        font-weight: bold
+        padding: 10px 7px 3px
+    &.slider_inline
+      width: auto
+      > span
+        margin-bottom: 1px
+
+      #slider
+        height: 15px
+        width: 150px
+        margin-top: 0
+      .inputs
+        height: 20px
+        padding: 10px 10px 0 15px
+        width: auto
+        li
+          background: none
+      #rate_weight_input input
+        font-size: 20px
+        height: 25px
+        position: relative
+        top: -4px
+        padding-top: 0
+      .ui-slider-handle
+        height: 20px
+        margin-top: 4px
+        width: 20px
+      .buttons
+        display: inline
+        float: left
+        height: 40px
+        margin-top: 0
+        margin-right: 10px
+        width: auto
+        
+        .commit
+          margin: 0
+          padding: 0
+        input
+          font-size: 14px
+          padding: 2px 8px
+      ol
+        width: auto
+  &.inline
+    padding: 0 10px 0 0
+    position: absolute
+    right: 0
+    top: 0
+    li
+      font-size: 16px
+      height: 35px
+      span
+        background: green
+        font-size: 8px
+        margin-bottom: 3px
+        padding: 0px 4px

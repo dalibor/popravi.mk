@@ -14,16 +14,34 @@ body
             width: 370px
         .buttons
           padding-left: 0
+
           input
+            +border-radius
             background: #333
+            border: 1px solid #111
             color: orange
             cursor: pointer
-            padding: 10px 25px
-            text-transform: uppercase
+            font-family: Impact, sans-serif
+            font-size: 18px
+            font-weight: normal
+            letter-spacing: 0.5px
+            padding: 12px 25px 10px
+            //text-transform: uppercase
             width: 120px
-            &:hover
+            +box-shadow(#aaa, 2px, 2px, 3px)
+            +linear-gradient(color-stops(#444, #111))
+            +text-shadow(#000, 1px, 1px, 1px)
+            &:hover, &:focus
               background: green
-              color: #fff
+              border: 1px solid green - #222
+              color: white
+              +linear-gradient(color-stops(green + #111, green - #222))
+              +text-shadow(green - #666, 1px, 1px, 1px)
+            &:active
+              outline: none
+              position: relative
+              top: 1px
+              +box-shadow(#aaa, 1px, 1px, 2px)
 
   // refactor THIS, use class selector !!
   &#problems_show, &#posts_show, &#comments_create, &#user_rates_create, &#user_rates_update
@@ -64,18 +82,35 @@ body
       color: #555
       font-size: 0.9em
       padding-bottom: 10px
+
     input
+      +border-radius
       background: #333
+      border: 1px solid #111
       color: orange
       cursor: pointer
-      font-size: 0.9em
+      font-family: Impact, sans-serif
+      font-size: 18px
+      font-weight: normal
       height: auto
+      letter-spacing: 0.5px
       padding: 10px 10px 7px 10px
-      text-transform: uppercase
+      //text-transform: uppercase
       width: 120px
-      &:hover
+      +box-shadow(#aaa, 2px, 2px, 3px)
+      +linear-gradient(color-stops(#444, #111))
+      +text-shadow(#000, 1px, 1px, 1px)
+      &:hover, &:focus
         background: green
+        border: 1px solid green - #222
         color: white
+        +linear-gradient(color-stops(green + #111, green - #222))
+        +text-shadow(green - #666, 1px, 1px, 1px)
+      &:active
+        outline: none
+        position: relative
+        top: 1px
+        +box-shadow(#aaa, 1px, 1px, 2px)
 
   &#problems_my
     .total
