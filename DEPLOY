@@ -1,5 +1,0 @@
-config/initializers/secret_token.rb # change on production
-bundle exec rails runner db/fixes/assign_user_to_problems.rb RAILS_ENV=production
-rake db:migrate RAILS_ENV=production
-rake db:seed RAILS_ENV=production
-rake paperclip:refresh CLASS=Municipality

@@ -64,7 +64,7 @@ var initializeSlider = function (element, field) {
   field.change(function (e) {
     element.slider({value: field.val()})
   });
-}
+};
 
 var problems_edit = problems_create = problems_update = problems_new = {
   run: function () {
@@ -337,4 +337,4 @@ $(function () {
       window[controller_action]['run']();
     }
   }
-})
+});
