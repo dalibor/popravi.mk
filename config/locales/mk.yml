@@ -302,3 +302,15 @@ mk:
         description: 'Опис'
   mailer:
     send_problems_subject: 'Последно пријавени проблеми'
+  titles:
+    problems_index: 'Преглед на пријавени проблеми'
+    problems_new: 'Пријави нов проблем'
+    posts_index: 'Новости'
+    municipalities_index: 'Листа на општини'
+    user_problems_index: 'Листа на проблеми пријавени од мене'
+    user_problems_edit: 'Измени проблем'
+    welcome_index: 'Подобри го својот град'
+    welcome_android: 'Андроид апликација PopraviMK'
+    municipality_posts_index: "Новости за Општина %{municipality}"
+    municipality_welcome_index: "Општина %{municipality}"
+    municipality_problems_index: "Преглед на пријавени проблеми во Општина %{municipality}"
