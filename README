@@ -1,7 +1,7 @@
 = popravi.mk
 
-  * popravi.mk is a web application (build with Ruby on Rails) that allows people to help in detecting urban problems they have found on public area in Macedonia: http://popravi.mk
-  * PopraviMK is an Android mobile application (build with Titanium Mobile and available on Android market)
+  * popravi.mk is a web application (built with Ruby on Rails) that allows people to help in detecting urban problems they have found on public area in Macedonia: http://popravi.mk
+  * PopraviMK is an Android mobile application (built with Titanium Mobile and available on Android market)
   * PopraviMK is winner of the first Android contest in Macedonia (2010) organized by Vip mobile operator: http://android.vip.mk/winners
 
 == DEVELOPMENT NOTES

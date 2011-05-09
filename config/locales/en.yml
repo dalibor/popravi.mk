@@ -186,3 +186,16 @@ en:
         description: 'Description'
   mailer:
     send_problems_subject: 'Recently reported problems'
+
+  titles:
+    problems_index: 'Reported problems listing'
+    problems_new: 'Report a new problem'
+    posts_index: 'News'
+    municipalities_index: 'Listing of municipalities'
+    user_problems_index: 'My reported problems list'
+    user_problems_edit: 'Problem edit'
+    welcome_index: 'Improve your city'
+    welcome_android: 'Android application PopraviMK'
+    municipality_posts_index: "News for Municipality %{municipality}"
+    municipality_welcome_index: "Municipality %{municipality}"
+    municipality_problems_index: "Reported problems listing in Municipality %{municipality}"
