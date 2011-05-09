@@ -20,17 +20,49 @@
     .third
       = image_tag "tour1.png"
       %h2 Пронајди!
-      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.
+      %p Пронајди проблем во инфраструктурата и пријави го до надлежната општина.
     .third
       = image_tag "tour2.png"
       %h2 Пријави!
-      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.
+      %p Пријави го проблемот користејќи го твојот мобилен телефон или компјутер.
     .third
       = image_tag "tour3.png"
       %h2 Поправи!
-      %p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.
+      %p Поправи го проблемот најефикансно преку информирање на општините.
 
 #middle
   .wrapper
-    .main
-    #sidebar
+    %ul#screen
+      %li.third
+        %p
+          %span 1
+          Стартувај ја апликацијата
+        = image_tag "screen0.jpg"
+      %li.third
+        %p
+          %span 2
+          Пријави проблем
+        = image_tag "screen1.jpg"
+      %li.third
+        %p
+          %span 3
+          Прегледај ги последните пријави
+        = image_tag "screen2.jpg"
+      %li.third
+        %p
+          %span 4
+          Погледни детали за некој проблем
+        = image_tag "screen3.jpg"
+      %li.third
+        %p
+          %span 5
+          Најди го проблемот на мапа
+        = image_tag "screen4.jpg"
+      %li.third
+        %p
+          %span 6
+          Види што е ново со апликацијата
+        = image_tag "screen5.jpg"
+    %p#big_download
+      = link_to 'http://www.appbrain.com/app/mk.popravi.mobile', :target => '_blank' do
+        Преземи за Андроид

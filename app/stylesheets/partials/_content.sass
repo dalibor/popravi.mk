@@ -32,3 +32,43 @@ h2 a
   float: right
   img
     padding: 0 !important
+    
+#screen
+  +pie-clearfix
+  .third
+    background: #eee
+    border: 1px solid #f6f6f6
+    width: 318px
+  img
+    padding: 5%
+    width: 90%
+  p
+    color: #666
+    font-size: 12px
+    font-weight: bold
+    padding: 5% 5% 2% 5%
+    text-transform: uppercase
+    span
+      color: #ddd
+      font-size: 30px
+      padding-right: 5px
+      position: relative
+      top: 5px
+      
+#big_download a
+  background: #ccc
+  color: #333
+  display: block
+  font-family: impact, sans-serif
+  font-size: 18px
+  letter-spacing: 1px
+  margin-top: 15px
+  padding: 20px 30px
+  text-align: center
+  width: 900px
+  +border-radius(30px)
+  +box-shadow(#ddd, 0, 2px, 3px)
+  +linear-gradient(color-stops(#eee, #ccc))
+  +text-shadow(#fff, 0, 0, 1px)
+  &:hover, &:focus
+    text-decoration: none
