@@ -3,15 +3,6 @@
 - content_for :head do
   = auto_discovery_link_tag(:rss, municipality_root_path(@municipality.slug, :format => 'rss'))
 
-.main
-  %h2
-    = t('problems.problems')
-    %span.right= link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
-
-  .problems
-    %ul
-      = render :partial => 'problems/problem', :collection => @problems
-
 #sidebar
   - if @post
     .sidebar
@@ -27,4 +18,34 @@
         %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
 
   = render 'municipality/problems/search'
+  
+.main#about
+  %h2 За ИмеНаОпштина
+  %p#basic Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+
+  %ul#contact
+    %li
+      %span Адреса
+      Некоја Адреса бб
+    %li
+      %span Телефон
+      02 2432 444
+    %li
+      %span Веб
+      = link_to "http://imenaopstina.mk", "http://imenaopstina.mk"
+    %li
+      %span е-маил
+      = mail_to "contact@imenaopstina.mk", "contact@imenaopstina.mk"
+
+.main
+      
+  %h2
+    = t('problems.problems')
+    %span.right= link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
+
+  .problems
+    %ul
+      = render :partial => 'problems/problem', :collection => @problems
+
+
 
