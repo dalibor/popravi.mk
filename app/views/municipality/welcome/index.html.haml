@@ -19,23 +19,26 @@
 
   = render 'municipality/problems/search'
   
-.main#about
-  %h2 За ИмеНаОпштина
-  %p#basic Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper.
+- if @contact.present?
+  .main#about
+    %h2
+      За
+      = @municipality.name
+    %p#basic= @contact.about
 
-  %ul#contact
-    %li
-      %span Адреса
-      Некоја Адреса бб
-    %li
-      %span Телефон
-      02 2432 444
-    %li
-      %span Веб
-      = link_to "http://imenaopstina.mk", "http://imenaopstina.mk"
-    %li
-      %span е-маил
-      = mail_to "contact@imenaopstina.mk", "contact@imenaopstina.mk"
+    %ul#contact
+      %li
+        %span Адреса
+        = @contact.address
+      %li
+        %span Телефон
+        = @contact.phone
+      %li
+        %span Веб
+        = auto_link @contact.web
+      %li
+        %span е-маил
+        = auto_link @contact.email
 
 .main
       

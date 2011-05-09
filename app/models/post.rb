@@ -42,7 +42,9 @@ class Post < ActiveRecord::Base
     end
 
     def set_published_at
-      self.published_at = published ? Time.now : nil
+      if (new_record? || published_changed?)
+        self.published_at = published ? Time.now : nil
+      end
     end
 end
 

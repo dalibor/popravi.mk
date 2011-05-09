@@ -14,7 +14,8 @@
   .sidebar
     %h2 Минати новости
     %ul.total
-      %li
-        = link_to "Наслов на мината новост", ""
+      - @posts.each do |post|
+        %li
+          = link_to post.title, post_path(post.slug)
 
       %li.view_all= link_to t('posts.view_all'), posts_path

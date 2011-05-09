@@ -53,3 +53,5 @@ en:
     api_keys: 'API Keys'
     name: 'Name'
     attachments: 'Attachments'
+    contact: 'Contact'
+    max_chars: 'Max %{count} chars'

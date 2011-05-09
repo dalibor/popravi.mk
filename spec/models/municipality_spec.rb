@@ -6,6 +6,7 @@ describe Municipality do
     it { should have_many(:problems) }
     it { should have_many(:users) }
     it { should have_many(:posts) }
+    it { should have_one(:contact) }
   end
 
   describe "validations" do

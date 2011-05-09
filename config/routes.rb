@@ -65,6 +65,7 @@
     end
     resources :comments, :only => [:index, :show, :edit, :update, :destroy]
     resources :posts
+    resources :contacts, :only => [:edit, :update]
   end
 
   scope :module => "municipality" do

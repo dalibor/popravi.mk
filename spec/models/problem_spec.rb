@@ -7,9 +7,9 @@ describe Problem do
     it { should belong_to(:category) }
     it { should belong_to(:municipality) }
     it { should belong_to(:api_key) }
-    it { should have_many(:comments) }
-    it { should have_many(:problem_transitions) }
-    it { should have_many(:rates) }
+    it { should have_many(:comments).dependent(:destroy) }
+    it { should have_many(:problem_transitions).dependent(:destroy) }
+    it { should have_many(:rates).dependent(:destroy) }
     #it { should have_attached_file(:photo) }
   end
 

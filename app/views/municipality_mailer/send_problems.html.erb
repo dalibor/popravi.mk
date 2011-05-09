@@ -1,0 +1,29 @@
+<%= t('mm.hello', :name => @municipality.name) %>
+
+<p><%= t('mm.info') %></p>
+
+<style>
+  table { font-size: 12px; width: 100%; }
+  thead th { background: #ddd; padding: 5px 5px 4px; text-align: left; }
+  tbody td { border-top: 3px solid #f6f6f6; font-size: 12px; padding: 5px; }
+</style>
+<table border="0" cellpadding="0" cellspacing="0">
+<thead>
+  <tr>
+    <th><%= t('mm.problem') %></th>
+    <th><%= t('mm.url') %></th>
+    <th><%= t('mm.reported_at') %></th>
+  </tr>
+</thead>
+<tbody>
+  <% @problems.each do |problem| %>
+    <tr>
+      <td><%= truncate(problem.description, :length => 400) %></td>
+      <td><%= link_to problem.title, problem_url(problem) %></td>
+      <td><%= problem.created_at %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table> 
+
+<%= render 'shared/mailer/signature' %>

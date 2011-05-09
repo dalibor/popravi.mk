@@ -28,6 +28,9 @@
         %li{:class => controller.controller_path == 'moderator/comments' ? 'active' : '' }
           %a{:href => moderator_comments_path}= t('web-app-theme.comments')
 
+        %li{:class => controller.controller_path == 'moderator/contacts' ? 'active' : '' }
+          %a{:href => edit_moderator_contact_path(:current)}= t('web-app-theme.contact')
+
         </ul>
         </div>
       #wrapper.wat-cf

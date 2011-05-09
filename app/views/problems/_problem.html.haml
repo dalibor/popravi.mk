@@ -9,9 +9,11 @@
         %span= t('problems.weight')
         = problem.weight
 
-      %li
-        %span= t('rates.current_rating')
-        = problem.current_rating
+      - if problem.current_rating.present?
+        %li
+          %span= t('rates.current_rating')
+          = problem.current_rating
+
       %li
         %span= t('rates.total_votes')
         = problem.rates.count

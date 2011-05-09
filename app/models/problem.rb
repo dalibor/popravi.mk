@@ -27,9 +27,9 @@ class Problem < ActiveRecord::Base
   belongs_to :category, :counter_cache => true
   belongs_to :municipality, :counter_cache => true
   belongs_to :api_key
-  has_many :comments, :as => :commentable
-  has_many :problem_transitions
-  has_many :rates
+  has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :problem_transitions, :dependent => :destroy
+  has_many :rates, :dependent => :destroy
 
   # Validations
   validates_presence_of :description, :latitude, :longitude, :category_id, :municipality_id

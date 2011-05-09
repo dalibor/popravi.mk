@@ -3,6 +3,7 @@ class Municipality::WelcomeController < Municipality::BaseController
 
   def index
     @problems = @municipality.problems.ordered.last(5)
-    @post = @municipality.posts.published.ordered.first
+    @post     = @municipality.posts.published.ordered.first
+    @contact  = @municipality.contact
   end
 end

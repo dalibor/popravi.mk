@@ -1,0 +1,37 @@
+.block
+  .content
+    %h2.title 
+      #{ t("web-app-theme.edit", :default => "Edit")}
+      = t("web-app-theme.contact")
+    .inner
+      = form_for @contact, :url => moderator_contact_path(:current), :html => { :class => :form, :method => :put } do |f|
+
+        .group
+          = f.label :about, t("activerecord.attributes.contact.about", :default => "About"), :class => :label
+          = f.text_area :about, :class => 'text_area', :rows => 4
+          %span.description= t('web-app-theme.max_chars', :count => 200)
+
+        .group
+          = f.label :address, t("activerecord.attributes.contact.address", :default => "Address"), :class => :label
+          = f.text_field :address, :class => 'text_field'
+          -#<span class="description">Ex: a simple text</span>
+
+        .group
+          = f.label :phone, t("activerecord.attributes.contact.phone", :default => "Phone"), :class => :label
+          = f.text_field :phone, :class => 'text_field'
+          -#<span class="description">Ex: a simple text</span>
+
+        .group
+          = f.label :web, t("activerecord.attributes.contact.web", :default => "Web"), :class => :label
+          = f.text_field :web, :class => 'text_field'
+          -#<span class="description">Ex: a simple text</span>
+
+        .group
+          = f.label :email, t("activerecord.attributes.contact.email", :default => "E-mail"), :class => :label
+          = f.text_field :email, :class => 'text_field'
+          -#<span class="description">Ex: a simple text</span>
+
+        .group.navform.wat-cf
+          %button.button{:type => "submit"}
+            = image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}")
+            = t("web-app-theme.save", :default => "Save")

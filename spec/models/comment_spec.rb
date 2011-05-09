@@ -53,6 +53,26 @@ describe Comment do
       end
     end
 
+    describe "logged in user from municipality" do
+      it "displays name of the logged in user if name present" do
+        user = Factory.create(:user, :name => "Test User", 
+                              :municipality => Factory.create(:municipality, :name => 'Municipality1'))
+        problem = Factory.create(:problem)
+        comment = problem.comments.new(:content => "My comment")
+        comment.user = user
+        comment.commenter_name.should == "Test User (Municipality1)"
+      end
+
+      it "displays 'Анонимен корисник'" do
+        user = Factory.create(:user, :name => '',
+                              :municipality => Factory.create(:municipality, :name => 'Municipality1'))
+        problem = Factory.create(:problem)
+        comment = problem.comments.new(:content => "My comment")
+        comment.user = user
+        comment.commenter_name.should == "Анонимен корисник (Municipality1)"
+      end
+    end
+
     describe "anonymous user" do
       it "displays name in the comment if name present" do
         problem = Factory.create(:problem)

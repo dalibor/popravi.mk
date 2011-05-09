@@ -2,6 +2,7 @@ class Municipality < ActiveRecord::Base
 
   # Associations
   belongs_to :region
+  has_one :contact
   has_many :problems
   has_many :users
   has_many :posts, :through => :users

@@ -12,16 +12,16 @@ Feature: Visitor can read blog posts
     And I am on the home page
     And I follow "Blog"
     When I follow "Hello world 1"
-    Then I should see "Hello world 1"
-    And I should not see "Hello world 2"
+    Then I should see "Hello world 1" within ".main"
+    And I should not see "Hello world 2" within ".main"
     When I follow "Blog"
     And I follow "March 2010"
-    Then I should see "Hello world 2"
-    And I should not see "Hello world 1"
+    Then I should see "Hello world 2" within ".main"
+    And I should not see "Hello world 1" within ".main"
     When I follow "Blog"
     And I follow "January 2010"
-    Then I should see "Hello world 1"
-    And I should not see "Hello world 2"
+    Then I should see "Hello world 1" within ".main"
+    And I should not see "Hello world 2" within ".main"
 
   Scenario: Visitor can see last post from municipality on their page
     Given a user exists with is_admin: true

@@ -58,3 +58,5 @@ mk:
     api_keys: 'API Keys'
     name: 'Име'
     attachments: 'Attachments'
+    contact: 'Контакт'
+    max_chars: 'Максимум %{count} карактери'

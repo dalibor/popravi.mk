@@ -18,9 +18,10 @@
   
     = render "layouts/nav"
     - if flash.present?
-      .wrapper
-        - flash.each do |key, msg|
-          = content_tag :div, msg, :id => key
+      #middle
+        .wrapper
+          - flash.each do |key, msg|
+            = content_tag :div, msg, :id => key
     = yield
     = render "layouts/footer"
     

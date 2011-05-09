@@ -89,6 +89,20 @@ describe Post do
       end
     end
   end
+
+  describe "set_published_at" do
+    it "does not reset published_at timestamp" do
+      Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
+      post = Factory.create(:post, :user => Factory.create(:user),
+                             :published => true, :title => "Hello world 1")
+      post.published_at.year.should == 2010
+
+      Time.stub(:now).and_return(Time.parse("2011-01-01 12:00:00"))
+      post.title = 'Hello world 2'
+      post.save!
+      post.published_at.year.should == 2010
+    end
+  end
 end
 
 

@@ -1,5 +1,5 @@
 Feature: Moderator can add official comment to a problem
-  In order to infor people about their reported problems
+  In order to inform people about their reported problems
   As a moderator
   I want to be able to add official comment to a problem
 

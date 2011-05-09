@@ -300,6 +300,12 @@ mk:
         key: 'Клуч'
         name: 'Име'
         description: 'Опис'
+      contact:
+        about: 'За нас'
+        address: 'Адреса'
+        phone: 'Телефон'
+        web: 'Веб'
+        email: 'Е-маил'
   mailer:
     send_problems_subject: 'Последно пријавени проблеми'
   titles:

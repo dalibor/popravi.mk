@@ -90,7 +90,6 @@ GEM
     gem_plugin (0.2.3)
     gherkin (2.3.3)
       json (~> 1.4.6)
-    gravtastic (3.1.0)
     haml (3.0.25)
     has_scope (0.5.0)
     hpricot (0.8.3)
@@ -229,7 +228,6 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   formtastic
-  gravtastic
   haml
   hpricot
   html5-boilerplate

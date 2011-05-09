@@ -51,7 +51,7 @@
           %span.atm= link_to t('g.edit'), edit_user_problem_path(@problem)
 
     
-    - if @problem.last_status_editor
+    - if @problem.last_status_editor.present?
       = t("problems.status_changed_by")
       = @problem.last_status_editor
     - if @problem.solved?

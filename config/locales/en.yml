@@ -184,6 +184,12 @@ en:
         key: 'Key'
         name: 'Name'
         description: 'Description'
+      contact:
+        about: 'About'
+        address: 'Address'
+        phone: 'Phone'
+        web: 'Web'
+        email: 'E-mail'
   mailer:
     send_problems_subject: 'Recently reported problems'
 
