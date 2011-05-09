@@ -20,7 +20,7 @@
 .step2
   padding: 30px 20px 0
 
-.step2, .step
+.step2, .step, .step3
   clear: all
   form
     overflow: hidden
@@ -42,6 +42,20 @@
   .name p
     color: #444
     line-height: 1.2em
+    &.official
+      background: #e9eff5
+      font-style: italic
+      line-height: 1.4
+      margin-bottom: 20px
+      padding: 10px !important
+      span
+        color: #999
+        display: block
+        font-size: 11px
+        font-style: normal
+        font-weight: bold
+        padding: 5px 0
+        text-transform: uppercase
 
   .inputs
     color: #999
@@ -295,20 +309,31 @@ h2
   .inline-errors
     color: #cc0000 !important
     padding: 0
-
+  .inputs
+    padding: 0 !important
+    width: 100%
+    ol
+      width: 99%
+    textarea
+      height: 200px
+      width: 100%
+      
   .form
-    float: left
+    width: 100%
   .comments
-    float: right
     padding-top: 20px
-    width: 400px
     .comment
+      background: #f6f6f6
       border-bottom: 1px #eee solid
       padding-bottom: 20px
       margin-bottom: 20px
       +pie-clearfix
+      ul
+        width: 80%
+      p
+        padding: 0
     .official /* official comment */
-      background: #EEE
+      background: #e9eff5
 
       p
         padding-bottom: 5px
@@ -316,6 +341,7 @@ h2
     img
       float: left
       margin-right: 10px
+      padding: 10px
     ul
       float: left
       width: 320px
@@ -323,20 +349,27 @@ h2
         color: #666
         margin-bottom: 5px
         padding-top: 5px
-        text-transform: uppercase
+        
       .name
-        font-size: 0.7em
+        font-size: 12px
+        padding: 15px 0 5px
+        text-transform: uppercase
       .date
-        font-size: 0.6em
+        font-size: 10px
+        font-style: italic
         margin-top: 5px
       .content
         color: #333
-        font-size: 0.8em
+        font-size: 12px
         line-height: 1.2em
 
   #comment_submit
   li.commit
     margin: 20px 0 0 0
+    
+.inline_date
+  color: #666
+  float: right
 
 .problem
     
@@ -412,3 +445,7 @@ body
       +box-shadow(#ccc, 0, 0, 3px)
 .hidden
   display: none !important
+
+.recaptchatable
+  input
+    height: 20px !important

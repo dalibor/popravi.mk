@@ -42,7 +42,9 @@
 
     #sidebar
       .sidebar
-        = link_to '', android_path, :id => "effective"
+        = link_to android_path, :id => "effective" do
+          %h3 Биди Ефикасен
+          %p Искористи го мобилниот и пријави проблем во движење
       
 
       - if @post

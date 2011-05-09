@@ -1,13 +1,20 @@
 - title(@commentable.title)
 - description(truncate(@commentable.content, :length => 100))
 
-.step2
+.main.step3
   .name
     %h2
       = @commentable.title
-    %h4
-      = render 'shared/timestamp', :post => @commentable
-
-    %p= raw @commentable.content
-
+      %span.inline_date= render 'shared/timestamp', :post => @commentable
+    = raw @commentable.content
+    
   = render 'comments/comments', :commentable => @commentable, :comments => @comments
+  
+#sidebar
+  .sidebar
+    %h2 Минати новости
+    %ul.total
+      %li
+        = link_to "Наслов на мината новост", ""
+
+      %li.view_all= link_to t('posts.view_all'), posts_path
