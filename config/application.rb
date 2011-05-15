@@ -53,13 +53,19 @@ module PopraviMk
   end
 end
 
+APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
+
 ActionMailer::Base.smtp_settings = {
   :address => "smtp.gmail.com",
   :port => 587,
   :domain => "popravi.mk",
   :authentication => :plain,
-  :user_name => "notifier@popravi.mk",
-  :password => "popr@vi",
+  :user_name => APP_CONFIG['mailer']['email'],
+  :password => APP_CONFIG['mailer']['password'],
   :enable_starttls_auto => true
 }
 
+Recaptcha.configure do |config|
+  config.public_key  = APP_CONFIG['recaptcha']['public_key']
+  config.private_key = APP_CONFIG['recaptcha']['private_key']
+end

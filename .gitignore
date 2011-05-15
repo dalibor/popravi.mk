@@ -3,6 +3,7 @@
 log/*.log
 tmp/**/*
 config/database.yml
+config/config.yml
 config/twitter.yml
 config/initializers/site_keys.rb
 db/*.sqlite3

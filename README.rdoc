@@ -6,14 +6,22 @@
 
 == DEVELOPMENT NOTES
 
-  * Application setup
+  * Installation
     gem install bundler
     bundle install
-    cp config/database.yml.template config/database.yml
-    vim config/database.yml # edit database.yml file
-    rake db:create
-    rake db:migrate
-    rake db:seed
+
+  * Configuration
+
+    - Keys
+      cp config/config.yml.template config/config.yml
+      vim config/database.yml # edit database.yml file
+
+    - Database
+      cp config/database.yml.template config/database.yml
+      vim config/database.yml # edit database.yml file
+      rake db:create
+      rake db:migrate
+      rake db:seed
 
   * Run cucumber features
     cucumber features

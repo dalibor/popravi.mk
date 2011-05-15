@@ -1,0 +1,27 @@
+development:
+  mailer:
+    email: "your@email.com"
+    password: "password"
+  token:
+    secret: "your_long_secret_key"
+  recaptcha: 
+    public_key: 'public_key'
+    private_key: 'private_key'
+test:
+  mailer:
+    email: "your@email.com"
+    password: "password"
+  token:
+    secret: "your_long_secret_key"
+  recaptcha: 
+    public_key: 'public_key'
+    private_key: 'private_key'
+production:
+  mailer:
+    email: "your@email.com"
+    password: "password"
+  token:
+    secret: "your_long_secret_key"
+  recaptcha: 
+    public_key: 'public_key'
+    private_key: 'private_key'
