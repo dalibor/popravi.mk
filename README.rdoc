@@ -14,7 +14,7 @@
 
     - Keys
       cp config/config.yml.template config/config.yml
-      vim config/database.yml # edit database.yml file
+      vim config/config.yml # edit config.yml file
 
     - Database
       cp config/database.yml.template config/database.yml
