@@ -53,8 +53,8 @@ jQuery.fn.autolink = function () {
 
 var initializeSlider = function (element, field) {
   element.slider({
-    min: 1, 
-    max: 10, 
+    min: 1,
+    max: 10,
     value: field.val(),
     change: function(e, ui) {
       field.val($(e.target).slider("option", "value"))
@@ -66,7 +66,7 @@ var initializeSlider = function (element, field) {
   });
 };
 
-var problems_edit = problems_create = problems_update = problems_new = {
+var problems_new = problems_create = user_problems_edit = user_problems_update  = {
   run: function () {
 
     initializeSlider($("#slider"), $('#problem_weight'));
