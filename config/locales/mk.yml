@@ -252,7 +252,7 @@ mk:
         name: 'Име'
         email: 'Е-маил'
         weight: 'Тежина'
-        official_notes: 'Официјална белешка'
+        official_notes: 'Официјален коментар'
         photo: 'Слика'
       comment:
         content: "Коментар"
