@@ -4,7 +4,7 @@ class Api::V2::MunicipalitiesController < Api::V2::BaseController
     municipalities = Municipality.find(:all, :select => "id, name", :order => "name ASC")
 
     @municipalities = []
-    municipalities.each { |municipality| 
+    municipalities.each { |municipality|
       @municipalities << {:id => municipality.id, :name => municipality.name} }
 
     render_json(@municipalities)

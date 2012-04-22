@@ -17,7 +17,7 @@ class Api::V2::CommentsController < Api::V2::BaseController
   end
 
   def create
-    comment = @problem.comments.new(:name => params[:name], 
+    comment = @problem.comments.new(:name => params[:name],
                                     :email => params[:email],
                                     :content => params[:content])
     comment.user = user_from_session

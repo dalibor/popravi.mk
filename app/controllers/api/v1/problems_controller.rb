@@ -4,31 +4,31 @@ class Api::V1::ProblemsController < ApplicationController
 
   def index
     if params[:type] == "nearest"
-      problems = Problem.find :all, 
+      problems = Problem.find :all,
         :select => ActiveRecord::Base.send(:sanitize_sql_array,
-           ["problems.*, categories.name AS category_name, 
-             municipalities.name AS municipality_name, 
-             SQRT( POW( 69.1 * (latitude - ?), 2) + 
-                   POW( 69.1 * (? - longitude) * COS(latitude / 57.3), 2)) AS distance", 
+           ["problems.*, categories.name AS category_name,
+             municipalities.name AS municipality_name,
+             SQRT( POW( 69.1 * (latitude - ?), 2) +
+                   POW( 69.1 * (? - longitude) * COS(latitude / 57.3), 2)) AS distance",
              params[:latitude], params[:longitude]]),
-        :joins => "JOIN categories ON categories.id = problems.category_id 
+        :joins => "JOIN categories ON categories.id = problems.category_id
                    JOIN municipalities ON municipalities.id = problems.municipality_id",
         :order => "distance ASC",
         :limit => 20
     elsif params[:type] == "my"
-      problems = Problem.find :all, 
-        :select => "problems.*, categories.name AS category_name, 
-                    municipalities.name AS municipality_name", 
-        :joins => "JOIN categories ON categories.id = problems.category_id 
+      problems = Problem.find :all,
+        :select => "problems.*, categories.name AS category_name,
+                    municipalities.name AS municipality_name",
+        :joins => "JOIN categories ON categories.id = problems.category_id
                    JOIN municipalities ON municipalities.id = problems.municipality_id",
         :conditions => ['device_id = ?', params[:device_id]],
         :order => "problems.id DESC",
         :limit => 20
     else # params[:type] == "latest"
-      problems = Problem.find :all, 
-        :select => "problems.*, categories.name AS category_name, 
-                    municipalities.name AS municipality_name", 
-        :joins => "JOIN categories ON categories.id = problems.category_id 
+      problems = Problem.find :all,
+        :select => "problems.*, categories.name AS category_name,
+                    municipalities.name AS municipality_name",
+        :joins => "JOIN categories ON categories.id = problems.category_id
                    JOIN municipalities ON municipalities.id = problems.municipality_id",
         :order => "problems.id DESC",
         :limit => 20

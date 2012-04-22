@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # Rescuers
   rescue_from AccessDenied do |exception|
     if current_user
-      sign_out_and_redirect(current_user) 
+      sign_out_and_redirect(current_user)
     else
       redirect_to new_user_session_url
     end

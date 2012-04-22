@@ -17,7 +17,7 @@ class Moderator::ProblemsController < Moderator::BaseController
   def update
     if params[:problem]
       @problem.official_notes = params[:problem][:official_notes]
-      @problem.status         = params[:problem][:status] 
+      @problem.status         = params[:problem][:status]
       @problem.last_editor    = current_user
     end
 

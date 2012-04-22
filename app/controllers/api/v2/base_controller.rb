@@ -2,7 +2,7 @@ class Api::V2::BaseController < ApplicationController
 
   before_filter :require_api_key
   # enable when too much spam on an API key that you cannot disable
-  # before_filter :require_user 
+  # before_filter :require_user
 
   private
     def render_json(hash)
@@ -25,7 +25,7 @@ class Api::V2::BaseController < ApplicationController
 
     def user_from_session
       if session[:user_id].present?
-        User.find(session[:user_id]) 
+        User.find(session[:user_id])
       else
         nil
       end

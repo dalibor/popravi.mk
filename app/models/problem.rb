@@ -133,37 +133,37 @@ class Problem < ActiveRecord::Base
   end
 
   def self.find_nearest(params, limit)
-    Problem.find :all, 
+    Problem.find :all,
       :select => ActiveRecord::Base.send(:sanitize_sql_array,
-         ["problems.*, categories.name AS category_name, 
-           municipalities.name AS municipality_name, 
-           SQRT( POW( 69.1 * (latitude - ?), 2) + 
-                 POW( 69.1 * (? - longitude) * COS(latitude / 57.3), 2)) AS distance", 
+         ["problems.*, categories.name AS category_name,
+           municipalities.name AS municipality_name,
+           SQRT( POW( 69.1 * (latitude - ?), 2) +
+                 POW( 69.1 * (? - longitude) * COS(latitude / 57.3), 2)) AS distance",
            params[:latitude], params[:longitude]]),
-      :joins => "JOIN categories ON categories.id = problems.category_id 
+      :joins => "JOIN categories ON categories.id = problems.category_id
                  JOIN municipalities ON municipalities.id = problems.municipality_id",
       :order => "distance ASC",
       :limit => limit
   end
 
   def self.find_my(params, limit)
-    Problem.find :all, 
-      :select => "problems.*, categories.name AS category_name, 
-                  municipalities.name AS municipality_name", 
-      :joins => "JOIN categories ON categories.id = problems.category_id 
+    Problem.find :all,
+      :select => "problems.*, categories.name AS category_name,
+                  municipalities.name AS municipality_name",
+      :joins => "JOIN categories ON categories.id = problems.category_id
                  JOIN municipalities ON municipalities.id = problems.municipality_id
                  LEFT OUTER JOIN users ON users.id = problems.user_id",
-      :conditions => ['users.email = :email OR problems.email = :email', 
+      :conditions => ['users.email = :email OR problems.email = :email',
                       {:email => params[:email]}],
       :order => "problems.id DESC",
       :limit => limit
   end
 
   def self.find_latest(limit)
-    Problem.find :all, 
-      :select => "problems.*, categories.name AS category_name, 
-                  municipalities.name AS municipality_name", 
-      :joins => "JOIN categories ON categories.id = problems.category_id 
+    Problem.find :all,
+      :select => "problems.*, categories.name AS category_name,
+                  municipalities.name AS municipality_name",
+      :joins => "JOIN categories ON categories.id = problems.category_id
                  JOIN municipalities ON municipalities.id = problems.municipality_id",
       :order => "problems.id DESC",
       :limit => limit

@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
         "Анонимен корисник (#{user.municipality.name})"
       end
     elsif user && !user.municipality.present?
-      user.name.present? ? user.name : "Анонимен корисник" 
+      user.name.present? ? user.name : "Анонимен корисник"
     else
       name.present? ? name : 'Анонимен корисник'
     end

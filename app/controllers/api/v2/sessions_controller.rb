@@ -2,7 +2,7 @@ class Api::V2::SessionsController < Api::V2::BaseController
 
   def create
     user = User.find_by_email(params[:email])
-    
+
     if user && user.valid_password?(params[:password])
       session[:user_id] = user.id
 

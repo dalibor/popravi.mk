@@ -45,9 +45,9 @@ class Api::V2::ProblemsController < Api::V2::BaseController
       actions[:category] = "sync" if @problem.errors[:category_id].present?
       actions[:municipality] = "sync" if @problem.errors[:municipality_id].present?
 
-      render_json({ :status => "error", 
-                                        :message => @problem.errors.full_messages.join(", "), 
-                                        :actions => actions })
+      render_json({ :status => "error",
+                    :message => @problem.errors.full_messages.join(", "),
+                    :actions => actions })
     end
   end
 
