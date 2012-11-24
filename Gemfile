@@ -44,6 +44,7 @@ group :test do
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'gherkin', '=2.4.1'
   gem 'capybara'
   gem 'pickle'
   gem 'spork'

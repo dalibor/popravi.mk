@@ -2,7 +2,7 @@
 
 %h2.main_title.wrap600=t('devise.sessions.title')
 .step
-  
+
   = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     = f.semantic_errors :state
     = f.inputs do
@@ -13,4 +13,4 @@
       = f.buttons do
         = f.commit_button t('devise.sessions.login')
 
-  = render :partial => "shared/devise_links"
+    = render :partial => "shared/devise_links"
