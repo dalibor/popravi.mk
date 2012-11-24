@@ -40,7 +40,7 @@ class Problem < ActiveRecord::Base
   #validates_attachment_presence :photo, :if => Proc.new { |problem| problem.device_id.blank? }, :message => "мора да биде зададено"
 
   # Scopes
-  scope :ordered, order("created_at DESC")
+  scope :ordered, order("id DESC")
   scope :matching, lambda {|column, value|
     where(["#{column} LIKE ?", "%#{value}%"]) if value.present?
   }
