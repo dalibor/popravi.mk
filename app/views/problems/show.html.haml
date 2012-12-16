@@ -5,7 +5,7 @@
 %h2.main_title
   = @problem.title
   %span.right= t('g.reported_ago', :time => time_ago_in_words(@problem.created_at))
-    
+
 .step2
   %ul.social
     %li
@@ -18,7 +18,7 @@
         %span Share
 
   .name
-    
+
     %ul.problem_status
       %li.weight
         %span= "#{t('problems.weight')}"
@@ -38,19 +38,19 @@
             = f.inputs do
               <div id="slider"></div>
               = f.input :weight, :label => false#, :input_html => { :disabled => true }
-            = f.buttons do
-              = f.commit_button @rate.new_record? ? t('rates.create') : t('rates.update')
+            = f.actions do
+              = f.submit @rate.new_record? ? t('rates.create') : t('rates.update')
 
       %li
         %span= t('problems.status')
         %span.atm= t("problems.statuses.#{@problem.status}")
-            
+
       - if user_signed_in? && current_user == @problem.user
         %li
           %span= t('problems.options')
           %span.atm= link_to t('g.edit'), edit_user_problem_path(@problem)
 
-    
+
     - if @problem.last_status_editor.present?
       = t("problems.status_changed_by")
       = @problem.last_status_editor

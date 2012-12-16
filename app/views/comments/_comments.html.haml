@@ -14,8 +14,8 @@
         - unless user_signed_in?
           %div{:style => "clear:both"}
             = raw recaptcha_tags
-      = f.buttons do
-        = f.commit_button t('problems.send')
+      = f.actions do
+        = f.submit t('problems.send')
 
   .comments
     - comments.each do |comment|

@@ -63,7 +63,7 @@ en:
     category: 'Category'
     municipality: 'Municipality'
     weight: 'Weight'
-    email: 'E-mail'
+    email: 'Email'
     description: 'Description'
     report_problem: 'Report a problem'
     edit_problem: 'Edit problem'

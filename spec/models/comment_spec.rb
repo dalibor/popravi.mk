@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Comment do
@@ -18,17 +19,17 @@ describe Comment do
     it { should validate_presence_of(:commentable_type) }
 
     it "is valid given valid attributes for unregistered user" do
-      comment = Factory.build(:comment)
+      comment = build(:comment)
       comment.should be_valid
     end
 
     it "is valid given valid attributes for registered user" do
-      comment = Factory.build(:comment, :user => Factory.create(:user))
+      comment = build(:comment, :user => create(:user))
       comment.should be_valid
     end
 
     it "validates email is valid" do
-      comment = Factory.build(:comment, :email => "invalid_email")
+      comment = build(:comment, :email => "invalid_email")
       comment.should_not be_valid
       comment.errors[:email].should_not be_nil
     end
@@ -37,16 +38,16 @@ describe Comment do
   describe "commenter_name" do
     describe "logged in user" do
       it "displays name of the logged in user if name present" do
-        user = Factory.create(:user, :name => "Test User")
-        problem = Factory.create(:problem)
+        user = create(:user, :name => "Test User")
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user
         comment.commenter_name.should == "Test User"
       end
 
       it "displays 'Анонимен корисник'" do
-        user = Factory.create(:user, :name => '')
-        problem = Factory.create(:problem)
+        user = create(:user, :name => '')
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user
         comment.commenter_name.should == "Анонимен корисник"
@@ -55,18 +56,18 @@ describe Comment do
 
     describe "logged in user from municipality" do
       it "displays name of the logged in user if name present" do
-        user = Factory.create(:user, :name => "Test User", 
-                              :municipality => Factory.create(:municipality, :name => 'Municipality1'))
-        problem = Factory.create(:problem)
+        user = create(:user, :name => "Test User",
+                              :municipality => create(:municipality, :name => 'Municipality1'))
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user
         comment.commenter_name.should == "Test User (Municipality1)"
       end
 
       it "displays 'Анонимен корисник'" do
-        user = Factory.create(:user, :name => '',
-                              :municipality => Factory.create(:municipality, :name => 'Municipality1'))
-        problem = Factory.create(:problem)
+        user = create(:user, :name => '',
+                              :municipality => create(:municipality, :name => 'Municipality1'))
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user
         comment.commenter_name.should == "Анонимен корисник (Municipality1)"
@@ -75,13 +76,13 @@ describe Comment do
 
     describe "anonymous user" do
       it "displays name in the comment if name present" do
-        problem = Factory.create(:problem)
+        problem = create(:problem)
         comment = problem.comments.new(:name => "My Name", :content => "My comment")
         comment.commenter_name.should == "My Name"
       end
 
       it "displays 'Анонимен корисник'" do
-        problem = Factory.create(:problem)
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.commenter_name.should == "Анонимен корисник"
       end
@@ -91,8 +92,8 @@ describe Comment do
   describe "commenter_avatar" do
     describe "logged in user" do
       it "displays avatar of user" do
-        user = Factory.create(:user, :avatar => File.open(File.join(Rails.root, 'public', 'images', 'rails.png')))
-        problem = Factory.create(:problem)
+        user = create(:user, :avatar => File.open(File.join(Rails.root, 'public', 'images', 'rails.png')))
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user
         comment.commenter_avatar.should match /rails\.png/
@@ -101,7 +102,7 @@ describe Comment do
 
     describe "anonymous user" do
       it "displays gratar of user" do
-        problem = Factory.create(:problem)
+        problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.commenter_avatar.should match /anonymous/
       end

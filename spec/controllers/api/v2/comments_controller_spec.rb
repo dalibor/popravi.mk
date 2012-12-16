@@ -1,25 +1,26 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Api::V2::CommentsController do
   before :each do
-    @api_key = Factory.create(:api_key, :key => 'key')
+    @api_key = create(:api_key, :key => 'key')
   end
 
   describe "index" do
     it "returns empty json when no comments" do
-      problem = Factory.create(:problem)
-      get :index, :format => 'json', :api_key => @api_key.key, 
+      problem = create(:problem)
+      get :index, :format => 'json', :api_key => @api_key.key,
                   :problem_id => problem.id
 
       response.body.should == '[]'
     end
 
     it "returns all comments details in the json" do
-      problem = Factory.create(:problem)
-      comment = Factory.create(:comment, :commentable => problem, 
+      problem = create(:problem)
+      comment = create(:comment, :commentable => problem,
                                :name => 'Test User', :content => 'Test comment')
 
-      get :index, :format => 'json', :api_key => @api_key.key, 
+      get :index, :format => 'json', :api_key => @api_key.key,
                   :problem_id => problem.id
 
       json = JSON.parse(response.body)
@@ -33,7 +34,7 @@ describe Api::V2::CommentsController do
   describe "create comment" do
 
     it "can't create comments when content is blank" do
-      problem = Factory.create(:problem)
+      problem = create(:problem)
       post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id
 
@@ -43,7 +44,7 @@ describe Api::V2::CommentsController do
     end
 
     it "can create comment" do
-      problem = Factory.create(:problem)
+      problem = create(:problem)
       post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id, :content => 'test comment'
 
@@ -56,9 +57,9 @@ describe Api::V2::CommentsController do
     end
 
     it "assigns user_id to comment when user is logged in" do
-      user = Factory.create(:user)
+      user = create(:user)
       login(user)
-      problem = Factory.create(:problem)
+      problem = create(:problem)
       post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id, :content => 'test comment'
 

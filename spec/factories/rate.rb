@@ -1,5 +1,7 @@
-Factory.define :rate do |f|
-  f.association :user
-  f.association :problem
-  f.weight  5
+FactoryGirl.define do
+  factory :rate do
+    association :user
+    association :problem
+    weight  5
+  end
 end

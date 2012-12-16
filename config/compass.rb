@@ -1,14 +1,25 @@
 # This configuration file works with both the Compass command line tool and within Rails.
-require 'html5-boilerplate'
+# require 'compass/h5bp'
+
 # Require any additional compass plugins here.
 
 project_type = :rails
-project_path = Compass::AppIntegration::Rails.root
+
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "public/stylesheets/compiled"
-sass_dir = "app/stylesheets"
-environment = Compass::AppIntegration::Rails.env
+
+# You can select your preferred output style here (can be overridden via the command line):
+# output_style = :expanded or :nested or :compact or :compressed
+
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
-preferred_syntax = :sass
+
+# To disable debugging comments that display the original location of your selectors. Uncomment:
+# line_comments = false
+
+
+# If you prefer the indented syntax, you might want to regenerate this
+# project again passing --syntax sass, or you can uncomment this:
+# preferred_syntax = :sass
+# and then run:
+# sass-convert -R --from scss --to sass app/stylesheets scss && rm -rf sass && mv scss sass

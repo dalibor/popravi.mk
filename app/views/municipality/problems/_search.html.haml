@@ -10,7 +10,7 @@
           = f.input :month, :as => :select, :label => t('problems.month'), :selected => params[:month].to_i, :required => false, :input_html => {:name => :month}, :collection => get_month_names
           = f.input :year, :as => :select, :label => t('problems.year'), :selected => params[:year].to_i, :required => false, :input_html => {:name => :year}, :collection => Problem.years
       .advanced{:class => advanced_search ? nil : 'hidden'}
-        = f.buttons do
-          = f.commit_button t('problems.search'), :button_html => {:name => nil}
+        = f.actions do
+          = f.submit t('problems.search'), :button_html => {:name => nil}
       %li.advanced{:class => advanced_search ? 'hidden' : nil}= link_to t('problems.advanced_search'), '#', :id => 'advanced_search'
       %li.advanced{:class => advanced_search ? nil : 'hidden'}= link_to t('problems.simple_search'), '#', :id => 'simple_search'

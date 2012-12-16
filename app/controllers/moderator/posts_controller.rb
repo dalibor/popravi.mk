@@ -1,14 +1,11 @@
 class Moderator::PostsController < Moderator::BaseController
 
-  # Inherited Resources
   inherit_resources
-
-  # Respond type
   respond_to :html
 
   def index
-    @posts = begin_of_association_chain.posts.order("created_at DESC").
-               paginate :all, :per_page => 10, :page => params[:page]
+    @posts = begin_of_association_chain.posts.ordered.
+               paginate :per_page => 10, :page => params[:page]
   end
 
   def create
@@ -22,8 +19,7 @@ class Moderator::PostsController < Moderator::BaseController
   end
 
   protected
-
-    def begin_of_association_chain
-      current_user.municipality
-    end
+  def begin_of_association_chain
+    current_user.municipality
+  end
 end

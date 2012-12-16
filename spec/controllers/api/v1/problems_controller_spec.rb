@@ -4,19 +4,19 @@ describe Api::V1::ProblemsController do
   describe "index" do
     context "nearest" do
       it "returns empty json when no problems" do
-        get :index, :format => 'json', 
+        get :index, :format => 'json',
                     :type => "nearest"
 
         response.body.should == '[]'
       end
 
       it "returns all problem details in the json" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
 
-        get :index, :format => 'json', 
-                    :type => "nearest", 
-                    :longitude => 21.2, 
+        get :index, :format => 'json',
+                    :type => "nearest",
+                    :longitude => 21.2,
                     :latitude => 41.2
 
         json = JSON.parse(response.body)
@@ -34,14 +34,14 @@ describe Api::V1::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
-        get :index, :format => 'json', 
-                    :type => "nearest", 
-                    :longitude => 21.2, 
+        get :index, :format => 'json',
+                    :type => "nearest",
+                    :longitude => 21.2,
                     :latitude => 41.2
 
         json = JSON.parse(response.body)
@@ -56,14 +56,14 @@ describe Api::V1::ProblemsController do
       end
 
       it "returns json with ordered problems by distance in reverse" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
-        get :index, :format => 'json', 
-                    :type => "nearest", 
-                    :longitude => 21.7, 
+        get :index, :format => 'json',
+                    :type => "nearest",
+                    :longitude => 21.7,
                     :latitude => 41.7
 
         json = JSON.parse(response.body)
@@ -80,17 +80,17 @@ describe Api::V1::ProblemsController do
 
     context "my" do
       it "returns empty json when there is no problems" do
-        get :index, :format => 'json', 
+        get :index, :format => 'json',
                     :type => "my"
         response.body.should == '[]'
       end
 
       it "returns all problem details in the json" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41, :device_id => 123)
 
-        get :index, :format => 'json', 
-                    :type => "my", 
+        get :index, :format => 'json',
+                    :type => "my",
                     :device_id => 123
 
         json = JSON.parse(response.body)
@@ -108,13 +108,13 @@ describe Api::V1::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41, :device_id => 123)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42, :device_id => 123)
 
-        get :index, :format => 'json', 
-                    :type => "my", 
+        get :index, :format => 'json',
+                    :type => "my",
                     :device_id => 123
 
         json = JSON.parse(response.body)
@@ -131,14 +131,14 @@ describe Api::V1::ProblemsController do
 
     context "latest" do
       it "returns empty json when there is no problems" do
-        get :index, :format => 'json', 
+        get :index, :format => 'json',
                     :type => 'latest'
 
         response.body.should == '[]'
       end
 
       it "returns all problem details in the json" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
 
         get :index, :format => 'json',
@@ -159,9 +159,9 @@ describe Api::V1::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
         get :index, :format => 'json',
@@ -182,17 +182,17 @@ describe Api::V1::ProblemsController do
 
   describe "create" do
     it "creates a problem" do
-      municipality = Factory.create(:municipality)
-      category = Factory.create(:category)
+      municipality = create(:municipality)
+      category = create(:category)
 
-      post :create, :format => :json, 
+      post :create, :format => :json,
                     :problem => {
                       :description => 'problem 123',
                       :device_id => 123,
                       :longitude => 21,
                       :latitude => 42,
                       :email => 'test@example.com',
-                      :category_id => category.id, 
+                      :category_id => category.id,
                       :municipality_id => municipality.id
                     }
 
@@ -204,9 +204,9 @@ describe Api::V1::ProblemsController do
     end
 
     it "returns error when no municipality" do
-      category = Factory.create(:category)
+      category = create(:category)
 
-      post :create, :format => :json, 
+      post :create, :format => :json,
                     :problem => {
                       :description => 'problem 123',
                       :device_id => 123,
@@ -226,9 +226,9 @@ describe Api::V1::ProblemsController do
     end
 
     it "returns error when no category" do
-      municipality = Factory.create(:municipality)
+      municipality = create(:municipality)
 
-      post :create, :format => :json, 
+      post :create, :format => :json,
                     :problem => {
                       :description => 'problem 123',
                       :device_id => 123,
@@ -248,7 +248,7 @@ describe Api::V1::ProblemsController do
     end
 
     it "returns error when no category and no municipality" do
-      post :create, :format => :json, 
+      post :create, :format => :json,
                     :problem => {
                       :description => 'problem 123',
                       :device_id => 123,
@@ -269,12 +269,12 @@ describe Api::V1::ProblemsController do
 
   describe "update" do
     it "can update problem by submiting a photo for it" do
-      Factory.create(:problem, :photo => nil, :device_id => 123, :id => 1)
+      create(:problem, :photo => nil, :device_id => 123, :id => 1)
 
-      put :update, :format => 'json', 
-                   :id => 1, 
-                   :device_id => 123, 
-                   :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
+      put :update, :format => 'json',
+                   :id => 1,
+                   :device_id => 123,
+                   :photo => fixture_file_upload('/rails1.png')
 
 
       response.should be_success
@@ -284,12 +284,12 @@ describe Api::V1::ProblemsController do
     end
 
     it "cannot update problem submiting by other device id" do
-      Factory.create(:problem, :photo => nil, :device_id => 123, :id => 1)
+      create(:problem, :photo => nil, :device_id => 123, :id => 1)
 
-      put :update, :format => 'json', 
-                   :id => 1, 
-                   :device_id => 124, 
-                   :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
+      put :update, :format => 'json',
+                   :id => 1,
+                   :device_id => 124,
+                   :photo => fixture_file_upload('/rails1.png')
 
 
       response.should be_success

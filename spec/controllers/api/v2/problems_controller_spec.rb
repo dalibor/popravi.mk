@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Api::V2::ProblemsController do
   before :each do
-    @api_key = Factory.create(:api_key, :key => 'key')
+    @api_key = create(:api_key, :key => 'key')
   end
 
   describe "index" do
@@ -15,14 +15,14 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns all problem details in the json" do
-        municipality = Factory.create(:municipality)
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        municipality = create(:municipality)
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41,
                        :municipality => municipality)
 
         get :index, :format => 'json', :api_key => @api_key.key,
-                    :type => "nearest", 
-                    :longitude => 21.2, 
+                    :type => "nearest",
+                    :longitude => 21.2,
                     :latitude => 41.2
 
         json = JSON.parse(response.body)
@@ -41,14 +41,14 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
         get :index, :format => 'json', :api_key => @api_key.key,
-                    :type => "nearest", 
-                    :longitude => 21.2, 
+                    :type => "nearest",
+                    :longitude => 21.2,
                     :latitude => 41.2
 
         json = JSON.parse(response.body)
@@ -63,9 +63,9 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns json with ordered problems by distance in reverse" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
         get :index, :format => 'json', :api_key => @api_key.key,
@@ -93,7 +93,7 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns all problems details in the json (when email on problem)" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41, :email => 'tester@popravi.mk')
 
         get :index, :format => 'json', :api_key => @api_key.key,
@@ -115,8 +115,8 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns problems when problem assigned to user" do
-        user = Factory.create(:user, :email => 'tester@popravi.mk')
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        user = create(:user, :email => 'tester@popravi.mk')
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41, :user => user)
 
         get :index, :format => 'json', :api_key => @api_key.key,
@@ -138,13 +138,13 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41, :email => 'tester@popravi.mk')
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42, :email => 'tester@popravi.mk')
 
         get :index, :format => 'json', :api_key => @api_key.key,
-                    :type => 'my', 
+                    :type => 'my',
                     :email => 'tester@popravi.mk'
 
         json = JSON.parse(response.body)
@@ -168,7 +168,7 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns all problem details in the json" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
 
         get :index, :format => 'json', :api_key => @api_key.key,
@@ -189,9 +189,9 @@ describe Api::V2::ProblemsController do
       end
 
       it "returns json with ordered problems by distance" do
-        Factory.create(:problem, :description => "Problem 1", :id => 1, 
+        create(:problem, :description => "Problem 1", :id => 1,
                        :longitude => 21, :latitude => 41)
-        Factory.create(:problem, :description => "Problem 2", :id => 2, 
+        create(:problem, :description => "Problem 2", :id => 2,
                        :longitude => 22, :latitude => 42)
 
         get :index, :format => 'json', :api_key => @api_key.key,
@@ -212,8 +212,8 @@ describe Api::V2::ProblemsController do
 
   describe "create" do
     it "creates a problem" do
-      municipality = Factory.create(:municipality)
-      category = Factory.create(:category)
+      municipality = create(:municipality)
+      category = create(:category)
 
       post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
@@ -222,7 +222,7 @@ describe Api::V2::ProblemsController do
                       :longitude => 21,
                       :latitude => 42,
                       :email => 'test@example.com',
-                      :category_id => category.id, 
+                      :category_id => category.id,
                       :municipality_id => municipality.id
                     }
 
@@ -234,9 +234,9 @@ describe Api::V2::ProblemsController do
     end
 
     it "returns error when no municipality" do
-      category = Factory.create(:category)
+      category = create(:category)
 
-      post :create, :format => :json, :api_key => @api_key.key, 
+      post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -256,9 +256,9 @@ describe Api::V2::ProblemsController do
     end
 
     it "returns error when no category" do
-      municipality = Factory.create(:municipality)
+      municipality = create(:municipality)
 
-      post :create, :format => :json, :api_key => @api_key.key, 
+      post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -278,7 +278,7 @@ describe Api::V2::ProblemsController do
     end
 
     it "returns error when no category and no municipality" do
-      post :create, :format => :json, :api_key => @api_key.key, 
+      post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -297,9 +297,9 @@ describe Api::V2::ProblemsController do
     end
 
     it "assigns user when user is logged in" do
-      user = Factory.create(:user)
+      user = create(:user)
       login(user)
-      post :create, :format => :json, :api_key => @api_key.key, 
+      post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
                       :token => 123,
@@ -314,12 +314,12 @@ describe Api::V2::ProblemsController do
 
   describe "update" do
     it "can update problem by submiting a photo for it" do
-      Factory.create(:problem, :photo => nil, :token => 123, :id => 1)
+      create(:problem, :photo => nil, :token => 123, :id => 1)
 
-      put :update, :format => 'json', :api_key => @api_key.key, 
-                   :id => 1, 
-                   :token => 123, 
-                   :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
+      put :update, :format => 'json', :api_key => @api_key.key,
+                   :id => 1,
+                   :token => 123,
+                   :photo => fixture_file_upload('/rails1.png')
 
 
       response.should be_success
@@ -329,12 +329,12 @@ describe Api::V2::ProblemsController do
     end
 
     it "cannot update problem submiting by other device id" do
-      Factory.create(:problem, :photo => nil, :token => 123, :id => 1)
+      create(:problem, :photo => nil, :token => 123, :id => 1)
 
-      put :update, :format => 'json', :api_key => @api_key.key, 
-                   :id => 1, 
-                   :token => 124, 
-                   :photo => fixture_file_upload(File.join(Rails.root, 'public/images/rails.png'))
+      put :update, :format => 'json', :api_key => @api_key.key,
+                   :id => 1,
+                   :token => 124,
+                   :photo => fixture_file_upload('/rails1.png')
 
 
       response.should be_success
@@ -347,7 +347,7 @@ describe Api::V2::ProblemsController do
 
   describe "update_status" do
     it "can't change the status when not logged in" do
-      problem = Factory.create(:problem)
+      problem = create(:problem)
 
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id
@@ -357,8 +357,8 @@ describe Api::V2::ProblemsController do
     end
 
     it "can't change the status when status param is blank" do
-      problem = Factory.create(:problem)
-      user = Factory.create(:user)
+      problem = create(:problem)
+      user = create(:user)
       login(user)
 
       put :update_status, :format => 'json', :api_key => @api_key.key,
@@ -369,8 +369,8 @@ describe Api::V2::ProblemsController do
     end
 
     it "can't change the status when status param is not in the list of allowed" do
-      problem = Factory.create(:problem)
-      user = Factory.create(:user)
+      problem = create(:problem)
+      user = create(:user)
       login(user)
 
       put :update_status, :format => 'json', :api_key => @api_key.key,
@@ -381,10 +381,10 @@ describe Api::V2::ProblemsController do
     end
 
     it "can't change the status when user from other municipality" do
-      municipality1 = Factory.create(:municipality)
-      municipality2 = Factory.create(:municipality)
-      user = Factory.create(:user, :municipality => municipality1)
-      problem = Factory.create(:problem, :municipality => municipality2)
+      municipality1 = create(:municipality)
+      municipality2 = create(:municipality)
+      user = create(:user, :municipality => municipality1)
+      problem = create(:problem, :municipality => municipality2)
       login(user)
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'
@@ -395,9 +395,9 @@ describe Api::V2::ProblemsController do
     end
 
     it "can change the status when status param is set" do
-      municipality = Factory.create(:municipality)
-      user = Factory.create(:user, :municipality => municipality)
-      problem = Factory.create(:problem, :municipality => municipality)
+      municipality = create(:municipality)
+      user = create(:user, :municipality => municipality)
+      problem = create(:problem, :municipality => municipality)
       login(user)
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'

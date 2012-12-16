@@ -1,4 +1,5 @@
 class Moderator::ContactsController < Moderator::BaseController
+
   before_filter :load_contact
 
   def edit
@@ -17,8 +18,8 @@ class Moderator::ContactsController < Moderator::BaseController
   end
 
   private
-    def load_contact
-      @municipality = current_user.municipality
-      @contact = @municipality.contact || @municipality.build_contact
-    end
+  def load_contact
+    @municipality = current_user.municipality
+    @contact = @municipality.contact || @municipality.build_contact
+  end
 end

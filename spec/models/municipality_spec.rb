@@ -13,20 +13,8 @@ describe Municipality do
     it { should validate_presence_of(:name) }
 
     it "is valid given valid attributes" do
-      municipality = Factory.build(:municipality)
+      municipality = build(:municipality)
       municipality.should be_valid
     end
   end
 end
-
-# == Schema Information
-#
-# Table name: municipalities
-#
-#  id         :integer(4)      not null, primary key
-#  region_id  :integer(4)
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
-

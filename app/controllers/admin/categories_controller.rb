@@ -1,16 +1,11 @@
 class Admin::CategoriesController < Admin::BaseController
 
   before_filter :load_category, :only => [:move_down, :move_up]
-
-  # Inherited Resources
   inherit_resources
-
-  # Respond type
   respond_to :html
 
   def index
-    @categories = Category.order("position ASC").
-                           paginate :all, :per_page => 10, :page => params[:page]
+    @categories = Category.ordered.paginate :per_page => 10, :page => params[:page]
   end
 
   def move_down
@@ -26,8 +21,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   private
-
-    def load_category
-      @category = Category.find(params[:id])
-    end
+  def load_category
+    @category = Category.find(params[:id])
+  end
 end

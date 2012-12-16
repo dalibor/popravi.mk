@@ -11,7 +11,7 @@ describe Attachment do
   end
 
   describe 'validations' do
-    subject { Factory(:attachment) }
+    subject { create(:attachment) }
     it { should be_valid }
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:user_id) }

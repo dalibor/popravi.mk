@@ -24,20 +24,7 @@ class Municipality < ActiveRecord::Base
   scope :ordered, order('name ASC')
 
   private
-
-    def set_slug
-      self.slug = name.to_s.to_lat.parameterize.to_s
-    end
+  def set_slug
+    self.slug = name.to_s.to_lat.parameterize.to_s
+  end
 end
-
-# == Schema Information
-#
-# Table name: municipalities
-#
-#  id         :integer(4)      not null, primary key
-#  region_id  :integer(4)
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#
-

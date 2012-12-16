@@ -1,10 +1,12 @@
+# encoding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable and :activatable
   devise :registerable, :database_authenticatable, :recoverable, :confirmable,
          :rememberable, :trackable, :validatable
+  devise :encryptable, :encryptor => :sha1
 
-  # Attr accessible
+  # Attributes
   attr_accessible :name, :email, :password, :password_confirmation, :avatar, :municipality_id
 
   # Associations
@@ -40,6 +42,7 @@ class User < ActiveRecord::Base
       reporters
     end
   }
+  scope :ordered, order("created_at DESC")
 
   # Devise override
   def send_confirmation_instructions
@@ -56,42 +59,10 @@ class User < ActiveRecord::Base
   end
 
   private
-    def assign_user_to_problems
-      Problem.where(['email = ?', email]).each do |problem|
-        problem.user = self
-        problem.save(:validate => false)
-      end
+  def assign_user_to_problems
+    Problem.where(['email = ?', email]).each do |problem|
+      problem.user = self
+      problem.save(:validate => false)
     end
+  end
 end
-
-# == Schema Information
-#
-# Table name: users
-#
-#  id                   :integer(4)      not null, primary key
-#  name                 :string(255)
-#  is_admin             :boolean(1)      default(FALSE)
-#  problems_count       :integer(4)      default(0)
-#  email                :string(255)     default(""), not null
-#  encrypted_password   :string(128)     default(""), not null
-#  password_salt        :string(255)     default(""), not null
-#  confirmation_token   :string(255)
-#  confirmed_at         :datetime
-#  confirmation_sent_at :datetime
-#  reset_password_token :string(255)
-#  remember_token       :string(255)
-#  remember_created_at  :datetime
-#  sign_in_count        :integer(4)      default(0)
-#  current_sign_in_at   :datetime
-#  last_sign_in_at      :datetime
-#  current_sign_in_ip   :string(255)
-#  last_sign_in_ip      :string(255)
-#  created_at           :datetime
-#  updated_at           :datetime
-#  avatar_file_name     :string(255)
-#  avatar_content_type  :string(255)
-#  avatar_file_size     :integer(4)
-#  avatar_updated_at    :datetime
-#  municipality_id      :integer(4)
-#
-

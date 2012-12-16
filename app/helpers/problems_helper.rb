@@ -12,8 +12,6 @@ module ProblemsHelper
   end
 
   def advanced_search
-    params[:c].present? || params[:m].present? || params[:month].present? || 
-      params[:year].present? || params[:s].present?
+    [:c, :m, :month, :year, :s].detect{ |key| params[key].present? }
   end
-  memoize :advanced_search
 end

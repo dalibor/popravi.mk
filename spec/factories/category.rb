@@ -1,3 +1,5 @@
-Factory.define :category do |f|
-  f.name 'Abandoned vehicles'
+FactoryGirl.define do
+  factory :category do
+    name 'Abandoned vehicles'
+  end
 end

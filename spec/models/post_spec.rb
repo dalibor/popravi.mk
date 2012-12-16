@@ -12,36 +12,36 @@ describe Post do
     it { should validate_presence_of(:user_id) }
 
     it "is valid given valid attributes" do
-      post = Factory.build(:post)
+      post = build(:post)
       post.should be_valid
     end
   end
 
   describe "slug" do
     it "sets slug when no custom slug is used" do
-      post = Factory.create(:post, :title => "New title")
+      post = create(:post, :title => "New title")
       post.slug.should == "new-title"
     end
 
     it "does not set slug when custom slug is used" do
-      post = Factory.create(:post, :custom_slug => "1", :slug => "my-custom-slug")
+      post = create(:post, :custom_slug => "1", :slug => "my-custom-slug")
       post.slug.should == "my-custom-slug"
     end
   end
 
   describe "published" do
     it "does not set published_at when published is not checked" do
-      post = Factory.create(:post, :published => "0")
+      post = create(:post, :published => "0")
       post.published_at.should be_nil
     end
 
     it "does sets published_at when published is checked" do
-      post = Factory.create(:post, :published => "1")
+      post = create(:post, :published => "1")
       post.published_at.should_not be_nil
     end
 
     it "removes published_at when post is unpublished" do
-      post = Factory.create(:post, :published => "1")
+      post = create(:post, :published => "1")
       post.published = "0"
       post.save
       post.published_at.should be_nil
@@ -51,10 +51,10 @@ describe Post do
   describe "archive items" do
     it "finds archive items" do
       Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
-      Factory.create(:post, :user => Factory.create(:user), :published => true,
+      create(:post, :user => create(:user), :published => true,
                      :title => "Hello world 1")
       Time.stub(:now).and_return(Time.parse("2010-03-01 12:00:00"))
-      Factory.create(:post, :user => Factory.create(:user), :published => true,
+      create(:post, :user => create(:user), :published => true,
                      :title => "Hello world 2")
       Post.archive_items.should == [[2010, 1], [2010, 3]]
     end
@@ -63,12 +63,12 @@ describe Post do
   describe "named scopes" do
     describe "published" do
       it "includes published posts" do
-        post = Factory.create(:post)
+        post = create(:post)
         Post.published.should include(post)
       end
 
       it "excludes problmes without photo" do
-        post = Factory.create(:post, :published => false)
+        post = create(:post, :published => false)
         Post.published.should_not include(post)
       end
     end
@@ -76,10 +76,10 @@ describe Post do
     describe "for month" do
       it "filters posts for months" do
         Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
-        post1 = Factory.create(:post, :user => Factory.create(:user),
+        post1 = create(:post, :user => create(:user),
                                :published => true, :title => "Hello world 1")
         Time.stub(:now).and_return(Time.parse("2010-03-01 12:00:00"))
-        post2 = Factory.create(:post, :user => Factory.create(:user),
+        post2 = create(:post, :user => create(:user),
                                :published => true, :title => "Hello world 2")
 
         Post.for_month(2010, 1).should include(post1)
@@ -93,7 +93,7 @@ describe Post do
   describe "set_published_at" do
     it "does not reset published_at timestamp" do
       Time.stub(:now).and_return(Time.parse("2010-01-01 12:00:00"))
-      post = Factory.create(:post, :user => Factory.create(:user),
+      post = create(:post, :user => create(:user),
                              :published => true, :title => "Hello world 1")
       post.published_at.year.should == 2010
 
@@ -104,21 +104,3 @@ describe Post do
     end
   end
 end
-
-
-# == Schema Information
-#
-# Table name: posts
-#
-#  id              :integer(4)      not null, primary key
-#  user_id         :integer(4)
-#  slug            :string(255)
-#  title           :string(255)
-#  content         :text
-#  published_at    :datetime
-#  comments_closed :boolean(1)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  published       :boolean(1)      default(TRUE)
-#
-

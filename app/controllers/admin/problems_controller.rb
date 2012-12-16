@@ -1,29 +1,29 @@
 class Admin::ProblemsController < Admin::BaseController
 
-  # Inherited Resources
   inherit_resources
-
-  # Respond type
   respond_to :html
 
   def index
     @problems = Problem.includes([:category, :municipality, :user]).
                         filter(params[:filter]).
-                        order("id DESC").
+                        ordered.
                         paginate(:per_page => 10, :page => params[:page])
   end
 
   def create
-    @problem = Problem.new(params[:problem])
-    @problem.official_notes = params[:problem][:official_notes] if params[:problem]
+    @problem = Problem.new(params[:problem], without_protection: true)
     create!
   end
 
   def update
     @problem = Problem.find(params[:id])
-    @problem.official_notes = params[:problem][:official_notes] if params[:problem]
-    @problem.last_editor = current_user
-    update!
+
+    if @problem.update_attributes(params[:problem], :without_protection => true)
+      flash[:notice] = "Problem was successfully updated"
+      redirect_to admin_problem_url(@problem)
+    else
+      render :edit
+    end
   end
 
   def sent

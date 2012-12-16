@@ -1,3 +1,5 @@
-Factory.define :region do |f|
-  f.name 'Skopski'
+FactoryGirl.define do
+  factory :region do
+    name 'Skopski'
+  end
 end

@@ -1,14 +1,10 @@
 class Admin::CountriesController < Admin::BaseController
 
-  # Inherited Resources
   inherit_resources
-
-  # Respond type
   respond_to :html
 
   def index
-    @countries = Country.paginate :all, :order => "name ASC",
-                                  :per_page => 10, :page => params[:page]
+    @countries = Country.ordered.paginate :per_page => 10, :page => params[:page]
   end
 
   def create

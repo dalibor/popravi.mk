@@ -17,8 +17,8 @@
       = f.input :password_confirmation, :as => :password, :label => t('devise.registrations.password_confirmation')
       = f.input :current_password, :as => :password, :label => t('devise.registrations.current_password')
       %i= t('devise.registrations.current_password_hint')
-      = f.buttons do
-        = f.commit_button t('devise.registrations.update')
+      = f.actions do
+        = f.submit t('devise.registrations.update')
 
   #delete
     %h3= t('devise.registrations.cancel_my_account')

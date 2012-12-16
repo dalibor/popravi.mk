@@ -1,8 +1,10 @@
 class Moderator::CommentsController < Moderator::BaseController
+
   before_filter :load_comment, :except => :index
 
   def index
-    @comments = current_user.comments.paginate :per_page => 10, :page => params[:page]
+    @comments = current_user.comments.
+      paginate :per_page => 10, :page => params[:page]
   end
 
   def show
@@ -25,8 +27,7 @@ class Moderator::CommentsController < Moderator::BaseController
   end
 
   private
-
-    def load_comment
-      @comment = current_user.comments.find(params[:id])
-    end
+  def load_comment
+    @comment = current_user.comments.find(params[:id])
+  end
 end

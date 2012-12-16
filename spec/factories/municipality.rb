@@ -1,3 +1,5 @@
-Factory.define :municipality do |f|
-  f.name 'Butel'
+FactoryGirl.define do
+  factory :municipality do
+    name 'Butel'
+  end
 end

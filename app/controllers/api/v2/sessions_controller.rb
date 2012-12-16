@@ -1,3 +1,4 @@
+# encoding: utf-8
 class Api::V2::SessionsController < Api::V2::BaseController
 
   def create

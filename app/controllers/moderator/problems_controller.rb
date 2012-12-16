@@ -1,4 +1,5 @@
 class Moderator::ProblemsController < Moderator::BaseController
+
   before_filter :load_municipality
   before_filter :load_problem, :except => :index
 

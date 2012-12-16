@@ -1,0 +1,3 @@
+- Move all language specific stuff to config/locale
+- Regenerate initializers/devise.rb file
+- flash[:notice] = "User was successfully updated"

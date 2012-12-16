@@ -9,7 +9,7 @@
       = f.input :email, :label => t('devise.registrations.email'), :required => true
       = f.input :password, :as => :password, :label => t('devise.registrations.password'), :required => true, :wrapper_html => {:class => 'first-half'}
       = f.input :password_confirmation, :as => :password, :label => t('devise.registrations.password_confirmation'), :required => true, :wrapper_html => {:class => 'second-half'}
-      = f.buttons do
-        = f.commit_button t('devise.registrations.register')
+      = f.actions do
+        = f.submit t('devise.registrations.register')
 
     = render :partial => "shared/devise_links"

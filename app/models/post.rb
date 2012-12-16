@@ -3,11 +3,11 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments, :as => :commentable
 
-  # Validations
-  validates_presence_of :user_id, :title, :content
-
   # Attributes
   attr_accessor :custom_slug
+
+  # Validations
+  validates_presence_of :user_id, :title, :content
 
   # Callbacks
   before_validation :set_slug
@@ -47,20 +47,3 @@ class Post < ActiveRecord::Base
       end
     end
 end
-
-# == Schema Information
-#
-# Table name: posts
-#
-#  id              :integer(4)      not null, primary key
-#  user_id         :integer(4)
-#  slug            :string(255)
-#  title           :string(255)
-#  content         :text
-#  published_at    :datetime
-#  comments_closed :boolean(1)
-#  created_at      :datetime
-#  updated_at      :datetime
-#  published       :boolean(1)      default(TRUE)
-#
-

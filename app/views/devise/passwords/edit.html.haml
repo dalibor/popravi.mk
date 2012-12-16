@@ -8,7 +8,7 @@
       = f.input :reset_password_token, :as => :hidden
       = f.input :password, :as => :password, :label => t('devise.passwords.password')
       = f.input :password_confirmation, :as => :password, :label => t('devise.passwords.password_confirmation')
-    = f.buttons do
-      = f.commit_button t('devise.passwords.change_my_password')
+    = f.actions do
+      = f.submit t('devise.passwords.change_my_password')
 
     = render :partial => "shared/devise_links"

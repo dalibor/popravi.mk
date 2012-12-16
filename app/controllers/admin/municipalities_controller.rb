@@ -1,14 +1,11 @@
 class Admin::MunicipalitiesController < Admin::BaseController
 
-  # Inherited Resources
   inherit_resources
-
-  # Respond type
   respond_to :html
 
   def index
-    @municipalities = Municipality.paginate :all, :include => :region,
-                                            :per_page => 10, :page => params[:page]
+    @municipalities = Municipality.includes(:region).
+      paginate :per_page => 10, :page => params[:page]
   end
 
   def create

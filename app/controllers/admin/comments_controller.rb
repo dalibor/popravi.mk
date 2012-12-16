@@ -1,15 +1,12 @@
 class Admin::CommentsController < Admin::BaseController
 
-  # Inherited Resources
   inherit_resources
 
-  # Respond type
   respond_to :html
 
   def index
-    @comments = Comment.paginate :all, :order => "id DESC",
-                                 :include => :user,
-                                 :per_page => 10, :page => params[:page]
+    @comments = Comment.ordered.includes(:user).
+      paginate :per_page => 10, :page => params[:page]
   end
 
   def create
@@ -26,11 +23,11 @@ class Admin::CommentsController < Admin::BaseController
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.send(:attributes=, params[:comment], false)
-
-    update! do |success, failure|
+    if @comment.update_attributes(params[:comment], :without_protection => true)
       flash[:notice] = "Comment was successfully updated"
-      success.html { redirect_to admin_comments_url }
+      redirect_to admin_comments_url
+    else
+      render :edit
     end
   end
 

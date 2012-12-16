@@ -1,14 +1,7 @@
+# encoding: utf-8
 class Problem < ActiveRecord::Base
 
   STATUSES = ['reported', 'approved', 'activated', 'solved', 'invalid']
-
-  def self.statuses
-    statuses = []
-    STATUSES.each do |status|
-      statuses << [I18n.t("problems.statuses.#{status}"), status]
-    end
-    statuses
-  end
 
   # Attributes
   attr_accessor :address
@@ -115,6 +108,14 @@ class Problem < ActiveRecord::Base
     Problem.select("#{year_select} as year").group("year").order("year ASC").map{|p| p.year}
   end
 
+  def self.statuses
+    statuses = []
+    STATUSES.each do |status|
+      statuses << [I18n.t("problems.statuses.#{status}"), status]
+    end
+    statuses
+  end
+
   def self.send_problems!
     problems_by_municipality = unsent.includes([{:municipality => :users}, :category]).
                                group_by{|p| p.municipality }
@@ -179,50 +180,25 @@ class Problem < ActiveRecord::Base
 
   private
 
-    # formtastic errors fix for paperclip
-    def add_error_on_photo
-      self.errors[:photo] << errors[:photo_file_name] if errors[:photo_file_name].present?
-    end
+  # formtastic errors fix for paperclip
+  def add_error_on_photo
+    self.errors[:photo] << errors[:photo_file_name] if errors[:photo_file_name].present?
+  end
 
-    # formtastic errors fix for longitude and latitude
-    def validates_longitude_and_latitude
-      self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
-    end
+  # formtastic errors fix for longitude and latitude
+  def validates_longitude_and_latitude
+    self.errors[:base] << "Не е означена локацијата на мапа" if errors[:latitude].present? || errors[:longitude].present?
+  end
 
-    def assign_user
-      self.user = User.find_by_email(email)
-    end
+  def assign_user
+    self.user = User.find_by_email(email)
+  end
 
-    def set_solved_at
-      self.solved_at = (solved? ? Time.now : nil) if status_changed?
-    end
+  def set_solved_at
+    self.solved_at = (solved? ? Time.now : nil) if status_changed?
+  end
 
-    def set_initial_status
-      self.status = 'reported'
-    end
+  def set_initial_status
+    self.status = 'reported'
+  end
 end
-
-# == Schema Information
-#
-# Table name: problems
-#
-#  id                 :integer(4)      not null, primary key
-#  user_id            :integer(4)
-#  category_id        :integer(4)
-#  municipality_id    :integer(4)
-#  description        :text
-#  status             :string(255)     default("0")
-#  longitude          :string(255)
-#  latitude           :string(255)
-#  email              :string(255)
-#  device_id          :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  photo_file_name    :string(255)
-#  photo_content_type :string(255)
-#  photo_file_size    :integer(4)
-#  photo_updated_at   :datetime
-#  weight             :integer(4)      default(5)
-#  sent_at            :datetime
-#
-

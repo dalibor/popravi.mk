@@ -13,7 +13,7 @@ describe Rate do
   end
 
   describe "validations" do
-    subject { Factory.create(:rate) }
+    subject { create(:rate) }
     it { should validate_presence_of(:user_id) }
     it { should validate_presence_of(:problem_id) }
     it { should validate_presence_of(:weight) }

@@ -332,9 +332,9 @@ var reports_show = {
 $(function () {
   var body_id = $('body').attr("id");
   if (body_id) {
-    controller_action = body_id;
-    if (typeof window[controller_action] !== 'undefined') {
-      window[controller_action]['run']();
+    if (typeof(window[body_id]) !== 'undefined' &&
+        typeof(window[body_id]['run']) === 'function') {
+      window[body_id]['run']();
     }
   }
 });

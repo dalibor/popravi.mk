@@ -1,8 +1,9 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Api::V2::SessionsController do
   before :each do
-    @api_key = Factory.create(:api_key, :key => 'key')
+    @api_key = create(:api_key, :key => 'key')
   end
 
   describe "login" do
@@ -17,7 +18,7 @@ describe Api::V2::SessionsController do
     end
 
     it "can't login when valid email and invalid password" do
-      user = Factory.create(:user, :email => 'tested@popravi.mk', 
+      user = create(:user, :email => 'tested@popravi.mk',
                                    :password => 'password')
 
       post :create, :format => 'json', :api_key => @api_key.key,
@@ -30,8 +31,8 @@ describe Api::V2::SessionsController do
     end
 
     it "can login when correct email and password" do
-      municipality = Factory.create(:municipality)
-      user = Factory.create(:user, :email => 'tested@popravi.mk',
+      municipality = create(:municipality)
+      user = create(:user, :email => 'tested@popravi.mk',
                                    :password => 'password',
                                    :municipality => municipality)
 

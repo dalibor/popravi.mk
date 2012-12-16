@@ -1,5 +1,7 @@
-Factory.define :attachment, :class => Attachment do |f|
-  f.name       { 'Attachment1' }
-  f.attachment { File.open(File.join(Rails.root, "/spec/fixtures/rails1.png"))  }
-  f.user       { Factory(:user) }
+FactoryGirl.define do
+  factory :attachment do
+    name 'Attachment1'
+    attachment { File.open(File.join(Rails.root, "/spec/fixtures/rails1.png"))  }
+    association :user
+  end
 end

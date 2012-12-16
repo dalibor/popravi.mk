@@ -10,7 +10,7 @@
           %h2= t('problems.mark_location_on_map')
 
           = text_field_tag :address
-          = link_to t('problems.search_address'), "#", :id => "search_address" 
+          = link_to t('problems.search_address'), "#", :id => "search_address"
 
         #geocode_results
       #map
@@ -34,6 +34,6 @@
       - unless user_signed_in?
         %div{:style => "clear:both"}
           = raw recaptcha_tags
-      = f.buttons do
-        = f.commit_button @problem.new_record? ? t('problems.report_problem') : t('problems.update_problem')
+      = f.actions do
+        = f.submit @problem.new_record? ? t('problems.report_problem') : t('problems.update_problem')
 
