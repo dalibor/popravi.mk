@@ -1,48 +1,50 @@
-# Feature: Visitor can report a problem
-#   In order to have problems near me fixed
-#   As a visitor
-#   I want to be able to report a problem
+require 'spec_helper'
 
-#   Scenario: Visitor can report a problem
-#     Given I am on the home page
-#     And category exists
-#     And municipality exists
-#     click_link "Report"
-#     fill_in "problem_description" with "Problem description"
-#     fill_in "problem_weight" with "7"
-#     And I attach the file "public/images/rails.png" to "problem_photo"
-#     And I change the value of the hidden field "problem[latitude]" to "42"
-#     And I change the value of the hidden field "problem[longitude]" to "21"
-#     fill_in "problem_email" with "test_user@popravi.mk"
-#     select "Abandoned vehicles" from "problem_category_id"
-#     select "Butel" from "problem_municipality_id"
-#     click_button "problem_submit"
-#     page.should have_content "Problem was successfully reported"
-#     page.should have_content "Problem description"
-#     page.should have_content "7" within ".weight"
-#     page.should have_content "Butel"
-#     page.should have_content "Abandoned vehicles"
-#     page.should_not have_content "Edit problem report"
+describe "Visitor" do
 
-#   Scenario: Automatically assigns user to problem when after problem is reported, user registers with same email
-#     Given I am on the home page
-#     And category exists
-#     And municipality exists
-#     click_link "Report"
-#     fill_in "problem_description" with "Problem description"
-#     And I attach the file "public/images/rails.png" to "problem_photo"
-#     And I change the value of the hidden field "problem[latitude]" to "42"
-#     And I change the value of the hidden field "problem[longitude]" to "21"
-#     fill_in "problem_email" with "test_user@popravi.mk"
-#     select "Abandoned vehicles" from "problem_category_id"
-#     select "Butel" from "problem_municipality_id"
-#     click_button "problem_submit"
-#     page.should have_content "Problem was successfully reported"
-#     Given I signed up as "test_user@popravi.mk" with password "secretpass"
-#     And I confirmed my email address
-#     When I go to the sign in page
-#     fill_in "Email" with "test_user@popravi.mk"
-#     fill_in "Password" with "secretpass"
-#     click_button "Login"
-#     click_link "My reports"
-#     page.should have_content "Problem description"
+  before :each do
+    create :category
+    create :municipality
+    visit root_path
+    click_link "Report"
+  end
+
+  it "can report a problem" do
+    fill_in "Description", with: "Problem description"
+    fill_in "problem_weight", with: "7"
+    attach_file "Photo", "spec/fixtures/rails1.png"
+    find("#problem_latitude").set("42")
+    find("#problem_longitude").set("21")
+    fill_in "problem_email", with: "test_user@popravi.mk"
+    select "Abandoned vehicles", from: "problem_category_id"
+    select "Butel", from: "problem_municipality_id"
+    click_button "Report a problem"
+    page.should have_content "Problem was successfully reported"
+    page.should have_content "Problem description"
+    within ".weight" do
+      page.should have_content "7"
+    end
+    page.should have_content "Butel"
+    page.should have_content "Abandoned vehicles"
+    page.should_not have_content "Edit problem report"
+  end
+
+  it "automatically assigns user to problem when after problem is reported, user registers with same email" do
+    fill_in "Description", with: "Problem description"
+    attach_file "Photo", "spec/fixtures/rails1.png"
+    find("#problem_latitude").set("42")
+    find("#problem_longitude").set("21")
+    fill_in "Email", with: "test_user@popravi.mk"
+    select "Abandoned vehicles", from: "problem_category_id"
+    select "Butel", from: "problem_municipality_id"
+    click_button "Report a problem"
+    page.should have_content "Problem was successfully reported"
+    user = create :user, email: "test_user@popravi.mk", password: "password"
+    click_link "Sign in"
+    fill_in "Email", with: "test_user@popravi.mk"
+    fill_in "Password", with: "password"
+    click_button "Login"
+    click_link "My reports"
+    page.should have_content "Problem description"
+  end
+end

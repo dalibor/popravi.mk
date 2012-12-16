@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   #validates_attachment_content_type :avatar, :content_type => ['image/jpeg', 'image/pjpeg', 'image/pjpg', 'image/x-png', 'image/png', 'image/jpg']
 
 
+  # Callbacks
+  after_create :assign_user_to_problems
+
   # Scopes
   scope :admins, where(['is_admin = ?', true])
   scope :moderators, where(['is_admin = ? AND municipality_id IS NOT NULL', false])
@@ -46,7 +49,6 @@ class User < ActiveRecord::Base
 
   # Devise override
   def send_confirmation_instructions
-    assign_user_to_problems
     super
   end
 

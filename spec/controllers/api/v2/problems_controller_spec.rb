@@ -298,7 +298,7 @@ describe Api::V2::ProblemsController do
 
     it "assigns user when user is logged in" do
       user = create(:user)
-      login(user)
+      fake_login(user)
       post :create, :format => :json, :api_key => @api_key.key,
                     :problem => {
                       :description => 'problem 123',
@@ -359,7 +359,7 @@ describe Api::V2::ProblemsController do
     it "can't change the status when status param is blank" do
       problem = create(:problem)
       user = create(:user)
-      login(user)
+      fake_login(user)
 
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id
@@ -371,7 +371,7 @@ describe Api::V2::ProblemsController do
     it "can't change the status when status param is not in the list of allowed" do
       problem = create(:problem)
       user = create(:user)
-      login(user)
+      fake_login(user)
 
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'unexisting'
@@ -385,7 +385,7 @@ describe Api::V2::ProblemsController do
       municipality2 = create(:municipality)
       user = create(:user, :municipality => municipality1)
       problem = create(:problem, :municipality => municipality2)
-      login(user)
+      fake_login(user)
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'
 
@@ -398,7 +398,7 @@ describe Api::V2::ProblemsController do
       municipality = create(:municipality)
       user = create(:user, :municipality => municipality)
       problem = create(:problem, :municipality => municipality)
-      login(user)
+      fake_login(user)
       put :update_status, :format => 'json', :api_key => @api_key.key,
                           :id => problem.id, :status => 'approved'
 

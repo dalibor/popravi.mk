@@ -58,7 +58,7 @@ describe Api::V2::CommentsController do
 
     it "assigns user_id to comment when user is logged in" do
       user = create(:user)
-      login(user)
+      fake_login(user)
       problem = create(:problem)
       post :create, :format => 'json', :api_key => @api_key.key,
                     :problem_id => problem.id, :content => 'test comment'

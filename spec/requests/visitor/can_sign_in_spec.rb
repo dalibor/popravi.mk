@@ -1,39 +1,35 @@
-# Feature: Visitor can sign in
-#   In order to use the system's functionality
-#   As a visitor
-#   I want to be able to sign in into the system
+require 'spec_helper'
 
-#   Scenario: Sign in successfully
-#     Given I am an authenticated user
-#     page.should have_content "Signed in successfully."
-#     And I should be on the user problems page
+describe "Visitor" do
+  it "can sign in" do
+    user = create :user
+    visit root_path
+    click_link 'Sign in'
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Login"
+    page.should have_content "Signed in successfully."
+  end
 
-#   Scenario: Invalid login credentials
-#     Given I signed up as "test_user@popravi.mk" with password "secretpass"
-#     And I confirmed my email address
-#     When I go to the sign in page
-#     fill_in "Email" with "test_user@popravi.mk"
-#     fill_in "Password" with "wrongpass"
-#     click_button "Login"
-#     page.should have_content "Invalid email or password"
-#     And I should be on the redisplayed sign in page
+  it "can display invalid login credentials" do
+    user = create :user, email: "test_user@popravi.mk", password: "password"
+    visit root_path
+    click_link "Sign in"
+    fill_in "Email", with: "test_user@popravi.mk"
+    fill_in "Password", with: "wrongpass"
+    click_button "Login"
+    page.should have_content "Invalid email or password"
+    current_path.should == user_session_path
+  end
 
-#   Scenario: User has not confirmed email address
-#     Given I signed up as "test_user@popravi.mk" with password "secretpass"
-#     When I go to the sign in page
-#     fill_in "user_email" with "test_user@popravi.mk"
-#     fill_in "user_password" with "secretpass"
-#     click_button "Login"
-#     page.should have_content "You have to confirm your account before continuing."
-#     And I should be on the redisplayed sign in page
-
-#     #Scenario: User account is locked
-#     #Given I signed up as "test_user@popravi.mk" with password "secretpass"
-#     #And I confirmed my email address
-#     #And my account is locked
-#     #When I go to the sign in page
-#     #fill_in "user_email" with "test_user@popravi.mk"
-#     #fill_in "user_password" with "secretpass"
-#     #click_button "Sign in"
-#     #page.should have_content "Your account is locked"
-#     #And I should be on the redisplayed sign in page
+  it "can ask for confirmation" do
+    user = create :user, email: "test_user@popravi.mk", password: "password", confirmed_at: nil
+    visit root_path
+    click_link "Sign in"
+    fill_in "Email", with: "test_user@popravi.mk"
+    fill_in "Password", with: "password"
+    click_button "Login"
+    page.should have_content "You have to confirm your account before continuing."
+    current_path.should == user_session_path
+  end
+end

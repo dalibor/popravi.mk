@@ -1,3 +1,7 @@
+def fake_login(user)
+  session[:user_id] = user.id
+end
+
 def login(user)
   visit user_session_path
   fill_in "Email", with: user.email
