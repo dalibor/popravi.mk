@@ -5,7 +5,7 @@ rvm:
 
 branches:
   only:
-    - travis
+    - master
 
 before_script:
   # Use Google's name servers. The default name servers cannot
@@ -17,15 +17,15 @@ before_script:
   - wget http://phantomjs.googlecode.com/files/$version.tar.bz2
   - tar xjf $version.tar.bz2
   - mv $version phantomjs
-  - "export PATH=phantomjs/bin:$PATH"
+  - export PATH=phantomjs/bin:$PATH
   - phantomjs --version
 
   # setup config
-  - "cp config/config.yml.template config/config.yml"
+  - cp config/config.yml.template config/config.yml
 
   # setup database
-  - "cp config/database.yml.travis config/database.yml"
-  - "rake db:create"
-  - "rake db:migrate"
+  - cp config/database.yml.travis config/database.yml
+  - rake db:create
+  - rake db:migrate
 
 script: bundle exec rspec spec
