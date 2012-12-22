@@ -7,6 +7,7 @@ development:
   recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'
+  exceptions_receiver: "user@example.com"
 test:
   mailer:
     email: "your@email.com"
@@ -16,6 +17,7 @@ test:
   recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'
+  exceptions_receiver: "user@example.com"
 production:
   mailer:
     email: "your@email.com"
@@ -25,3 +27,4 @@ production:
   recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'
+  exceptions_receiver: "user@example.com"

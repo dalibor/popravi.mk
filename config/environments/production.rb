@@ -67,3 +67,12 @@ PopraviMk::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'popravi.mk' }
 end
+
+PopraviMk::Application.config.middleware.use ExceptionNotifier,
+  :email_prefix => "[Popravi.mk ERROR] ",
+  :sender_address => %{"Popravi.mk Notifier" <#{APP_CONFIG['mailer']['email']}>},
+  :exception_recipients => [APP_CONFIG['exceptions_receiver']],
+  :smtp_settings => {
+    :user_name => APP_CONFIG['mailer']['email'],
+    :password => APP_CONFIG['mailer']['password']
+   }

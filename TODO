@@ -1,5 +1,6 @@
 - Before deploy to production
   - move public/assets to public/uploads
+  - add exceptions_receiver to config.yml file
 - Style fixes
 - Move all language specific stuff to config/locale
 - Regenerate initializers/devise.rb file
