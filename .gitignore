@@ -19,3 +19,4 @@ config/database.yml
 config/config.yml
 public/system
 public/uploads
+public/assets
