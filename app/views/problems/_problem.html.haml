@@ -16,12 +16,12 @@
 
       %li
         %span= t('rates.total_votes')
-        = problem.rates.count
+        = problem.rates.size
 
       %li
         %span= t('problems.status')
         %span.atm= t("problems.statuses.#{problem.status}")
-            
+
     %p= problem.description
     %ul.social
       %li
@@ -32,6 +32,6 @@
         = link_to "http://www.facebook.com/share.php?u=#{CGI.escape(problem_url(problem))}&t=#{problem.title}", :target => "_blank" do
           =image_tag("iconFacebook.png")
           %span Share
-    
+
     %h6= t('g.ago', :time => time_ago_in_words(problem.created_at))
-    
+

@@ -126,11 +126,11 @@ describe Problem do
 
     it "returns current_rating" do
       problem = create(:problem)
-      create(:rate, :weight => 10, :problem => problem)
-      create(:rate, :weight => 9, :problem => problem)
+      problem.rates.create(:weight => 10, :user_id => -1)
+      problem.rates.create(:weight => 9, :user_id => -2)
 
+      problem.rates.size == 2
       problem.current_rating.should == 9.5
-      problem.rates.count == 2
     end
   end
 

@@ -2,8 +2,8 @@ class User::RatesController < User::BaseController
   before_filter :load_problem
 
   def create
-    @rate = current_user.rates.new(params[:rate])
-    @rate.problem = @problem
+    @rate = @problem.rates.new(params[:rate])
+    @rate.user = current_user
 
     if @rate.save
       redirect_to problem_path(@problem), :notice => t('rates.flash.create.success')

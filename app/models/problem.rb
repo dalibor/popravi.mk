@@ -171,7 +171,7 @@ class Problem < ActiveRecord::Base
   end
 
   def current_rating
-    rates.count > 0 ? rates.sum(:weight).to_f / rates.count : ''
+    rates.size > 0 ? rates.sum(:weight).to_f / rates.size : ''
   end
 
   def last_status_editor

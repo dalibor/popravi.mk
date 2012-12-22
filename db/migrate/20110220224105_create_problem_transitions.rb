@@ -7,11 +7,6 @@ class CreateProblemTransitions < ActiveRecord::Migration
 
       t.timestamps
     end
-
-    # create init transitions for existing problems
-    Problem.all.each do |problem|
-      problem.problem_transitions.create(:from => nil, :to => problem.status)
-    end
   end
 
   def self.down

@@ -4,8 +4,6 @@ class MakeCommentsPolymorphic < ActiveRecord::Migration
     add_column :comments, :commentable_type, :string
     add_index :comments, :user_id
     add_index :comments, [:commentable_id, :commentable_type]
-    Comment.reset_column_information
-    Comment.update_all("commentable_type = 'Problem'")
   end
 
   def self.down
