@@ -6,7 +6,7 @@
   .content
     %h2.title
       = t("web-app-theme.new", :default => "New")
-      ApiKey
+      = t("web-app-theme.api_key")
     .inner
       = form_for :api_key, :url => admin_api_keys_path, :html => { :class => :form } do |f|
         = render :partial => "form", :locals => {:f => f}

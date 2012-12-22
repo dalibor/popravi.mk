@@ -10,8 +10,7 @@ class Admin::CommentsController < Admin::BaseController
   end
 
   def create
-    @comment = Comment.new
-    @comment.send(:attributes=, params[:comment], false)
+    @comment = Comment.new(params[:comment], :without_protection => true)
 
     create! do |success, failure|
       success.html do

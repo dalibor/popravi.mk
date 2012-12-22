@@ -4,7 +4,6 @@ gem 'rails', '3.2.9'
 gem 'mysql2'
 gem 'devise'
 gem 'devise-encryptable'
-gem 'html5-boilerplate'
 gem 'haml'
 gem 'formtastic'
 gem 'inherited_resources'
@@ -34,6 +33,7 @@ end
 group :development, :test do
   gem 'web-app-theme', '>= 0.6.2'
   gem 'rspec-rails'
+  gem 'quiet_assets'
 end
 
 group :test do

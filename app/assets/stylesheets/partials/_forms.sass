@@ -104,13 +104,13 @@
       padding: 12px 20px 10px
       //text-transform: uppercase
       +box-shadow(#aaa, 2px, 2px, 3px)
-      +linear-gradient(color-stops(#444, #111))
+      +background(linear-gradient(#444, #111))
       +text-shadow(#000, 1px, 1px, 1px)
       &:hover, &:focus
         background: green
         border: 1px solid green - #222
         color: white
-        +linear-gradient(color-stops(green + #111, green - #222))
+        +background(linear-gradient(green + #111, green - #222))
         +text-shadow(green - #666, 1px, 1px, 1px)
       &:active
         outline: none

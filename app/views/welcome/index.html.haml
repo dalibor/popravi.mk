@@ -8,13 +8,13 @@
     #slogan
       // proveri!
       //%h2= t('homepage.title')
-      
+
       %h2 Смени го градот
       %p= raw t('homepage.info', :link => link_to(t('g.read_more'), '/posts/podobri-go-svojot-grad'))
-        
+
       = link_to new_problem_path, :id => "report" do
         Пријави проблем
-        
+
       = link_to android_path, :id => "download" do
         Преземи за Андроид
 
@@ -45,7 +45,7 @@
         = link_to android_path, :id => "effective" do
           %h3 Биди Ефикасен
           %p Искористи го мобилниот и пријави проблем во движење
-      
+
 
       - if @post
         .sidebar

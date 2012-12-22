@@ -1,7 +1,7 @@
 
 .group
   = f.label :custom_slug, t("activerecord.attributes.post.custom_slug", :default => "Custom slug"), :class => :label
-  = f.check_box :custom_slug, :class => 'text_field'
+  = f.check_box :custom_slug, :class => 'check_box'
   -#<span class="description">Ex: a simple text</span>
 
 .group
@@ -21,7 +21,7 @@
 
 .group
   = f.label :published, t("activerecord.attributes.post.published", :default => "Published"), :class => :label
-  = f.check_box :published, :class => 'text_field'
+  = f.check_box :published, :class => 'check_box'
   -#<span class="description">Ex: a simple text</span>
 
 .group

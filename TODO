@@ -1,4 +1,6 @@
+- Before deploy to production
+  - move public/assets to public/uploads
+- Style fixes
 - Move all language specific stuff to config/locale
 - Regenerate initializers/devise.rb file
 - flash[:notice] = "User was successfully updated"
-- remove public/images/rails.png

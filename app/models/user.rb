@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
 
   # Paperclip
   has_attached_file :avatar, :styles => {:s => '60x60#'},
-                  :url  => "/assets/avatars/:id/:style/:basename.:extension",
-                  :path => ":rails_root/public/assets/avatars/:id/:style/:basename.:extension",
-                  :default_url => "/images/avatars/default_:style.png"
+                  :url  => "/uploads/avatars/:id/:style/:basename.:extension",
+                  :path => ":rails_root/public/uploads/avatars/:id/:style/:basename.:extension",
+                  :default_url => "/assets/avatars/default_:style.png"
 
   #Validations
   #validates_attachment_presence :avatar

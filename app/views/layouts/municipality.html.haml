@@ -4,13 +4,13 @@
 
     %meta{"http-equiv" => "content-type", :content => "text/html;charset=UTF-8"}
     %title= "#{yield(:title)} :: popravi.mk"
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
     <meta name="keywords" content="#{yield(:keywords)}" />
     <meta name="description" content="#{yield(:description)}" />
     = yield(:head)
 
-    = stylesheet_link_tag 'formtastic', 'ui-lightness/jquery-ui-1.8.10.custom.css', 'compiled/screen.css', :media => 'screen, projection', :cache => 'application_cached'
+    = stylesheet_link_tag 'application', :media => 'screen, projection'
 
     = csrf_meta_tag
 
@@ -31,7 +31,7 @@
           %a{:href => "/"}
             =image_tag('logo2.png')
 
-        
+
         %p.right
           %span= link_to image_tag(@municipality.photo.url(:s)), municipality_root_path(@municipality.slug)
         %p.right
@@ -45,9 +45,9 @@
         - flash.each do |key, msg|
           = content_tag :div, msg, :id => key
         = yield
-        
+
     = render "layouts/footer"
-    
-    = javascript_include_tag 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min.js', 'rails', 'application', :cache => 'application_cached'
+
+    = javascript_include_tag 'application'
     = yield :script
     = render :partial => "shared/ga"

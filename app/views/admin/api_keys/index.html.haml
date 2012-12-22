@@ -6,7 +6,7 @@
   .content
     %h2.title
       = t("web-app-theme.all", :default => "All")
-      ApiKeys
+      = t('web-app-theme.api_keys')
     .inner
       %table.table
         %tr
@@ -26,7 +26,8 @@
             %td.last
               = link_to "#{t("web-app-theme.show", :default => "Show")}", admin_api_key_path(api_key)
               |
-              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_api_key_path(api_key)} |
+              \#{link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_api_key_path(api_key)}
+              |
               \#{link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_api_key_path(api_key), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"}
       .actions-bar.wat-cf
         .actions
