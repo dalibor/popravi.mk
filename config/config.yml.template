@@ -3,8 +3,8 @@ development:
     email: "your@email.com"
     password: "password"
   token:
-    secret: "your_long_secret_key"
-  recaptcha: 
+    secret: "your_long_secret_key123456789012345678901234567890"
+  recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'
 test:
@@ -12,8 +12,8 @@ test:
     email: "your@email.com"
     password: "password"
   token:
-    secret: "your_long_secret_key"
-  recaptcha: 
+    secret: "your_long_secret_key123456789012345678901234567890"
+  recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'
 production:
@@ -21,7 +21,7 @@ production:
     email: "your@email.com"
     password: "password"
   token:
-    secret: "your_long_secret_key"
-  recaptcha: 
+    secret: "your_long_secret_key123456789012345678901234567890"
+  recaptcha:
     public_key: 'public_key'
     private_key: 'private_key'

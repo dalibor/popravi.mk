@@ -1,0 +1,31 @@
+language: ruby
+
+rvm:
+  - "1.9.3"
+
+branches:
+  only:
+    - travis
+
+before_script:
+  # Use Google's name servers. The default name servers cannot
+  # resolve capybara1.elabs.se for unknown reasons.
+  - sudo su -c 'echo "nameserver 8.8.8.8" > /etc/resolv.conf; echo "nameserver 8.8.4.4" >> /etc/resolv.conf'
+
+  # install phantomjs
+  - version=phantomjs-1.7.0-linux-i686
+  - wget http://phantomjs.googlecode.com/files/$version.tar.bz2
+  - tar xjf $version.tar.bz2
+  - mv $version phantomjs
+  - "export PATH=phantomjs/bin:$PATH"
+  - phantomjs --version
+
+  # setup config
+  - "cp config/config.yml.template config/config.yml"
+
+  # setup database
+  - "cp config/database.yml.travis config/database.yml"
+  - "rake db:create"
+  - "rake db:migrate"
+
+script: bundle exec rspec spec
