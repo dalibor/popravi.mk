@@ -92,7 +92,7 @@ describe Comment do
   describe "commenter_avatar" do
     describe "logged in user" do
       it "displays avatar of user" do
-        user = create(:user, :avatar => File.open(File.join(Rails.root, 'public', 'images', 'rails.png')))
+        user = create(:user, :avatar => File.open(File.join(Rails.root, 'spec', 'fixtures', 'rails.png')))
         problem = create(:problem)
         comment = problem.comments.new(:content => "My comment")
         comment.user = user

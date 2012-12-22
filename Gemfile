@@ -46,4 +46,3 @@ group :test do
   gem 'timecop'
   gem 'launchy', '= 2.1.0'
 end
-

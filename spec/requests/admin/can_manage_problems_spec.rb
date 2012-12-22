@@ -15,7 +15,7 @@ describe "Admin" do
     click_link "New"
     fill_in "Description", with: "Problem description"
     fill_in "Official notes", with: "Problem official notes"
-    attach_file "Photo", "public/images/rails.png"
+    attach_file "Photo", "spec/fixtures/rails.png"
     fill_in "Latitude", with: "42"
     fill_in "Longitude", with: "21"
     fill_in "Email", with: "test_user@popravi.mk"

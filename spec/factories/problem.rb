@@ -1,4 +1,4 @@
-photo = File.open("public/images/rails.png", 'r')
+photo = File.open("spec/fixtures/rails.png", 'r')
 
 FactoryGirl.define do
   factory :problem do

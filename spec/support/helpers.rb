@@ -15,7 +15,7 @@ def report_a_problem
   create :municipality
   click_link "Report"
   fill_in "problem_description", with: "Problem description"
-  attach_file "problem_photo", "public/images/rails.png"
+  attach_file "problem_photo", "spec/fixtures/rails.png"
   find("#problem_latitude").set(42)
   find("#problem_longitude").set(21)
   select "Abandoned vehicles", from: "problem_category_id"
