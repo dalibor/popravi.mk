@@ -11,11 +11,17 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery-1.4.4.min
-//= require wymeditor/jquery.wymeditor.js
-//= require wym_boot
+//= require jquery.wymeditor.min
 //= require rails
 
 $(function () {
+  jQuery(".wymeditor").wymeditor({
+    basePath: "/wymeditor/",
+    iframeBasePath: "/wymeditor/iframe/default/",
+    skinPath: "/wymeditor/skins/default/",
+    wymPath: "/admin.js"
+  });
+
   $('form').submit(function () {
     $.each(WYMeditor.INSTANCES, function (i, e) {
       jQuery.wymeditors(i).update();

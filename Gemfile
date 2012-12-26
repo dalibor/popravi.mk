@@ -23,6 +23,7 @@ group :assets do
   gem 'compass-rails'
   gem 'compass-h5bp'
   gem 'jquery-ui-rails'
+  gem 'therubyracer', '=0.10.1'
 end
 
 group :development do
