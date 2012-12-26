@@ -4,8 +4,9 @@
 .step
 
   = semantic_form_for resource, :as => resource_name, :url => confirmation_path(resource_name) do |f|
-    = f.inputs do
-      = f.input :email, :label => t('devise.registrations.email')
+    .fields-wrapper
+      = f.inputs do
+        = f.input :email, :label => t('devise.registrations.email')
     = f.actions do
       = f.submit t('devise.confirmations.send')
 

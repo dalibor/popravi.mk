@@ -102,6 +102,8 @@
       font-weight: normal
       letter-spacing: 0.5px
       padding: 12px 20px 10px
+      height: 44px
+      max-width: 260px
       //text-transform: uppercase
       +box-shadow(#aaa, 2px, 2px, 3px)
       +background(linear-gradient(#444, #111))
@@ -118,14 +120,17 @@
         top: 1px
         +box-shadow(#aaa, 1px, 1px, 2px)
 
+
 .step
   width: 600px
   margin: 0 auto
   .right
-    margin-top: -60px
+    margin-top: -55px
     text-align: right
   li
     margin-bottom: 10px
+  .fields-wrapper
+    overflow: hidden
   .inputs
     width: 595px
     ol
@@ -139,6 +144,7 @@
     #user_remember_me
       width: auto
       font-size: 0.6em
+      height: 10px
     label
       margin: 0
       padding: 0 0 5px 0

@@ -4,8 +4,9 @@
 .step
 
   = semantic_form_for resource, :as => resource_name, :url => password_path(resource_name) do |f|
-    = f.inputs do
-      = f.input :email, :label => t('devise.sessions.email')
+    .fields-wrapper
+      = f.inputs do
+        = f.input :email, :label => t('devise.sessions.email')
     = f.actions do
       = f.submit t('devise.passwords.reset_password')
 
