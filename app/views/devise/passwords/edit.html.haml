@@ -4,10 +4,11 @@
 .step
 
   = semantic_form_for resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put } do |f|
-    = f.inputs do
-      = f.input :reset_password_token, :as => :hidden
-      = f.input :password, :as => :password, :label => t('devise.passwords.password')
-      = f.input :password_confirmation, :as => :password, :label => t('devise.passwords.password_confirmation')
+    .fields-wrapper
+      = f.inputs do
+        = f.input :reset_password_token, :as => :hidden
+        = f.input :password, :as => :password, :label => t('devise.passwords.password')
+        = f.input :password_confirmation, :as => :password, :label => t('devise.passwords.password_confirmation')
     = f.actions do
       = f.submit t('devise.passwords.change_my_password')
 

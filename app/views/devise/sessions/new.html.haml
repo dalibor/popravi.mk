@@ -5,12 +5,13 @@
 
   = semantic_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     = f.semantic_errors :state
-    = f.inputs do
-      = f.input :email, :label => t('devise.sessions.email')
-      = f.input :password, :as => :password, :label => t('devise.sessions.password')
-      - if devise_mapping.rememberable?
-        %p= f.input :remember_me, :as => :boolean, :label => t('devise.sessions.remember_me')
-      = f.actions do
-        = f.submit t('devise.sessions.login')
+    .fields-wrapper
+      = f.inputs do
+        = f.input :email, :label => t('devise.sessions.email')
+        = f.input :password, :as => :password, :label => t('devise.sessions.password')
+        - if devise_mapping.rememberable?
+          %p= f.input :remember_me, :as => :boolean, :label => t('devise.sessions.remember_me')
+    = f.actions do
+      = f.submit t('devise.sessions.login')
 
     = render :partial => "shared/devise_links"
