@@ -11,7 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery-1.4.4.min
-//= require jquery.wymeditor.min
+//= require jquery.wymeditor
 //= require rails
 
 $(function () {
@@ -19,7 +19,7 @@ $(function () {
     basePath: "/wymeditor/",
     iframeBasePath: "/wymeditor/iframe/default/",
     skinPath: "/wymeditor/skins/default/",
-    wymPath: "/admin.js"
+    wymPath: "/assets/admin.js"
   });
 
   $('form').submit(function () {
