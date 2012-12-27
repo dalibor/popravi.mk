@@ -5,5 +5,9 @@ class Municipality::WelcomeController < Municipality::BaseController
     @problems = @municipality.problems.ordered.last(5)
     @post     = @municipality.posts.published.ordered.first
     @contact  = @municipality.contact
+
+    respond_to do |format|
+      format.html
+    end
   end
 end

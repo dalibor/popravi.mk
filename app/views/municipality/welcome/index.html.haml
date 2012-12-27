@@ -18,7 +18,7 @@
         %li.view_all= link_to t('posts.view_all'), municipality_posts_path(@municipality.slug)
 
   = render 'municipality/problems/search'
-  
+
 - if @contact.present?
   .main#about
     %h2
@@ -41,14 +41,10 @@
         = auto_link @contact.email
 
 .main
-      
   %h2
     = t('problems.problems')
-    %span.right= link_to image_tag("rss.png"), municipality_root_path(@municipality.slug, :format => 'rss')
+    %span.right= link_to image_tag("rss.png"), municipality_problems_path(@municipality.slug, :format => 'rss')
 
   .problems
     %ul
       = render :partial => 'problems/problem', :collection => @problems
-
-
-

@@ -25,7 +25,7 @@
 
   # root route
   root :to => "welcome#index"
-  
+
   get 'android' => "welcome#android", :as => 'android'
 
   # admin routes

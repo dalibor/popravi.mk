@@ -5,6 +5,6 @@ class Municipality::BaseController < ApplicationController
 
   private
     def load_municipality
-      @municipality = Municipality.find_by_slug(params[:municipality_id] || params[:id])
+      @municipality = Municipality.find_by_slug!(params[:municipality_id] || params[:id])
     end
 end
