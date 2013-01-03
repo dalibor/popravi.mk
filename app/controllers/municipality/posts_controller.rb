@@ -7,7 +7,7 @@ class Municipality::PostsController < Municipality::BaseController
   end
 
   def show
-    @commentable = @municipality.posts.published.find_by_slug(params[:id])
+    @commentable = @municipality.posts.published.find_by_slug!(params[:id])
     @comments = @commentable.comments.order("created_at ASC").includes(:user)
     @comment = Comment.new
   end
