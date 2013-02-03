@@ -1,0 +1,5 @@
+mk:
+  will_paginate:
+    previous_label: "&#8592; Предходна"
+    next_label: "Следна &#8594;"
+    page_gap: "&hellip;"

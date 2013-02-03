@@ -1,47 +1,49 @@
 body
 
-  &#problems_index, &#problems_show, &#municipality_problems_show, &#municipality_welcome_index
-    #sidebar
-      margin-bottom: -30px
-      +pie-clearfix
-      .sidebar
-        label
-          padding-bottom: 5px
-          width: 100%
-        select, input
-          width: 280px
-          &#search_q
-            width: 370px
-        .actions
-          padding-left: 0
+  #sidebar
+    margin-bottom: -30px
+    +pie-clearfix
+    .sidebar
+      label
+        padding-bottom: 5px
+        width: 100%
+      select, input
+        width: 280px
+        &#search_q
+          width: 370px
+      .actions
+        padding-left: 0
 
-          input
-            +border-radius
-            background: #333
-            border: 1px solid #111
-            color: orange
-            cursor: pointer
-            font-family: Impact, sans-serif
-            font-size: 18px
-            font-weight: normal
-            letter-spacing: 0.5px
-            padding: 12px 25px 10px
-            //text-transform: uppercase
-            width: 120px
-            +box-shadow(#aaa, 2px, 2px, 3px)
-            +background(linear-gradient(#444, #111))
-            +text-shadow(#000, 1px, 1px, 1px)
-            &:hover, &:focus
-              background: green
-              border: 1px solid green - #222
-              color: white
-              +background(linear-gradient(green + #111, green - #222))
-              +text-shadow(green - #666, 1px, 1px, 1px)
-            &:active
-              outline: none
-              position: relative
-              top: 1px
-              +box-shadow(#aaa, 1px, 1px, 2px)
+        input
+          +border-radius
+          background: #333
+          border: 1px solid #111
+          color: orange
+          cursor: pointer
+          font-family: Impact, sans-serif
+          font-size: 18px
+          font-weight: normal
+          letter-spacing: 0.5px
+          padding: 12px 25px 10px
+          //text-transform: uppercase
+          width: 120px
+          +box-shadow(#aaa, 2px, 2px, 3px)
+          +background(linear-gradient(#444, #111))
+          +text-shadow(#000, 1px, 1px, 1px)
+          &:hover, &:focus
+            background: green
+            border: 1px solid green - #222
+            color: white
+            +background(linear-gradient(green + #111, green - #222))
+            +text-shadow(green - #666, 1px, 1px, 1px)
+          &:active
+            outline: none
+            position: relative
+            top: 1px
+            +box-shadow(#aaa, 1px, 1px, 2px)
+
+        input[type=submit]
+          height: 44px
 
   // refactor THIS, use class selector !!
   &#problems_show, &#municipality_problems_show, &#posts_show, &#comments_create, &#user_rates_create, &#user_rates_update

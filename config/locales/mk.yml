@@ -14,7 +14,7 @@ mk:
     reported_ago: 'пријавен пред %{time}'
     ago: 'пред %{time}'
     edit: 'Измени'
-    captcha_error: 'Грешка со reCAPTCHA'
+    captcha_error: 'Грешен reCAPTCHA код'
   mm:
     hello: 'Здраво %{name},'
     info: 'Следниве проблеми се пријавени во вашата општина:'
@@ -187,8 +187,8 @@ mk:
         one: 'околу 1 година'
         other: 'околу %{count} години'
       over_x_years:
-        one: 'над 1 година'
-        other: 'над %{count} години'
+        one: 'повеќе од 1 година'
+        other: 'повеќе од %{count} години'
 
   number:
     format:

@@ -13,7 +13,7 @@ en:
     reported_ago: 'reported %{time} ago'
     ago: '%{time} ago'
     edit: 'Edit'
-    captcha_error: 'Error with reCAPTCHA'
+    captcha_error: 'Wrong reCAPTCHA code'
   mm:
     hello: 'Hello %{name},'
     info: 'Following problems has been reported to your municipality:'
