@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
 
+  before_filter :authenticate_user!
+
   def create
     @commentable = find_commentable
     @comment = @commentable.comments.new(params[:comment])
-    @comment.user = current_user if user_signed_in?
+    @comment.user = current_user
 
-    if (user_signed_in? || verify_recaptcha(:model => @comment, :message => t('g.captcha_error'))) && @comment.save
+    if @comment.save
       flash[:notice] = t('comments.success')
     else
       flash[:error] = @comment.errors.full_messages[0]

@@ -3,19 +3,20 @@
 %a{:name => "comments"}
 
 #comments_block
-  .form
-    = semantic_form_for [@commentable, @comment] do |f|
-      = f.semantic_errors :state
-      = f.inputs do
-        - unless user_signed_in?
-          = f.input :name, :label => t('problems.name'), :required => false
-          = f.input :email, :label => t('problems.email'), :required => false
-        = f.input :content, :label => t('comments.comment')
-        - unless user_signed_in?
-          %div{:style => "clear:both"}
-            = raw recaptcha_tags
-      = f.actions do
-        = f.submit t('problems.send')
+
+  - if user_signed_in?
+    .form
+      = semantic_form_for [@commentable, @comment] do |f|
+        = f.semantic_errors :state
+        = f.inputs do
+          - unless user_signed_in?
+            = f.input :name, :label => t('problems.name'), :required => false
+            = f.input :email, :label => t('problems.email'), :required => false
+          = f.input :content, :label => t('comments.comment')
+        = f.actions do
+          = f.submit t('problems.send')
+  - else
+    = link_to "Login to comment", new_user_session_path
 
   .comments
     - comments.each do |comment|
