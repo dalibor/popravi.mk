@@ -189,6 +189,9 @@ mk:
       over_x_years:
         one: 'повеќе од 1 година'
         other: 'повеќе од %{count} години'
+      almost_x_years:
+        one: 'скоро %{count} години'
+        other: 'скоро %{count} години'
 
   number:
     format:
