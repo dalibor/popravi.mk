@@ -6,11 +6,7 @@ class Api::V2::CommentsController < Api::V2::BaseController
 
     @comments = []
     comments.each do |comment|
-      @comments << {
-        :user => comment.commenter_name,
-        :content => comment.content,
-        :created_at => comment.created_at.to_s(:rfc822)
-      }
+      @comments << build_comment(comment)
     end
 
     render_json(@comments)
@@ -18,18 +14,11 @@ class Api::V2::CommentsController < Api::V2::BaseController
 
   def create
     comment = @problem.comments.new(:name => params[:name],
-                                    :email => params[:email],
-                                    :content => params[:content])
+                :email => params[:email], :content => params[:content])
     comment.user = user_from_session
 
     if comment.save
-      render_json({ :status => 'ok',
-                    :comment => {
-                      :user => comment.commenter_name,
-                      :content => comment.content,
-                      :created_at => comment.created_at.to_s(:rfc822)
-                    }
-                  })
+      render_json({ :status => 'ok', :comment => build_comment(comment) })
     else
       render_json({ :status => 'error' })
     end
@@ -38,5 +27,13 @@ class Api::V2::CommentsController < Api::V2::BaseController
   private
     def load_problem
       @problem = Problem.find(params[:problem_id])
+    end
+
+    def build_comment(comment)
+      {
+        :user => comment.commenter_name,
+        :content => comment.content,
+        :created_at => comment.created_at.to_s(:rfc822)
+      }
     end
 end
