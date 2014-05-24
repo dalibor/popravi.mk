@@ -13,7 +13,7 @@ before_script:
 
   # setup database
   - "cp config/database.yml.travis config/database.yml"
-  - "rake db:create"
-  - "rake db:migrate"
+  - "bundle exec rake db:create"
+  - "bundle exec rake db:migrate"
 
 script: bundle exec rspec spec
